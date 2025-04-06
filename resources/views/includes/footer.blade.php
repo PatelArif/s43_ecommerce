@@ -32,34 +32,22 @@
                                 </div>
                                 <ul class="list-items style-color">
                                     <li>
-                                        <a href="order.html">
-                                            Track Orders
-                                        </a>
+                                       <a href="{{ url('order') }}">Track Orders</a>
                                     </li>
                                     <li>
-                                        <a href="product-details.html">
-                                            Shipping
-                                        </a>
+                                    <a href="{{ url('product-details') }}">Shipping</a>
                                     </li>
                                     <li>
-                                        <a href="shop-cart.html">
-                                            Wishlist
-                                        </a>
+                                <a href="{{ url('shop-cart') }}">Wishlist</a>
                                     </li>
                                     <li>
-                                        <a href="my-account.html">
-                                            My Account
-                                        </a>
+                                        <a href="{{ url('my-account') }}">My Account</a>
                                     </li>
                                     <li>
-                                        <a href="order.html">
-                                            Order History
-                                        </a>
+                                      <a href="{{ url('order') }}">Order History</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">
-                                            Returns
-                                        </a>
+                                      <a href="{{ url('contact') }}">Returns</a>
                                     </li>
                                 </ul>
                             </div>
@@ -136,16 +124,16 @@
                         </p>
                         <div class="bottom-list wow fadeInUp" data-wow-delay=".5s">
                             <div class="app-image">
-                                <img src="assets/img/footer/01.png" alt="img">
+                             <img src="{{ asset('assets/img/footer/01.png') }}" alt="img">
                             </div>
                             <div class="app-image">
-                                <img src="assets/img/footer/02.png" alt="img">
+                                 <img src="{{ asset('assets/img/footer/02.png') }}" alt="img">
                             </div>
                             <div class="app-image">
-                                <img src="assets/img/footer/03.png" alt="img">
+                                 <img src="{{ asset('assets/img/footer/03.png') }}" alt="img">
                             </div>
                             <div class="app-image">
-                                <img src="assets/img/footer/04.png" alt="img">
+                                 <img src="{{ asset('assets/img/footer/04.png') }}" alt="img">
                             </div>
                         </div>
                     </div>
@@ -170,7 +158,8 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-5 col-md-12">
                                     <div class="offer-modal-img d-none d-lg-block">
-                                        <img src="assets/img/cart/common-modal.jpg" alt="img">
+                               <img src="{{ asset('assets/img/cart/common-modal.jpg') }}" alt="img">
+
                                     </div>
                                 </div>
                                 <div class="col-lg-7 col-md-12">
@@ -199,28 +188,18 @@
             </div>
         </div>
         </div> --}}
+<script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
+<script src="{{ asset('assets/js/viewport.jquery.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.waypoints.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
+<script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.meanmenu.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('assets/js/wow.min.js') }}"></script>
+<script src="{{ asset('assets/js/main.js') }}"></script>
 
-        <!--<< All JS Plugins >>-->
-        <script src="assets/js/jquery-3.7.1.min.js"></script>
-        <!--<< Viewport Js >>-->
-        <script src="assets/js/viewport.jquery.js"></script>
-        <!--<< Bootstrap Js >>-->
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/jquery.nice-select.min.js"></script>
-        <!--<< Waypoints Js >>-->
-        <script src="assets/js/jquery.waypoints.js"></script>
-        <!--<< Counterup Js >>-->
-        <script src="assets/js/jquery.counterup.min.js"></script>
-        <!--<< Swiper Slider Js >>-->
-        <script src="assets/js/swiper-bundle.min.js"></script>
-        <!--<< MeanMenu Js >>-->
-        <script src="assets/js/jquery.meanmenu.min.js"></script>
-        <!--<< Magnific Popup Js >>-->
-        <script src="assets/js/jquery.magnific-popup.min.js"></script>
-        <!--<< Wow Animation Js >>-->
-        <script src="assets/js/wow.min.js"></script>
-        <!--<< Main.js >>-->
-        <script src="assets/js/main.js"></script>
     </body>
 
 <!-- Mirrored from ex-coders.com/html/ecomas/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Mar 2025 02:07:17 GMT -->

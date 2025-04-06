@@ -1,3 +1,4 @@
+@include('includes.head')
 @include('includes.header')
 
          <!-- About-Section Start -->

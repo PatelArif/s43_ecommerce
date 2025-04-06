@@ -52,7 +52,7 @@
                     <div class="offcanvas__content">
                         <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                             <div class="offcanvas__logo">
-                                <a href="index-2.html">
+                                <a href="index-2s">
                                     <img src="assets/img/logo/main_logo2.png" alt="logo-img">
                                 </a>
                             </div>
@@ -165,7 +165,7 @@
                 <div class="user-icon-box">
                     <img src="assets/img/user.png" alt="img">
                     <p>No account yet?</p>
-                    <a href="account.html">Create an Account</a>
+                    <a href="accounts">Create an Account</a>
                 </div>
             </div>
             <button id="closeButton" class="x-mark-icon"><i class="fas fa-times"></i></button>
@@ -209,22 +209,17 @@
                     </p>
                     <div class="flag-wrap">
                         <div class="flag">
-                            <img src="assets/img/flag.png" alt="flag">
+                            {{-- <img src="assets/img/flag.png" alt="flag"> --}}
                         </div>
                         <div class="nice-select" tabindex="0">
                             <span class="current">
-                                England
+                                India
                             </span>
                             <ul class="list">
                                 <li data-value="1" class="option selected focus">
-                                    England
+                                    India
                                 </li>
-                                <li data-value="1" class="option">
-                                    Bangladesh
-                                </li>
-                                <li data-value="1" class="option">
-                                    Aus
-                                </li>
+                               
                             </ul>
                          </div>
                     </div>

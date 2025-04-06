@@ -1,38 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <!--<< Header Area >>-->
-    
-<!-- Mirrored from ex-coders.com/html/ecomas/coming-soon.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Mar 2025 02:07:57 GMT -->
-<head>
-        <!-- ========== Meta Tags ========== -->
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="Gramentheme">
-        <meta name="description" content="Ecomas - Multipurpose Ecommerce HTML Template">
-        <!-- ======== Page title ============ -->
-        <title>Ecomas - Multipurpose Ecommerce HTML Template</title>
-        <!--<< Favcion >>-->
-        <link rel="shortcut icon" href="assets/img/favicon.svg">
-        <!--<< Bootstrap min.css >>-->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <!--<< All Min Css >>-->
-        <link rel="stylesheet" href="assets/css/all.min.css">
-        <!--<< Animate.css >>-->
-        <link rel="stylesheet" href="assets/css/animate.css">
-        <!--<< Magnific Popup.css >>-->
-        <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <!--<< MeanMenu.css >>-->
-        <link rel="stylesheet" href="assets/css/meanmenu.css">
-        <!--<< Swiper Bundle.css >>-->
-        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-        <!--<< Nice Select.css >>-->
-        <link rel="stylesheet" href="assets/css/nice-select.css">
-        <!--<< Color.css >>-->
-        <link rel="stylesheet" href="assets/css/color.css">
-        <!--<< Main.css >>-->
-        <link rel="stylesheet" href="assets/css/main.css">
-    </head>
+@include('includes.head')
+
     <body>
 
         <!-- Preloader Start -->
@@ -120,6 +87,7 @@
 
 
 
+      
         <!--<< All JS Plugins >>-->
         <script src="assets/js/jquery-3.7.1.min.js"></script>
         <!--<< Viewport Js >>-->

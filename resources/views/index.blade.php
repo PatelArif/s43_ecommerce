@@ -95,7 +95,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="hero-3">
-                            <div class="hero-bg bg-cover" style="background-image: url(assets/img/hero/bg-4.jpg);">
+                            <div class="hero-bg bg-cover" style="background-image: url(assets/img/slider/1.1.png);">
                             </div>
                                 <div class="container">
                                     <div class="row g-4">
@@ -231,7 +231,7 @@
                             <h3>
                                 <a href="shop-grid.html">Man</a>
                             </h3>
-                            <p>2025 Collection</p>
+                            {{-- <p>2025 Collection</p> --}}
                         </div>
                     </div>
                     <div class="bg-image mt-20 style-2 bg-cover" style="background-image: url(assets/img/shop/16.jpg);">
