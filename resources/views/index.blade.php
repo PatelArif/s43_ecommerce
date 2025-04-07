@@ -3,84 +3,8 @@
    
 
           <!-- Modal Version 2 -->
-        <div class="modal modal-common-wrap fade" id="exampleModal2" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="shop-details-wrapper">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="shop-details-image">
-                                    <div class="tab-content">
-                                        <div class="shop-thumb">
-                                            <img src="assets/img/shop/popup.jpg" alt="img">
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="product-details-content">
-                                        <h3 class="pb-3">Sulwhasoo Essential Cream</h3>
-                                        <div class="star pb-3">
-                                            <a href="#"> <i class="fas fa-star"></i></a>
-                                            <a href="#"><i class="fas fa-star"></i></a>
-                                            <a href="#"> <i class="fas fa-star"></i></a>
-                                            <a href="#"><i class="fas fa-star"></i></a>
-                                            <a href="#"><i class="fas fa-star"></i></a>
-                                            <span>(25 Customer Review)</span>
-                                        </div>
-                                        <p class="mb-3">
-                                            In today’s online world, a brand’s success lies in combining
-                                            technological planning and social strategies to draw
-                                            customers in–and keep them coming back
-                                        </p>
-                                        <div class="price-list">
-                                            <h3>$1,260.00</h3>
-                                        </div>
-                                        <div class="cart-wrp">
-                                            <div class="cart-quantity">
-                                                <form id='myform' method='POST' class='quantity' action='#'>
-                                                    <input type='button' value='-' class='qtyminus minus'>
-                                                    <input type='text' name='quantity' value='0' class='qty'>
-                                                    <input type='button' value='+' class='qtyplus plus'>
-                                                </form>
-                                            </div>
-                                            <a href="product-details.html" class="icon">
-                                                <i class="far fa-heart"></i>
-                                            </a>
-                                            <div class="social-profile">
-                                                <span class="plus-btn"><i class="far fa-share"></i></span>
-                                                <ul>
-                                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">
-                                                <span> Add to cart</span>
-                                            </a>
-                                            <a href="product-details.html" class="theme-btn">
-                                                <span> Buy now</span>
-                                            </a>
-                                        </div>
-                                        <h6 class="details-info"><span>SKU:</span> <a href="product-details.html">124224</a></h6>
-                                        <h6 class="details-info"><span>Categories:</span> <a href="product-details.html">Crux Indoor Fast and Easy</a></h6>
-                                        <h6 class="details-info style-2"><span>Tags:</span> <a href="product-details.html"> <b>accessories</b> <b>business</b></a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+@include('includes.productView')
+     
          <!-- Hero Section Start -->
          <section class="hero-section-3">
             <div class="arrow-button">
@@ -95,18 +19,18 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="hero-3">
-                            <div class="hero-bg bg-cover" style="background-image: url(assets/img/slider/1.1.png);">
+                            <div class="hero-bg bg-cover" style="background-image: url(assets/img/slider/4.jpg);">
                             </div>
                                 <div class="container">
                                     <div class="row g-4">
                                         <div class="col-lg-10">
                                             <div class="hero-content">
-                                                <p data-animation="fadeInUp" data-delay="1.3s">Winter Special Collection</p>
-                                                <h1 data-animation="fadeInUp" data-delay="1.5s">
-                                                    New Collection With <br> Modern Style
+                                               
+                                                <h1 class="text-white" data-animation="fadeInUp" data-delay="1.5s">
+                                                   Eco Friendly and <br> Sustainable Bags
                                                 </h1>
                                                 <div class="hero-button" data-animation="fadeInUp" data-delay="1.7s">
-                                                    <a href="product-details.html" class="theme-btn">Shop Now <i class="fa-regular fa-arrow-right"></i></a>
+                                                    <a href="{{url('/product-details')}}" class="theme-btn">Shop Now <i class="fa-regular fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,18 +40,17 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="hero-3">
-                            <div class="hero-bg bg-cover" style="background-image: url(assets/img/hero/bg-3.jpg);">
+                            <div class="hero-bg bg-cover" style="background-image: url(assets/img/slider/1.jpg);">
                             </div>
                                 <div class="container">
                                     <div class="row g-4">
                                         <div class="col-lg-10">
                                             <div class="hero-content">
-                                                <p data-animation="fadeInUp" data-delay="1.3s">Winter Special Collection</p>
-                                                <h1 data-animation="fadeInUp" data-delay="1.5s">
-                                                    New Collection With <br> Modern Style
+                                                <h1  class="text-white" data-animation="fadeInUp" data-delay="1.5s">
+                                                   Eco Friendly and <br> Sustainable Bags
                                                 </h1>
                                                 <div class="hero-button" data-animation="fadeInUp" data-delay="1.7s">
-                                                    <a href="product-details.html" class="theme-btn">Shop Now <i class="fa-regular fa-arrow-right"></i></a>
+                                                    <a href="{{url('/product-details')}}" class="theme-btn">Shop Now <i class="fa-regular fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -137,18 +60,17 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="hero-3">
-                            <div class="hero-bg bg-cover" style="background-image: url(assets/img/hero/bg-2.jpg);">
+                            <div class="hero-bg bg-cover" style="background-image: url(assets/img/slider/2.jpg);">
                             </div>
                                 <div class="container">
                                     <div class="row g-4">
                                         <div class="col-lg-10">
-                                            <div class="hero-content">
-                                                <p data-animation="fadeInUp" data-delay="1.3s">Winter Special Collection</p>
-                                                <h1 data-animation="fadeInUp" data-delay="1.5s">
-                                                    New Collection With <br> Modern Style
+                                            <div class="hero-content ">
+                                                <h1 class="" data-animation="fadeInUp" data-delay="1.5s">
+                                                   Eco Friendly and <br> Sustainable Bags
                                                 </h1>
                                                 <div class="hero-button" data-animation="fadeInUp" data-delay="1.7s">
-                                                    <a href="product-details.html" class="theme-btn">Shop Now <i class="fa-regular fa-arrow-right"></i></a>
+                                                    <a href="{{url('/product-details')}}" class="theme-btn">Shop Now <i class="fa-regular fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -194,7 +116,7 @@
                             <h6>
                                 Member Discount
                             </h6>
-                            <p>Onevery order over $140.00</p>
+                            <p>Onevery order over ₹140.00</p>
                         </div>
                     </div>
                     <div class="feature-item wow fadeInUp" data-wow-delay=".8s">
@@ -216,30 +138,30 @@
          <section class="shop-bg-section fix">
             <div class="row g-4">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                    <div class="bg-image bg-cover" style="background-image: url(assets/img/shop/14.jpg);">
+                    <div class="bg-image bg-cover" style="background-image: url(assets/img/hero/multipurpose.png);">
                         <div class="content">
                             <h3>
-                                <a href="shop-grid.html">Accessories</a>
+                                <a href="{{url('shop-grid')}}">multipurpose Reusable bags</a>
                             </h3>
-                            <p>2025 Collection</p>
+                          <p class="text-black" >2025 Collection</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="bg-image style-2 bg-cover" style="background-image: url(assets/img/shop/15.jpg);">
-                        <div class="content">
-                            <h3>
-                                <a href="shop-grid.html">Man</a>
+                    <div class="bg-image style-2 bg-cover" style="background-image: url(assets/img/hero/jute.png);">
+                        <div class="content text-white">
+                            <h3 >
+                                <a class="text-white"href="{{url('shop-grid')}}">Tote Bags , Reusable Canvas Bags</a>
                             </h3>
-                            {{-- <p>2025 Collection</p> --}}
+                            <p class="text-white" >2025 Collection</p>
                         </div>
                     </div>
-                    <div class="bg-image mt-20 style-2 bg-cover" style="background-image: url(assets/img/shop/16.jpg);">
+                    <div class="bg-image mt-20 style-2 bg-cover" style="background-image: url(assets/img/hero/jute1.png);">
                         <div class="content">
                             <h3>
-                                <a href="shop-grid.html">Woman</a>
+                                <a href="{{url('shop-grid')}}">Jute Bags </a>
                             </h3>
-                            <p>2025 Collection</p>
+                             <p class="text-black" >2025 Collection</p>
                         </div>
                     </div>
                 </div>
@@ -258,7 +180,7 @@
                     </h2>
                 </div>
                <div class="product-wrapper">
-                <ul class="nav">
+                {{-- <ul class="nav">
                     <li class="nav-item wow fadeInUp" data-wow-delay=".3s">
                         <a href="#Course" data-bs-toggle="tab" class="nav-link active">
                             New Products
@@ -279,29 +201,24 @@
                             Trending Products
                         </a>
                     </li>
-                </ul>
+                </ul> --}}
                 <div class="tab-content">
                     <div id="Course" class="tab-pane fade show active">
                         <div class="row">
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-store-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/32.jpg" alt="img">
+                                        <img src="assets/img/product/jute1.png" alt="img">
                                         <div class="sale-box">
-                                            <div class="box">20% off</div>
+                                            {{-- <div class="box">20% off</div> --}}
                                         </div>
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
+                                 
                                         <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
+                                            <a href="{{url('/shop-cart')}}" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
                                         </div>
                                         <ul class="social-icon">
                                             <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-cart-shopping"></i>
                                                 </a>
                                             </li>
                                             <li>
@@ -310,14 +227,14 @@
                                                </button>
                                             </li>
                                             <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-heart"></i></a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="product-content">
                                         <div class="content">
                                             <span>
-                                                Western
+                                                Eco-Friendly
                                             </span>
                                             <div class="star">
                                                 <i class="fa-solid fa-star"></i>
@@ -327,103 +244,27 @@
                                             </div>
                                         </div>
                                         <h5>
-                                            <a href="product-details.html">Black Geometric Print Mini Dress</a>
+                                            <a href="{{url('/product-details')}}">Reusable Canvas Bag</a>
                                         </h5>
-                                        <h6>$80.00 <del>$99.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch line">
-                                                <span class="swatch-value bg-light-orange"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-light-grey"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
+                                        <h6>₹150.00 <del>₹220.00</del></h6>
+                               
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
+                           <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-store-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/33.jpg" alt="img">
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Shirt
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Men Formal Stylist Cotton Shirt</a>
-                                        </h5>
-                                        <h6>$80.00 <del>$99.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/34.jpg" alt="img">
+                                        <img src="assets/img/product/2.png" alt="img">
                                         <div class="sale-box">
-                                            <div class="box">20% off</div>
+                                            {{-- <div class="box">20% off</div> --}}
                                         </div>
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
+                                 
                                         <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
+                                            <a href="{{url('/shop-cart')}}" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
                                         </div>
                                         <ul class="social-icon">
                                             <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-cart-shopping"></i>
                                                 </a>
                                             </li>
                                             <li>
@@ -432,14 +273,14 @@
                                                </button>
                                             </li>
                                             <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-heart"></i></a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="product-content">
                                         <div class="content">
                                             <span>
-                                                Kurta
+                                                Eco-Friendly
                                             </span>
                                             <div class="star">
                                                 <i class="fa-solid fa-star"></i>
@@ -449,164 +290,27 @@
                                             </div>
                                         </div>
                                         <h5>
-                                            <a href="product-details.html">Fancy Printed Handwork Kurta</a>
+                                            <a href="{{url('/product-details')}}">Reusable Canvas Bag</a>
                                         </h5>
-                                        <h6>$89.00 <del>$95.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch line">
-                                                <span class="swatch-value bg-light-orange"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-light-grey"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
+                                        <h6>₹150.00 <del>₹220.00</del></h6>
+                               
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-store-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/35.jpg" alt="img">
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Jeans
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Mom Flare Wide Leg High Jeans</a>
-                                        </h5>
-                                        <h6>$75.00 <del>$85.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/36.jpg" alt="img">
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Kurta
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Fancy Printed Handwork Kurta</a>
-                                        </h5>
-                                        <h6>$100.00 <del>$110.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-light-grey"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/37.jpg" alt="img">
+                                        <img src="assets/img/product/3.png" alt="img">
                                         <div class="sale-box">
-                                            <div class="box">20% off</div>
+                                            {{-- <div class="box">20% off</div> --}}
                                         </div>
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
+                                 
                                         <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
+                                            <a href="{{url('/shop-cart')}}" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
                                         </div>
                                         <ul class="social-icon">
                                             <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-cart-shopping"></i>
                                                 </a>
                                             </li>
                                             <li>
@@ -615,14 +319,14 @@
                                                </button>
                                             </li>
                                             <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-heart"></i></a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="product-content">
                                         <div class="content">
                                             <span>
-                                                Girls Dress
+                                                Eco-Friendly
                                             </span>
                                             <div class="star">
                                                 <i class="fa-solid fa-star"></i>
@@ -632,103 +336,27 @@
                                             </div>
                                         </div>
                                         <h5>
-                                            <a href="product-details.html">Printed Asymmetric Maxi Dress</a>
+                                            <a href="{{url('/product-details')}}">Reusable Canvas Bag</a>
                                         </h5>
-                                        <h6>$79.00 <del>$89.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
+                                        <h6>₹150.00 <del>₹220.00</del></h6>
+                               
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
+                           <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-store-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/38.jpg" alt="img">
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Hand Watch
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">La Bohème Rose Gold</a>
-                                        </h5>
-                                        <h6>$74.00 <del>$98.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch line">
-                                                <span class="swatch-value bg-light-orange"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-light-grey"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/39.jpg" alt="img">
+                                        <img src="assets/img/product/4.png" alt="img">
                                         <div class="sale-box">
-                                            <div class="box">20% off</div>
+                                            {{-- <div class="box">20% off</div> --}}
                                         </div>
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
+                                 
                                         <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
+                                            <a href="{{url('/shop-cart')}}" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
                                         </div>
                                         <ul class="social-icon">
                                             <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-cart-shopping"></i>
                                                 </a>
                                             </li>
                                             <li>
@@ -737,14 +365,14 @@
                                                </button>
                                             </li>
                                             <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-heart"></i></a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="product-content">
                                         <div class="content">
                                             <span>
-                                                Casual Wear
+                                                Eco-Friendly
                                             </span>
                                             <div class="star">
                                                 <i class="fa-solid fa-star"></i>
@@ -754,769 +382,202 @@
                                             </div>
                                         </div>
                                         <h5>
-                                            <a href="product-details.html">Classy Flare For Moment Dress</a>
+                                            <a href="{{url('/product-details')}}">Reusable Canvas Bag</a>
                                         </h5>
-                                        <h6>$75.00 <del>$79.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
+                                        <h6>₹150.00 <del>₹220.00</del></h6>
+                               
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="col-xl-3 col-lg-4 col-md-6">
+                                <div class="product-store-item">
+                                    <div class="product-image">
+                                        <img src="assets/img/product/5.png" alt="img">
+                                        <div class="sale-box">
+                                            {{-- <div class="box">20% off</div> --}}
+                                        </div>
+                                 
+                                        <div class="cart-btn">
+                                            <a href="{{url('/shop-cart')}}" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon">
+                                            <li>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-cart-shopping"></i>
+                                                </a>
                                             </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
+                                            <li>
+                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                    <i class="fa-regular fa-eye"></i>
+                                               </button>
                                             </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
+                                            <li>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-heart"></i></a>
                                             </li>
                                         </ul>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="content">
+                                            <span>
+                                                Eco-Friendly
+                                            </span>
+                                            <div class="star">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-duotone fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5>
+                                            <a href="{{url('/product-details')}}">Reusable Canvas Bag</a>
+                                        </h5>
+                                        <h6>₹150.00 <del>₹220.00</del></h6>
+                               
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="col-xl-3 col-lg-4 col-md-6">
+                                <div class="product-store-item">
+                                    <div class="product-image">
+                                        <img src="assets/img/product/6.png" alt="img">
+                                        <div class="sale-box">
+                                            {{-- <div class="box">20% off</div> --}}
+                                        </div>
+                                 
+                                        <div class="cart-btn">
+                                            <a href="{{url('/shop-cart')}}" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon">
+                                            <li>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-cart-shopping"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                    <i class="fa-regular fa-eye"></i>
+                                               </button>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-heart"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="content">
+                                            <span>
+                                                Eco-Friendly
+                                            </span>
+                                            <div class="star">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-duotone fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5>
+                                            <a href="{{url('/product-details')}}">Reusable Canvas Bag</a>
+                                        </h5>
+                                        <h6>₹150.00 <del>₹220.00</del></h6>
+                               
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="col-xl-3 col-lg-4 col-md-6">
+                                <div class="product-store-item">
+                                    <div class="product-image">
+                                        <img src="assets/img/product/7.png" alt="img">
+                                        <div class="sale-box">
+                                            {{-- <div class="box">20% off</div> --}}
+                                        </div>
+                                 
+                                        <div class="cart-btn">
+                                            <a href="{{url('/shop-cart')}}" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon">
+                                            <li>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-cart-shopping"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                    <i class="fa-regular fa-eye"></i>
+                                               </button>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-heart"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="content">
+                                            <span>
+                                                Eco-Friendly
+                                            </span>
+                                            <div class="star">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-duotone fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5>
+                                            <a href="{{url('/product-details')}}">Reusable Canvas Bag</a>
+                                        </h5>
+                                        <h6>₹150.00 <del>₹220.00</del></h6>
+                               
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="col-xl-3 col-lg-4 col-md-6">
+                                <div class="product-store-item">
+                                    <div class="product-image">
+                                        <img src="assets/img/product/8.png" alt="img">
+                                        <div class="sale-box">
+                                            {{-- <div class="box">20% off</div> --}}
+                                        </div>
+                                 
+                                        <div class="cart-btn">
+                                            <a href="{{url('/shop-cart')}}" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon">
+                                            <li>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-cart-shopping"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                    <i class="fa-regular fa-eye"></i>
+                                               </button>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/product-details')}}"><i class="fa-regular fa-heart"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="content">
+                                            <span>
+                                                Eco-Friendly
+                                            </span>
+                                            <div class="star">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-duotone fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5>
+                                            <a href="{{url('/product-details')}}">Reusable Canvas Bag</a>
+                                        </h5>
+                                        <h6>₹150.00 <del>₹220.00</del></h6>
+                               
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="Curriculum" class="tab-pane fade">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/32.jpg" alt="img">
-                                        <div class="sale-box">
-                                            <div class="box">20% off</div>
-                                        </div>
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Western
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Black Geometric Print Mini Dress</a>
-                                        </h5>
-                                        <h6>$80.00 <del>$99.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch line">
-                                                <span class="swatch-value bg-light-orange"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-light-grey"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/33.jpg" alt="img">
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Shirt
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Men Formal Stylist Cotton Shirt</a>
-                                        </h5>
-                                        <h6>$80.00 <del>$99.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/34.jpg" alt="img">
-                                        <div class="sale-box">
-                                            <div class="box">20% off</div>
-                                        </div>
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Kurta
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Fancy Printed Handwork Kurta</a>
-                                        </h5>
-                                        <h6>$89.00 <del>$95.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch line">
-                                                <span class="swatch-value bg-light-orange"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-light-grey"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/35.jpg" alt="img">
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Jeans
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Mom Flare Wide Leg High Jeans</a>
-                                        </h5>
-                                        <h6>$75.00 <del>$85.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                     </div>
-                     <div id="Instructors" class="tab-pane fade">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/36.jpg" alt="img">
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Kurta
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Fancy Printed Handwork Kurta</a>
-                                        </h5>
-                                        <h6>$100.00 <del>$110.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-light-grey"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/37.jpg" alt="img">
-                                        <div class="sale-box">
-                                            <div class="box">20% off</div>
-                                        </div>
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Girls Dress
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Printed Asymmetric Maxi Dress</a>
-                                        </h5>
-                                        <h6>$79.00 <del>$89.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/38.jpg" alt="img">
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Hand Watch
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">La Bohème Rose Gold</a>
-                                        </h5>
-                                        <h6>$74.00 <del>$98.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch line">
-                                                <span class="swatch-value bg-light-orange"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-light-grey"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/39.jpg" alt="img">
-                                        <div class="sale-box">
-                                            <div class="box">20% off</div>
-                                        </div>
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Casual Wear
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Classy Flare For Moment Dress</a>
-                                        </h5>
-                                        <h6>$75.00 <del>$79.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                     </div>
-                     <div id="Reviews" class="tab-pane fade">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/32.jpg" alt="img">
-                                        <div class="sale-box">
-                                            <div class="box">20% off</div>
-                                        </div>
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Western
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Black Geometric Print Mini Dress</a>
-                                        </h5>
-                                        <h6>$80.00 <del>$99.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch line">
-                                                <span class="swatch-value bg-light-orange"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-light-grey"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/33.jpg" alt="img">
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Shirt
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Men Formal Stylist Cotton Shirt</a>
-                                        </h5>
-                                        <h6>$80.00 <del>$99.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/34.jpg" alt="img">
-                                        <div class="sale-box">
-                                            <div class="box">20% off</div>
-                                        </div>
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Kurta
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Fancy Printed Handwork Kurta</a>
-                                        </h5>
-                                        <h6>$89.00 <del>$95.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch line">
-                                                <span class="swatch-value bg-light-orange"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-light-grey"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-store-item">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/35.jpg" alt="img">
-                                        <ul class="product-size">
-                                            <li>s</li>
-                                            <li>m</li>
-                                            <li>l</li>
-                                            <li>xl</li>
-                                        </ul>
-                                        <div class="cart-btn">
-                                            <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon">
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                               </button>
-                                            </li>
-                                            <li>
-                                                <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="content">
-                                            <span>
-                                                Jeans
-                                            </span>
-                                            <div class="star">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-duotone fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5>
-                                            <a href="product-details.html">Mom Flare Wide Leg High Jeans</a>
-                                        </h5>
-                                        <h6>$75.00 <del>$85.00</del></h6>
-                                        <ul class="list-color-product">
-                                            <li class="list-color-item color-swatch active">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-grey-2"></span>
-                                            </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="swatch-value bg-dark-color"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                     </div>
+                    
+                     
+                   
                  </div>
                 </div>
              </div>
@@ -1556,59 +617,59 @@
                                         <i class="fa-solid fa-star"></i>
                                     </div>
                                     <h3>
-                                        <a href="product-details.html">
-                                            Clothing
-                                            Collection 2025
-                                        </a>
-                                    </h3>
-                                    <h4>$102.00 <del>$226.00</del></h4>
-                                    <a href="product-details.html" class="theme-btn">Shop Now <i class="fa-regular fa-arrow-right"></i></a>
-                                </div>
-                                <div class="shop-image">
-                                    <img src="assets/img/shop/17.png" alt="img">
-                                </div>
-                              </div>
-                           </div>
-                           <div class="swiper-slide">
-                            <div class="shop-category-box">
-                                <div class="content">
-                                    <div class="star">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-                                    <h3>
-                                        <a href="product-details.html">
-                                            Non Slip Athletic
-                                            Tennis Walking
-                                        </a>
-                                    </h3>
-                                    <h4>$102.00 <del>$226.00</del></h4>
-                                    <a href="product-details.html" class="theme-btn">Shop Now <i class="fa-regular fa-arrow-right"></i></a>
-                                </div>
-                                <div class="shop-image max-width">
-                                    <img src="assets/img/shop/18.png" alt="img">
-                                </div>
-                              </div>
-                           </div>
-                           <div class="swiper-slide">
-                            <div class="shop-category-box">
-                                <div class="content">
-                                    <div class="star">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-                                    <h3>
-                                        <a href="product-details.html">
+                                        <a href="{{url('/product-details')}}">
                                             Vera Bradley
                                             Straw Tote Bag
                                         </a>
                                     </h3>
-                                    <h4>$46.00 <del>$96.00</del></h4>
-                                    <a href="product-details.html" class="theme-btn">Shop Now <i class="fa-regular fa-arrow-right"></i></a>
+                                    <h4>₹46.00 <del>₹96.00</del></h4>
+                                    <a href="{{url('/product-details')}}" class="theme-btn">Shop Now <i class="fa-regular fa-arrow-right"></i></a>
+                                </div>
+                                <div class="shop-image max-width-2">
+                                    <img src="assets/img/shop/19.png" alt="img">
+                                </div>
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                           <div class="shop-category-box">
+                                <div class="content">
+                                    <div class="star">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <h3>
+                                        <a href="{{url('/product-details')}}">
+                                            Vera Bradley
+                                            Straw Tote Bag
+                                        </a>
+                                    </h3>
+                                    <h4>₹46.00 <del>₹96.00</del></h4>
+                                    <a href="{{url('/product-details')}}" class="theme-btn">Shop Now <i class="fa-regular fa-arrow-right"></i></a>
+                                </div>
+                                <div class="shop-image max-width-2">
+                                    <img src="assets/img/shop/19.png" alt="img">
+                                </div>
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                            <div class="shop-category-box">
+                                <div class="content">
+                                    <div class="star">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <h3>
+                                        <a href="{{url('/product-details')}}">
+                                            Vera Bradley
+                                            Straw Tote Bag
+                                        </a>
+                                    </h3>
+                                    <h4>₹46.00 <del>₹96.00</del></h4>
+                                    <a href="{{url('/product-details')}}" class="theme-btn">Shop Now <i class="fa-regular fa-arrow-right"></i></a>
                                 </div>
                                 <div class="shop-image max-width-2">
                                     <img src="assets/img/shop/19.png" alt="img">
@@ -1655,9 +716,9 @@
                                                 </div>
                                                 <p>Whitetails Store</p>
                                                 <h4>
-                                                    <a href="product-details.html">Whitetails Women's Open Sky</a>
+                                                    <a href="{{url('/product-details')}}">Whitetails Women's Open Sky</a>
                                                 </h4>
-                                                <h6>$76.00 <del>$84.00</del></h6>
+                                                <h6>₹76.00 <del>₹84.00</del></h6>
                                             </div>
                                         </div>
                                     </div>
@@ -1676,9 +737,9 @@
                                                 </div>
                                                 <p>Whitetails Store</p>
                                                 <h4>
-                                                    <a href="product-details.html">Whitetails Women's Open Sky</a>
+                                                    <a href="{{url('/product-details')}}">Whitetails Women's Open Sky</a>
                                                 </h4>
-                                                <h6>$76.00 <del>$84.00</del></h6>
+                                                <h6>₹76.00 <del>₹84.00</del></h6>
                                             </div>
                                         </div>
                                     </div>
@@ -1697,9 +758,9 @@
                                                 </div>
                                                 <p>Whitetails Store</p>
                                                 <h4>
-                                                    <a href="product-details.html">Whitetails Women's Open Sky</a>
+                                                    <a href="{{url('/product-details')}}">Whitetails Women's Open Sky</a>
                                                 </h4>
-                                                <h6>$76.00 <del>$84.00</del></h6>
+                                                <h6>₹76.00 <del>₹84.00</del></h6>
                                             </div>
                                         </div>
                                     </div>
@@ -1713,12 +774,12 @@
                             <div class="bg-image-2 bg-cover" style="background-image: url(assets/img/shop/22.jpg);">
                                 <div class="content">
                                     <h3>
-                                        <a href="product-details.html">
+                                        <a href="{{url('/product-details')}}">
                                             Short Sleeve Tunic <br>
                                             Tops Casual Swing
                                         </a>
                                     </h3>
-                                    <a href="product-details.html" class="theme-btn">Explore More <i class="fa-regular fa-arrow-right"></i></a>
+                                    <a href="{{url('/product-details')}}" class="theme-btn">Explore More <i class="fa-regular fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -1739,16 +800,17 @@
                     </h2>
                 </div>
                 <div class="row">
+                       
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="product-sell-item">
                             <div class="product-image">
-                                <img src="assets/img/product/28.jpg" alt="img">
+                               <img src="assets/img/product/6.png" alt="img">
                                 <div class="cart-btn">
-                                    <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
+                                    <a href="{{url('/shop-cart')}}" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
                                 </div>
                                 <ul class="social-icon">
                                     <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
+                                        <a href="{{url('/product-details')}}"><i class="fa-regular fa-cart-shopping"></i>
                                         </a>
                                     </li>
                                     <li>
@@ -1757,7 +819,7 @@
                                        </button>
                                     </li>
                                     <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
+                                        <a href="{{url('/product-details')}}"><i class="fa-regular fa-heart"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -1769,25 +831,25 @@
                                         <i class="fa-solid fa-star"></i>
                                         <i class="fa-duotone fa-solid fa-star"></i>
                                     </div>
-                                    <span>Zippered Striped Sweatshirt</span>
+                                    <span>Eco-Friendly</span>
                                 </div>
                                 <h5>
-                                    <a href="product-details.html">Black Geometric Print Mini Dress</a>
+                                    <a href="{{url('/product-details')}}">Reusable Canvas Bag</a>
                                 </h5>
-                                <h6>$80.00 <del>$99.00</del></h6>
+                                <h6>₹150.00 <del>₹220.00</del></h6>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6">
+                      <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="product-sell-item">
                             <div class="product-image">
-                                <img src="assets/img/product/29.jpg" alt="img">
+                               <img src="assets/img/product/jute1.png" alt="img">
                                 <div class="cart-btn">
-                                    <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
+                                    <a href="{{url('/shop-cart')}}" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
                                 </div>
                                 <ul class="social-icon">
                                     <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
+                                        <a href="{{url('/product-details')}}"><i class="fa-regular fa-cart-shopping"></i>
                                         </a>
                                     </li>
                                     <li>
@@ -1796,49 +858,7 @@
                                        </button>
                                     </li>
                                     <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="sale-box">
-                                    <div class="box">20% off</div>
-                                </div>
-                            </div>
-                            <div class="product-content">
-                                <div class="content">
-                                    <div class="star">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-duotone fa-solid fa-star"></i>
-                                    </div>
-                                    <span>Zippered Striped Sweatshirt</span>
-                                </div>
-                                <h5>
-                                    <a href="product-details.html">Black Geometric Print Mini Dress</a>
-                                </h5>
-                                <h6>$80.00 <del>$99.00</del></h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="product-sell-item">
-                            <div class="product-image">
-                                <img src="assets/img/product/30.jpg" alt="img">
-                                <div class="cart-btn">
-                                    <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
-                                </div>
-                                <ul class="social-icon">
-                                    <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                            <i class="fa-regular fa-eye"></i>
-                                       </button>
-                                    </li>
-                                    <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
+                                        <a href="{{url('/product-details')}}"><i class="fa-regular fa-heart"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -1850,25 +870,25 @@
                                         <i class="fa-solid fa-star"></i>
                                         <i class="fa-duotone fa-solid fa-star"></i>
                                     </div>
-                                    <span>DeFactoFit Oversize Fit Hooded</span>
+                                    <span>Eco-Friendly</span>
                                 </div>
                                 <h5>
-                                    <a href="product-details.html">Fancy Printed Handwork Kurta</a>
+                                    <a href="{{url('/product-details')}}">Reusable Canvas Bag</a>
                                 </h5>
-                                <h6>$89.00 <del>$95.00</del></h6>
+                                <h6>₹150.00 <del>₹220.00</del></h6>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6">
+                      <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="product-sell-item">
                             <div class="product-image">
-                                <img src="assets/img/product/31.jpg" alt="img">
+                               <img src="assets/img/product/5.png" alt="img">
                                 <div class="cart-btn">
-                                    <a href="shop-cart.html" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
+                                    <a href="{{url('/shop-cart')}}" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
                                 </div>
                                 <ul class="social-icon">
                                     <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i>
+                                        <a href="{{url('/product-details')}}"><i class="fa-regular fa-cart-shopping"></i>
                                         </a>
                                     </li>
                                     <li>
@@ -1877,12 +897,9 @@
                                        </button>
                                     </li>
                                     <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-heart"></i></a>
+                                        <a href="{{url('/product-details')}}"><i class="fa-regular fa-heart"></i></a>
                                     </li>
                                 </ul>
-                                <div class="sale-box">
-                                    <div class="box">20% off</div>
-                                </div>
                             </div>
                             <div class="product-content">
                                 <div class="content">
@@ -1892,15 +909,55 @@
                                         <i class="fa-solid fa-star"></i>
                                         <i class="fa-duotone fa-solid fa-star"></i>
                                     </div>
-                                    <span>Standard Fit Printed Sweatshir</span>
+                                    <span>Eco-Friendly</span>
                                 </div>
                                 <h5>
-                                    <a href="product-details.html">Mom Flare Wide Leg High Jeans</a>
+                                    <a href="{{url('/product-details')}}">Reusable Canvas Bag</a>
                                 </h5>
-                                <h6>$75.00 <del>$85.00</del></h6>
+                                <h6>₹150.00 <del>₹220.00</del></h6>
                             </div>
                         </div>
                     </div>
+                      <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="product-sell-item">
+                            <div class="product-image">
+                               <img src="assets/img/product/7.png" alt="img">
+                                <div class="cart-btn">
+                                    <a href="{{url('/shop-cart')}}" class="theme-btn"><i class="fa-regular fa-cart-shopping"></i> Add To Cart</a>
+                                </div>
+                                <ul class="social-icon">
+                                    <li>
+                                        <a href="{{url('/product-details')}}"><i class="fa-regular fa-cart-shopping"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                            <i class="fa-regular fa-eye"></i>
+                                       </button>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('/product-details')}}"><i class="fa-regular fa-heart"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <div class="content">
+                                    <div class="star">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-duotone fa-solid fa-star"></i>
+                                    </div>
+                                    <span>Eco-Friendly</span>
+                                </div>
+                                <h5>
+                                    <a href="{{url('/product-details')}}">Reusable Canvas Bag</a>
+                                </h5>
+                                <h6>₹150.00 <del>₹220.00</del></h6>
+                            </div>
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
          </section>

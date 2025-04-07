@@ -13,7 +13,7 @@
                                             <img src="assets/img/avater.jpg" alt="img">
                                         </div>
                                         <h6 class="mb_4">Tony Nguyen</h6>
-                                        <div class="body-text-1">cartly@gmail.com</div>
+                                        <div class="body-text-1">stepforenvironment01@gmail.com</div>
                                     </div>
                                     <ul class="nav">
                                         <li class="nav-item">
@@ -64,7 +64,7 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="form-clt">
-                                                            <input type="text" name="email" id="email" placeholder="cartly@gmail.com">
+                                                            <input type="text" name="email" id="email" placeholder="stepforenvironment01@gmail.com">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
@@ -229,7 +229,7 @@
                                                         <li>Name: Annie Mario</li>
                                                         <li>
                                                             <span>Email:</span>
-                                                            <a href="mailto:cartly@gmail.com">cartly@gmail.com</a>
+                                                            <a href="mailto:stepforenvironment01@gmail.com">stepforenvironment01@gmail.com</a>
                                                         </li>
                                                         <li>
                                                             <span>Phone:</span>
@@ -250,7 +250,7 @@
                                                         <li>Name: Annie Mario</li>
                                                         <li>
                                                             <span>Email:</span>
-                                                            <a href="mailto:cartly@gmail.com">cartly@gmail.com</a>
+                                                            <a href="mailto:stepforenvironment01@gmail.com">stepforenvironment01@gmail.com</a>
                                                         </li>
                                                         <li>
                                                             <span>Phone:</span>

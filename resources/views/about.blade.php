@@ -232,7 +232,7 @@
                                     <ul class="contact-list">
                                         <li>
                                             <i class="fa-regular fa-envelope"></i>
-                                            <a href="mailto:cartly@gmail.com">cartly@gmail.com</a>
+                                            <a href="mailto:stepforenvironment01@gmail.com">stepforenvironment01@gmail.com</a>
                                         </li>
                                         <li>
                                             <i class="fa-regular fa-location-dot"></i>

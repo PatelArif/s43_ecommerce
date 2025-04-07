@@ -42,8 +42,8 @@
         </button>
 
         <!--<< Mouse Cursor Start >>-->  
-        <div class="mouse-cursor cursor-outer"></div>
-        <div class="mouse-cursor cursor-inner"></div>
+        {{-- <div class="mouse-cursor cursor-outer"></div>
+        <div class="mouse-cursor cursor-inner"></div> --}}
         
         <!-- fix-area Start -->
         <div class="fix-area">
@@ -176,7 +176,7 @@
             <div class="container">
                 <div class="header-top-wrapper style-3">
                     <p>
-                        Free shipping on domestic orders over $150
+                        Free shipping on orders over ₹1000
                     </p>
                     <div class="flag-wrapper">
                         <div class="content">
@@ -197,11 +197,11 @@
                     <ul class="contact-list">
                         <li>
                             <i class="fa-solid fa-phone"></i>
-                            <a href="tel:+498123456789">+498123456789</a>
+                            <a href="tel:+98679 70493">+98679 70493</a>
                         </li>
                         <li>
                             <i class="fa-solid fa-envelope"></i>
-                            <a href="mailto:cartly@gmail.com">cartly@gmail.com</a>
+                            <a href="mailto:stepforenvironment01@gmail.com">stepforenvironment01@gmail.com</a>
                         </li>
                     </ul>
                     <p>
