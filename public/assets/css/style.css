@@ -1329,10 +1329,10 @@ span {
     padding-bottom: 20px;
     padding: 16px 20px;
     transition: all 0.4s ease-in-out;
-    color: #95999D;
-    font-size: 14px;
+    color: #000000;
+    font-size: 20px;
     font-weight: 400;
-    border: 1px solid #E0E2E3;
+    border: 1px solid #014421;
 }
 
 .account-wrapper .account-box .contact-form-item .form-clt input::placeholder,
@@ -12036,3 +12036,20 @@ input.main-search-input::placeholder {
 .bottom-0 {
     bottom: -110px !important;
 }
+/* captcha */
+        #captchaBackground {
+            height: 200px;
+            width: 322px;
+            background-color: #0eb0e8;
+            background-image: url("https://www.transparenttextures.com/patterns/light-toast.png");
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    
+        #captcha {
+            margin-bottom: 1em;
+            font-size: 30px;
+            letter-spacing: 3px;
+        }

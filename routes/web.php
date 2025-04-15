@@ -3,6 +3,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\admin\AdminController;
+
+
 use Illuminate\Support\Facades\Route;
 
 // Index Pages
@@ -34,4 +38,12 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/sign-up', [AuthController::class, 'signUp'])->name('signUp');
 Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name('forgotPassword');
 Route::get('/my-account', [AuthController::class, 'myAccount'])->name('myAccount');
+// Register 
+Route::get('signup', [SignupController::class, 'showForm']);
+Route::post('signup', [SignupController::class, 'handleForm'])->name('signup');
+
+// admin routes
+
+Route::get('/admin/login', [AdminController::class, 'login']);
+
 

@@ -157,15 +157,15 @@
                         </div>
                     </div>
                 </form>
-                <p class="text">Or login with</p>
+                {{-- <p class="text">Or login with</p>
                 <div class="social-item">
                     <a href="#" class="facebook-text"><img src="assets/img/facebook.png" alt="img">FACEBOOK</a>
                     <a href="#" class="facebook-text google-text"><img src="assets/img/google.png" alt="img">Google</a>
-                </div>
+                </div> --}}
                 <div class="user-icon-box">
                     <img src="assets/img/user.png" alt="img">
                     <p>No account yet?</p>
-                    <a href="accounts">Create an Account</a>
+                    <a href="{{url('/sign-up')}}">Create an Account</a>
                 </div>
             </div>
             <button id="closeButton" class="x-mark-icon"><i class="fas fa-times"></i></button>

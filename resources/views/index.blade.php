@@ -704,7 +704,7 @@
                                     <div class="swiper-slide">
                                         <div class="shop-discover-item">
                                             <div class="shop-image">
-                                                <img src="assets/img/shop/20.jpg" alt="img">
+                                                <img src="assets/img/product/16.png" alt="img">
                                             </div>
                                             <div class="content">
                                                 <div class="star">
@@ -714,7 +714,7 @@
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
                                                 </div>
-                                                <p>Whitetails Store</p>
+                                                <p>Eco-Friendly</p>
                                                 <h4>
                                                     <a href="{{url('/product-details')}}">Whitetails Women's Open Sky</a>
                                                 </h4>
@@ -725,7 +725,7 @@
                                     <div class="swiper-slide">
                                         <div class="shop-discover-item">
                                             <div class="shop-image">
-                                                <img src="assets/img/shop/21.jpg" alt="img">
+                                                <img src="assets/img/product/9.png" alt="img">
                                             </div>
                                             <div class="content">
                                                 <div class="star">
@@ -735,7 +735,7 @@
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
                                                 </div>
-                                                <p>Whitetails Store</p>
+                                                <p>Eco-Friendly</p>
                                                 <h4>
                                                     <a href="{{url('/product-details')}}">Whitetails Women's Open Sky</a>
                                                 </h4>
@@ -743,27 +743,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="shop-discover-item">
-                                            <div class="shop-image">
-                                                <img src="assets/img/shop/20.jpg" alt="img">
-                                            </div>
-                                            <div class="content">
-                                                <div class="star">
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                </div>
-                                                <p>Whitetails Store</p>
-                                                <h4>
-                                                    <a href="{{url('/product-details')}}">Whitetails Women's Open Sky</a>
-                                                </h4>
-                                                <h6>₹76.00 <del>₹84.00</del></h6>
-                                            </div>
-                                        </div>
-                                    </div>
+                            
                                 </div>
                             </div>
                             <div class="swiper-dot-5">
@@ -771,12 +751,12 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="bg-image-2 bg-cover" style="background-image: url(assets/img/shop/22.jpg);">
+                            <div class="bg-image-2 bg-cover" style="background-image: url(assets/img/product/1.png);">
                                 <div class="content">
                                     <h3>
                                         <a href="{{url('/product-details')}}">
-                                            Short Sleeve Tunic <br>
-                                            Tops Casual Swing
+                                           multipurpose <br>
+                                          Reusable bags 
                                         </a>
                                     </h3>
                                     <a href="{{url('/product-details')}}" class="theme-btn">Explore More <i class="fa-regular fa-arrow-right"></i></a>
