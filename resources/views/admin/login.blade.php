@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login/Signup Form</title>
     <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
@@ -12,14 +13,14 @@
 <body>
     <div class="container">
         <div class="form-box login">
-            <form action="#">
+            <form id="adminLoginForm" >
                 <h1>Admin Login</h1>
                 <div class="input-box">
-                    <input type="text" placeholder="Username" required>
+                    <input type="email" placeholder="User Email" name="email" required>
                     <i class='bx bxs-user'></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Password" name="password" required>
                     <i class='bx bxs-lock-alt' ></i>
                 </div>
                 <div class="forgot-link">
@@ -60,6 +61,7 @@
                     <a href="#"><i class='bx bxl-linkedin' ></i></a>
                 </div> --}}
             </form>
+            <div id="responseMessage" style="margin-top: 10px;"></div>
         </div>
 
         <div class="toggle-box">
@@ -77,6 +79,7 @@
             </div>
         </div>
     </div>
-<script src="{{ asset('assets/js/script.js') }}"></script>
+<script src="{{ asset('../assets/js/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ asset('../assets/js/script.js') }}"></script>
 </body>
 </html>

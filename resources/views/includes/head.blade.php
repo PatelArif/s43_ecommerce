@@ -11,10 +11,10 @@
     <meta name="description" content="S4E Ecommerce">
 
     <!-- ======== Page title ============ -->
-    <title>@yield('title', 'S4E Ecommerce')</title>
+    @stack('title')
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.svg') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo/logo4.png') }}">
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/color.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     
     
 </head>

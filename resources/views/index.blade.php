@@ -1,6 +1,9 @@
+@push('title')
+<title>Home</title>
+@endpush
 @include('includes.head')
 @include('includes.header')
-   
+
 
           <!-- Modal Version 2 -->
 @include('includes.productView')
@@ -141,7 +144,7 @@
                     <div class="bg-image bg-cover" style="background-image: url(assets/img/hero/multipurpose.png);">
                         <div class="content">
                             <h3>
-                                <a href="{{url('shop-grid')}}">multipurpose Reusable bags</a>
+                                <a href="{{url('category/multiPurposeBags/1')}}">multipurpose Reusable bags</a>
                             </h3>
                           <p class="text-black" >2025 Collection</p>
                         </div>

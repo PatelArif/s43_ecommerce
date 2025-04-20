@@ -129,7 +129,7 @@ form {
 
   /* Default size for larger screens */
   .responsive-img {
-      width: 380px;
+      width:213px;
   }
 .social-icons {
     display: flex;

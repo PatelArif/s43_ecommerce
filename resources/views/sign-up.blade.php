@@ -1,5 +1,6 @@
 @include('includes.head')
 @include('includes.header')
+
          <!-- Shop-categories-Section Start -->
         <section class="sign-up-section section-padding fix">
             <div class="container">
@@ -51,26 +52,33 @@
                                 <p>Create a free Account</p>
 
                             <div class="contact-form-item">
-                                 <form action="#" id="contact-form2" method="POST">
+                                 <form id="contact-form2" method="POST" action="{{ url('signup') }}">
+    @csrf
                                        <div class="row g-4">
                                                 <!-- First Name -->
                                                 <div class="col-lg-12">
                                                     <div class="form-clt">
-                                                        <input type="text" name="first_name" id="firstName" placeholder="First name">
+                                                        <input type="text" name="first_name" id="first_name" placeholder="First name">
                                                     </div>
                                                 </div>
 
                                                 <!-- Last Name -->
                                                 <div class="col-lg-12">
                                                     <div class="form-clt">
-                                                        <input type="text" name="last_name" id="lastName" placeholder="Last name">
+                                                        <input type="text" name="last_name" id="last_name" placeholder="Last name">
+                                                    </div>
+                                                </div>
+                                                     <!-- Email Name -->
+                                                <div class="col-lg-12">
+                                                    <div class="form-clt">
+                                                        <input type="email" name="email" id="email" placeholder="Email Address">
                                                     </div>
                                                 </div>
 
                                                 <!-- Mobile Number -->
                                                 <div class="col-lg-12">
                                                     <div class="form-clt">
-                                                        <input type="text" name="mobile" id="mobile" placeholder="Mobile Number">
+                                                        <input type="number" name="mobile" id="mobile" placeholder="Mobile Number">
                                                     </div>
                                                 </div>
 
@@ -88,7 +96,7 @@
                                                 <!-- Confirm Password -->
                                                 <div class="col-lg-12">
                                                     <div class="form-clt">
-                                                        <input type="password" name="confirm_password" onfocusout="return myfun()" id="password_confirmation" placeholder="Confirm Password">
+                                                        <input type="password" name="password_confirmation" onfocusout="return myfun()" id="password_confirmation" placeholder="Confirm Password">
                                                         <div class="icon">
                                                             <span id="toggle-con-password" toggle="#password_confirmation"class="field-icon fa fa-eye toggle-con-password" onclick="showconfirmpw()"></span>
                                                         </div>
@@ -124,4 +132,63 @@
                 </div>
             </div>
         </section>
+     
        @include('includes.footer')
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    
+   $('#contact-form2').on('submit', function(e) {
+    e.preventDefault();  // Prevent the default form submission
+    
+    $.ajax({
+        url: '/signup',  // Your API endpoint
+        type: 'POST',
+        data: $(this).serialize(),  // Serialize the form data to send in the request
+        success: function(response) {
+            console.log(response);  // Log the response to check if it's correct
+            Swal.fire({
+                title: 'Success!',
+                text: response.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = '/my-account';  // Redirect to another page after success
+            });
+        },
+        error: function(xhr, status, error) {
+            // Log the error for debugging
+            console.log("Error: ", error);
+            
+            var errors = xhr.responseJSON.errors;  // Get errors from the response
+
+            // Loop through errors and show them in SweetAlert
+            if (errors) {
+                var errorMessages = "";
+                for (var key in errors) {
+                    if (errors.hasOwnProperty(key)) {
+                        errorMessages += errors[key][0] + "\n";  // Add each error message to the string
+                    }
+                }
+                
+                Swal.fire({
+                    title: 'Error!',
+                    text: errorMessages,  // Display all error messages in the alert
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            } else {
+                // If no specific errors, show a generic error
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'An unexpected error occurred. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        }
+    });
+});
+
+</script>

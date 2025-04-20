@@ -1,5 +1,9 @@
+@push('title')
+<title>Tot Bags</title>
+@endpush
 @include('includes.head')
 @include('includes.header')
+
          <!-- Modal Version 2 -->
          <div class="modal modal-common-wrap fade" id="exampleModal2" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -84,11 +88,11 @@
             <div class="container">
                 <div class="product-details-wrapper">
                     <div class="top-content">
-                        <h2>Only Categories</h2>
+                        <h2>Tot Bags</h2>
                         <ul class="list">
                             <li>Home</li>
                             <li>
-                                Only Categories
+                                Tot Bags
                             </li>
                         </ul>
                     </div>
@@ -143,7 +147,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6">
                                     <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-1.jpg" alt="img">
+                                            <img src="assets/img/product/jute.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -177,7 +181,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6">
                                     <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-2.jpg" alt="img">
+                                            <img src="assets/img/product/1.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -211,7 +215,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6">
                                     <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-3.jpg" alt="img">
+                                            <img src="assets/img/product/2.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -245,7 +249,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6">
                                     <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-4.jpg" alt="img">
+                                            <img src="assets/img/product/4.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -279,7 +283,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6">
                                     <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-5.jpg" alt="img">
+                                            <img src="assets/img/product/5.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -313,7 +317,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6">
                                     <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-6.jpg" alt="img">
+                                            <img src="assets/img/product/6.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -347,7 +351,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6">
                                     <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-7.jpg" alt="img">
+                                            <img src="assets/img/product/7.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -381,7 +385,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6">
                                     <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-8.jpg" alt="img">
+                                            <img src="assets/img/product/8.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -415,7 +419,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6">
                                     <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-9.jpg" alt="img">
+                                            <img src="assets/img/product/9.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -449,7 +453,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6">
                                     <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-10.jpg" alt="img">
+                                            <img src="assets/img/product/3.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -483,7 +487,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6">
                                     <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-11.jpg" alt="img">
+                                            <img src="assets/img/product/2.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -517,7 +521,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6">
                                     <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-12.jpg" alt="img">
+                                            <img src="assets/img/product/1.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -556,7 +560,7 @@
                                     <div class="col-xl-12">
                                         <div class="product-details-item style-2">
                                             <div class="shop-image">
-                                                <img src="assets/img/shop/shop-2.jpg" alt="img">
+                                                <img src="assets/img/product/jute.png" alt="img">
                                                 <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                     <li>
                                                         <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -592,7 +596,7 @@
                                         </div>
                                         <div class="product-details-item style-2">
                                             <div class="shop-image">
-                                                <img src="assets/img/shop/shop-3.jpg" alt="img">
+                                                <img src="assets/img/product/2.png" alt="img">
                                                 <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                     <li>
                                                         <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -628,7 +632,7 @@
                                         </div>
                                         <div class="product-details-item style-2">
                                             <div class="shop-image">
-                                                <img src="assets/img/shop/shop-6.jpg" alt="img">
+                                                <img src="assets/img/product/9.png" alt="img">
                                                 <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                     <li>
                                                         <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -664,7 +668,7 @@
                                         </div>
                                         <div class="product-details-item style-2">
                                             <div class="shop-image">
-                                                <img src="assets/img/shop/shop-7.jpg" alt="img">
+                                                <img src="assets/img/product/3.png" alt="img">
                                                 <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                     <li>
                                                         <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -700,7 +704,7 @@
                                         </div>
                                         <div class="product-details-item style-2">
                                             <div class="shop-image">
-                                                <img src="assets/img/shop/shop-11.jpg" alt="img">
+                                                <img src="assets/img/product/4.png" alt="img">
                                                 <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                     <li>
                                                         <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -736,7 +740,7 @@
                                         </div>
                                         <div class="product-details-item style-2">
                                             <div class="shop-image">
-                                                <img src="assets/img/shop/shop-4.jpg" alt="img">
+                                                <img src="assets/img/product/5.png" alt="img">
                                                 <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                     <li>
                                                         <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -772,7 +776,7 @@
                                         </div>
                                         <div class="product-details-item style-2">
                                             <div class="shop-image">
-                                                <img src="assets/img/shop/shop-8.jpg" alt="img">
+                                                <img src="assets/img/product/6.png" alt="img">
                                                 <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                     <li>
                                                         <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -808,7 +812,7 @@
                                         </div>
                                         <div class="product-details-item style-2">
                                             <div class="shop-image">
-                                                <img src="assets/img/shop/shop-10.jpg" alt="img">
+                                                <img src="assets/img/product/7.png" alt="img">
                                                 <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                     <li>
                                                         <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>

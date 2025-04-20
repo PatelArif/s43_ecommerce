@@ -1,7 +1,7 @@
  <body>
 
         <!-- Preloader Start -->
-        <div id="preloader" class="preloader">
+        {{-- <div id="preloader" class="preloader">
             <div class="animation-preloader">
                 <div class="spinner">                
                 </div>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Back To Top Start -->
         <button id="back-top" class="back-to-top">
@@ -126,37 +126,38 @@
                 <h4>Login / Register</h4>
             </div>
             <div class="login-sidebar">
-                <form action="#" id="contact-form" method="POST">
-                    <div class="row g-4">
-                        <div class="col-lg-12">
-                            <div class="form-clt">
-                                <span>Username or email address *</span>
-                                <input type="text" name="name15" id="name15" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-clt">
-                                <span>Password *</span>
-                                <input id="password" type="password" placeholder="">
-                                <div class="icon"><i class="fa-regular fa-eye"></i></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <button class="theme-btn" type="submit"><span>Log In</span></button>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="from-cheak-items">
-                                <div class="form-check d-flex gap-2 from-customradio">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Remember Me
-                                    </label>
-                                </div>
-                                <p>Forgot Password?</p>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                <form id="user_login_form" method="POST" action="{{ url('login.submit') }}">
+                                         @csrf
+                                        <div class="row g-4">
+                                            <div class="col-lg-12">
+                                                <div class="form-clt">
+                                                    <input type="text" name="email" id="email20" placeholder="Your Email" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-clt">
+                                                    <input type="password" name="password" id="password" placeholder="Password"required>
+                                                    <span onclick="togglePassword()" style="position:absolute; right:10px; top:15px; cursor:pointer;">👁️</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="from-cheak-items">
+                                                    <div class="form-check d-flex gap-2 from-customradio">
+                                                        <input class="form-check-input" type="radio"  name="remember"id="flexRadioDefault2">
+                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            Remember Me
+                                                        </label>
+                                                    </div>
+                                                    <span>Forgot Password?</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <button type="submit" class="theme-btn header-btn w-100">
+                                                    Login
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
                 {{-- <p class="text">Or login with</p>
                 <div class="social-item">
                     <a href="#" class="facebook-text"><img src="assets/img/facebook.png" alt="img">FACEBOOK</a>
@@ -165,7 +166,7 @@
                 <div class="user-icon-box">
                     <img src="assets/img/user.png" alt="img">
                     <p>No account yet?</p>
-                    <a href="{{url('/sign-up')}}">Create an Account</a>
+                    <a href="{{url('/register')}}">Create an Account</a>
                 </div>
             </div>
             <button id="closeButton" class="x-mark-icon"><i class="fas fa-times"></i></button>
@@ -180,10 +181,17 @@
                     </p>
                     <div class="flag-wrapper">
                         <div class="content">
+                             @auth
+                               <button  class="account-text d-flex align-items-center gap-2">
+                                 <a href="{{url('/my-account')}}" class="text-white"><i class="fa-regular fa-user text-white"></i>
+                                {{ Auth::user()->first_name }}  {{ Auth::user()->last_name }}</a>
+                            </button>
+                               @else
                             <button id="openButton" class="account-text d-flex align-items-center gap-2">
                                 <i class="fa-regular fa-user"></i>
                                 Login / Register
                             </button>
+                              @endauth
                         </div>
                     </div>
                 </div>

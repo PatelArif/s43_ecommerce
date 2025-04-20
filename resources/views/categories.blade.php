@@ -1,16 +1,19 @@
+@push('title')
+<title>All Caregories</title>
+@endpush
 @include('includes.head')
 @include('includes.header')
 
          <!-- Shop-categories-Section Start -->
-        <div class="shop-categories-section section-padding">
+        {{-- <div class="shop-categories-section section-padding">
             <div class="container">
                 <div class="shop-categories-wrapper">
                     <div class="top-content">
-                        <h2 class="wow fadeInUp" data-wow-delay=".3s">Only Categories</h2>
+                        <h2 class="wow fadeInUp" data-wow-delay=".3s">All Categories</h2>
                         <ul class="list wow fadeInUp" data-wow-delay=".5s">
                             <li>Home</li>
                             <li>
-                                Only Categories
+                                All Categories
                             </li>
                         </ul>
                     </div>
@@ -50,7 +53,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Shop-product-Section Start -->
         <section class="shop-product-section section-padding pt-0 fix">
@@ -59,7 +62,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                         <div class="shop-product-item">
                             <div class="product-image">
-                                <img src="assets/img/shop/headphone.png" alt="img">
+                                <img src="assets/img/product/category/jute/7.webp" alt="img">
                                 <ul class="shop-icon d-flex justify-content-center align-items-center">
                                     <li>
                                         <a href="product-details.html"><i class="far fa-heart"></i></a>
@@ -76,71 +79,17 @@
                             </div>
                             <div class="content">
                                 <h3>
-                                    <a href="shop-grid.html">Headphones</a>
+                                    <a href="shop-grid.html">Jute Bags</a>
                                 </h3>
                                 <p>23 Products</p>
-                                <a href="product-details.html" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                        <div class="shop-product-item">
-                            <div class="product-image">
-                                <img src="assets/img/shop/watches.png" alt="img">
-                                <ul class="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="product-details.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
-                                    </li>
-                                    <li>
-                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="content">
-                                <h3>
-                                    <a href="shop-grid.html">Smart Watches</a>
-                                </h3>
-                                <p>Laptops</p>
-                                <a href="product-details.html" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-                        <div class="shop-product-item">
-                            <div class="product-image">
-                                <img src="assets/img/shop/laptop.png" alt="img">
-                                <ul class="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="product-details.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
-                                    </li>
-                                    <li>
-                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="content">
-                                <h3>
-                                    <a href="shop-grid.html">Headphones</a>
-                                </h3>
-                                <p>23 Products</p>
-                                <a href="product-details.html" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
+                                <a href="{{url('allBags/juteBags/')}}" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                         <div class="shop-product-item">
                             <div class="product-image">
-                                <img src="assets/img/shop/laptop-2.png" alt="img">
+                                <img src="assets/img/product/jute.png" alt="img">
                                 <ul class="shop-icon d-flex justify-content-center align-items-center">
                                     <li>
                                         <a href="product-details.html"><i class="far fa-heart"></i></a>
@@ -157,17 +106,17 @@
                             </div>
                             <div class="content">
                                 <h3>
-                                    <a href="shop-grid.html">Headphones</a>
+                                    <a href="shop-grid.html">Canvas bags</a>
                                 </h3>
                                 <p>23 Products</p>
-                                <a href="product-details.html" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
+                                <a href="{{url('allBags/CanvasBags/')}}" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
+                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                         <div class="shop-product-item">
                             <div class="product-image">
-                                <img src="assets/img/shop/desk.png" alt="img">
+                                <img src="assets/img/product/16b.png" alt="img">
                                 <ul class="shop-icon d-flex justify-content-center align-items-center">
                                     <li>
                                         <a href="product-details.html"><i class="far fa-heart"></i></a>
@@ -184,44 +133,17 @@
                             </div>
                             <div class="content">
                                 <h3>
-                                    <a href="shop-grid.html">Desktop Computer</a>
-                                </h3>
-                                <p>16 Products</p>
-                                <a href="product-details.html" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-                        <div class="shop-product-item">
-                            <div class="product-image">
-                                <img src="assets/img/shop/bluetooth.png" alt="img">
-                                <ul class="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="product-details.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
-                                    </li>
-                                    <li>
-                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="content">
-                                <h3>
-                                    <a href="shop-grid.html">Bluetooth</a>
+                                    <a href="shop-grid.html">Tote Bags</a>
                                 </h3>
                                 <p>23 Products</p>
-                                <a href="product-details.html" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
+                                <a href="{{url('allBags/ToteBags/')}}" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+               <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                         <div class="shop-product-item">
                             <div class="product-image">
-                                <img src="assets/img/shop/wireless.png" alt="img">
+                                <img src="assets/img/product/category/banajara/1.jpg" alt="img">
                                 <ul class="shop-icon d-flex justify-content-center align-items-center">
                                     <li>
                                         <a href="product-details.html"><i class="far fa-heart"></i></a>
@@ -238,148 +160,14 @@
                             </div>
                             <div class="content">
                                 <h3>
-                                    <a href="shop-grid.html">Wireless Headphones</a>
+                                    <a href="shop-grid.html">Banjara Bags</a>
                                 </h3>
                                 <p>23 Products</p>
-                                <a href="product-details.html" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
+                                <a href="{{url('allBags/banjaraBags/')}}" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                        <div class="shop-product-item">
-                            <div class="product-image">
-                                <img src="assets/img/shop/gaming.png" alt="img">
-                                <ul class="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="product-details.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
-                                    </li>
-                                    <li>
-                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="content">
-                                <h3>
-                                    <a href="shop-grid.html">Gaming Console</a>
-                                </h3>
-                                <p>23 Products</p>
-                                <a href="product-details.html" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-                        <div class="shop-product-item">
-                            <div class="product-image">
-                                <img src="assets/img/shop/cpu.png" alt="img">
-                                <ul class="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="product-details.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
-                                    </li>
-                                    <li>
-                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="content">
-                                <h3>
-                                    <a href="shop-grid.html">CPU Coolers</a>
-                                </h3>
-                                <p>16 Products</p>
-                                <a href="product-details.html" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                        <div class="shop-product-item">
-                            <div class="product-image">
-                                <img src="assets/img/shop/smart.png" alt="img">
-                                <ul class="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="product-details.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
-                                    </li>
-                                    <li>
-                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="content">
-                                <h3>
-                                    <a href="shop-grid.html">Smart Phones</a>
-                                </h3>
-                                <p>21 Products</p>
-                                <a href="product-details.html" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                        <div class="shop-product-item">
-                            <div class="product-image">
-                                <img src="assets/img/shop/labet.png" alt="img">
-                                <ul class="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="product-details.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
-                                    </li>
-                                    <li>
-                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="content">
-                                <h3>
-                                    <a href="shop-grid.html">Tablets</a>
-                                </h3>
-                                <p>21 Products</p>
-                                <a href="product-details.html" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-                        <div class="shop-product-item">
-                            <div class="product-image">
-                                <img src="assets/img/shop/playsation.png" alt="img">
-                                <ul class="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="product-details.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
-                                    </li>
-                                    <li>
-                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="content">
-                                <h3>
-                                    <a href="shop-grid.html">Playstation</a>
-                                </h3>
-                                <p>16 Products</p>
-                                <a href="product-details.html" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                     
                 </div>
                 <div class="shop-bottom">
                     <p class="wow fadeInUp" data-wow-delay=".3s">Showing 12 of 46 products</p>

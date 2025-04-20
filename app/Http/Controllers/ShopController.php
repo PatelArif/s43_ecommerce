@@ -17,19 +17,14 @@ class ShopController extends Controller
     {
         return view('order');
     }
+ 
+    // public function leftSidebar()
+    // {
+    //     return view('shop-left-sidebar');
+    // }
 
-    public function productDetails()
-    {
-        return view('product-details');
-    }
-
-    public function leftSidebar()
-    {
-        return view('shop-left-sidebar');
-    }
-
-    public function rightSidebar()
-    {
-        return view('shop-right-sidebar');
-    }
+    // public function rightSidebar()
+    // {
+    //     return view('shop-right-sidebar');
+    // }
 }

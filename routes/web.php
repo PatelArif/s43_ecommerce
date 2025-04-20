@@ -4,7 +4,13 @@ use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\AdminController;
+
+
+
 
 
 use Illuminate\Support\Facades\Route;
@@ -20,9 +26,23 @@ Route::get('/shop-cart', [ShopController::class, 'cart'])->name('shopCart');
 Route::get('/checkout', [ShopController::class, 'checkout'])->name('checkout');
 Route::get('/order', [ShopController::class, 'order'])->name('order');
 
+
+// Category Routes
+Route::get('/allBags', [GeneralController::class, 'categories'])->name('categories');
+Route::get('/allBags/{slug}/', [CategoryController::class, 'detail'])->name('detail');
+
+// Sub Category Routes
+Route::get('/allBags/{slug}/{id}', [SubCategoryController::class, 'productcategory'])->name('productcategory');
+
+// Product routes
+Route::get('/juteBags', [ProductDetailController::class, 'juteBags'])->name('jute');
+Route::get('/canvasBags', [ProductDetailController::class, 'canvasBags'])->name('canvasBags');
+Route::get('/banjaraBags', [ProductDetailController::class, 'banjaraBags'])->name('banjara');
+Route::get('/totBags', [ProductDetailController::class, 'totBags'])->name('tot');
 Route::get('/product-details', [ShopController::class, 'productDetails'])->name('productDetails');
-Route::get('/shop-left-sidebar', [ShopController::class, 'leftSidebar'])->name('shopLeftSidebar');
-Route::get('/shop-right-sidebar', [ShopController::class, 'rightSidebar'])->name('shopRightSidebar');
+// Route::get('/shop-left-sidebar', [ShopController::class, 'leftSidebar'])->name('shopLeftSidebar');
+// Route::get('/shop-right-sidebar', [ShopController::class, 'rightSidebar'])->name('shopRightSidebar');
+
 
 // General Pages
 Route::get('/about', [GeneralController::class, 'about'])->name('about');
@@ -30,20 +50,47 @@ Route::get('/contact', [GeneralController::class, 'contact'])->name('contact');
 Route::get('/faq', [GeneralController::class, 'faq'])->name('faq');
 Route::get('/notFound', [GeneralController::class, 'notFound'])->name('notFound');
 
-Route::get('/categories', [GeneralController::class, 'categories'])->name('categories');
 Route::get('/coming-soon', [GeneralController::class, 'comingSoon'])->name('comingSoon');
 
 // Authentication
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/sign-up', [AuthController::class, 'signUp'])->name('signUp');
-Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name('forgotPassword');
-Route::get('/my-account', [AuthController::class, 'myAccount'])->name('myAccount');
-// Register 
-Route::get('signup', [SignupController::class, 'showForm']);
-Route::post('signup', [SignupController::class, 'handleForm'])->name('signup');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Register
+Route::get('/register', [RegisterController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+
+// User edit
+Route::post('/signup', [RegisterController::class, 'user_register']);
+Route::post('/user_edit', [AuthController::class, 'user_edit']);
+
+// Authenticated routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/my-account', [AuthController::class, 'myAccount'])->name('my-account');
+});
+
+
 
 // admin routes
+Route::prefix('admin')->group(function () {
+  Route::get('/create', [AdminController::class, 'create'])->name('admin.create');
+  Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
+Route::get('/', [AdminController::class, 'admin']);
 
-Route::get('/admin/login', [AdminController::class, 'login']);
+Route::post('/login', [AdminController::class, 'login']);
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/layout-static', [AdminController::class, 'layoutStatic']);
+Route::get('/layout-sidenav-light', [AdminController::class, 'layoutSidenavLight']);
+Route::get('/charts', [AdminController::class, 'charts']);
+Route::get('/password', [AdminController::class, 'password']);
+Route::get('/register', [AdminController::class, 'register']);
+Route::get('/tables', [AdminController::class, 'tables']);
+
+
+
+
+});
+
+
 
 

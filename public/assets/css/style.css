@@ -2523,9 +2523,9 @@ span {
     padding-bottom: 20px;
     padding: 12px 20px;
     transition: all 0.4s ease-in-out;
-    color: #95999D;
-    font-size: 14px;
-    font-weight: 400;
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
     border: 1px solid #E0E2E3;
     transition: all 0.4s ease-in-out;
 }
@@ -12053,3 +12053,25 @@ input.main-search-input::placeholder {
             font-size: 30px;
             letter-spacing: 3px;
         }
+                .alert-success {
+                    color: #155724;
+                    background-color: #d4edda;
+                    padding: 0.75rem 1.25rem;
+                    border-radius: 0.25rem;
+                }
+.edit_btn{
+        width: 100%;
+            background-color: #4f6d44;
+            color:white;
+            padding: 10px;
+}
+   .edit_btn:hover {
+       width: 100%;
+       background-color: #22361a;
+       color: white;
+   }
+   .account-wrapper .account-box {
+       padding: 60px;
+       box-shadow: 0px -1px 11px 5px rgba(1, 15, 28, 0.1);
+       border-radius: 20px;
+   }

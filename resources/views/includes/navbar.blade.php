@@ -15,7 +15,7 @@
                     <div class="main-menu">
                         <nav id="mobile-menu" style="display: block;">
                             <ul>
-                                <li class="has-dropdown active menu-thumb">
+                                {{-- <li class="has-dropdown active menu-thumb">
                                     <a href="{{ url('/') }}">
                                         Home
                                         <i class="fa-solid fa-chevron-down"></i>
@@ -59,26 +59,28 @@
                                             </div>
                                         </li>
                                     </ul>
+                                </li> --}}
+                                  <li>
+                                    <a href="{{ url('/about') }}">About Us</a>
                                 </li>
                                 <li class="has-dropdown active d-xl-none">
                                     <a href="{{ url('/') }}" class="border-none">Home</a>
-                                    <ul class="submenu">
+                                    {{-- <ul class="submenu">
                                         <li><a href="{{ url('/') }}">Home 01</a></li>
                                         <li><a href="{{ url('/index-3') }}">Home 02</a></li>
                                         <li><a href="{{ url('/index-4') }}">Home 03</a></li>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
                                 <li class="has-dropdown">
-                                    <a href="{{ url('/news-details') }}">
+                                    <a href="{{ url('#') }}">
                                         Pages
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </a>
                                     <ul class="submenu">
-                                        <li><a href="{{ url('/about') }}">About Us</a></li>
+                                        {{-- <li><a href="{{ url('/about') }}">About Us</a></li> --}}
                                         <li><a href="{{ url('/order') }}">Track Your Order</a></li>
                                         <li><a href="{{ url('/login') }}">Login</a></li>
-                                        <li><a href="{{ url('/sign-up') }}">Sign-Up</a></li>
-                                        <li><a href="{{ url('/categories') }}">Categories</a></li>
+                                        <li><a href="{{ url('/register') }}">Sign-Up</a></li>
                                         <li><a href="{{ url('/coming-soon') }}">Coming Soon</a></li>
                                         <li><a href="{{ url('/forget-password') }}">Forget Password</a></li>
                                         <li><a href="{{ url('/my-account') }}">My Account</a></li>
@@ -87,20 +89,24 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="{{ url('/product-details') }}">
+                                    <a href="{{ url('#') }}">
                                         Shop
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </a>
                                     <ul class="submenu">
-                                        <li><a href="{{ url('/shop-grid') }}">Shop Grid</a></li>
-                                        <li><a href="{{ url('/shop-left-sidebar') }}">Shop Left Sidebar</a></li>
-                                        <li><a href="{{ url('/shop-right-sidebar') }}">Shop Right Sidebar</a></li>
+                                        <li><a href="{{ url('/allBags') }}">All Categories</a></li>
+                                        <li><a href="{{ url('/juteBags') }}">Jute Bags</a></li>
+                                        <li><a href="{{ url('/canvasBags') }}">Canvas Bags </a></li>
+                                        <li><a href="{{ url('/banjaraBags') }}">Banjara Bags </a></li>
+                                        <li><a href="{{ url('/totBags') }}">Tot Bags </a></li>
+
+                                        {{-- <li><a href="{{ url('/shop-right-sidebar') }}">Shop Right Sidebar</a></li> --}}
                                         <li><a href="{{ url('/shop-cart') }}">Shop Cart</a></li>
                                         <li><a href="{{ url('/checkout') }}">Checkout</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="{{ url('/news-details') }}">
+                                    <a href="{{ url('#') }}">
                                         Blog
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </a>

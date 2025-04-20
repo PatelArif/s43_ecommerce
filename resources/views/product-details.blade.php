@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="product-details-content">
-                            <h3 class="pb-3">Sulwhasoo Essential Cream</h3>
+                            <h3 class="pb-3">{{$id}}</h3>
                             <div class="star pb-3">
                                 <a href="#"> <i class="fas fa-star"></i></a>
                                 <a href="#"><i class="fas fa-star"></i></a>
@@ -90,7 +90,7 @@
                                         <input type='button' value='+' class='qtyplus plus'>
                                     </form>
                                 </div>
-                                <a href="product-details.html" class="icon">
+                                <a href="{{url('/checkout')}}" class="icon">
                                     <i class="far fa-heart"></i>
                                 </a>
                                 <div class="social-profile">
@@ -104,16 +104,16 @@
                                 </div>
                             </div>
                             <div class="shop-btn">
-                                <a href="shop-cart.html" class="theme-btn">
+                                <a href="{{url('/shop-cart')}}" class="theme-btn">
                                     <span> Add to cart</span>
                                 </a>
-                                <a href="product-details.html" class="theme-btn">
+                                <a href="{{url('/checkout')}}" class="theme-btn">
                                     <span> Buy now</span>
                                 </a>
                             </div>
-                            <h6 class="details-info"><span>SKU:</span> <a href="product-details.html">124224</a></h6>
-                            <h6 class="details-info"><span>Categories:</span> <a href="product-details.html">Crux Indoor Fast and Easy</a></h6>
-                            <h6 class="details-info style-2"><span>Tags:</span> <a href="product-details.html"> <b>accessories</b> <b>business</b></a></h6>
+                            <h6 class="details-info"><span>SKU:</span> <a href="{{url('/checkout')}}">124224</a></h6>
+                            <h6 class="details-info"><span>Categories:</span> <a href="{{url('/checkout')}}">Crux Indoor Fast and Easy</a></h6>
+                            <h6 class="details-info style-2"><span>Tags:</span> <a href="{{url('/checkout')}}"> <b>accessories</b> <b>business</b></a></h6>
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
                                 </div>
                                 <div class="col-xl-6 col-lg-6 mt-5 mt-lg-0">
                                    <div class="description-image">
-                                      <img src="assets/img/shop/details-3.jpg" alt="img">
+                                      <img src="assets/img/product/jute.png" alt="img">
                                    </div>
                                 </div>
                              </div>
@@ -320,15 +320,15 @@
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="product-collection-item">
                             <div class="product-image">
-                                <img src="assets/img/product/24.jpg" alt="img">
+                                <img src="assets/img/product/jute1.png" alt="img">
                                 <div class="product-btn">
-                                    <a href="shop-cart.html" class="theme-btn-2 style-2">Add To Cart</a>
+                                    <a href="{{url('/shop-cart')}}" class="theme-btn-2 style-2">Add To Cart</a>
                                 </div>
                             </div>
                             <div class="product-content">
                                 <p>Physicians</p>
                                 <h4>
-                                    <a href="product-details.html">Powder Creamy Natural</a>
+                                    <a href="{{url('/checkout')}}">Powder Creamy Natural</a>
                                 </h4>
                                 <ul class="doller">
                                     <li>
@@ -341,16 +341,16 @@
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="product-collection-item">
                             <div class="product-image">
-                                <img src="assets/img/product/25.jpg" alt="img">
+                                <img src="assets/img/product/2.png" alt="img">
                                 <div class="badge">26%</div>
                                 <div class="product-btn">
-                                    <a href="shop-cart.html" class="theme-btn-2 style-2">Add To Cart</a>
+                                    <a href="{{url('/shop-cart')}}" class="theme-btn-2 style-2">Add To Cart</a>
                                 </div>
                             </div>
                             <div class="product-content">
                                 <p>Mineral </p>
                                 <h4>
-                                    <a href="product-details.html">Mineral Matte Finishing</a>
+                                    <a href="{{url('/checkout')}}">Mineral Matte Finishing</a>
                                 </h4>
                                 <span>$16.00</span>
                             </div>
@@ -359,15 +359,15 @@
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="product-collection-item">
                             <div class="product-image">
-                                <img src="assets/img/product/26.jpg" alt="img">
+                                <img src="assets/img/product/3.png" alt="img">
                                 <div class="product-btn">
-                                    <a href="shop-cart.html" class="theme-btn-2 style-2">Add To Cart</a>
+                                    <a href="{{url('/shop-cart')}}" class="theme-btn-2 style-2">Add To Cart</a>
                                 </div>
                             </div>
                             <div class="product-content">
                                 <p>StriVectin</p>
                                 <h4>
-                                    <a href="product-details.html">Resurfacing Exfoliating</a>
+                                    <a href="{{url('/checkout')}}">Resurfacing Exfoliating</a>
                                 </h4>
                                 <ul class="doller">
                                     <li>
@@ -380,16 +380,16 @@
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="product-collection-item">
                             <div class="product-image">
-                                <img src="assets/img/product/27.jpg" alt="img">
+                                <img src="assets/img/product/4.png" alt="img">
                                 <div class="badge">35%</div>
                                 <div class="product-btn">
-                                    <a href="shop-cart.html" class="theme-btn-2 style-2">Add To Cart</a>
+                                    <a href="{{url('/shop-cart')}}" class="theme-btn-2 style-2">Add To Cart</a>
                                 </div>
                             </div>
                             <div class="product-content">
                                 <p>Marcelle</p>
                                 <h4>
-                                    <a href="product-details.html">Correction Tinted Cream</a>
+                                    <a href="{{url('/checkout')}}">Correction Tinted Cream</a>
                                 </h4>
                                 <span>$44.00</span>
                             </div>

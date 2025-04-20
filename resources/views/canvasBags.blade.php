@@ -1,3 +1,6 @@
+@push('title')
+<title>Canvas Bags</title>
+@endpush
 @include('includes.head')
 @include('includes.header')
 
@@ -80,311 +83,71 @@
             </div>
         </div>
 
-        <!-- Shop-left-sideber-Section Start -->
-        <section class="shop-left-sideber-section section-padding fix">
-        <div class="container">
-            <div class="product-details-wrapper">
-                <div class="row g-4">
-                    <div class="col-lg-3">
-                        <div class="main-sideber">
-                            <div class="single-sidebar-widget-2">
-                                <div class="wid-title">
-                                    <h5>price filter</h5>
-                                </div>
-                                <div class="range__barcustom">
-                                    <div class="slider">
-                                        <div class="progress" style="left: 25%; right: 25%;"></div>
-                                    </div>
-                                    <div class="range-input">
-                                        <input type="range" class="range-min" min="0" max="10000" value="2500">
-                                        <input type="range" class="range-max" min="100" max="10000" value="7500">
-                                    </div>
-                                    <div class="range-items">
-                                        <div class="price-input d-flex">
-                                            <div class="field">
-                                                <span>$</span>
-                                                <input type="number" class="input-min" value="95">
-                                            </div>
-                                            <div class="separators">-</div>
-                                            <div class="field">
-                                                <span>$</span>
-                                                <input type="number" class="input-max" value="2500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-sidebar-widget-2">
-                                <div class="wid-title">
-                                    <h5>Product Status</h5>
-                                </div>
-                                <div class="product-list">
-                                    <label class="checkbox-single">
-                                        <span class="d-flex gap-xl-3 gap-2 align-items-center">
-                                            <span class="checkbox-area d-center">
-                                                <input type="checkbox">
-                                                <span class="checkmark bg-2 d-center"></span>
-                                            </span>
-                                            <span class="text-color">
-                                                On sale
-                                            </span>
-                                        </span>
-                                    </label>
-                                    <label class="checkbox-single">
-                                        <span class="d-flex gap-xl-3 gap-2 align-items-center">
-                                            <span class="checkbox-area d-center">
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark d-center"></span>
-                                            </span>
-                                            <span class="text-color">
-                                                In stock
-                                            </span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="single-sidebar-widget-2">
-                                <div class="courses-list">
-                                    <label class="checkbox-single">
-                                        <span class="d-flex gap-xl-3 gap-2 align-items-center">
-                                            <span class="checkbox-area d-center">
-                                                <input type="checkbox">
-                                                <span class="checkmark d-center"></span>
-                                            </span>
-                                            <span class="text-color">
-                                                <span class="star">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </span>
-                                                <span class="ratting-text">(22)</span>
-                                            </span>
-                                        </span>
-                                    </label>
-                                    <label class="checkbox-single">
-                                        <span class="d-flex gap-xl-3 gap-2 align-items-center">
-                                            <span class="checkbox-area d-center">
-                                                <input type="checkbox">
-                                                <span class="checkmark d-center"></span>
-                                            </span>
-                                            <span class="text-color">
-                                                <span class="star">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star color-2"></i>
-                                                </span>
-                                                <span class="ratting-text">(15)</span>
-                                            </span>
-                                        </span>
-                                    </label>
-                                    <label class="checkbox-single">
-                                        <span class="d-flex gap-xl-3 gap-2 align-items-center">
-                                            <span class="checkbox-area d-center">
-                                                <input type="checkbox">
-                                                <span class="checkmark d-center"></span>
-                                            </span>
-                                            <span class="text-color">
-                                                <span class="star">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star color-2"></i>
-                                                    <i class="fas fa-star color-2"></i>
-                                                </span>
-                                                <span class="ratting-text">(03)</span>
-                                            </span>
-                                        </span>
-                                    </label>
-                                    <label class="checkbox-single">
-                                        <span class="d-flex gap-xl-3 gap-2 align-items-center">
-                                            <span class="checkbox-area d-center">
-                                                <input type="checkbox">
-                                                <span class="checkmark d-center"></span>
-                                            </span>
-                                            <span class="text-color">
-                                                <span class="star">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star color-2"></i>
-                                                    <i class="fas fa-star color-2"></i>
-                                                    <i class="fas fa-star color-2"></i>
-                                                </span>
-                                               <span class="ratting-text">(00)</span>
-                                            </span>
-                                        </span>
-                                    </label>
-                                    <label class="checkbox-single">
-                                        <span class="d-flex gap-xl-3 gap-2 align-items-center">
-                                            <span class="checkbox-area d-center">
-                                                <input type="checkbox">
-                                                <span class="checkmark d-center"></span>
-                                            </span>
-                                            <span class="text-color">
-                                                <span class="star">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star color-2"></i>
-                                                    <i class="fas fa-star color-2"></i>
-                                                    <i class="fas fa-star color-2"></i>
-                                                    <i class="fas fa-star color-2"></i>
-                                                </span>
-                                               <span class="ratting-text">(00)</span>
-                                            </span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="single-sidebar-widget-2">
-                                <div class="wid-title">
-                                    <h5>Categories</h5>
-                                </div>
-                                <div class="widget-categories">
-                                    <ul>
-                                        <li><a href="product-details.html">Leather</a><span>10</span></li>
-                                        <li><a href="product-details.html">Classic Watch</a><span>28</span></li>
-                                        <li><a href="product-details.html">Leather Man Wacth</a><span>12</span></li>
-                                        <li><a href="product-details.html">Trending Watch</a><span>17</span></li>
-                                        <li><a href="product-details.html">Google</a><span>22</span></li>
-                                        <li><a href="product-details.html">Woman Wacth</a><span>14</span></li>
-                                        <li><a href="product-details.html">Tables</a><span>19</span></li>
-                                        <li><a href="product-details.html">ShopEngine</a><span>29</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="single-sidebar-widget-2">
-                                <div class="wid-title">
-                                    <h5>Filter by Color</h5>
-                                </div>
-                                <div class="list">
-                                    <label class="checkbox-single">
-                                        <span class="d-flex gap-xl-3 gap-2 align-items-center">
-                                            <span class="checkbox-area d-center">
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark d-center"></span>
-                                            </span>
-                                            <span class="text-color">
-                                                Red
-                                            </span>
-                                        </span>
-                                        <span class="text">
-                                            8
-                                        </span>
-                                    </label>
-                                    <label class="checkbox-single">
-                                        <span class="d-flex gap-xl-3 gap-2 align-items-center">
-                                            <span class="checkbox-area d-center">
-                                                <input type="checkbox">
-                                                <span class="checkmark bg-2 d-center"></span>
-                                            </span>
-                                            <span class="text-color">
-                                                Dark Blue
-                                            </span>
-                                        </span>
-                                        <span class="text">
-                                            14
-                                        </span>
-                                    </label>
-                                    <label class="checkbox-single">
-                                        <span class="d-flex gap-xl-3 gap-2 align-items-center">
-                                            <span class="checkbox-area d-center">
-                                                <input type="checkbox">
-                                                <span class="checkmark bg-3 d-center"></span>
-                                            </span>
-                                            <span class="text-color">
-                                                Orange
-                                            </span>
-                                        </span>
-                                        <span class="text">
-                                            18
-                                        </span>
-                                    </label>
-                                    <label class="checkbox-single">
-                                        <span class="d-flex gap-xl-3 gap-2 align-items-center">
-                                            <span class="checkbox-area d-center">
-                                                <input type="checkbox">
-                                                <span class="checkmark bg-4 d-center"></span>
-                                            </span>
-                                            <span class="text-color">
-                                                Purple
-                                            </span>
-                                        </span>
-                                        <span class="text">
-                                            23
-                                        </span>
-                                    </label>
-                                    <label class="checkbox-single">
-                                        <span class="d-flex gap-xl-3 gap-2 align-items-center">
-                                            <span class="checkbox-area d-center">
-                                                <input type="checkbox">
-                                                <span class="checkmark bg-5 d-center"></span>
-                                            </span>
-                                            <span class="text-color">
-                                                Yellow
-                                            </span>
-                                        </span>
-                                        <span class="text">
-                                            17
-                                        </span>
-                                    </label>
-                                    <label class="checkbox-single">
-                                        <span class="d-flex gap-xl-3 gap-2 align-items-center">
-                                            <span class="checkbox-area d-center">
-                                                <input type="checkbox">
-                                                <span class="checkmark bg-6 d-center"></span>
-                                            </span>
-                                            <span class="text-color">
-                                                Green
-                                            </span>
-                                        </span>
-                                        <span class="text">
-                                            15
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="single-sidebar-widget-2">
-                                <div class="wid-title">
-                                    <h5>Popular Brands</h5>
-                                </div>
-                                <div class="brand-post">
-                                    <div class="brand-item">
-                                        <div class="brand-image">
-                                            <img src="assets/img/brand/b1.png" alt="img">
-                                        </div>
-                                        <div class="brand-image">
-                                            <img src="assets/img/brand/b2.png" alt="img">
-                                        </div>
-                                    </div>
-                                    <div class="brand-item">
-                                        <div class="brand-image">
-                                            <img src="assets/img/brand/b3.png" alt="img">
-                                        </div>
-                                        <div class="brand-image">
-                                            <img src="assets/img/brand/b4.png" alt="img">
-                                        </div>
-                                    </div>
-                                    <div class="brand-item">
-                                        <div class="brand-image">
-                                            <img src="assets/img/brand/b5.png" alt="img">
-                                        </div>
-                                        <div class="brand-image">
-                                            <img src="assets/img/brand/b6.png" alt="img">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <!-- product-details-Section Start -->
+        <section class="product-details-section section-padding fix">
+            <div class="container">
+                <div class="product-details-wrapper">
+                    <div class="top-content">
+                        <h2>Canvas Bags</h2>
+                        <ul class="list">
+                            <li>Home</li>
+                            <li>
+                                Canvas Bags
+                            </li>
+                        </ul>
                     </div>
-                    <div class="col-lg-9">
-                        <div class="tab-content">
-                            <div class="row g-4">
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="product-details-item mt-0">
+                    <div class="product-details-sideber">
+                       <div class="product-details-wrap">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#Course" data-bs-toggle="tab" class="nav-link active">
+                                    <i class="fa-regular fa-grid-2"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#Curriculum" data-bs-toggle="tab" class="nav-link">
+                                    <i class="fas fa-bars"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <p>Showing 1–14 of 26 results</p>
+                       </div>
+                       <div class="shop-right">
+                         <div class="form-clt">
+                            <div class="nice-select" tabindex="0">
+                               <span class="current">
+                                Default sorting
+                               </span>
+                               <ul class="list">
+                                  <li data-value="1" class="option selected focus">
+                                    Default sorting
+                               </li>
+                               <li data-value="1" class="option">
+                                  Sort by popularity
+                               </li>
+                               <li data-value="1" class="option">
+                                  Sort by average rating
+                               </li>
+                               <li data-value="1" class="option">
+                                  Sort by latest
+                               </li>
+                            </ul>
+                            </div>
+                          </div>
+                          <div id="openButton2">
+                            <div class="filter-button">
+                                <h6><a href="#"><span><img src="assets/img/filter.png" alt="img"></span>Filter</a></h6>
+                            </div>
+                         </div>
+                       </div>
+                    </div>
+                    <div class="tab-content">
+                        <div id="Course" class="tab-pane fade show active">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-1.jpg" alt="img">
+                                            <img src="assets/img/product/jute.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -409,16 +172,16 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
                                             </div>
                                             <h6>$76.00 <del>$76.00</del></h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="product-details-item mt-0">
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-2.jpg" alt="img">
+                                            <img src="assets/img/product/1.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -443,16 +206,16 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
                                             </div>
                                             <h6>$102.00 <del>$226.00</del></h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="product-details-item mt-0">
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-3.jpg" alt="img">
+                                            <img src="assets/img/product/2.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -477,16 +240,16 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
                                             </div>
                                             <h6>$126.00 <del>$216.00</del></h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="product-details-item mt-0">
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-4.jpg" alt="img">
+                                            <img src="assets/img/product/4.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -511,16 +274,16 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
                                             </div>
                                             <h6>$93.00 <del>$76.00</del></h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="product-details-item mt-0">
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-5.jpg" alt="img">
+                                            <img src="assets/img/product/5.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -545,16 +308,16 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
                                             </div>
                                             <h6>$120.00 <del>$76.00</del></h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="product-details-item mt-0">
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-6.jpg" alt="img">
+                                            <img src="assets/img/product/6.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -579,16 +342,16 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
                                             </div>
                                             <h6>$44.00 <del>$66.00</del></h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="product-details-item mt-0">
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-7.jpg" alt="img">
+                                            <img src="assets/img/product/7.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -613,16 +376,16 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
                                             </div>
                                             <h6>$44.00 <del>$66.00</del></h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="product-details-item mt-0">
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-8.jpg" alt="img">
+                                            <img src="assets/img/product/8.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -647,16 +410,16 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
                                             </div>
                                             <h6>$36.00 <del>$72.00</del></h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="product-details-item mt-0">
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-9.jpg" alt="img">
+                                            <img src="assets/img/product/9.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -681,16 +444,16 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
                                             </div>
                                             <h6>$12.00 <del>$36.00</del></h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="product-details-item mt-0">
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-10.jpg" alt="img">
+                                            <img src="assets/img/product/3.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -715,16 +478,16 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
                                             </div>
                                             <h6>$82.00 <del>$99.00</del></h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="product-details-item mt-0">
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-11.jpg" alt="img">
+                                            <img src="assets/img/product/2.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -749,16 +512,16 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
                                             </div>
                                             <h6>$36.00 <del>$72.00</del></h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="product-details-item mt-0">
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="product-details-item">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-12.jpg" alt="img">
+                                            <img src="assets/img/product/1.png" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -783,7 +546,7 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
                                             </div>
                                             <h6>$82.00 <del>$99.00</del></h6>
                                         </div>
@@ -791,18 +554,313 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="page-nav-wrap">
-                            <ul>
-                                <li class="active"><a class="page-numbers" href="#">1</a></li>
-                                <li><a class="page-numbers" href="#">2</a></li>
-                                <li><a class="page-numbers" href="#">3</a></li>
-                                <li><a class="page-numbers" href="#"><i class="fa-solid fa-arrow-right-long"></i></a></li>
-                            </ul>
+                        <div id="Curriculum" class="tab-pane fade">
+                            <div class="row justify-content-center">
+                                <div class="row g-4">
+                                    <div class="col-xl-12">
+                                        <div class="product-details-item style-2">
+                                            <div class="shop-image">
+                                                <img src="assets/img/product/jute.png" alt="img">
+                                                <ul class="shop-icon d-grid justify-content-center align-items-center">
+                                                    <li>
+                                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                            <i class="fa-regular fa-eye"></i>
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="content">
+                                                <p>Backpack, Wonder</p>
+                                                <h3>
+                                                    <a href="product-details.html">Simple Modern School Boys</a>
+                                                </h3>
+                                                <div class="star">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </div>
+                                                <h6>$102.00 <del>$226.00</del></h6>
+                                                <p>
+                                                    Auctor urna nunc id cursus. Scelerisque purus semper eget duis at pharetra vel turpis nunc eget.
+                                                </p>
+                                                <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product-details-item style-2">
+                                            <div class="shop-image">
+                                                <img src="assets/img/product/2.png" alt="img">
+                                                <ul class="shop-icon d-grid justify-content-center align-items-center">
+                                                    <li>
+                                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                            <i class="fa-regular fa-eye"></i>
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="content">
+                                                <p>Backpack, Wonder</p>
+                                                <h3>
+                                                    <a href="product-details.html">Simple Modern School Boys</a>
+                                                </h3>
+                                                <div class="star">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </div>
+                                                <h6>$102.00 <del>$226.00</del></h6>
+                                                <p>
+                                                    Auctor urna nunc id cursus. Scelerisque purus semper eget duis at pharetra vel turpis nunc eget.
+                                                </p>
+                                                <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product-details-item style-2">
+                                            <div class="shop-image">
+                                                <img src="assets/img/product/9.png" alt="img">
+                                                <ul class="shop-icon d-grid justify-content-center align-items-center">
+                                                    <li>
+                                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                            <i class="fa-regular fa-eye"></i>
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="content">
+                                                <p>Bag, Wonder</p>
+                                                <h3>
+                                                    <a href="product-details.html">Tommy Hilfiger Women’s Jaden</a>
+                                                </h3>
+                                                <div class="star">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </div>
+                                                <h6>$44.00 <del>$66.00</del></h6>
+                                                <p>
+                                                    Auctor urna nunc id cursus. Scelerisque purus semper eget duis at pharetra vel turpis nunc eget.
+                                                </p>
+                                                <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product-details-item style-2">
+                                            <div class="shop-image">
+                                                <img src="assets/img/product/3.png" alt="img">
+                                                <ul class="shop-icon d-grid justify-content-center align-items-center">
+                                                    <li>
+                                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                            <i class="fa-regular fa-eye"></i>
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="content">
+                                                <p>Bag, Wonder</p>
+                                                <h3>
+                                                    <a href="product-details.html">Tommy Hilfiger Women’s Jaden</a>
+                                                </h3>
+                                                <div class="star">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </div>
+                                                <h6>$44.00 <del>$66.00</del></h6>
+                                                <p>
+                                                    Auctor urna nunc id cursus. Scelerisque purus semper eget duis at pharetra vel turpis nunc eget.
+                                                </p>
+                                                <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product-details-item style-2">
+                                            <div class="shop-image">
+                                                <img src="assets/img/product/4.png" alt="img">
+                                                <ul class="shop-icon d-grid justify-content-center align-items-center">
+                                                    <li>
+                                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                            <i class="fa-regular fa-eye"></i>
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="content">
+                                                <p>Whitetails Store</p>
+                                                <h3>
+                                                    <a href="product-details.html">Legendary Whitetails Men's.</a>
+                                                </h3>
+                                                <div class="star">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </div>
+                                                <h6>$36.00 <del>$66.00</del></h6>
+                                                <p>
+                                                    Auctor urna nunc id cursus. Scelerisque purus semper eget duis at pharetra vel turpis nunc eget.
+                                                </p>
+                                                <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product-details-item style-2">
+                                            <div class="shop-image">
+                                                <img src="assets/img/product/5.png" alt="img">
+                                                <ul class="shop-icon d-grid justify-content-center align-items-center">
+                                                    <li>
+                                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                            <i class="fa-regular fa-eye"></i>
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="content">
+                                                <p>Bag, Wonder</p>
+                                                <h3>
+                                                    <a href="product-details.html">Calvin Klein Gabrianna Novelty</a>
+                                                </h3>
+                                                <div class="star">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </div>
+                                                <h6>$93.00 <del>$76.00</del></h6>
+                                                <p>
+                                                    Auctor urna nunc id cursus. Scelerisque purus semper eget duis at pharetra vel turpis nunc eget.
+                                                </p>
+                                                <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product-details-item style-2">
+                                            <div class="shop-image">
+                                                <img src="assets/img/product/6.png" alt="img">
+                                                <ul class="shop-icon d-grid justify-content-center align-items-center">
+                                                    <li>
+                                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                            <i class="fa-regular fa-eye"></i>
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="content">
+                                                <p>Whitetails Store</p>
+                                                <h3>
+                                                    <a href="product-details.html">Legendary Whitetails Men's.</a>
+                                                </h3>
+                                                <div class="star">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </div>
+                                                <h6>$36.00 <del>$72.00</del></h6>
+                                                <p>
+                                                    Auctor urna nunc id cursus. Scelerisque purus semper eget duis at pharetra vel turpis nunc eget.
+                                                </p>
+                                                <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product-details-item style-2">
+                                            <div class="shop-image">
+                                                <img src="assets/img/product/7.png" alt="img">
+                                                <ul class="shop-icon d-grid justify-content-center align-items-center">
+                                                    <li>
+                                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                            <i class="fa-regular fa-eye"></i>
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="content">
+                                                <p>Whitetails Store</p>
+                                                <h3>
+                                                    <a href="product-details.html">Backpack, School Bag</a>
+                                                </h3>
+                                                <div class="star">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </div>
+                                                <h6>$82.00 <del>$99.00</del></h6>
+                                                <p>
+                                                    Auctor urna nunc id cursus. Scelerisque purus semper eget duis at pharetra vel turpis nunc eget.
+                                                </p>
+                                                <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="page-nav-wrap">
+                        <ul>
+                            <li class="active"><a class="page-numbers" href="#">1</a></li>
+                            <li><a class="page-numbers" href="#">2</a></li>
+                            <li><a class="page-numbers" href="#">3</a></li>
+                            <li><a class="page-numbers" href="#"><i class="fa-solid fa-arrow-right-long"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
         </section>
 
-       @include('includes.footer')
+        @include('includes.footer')
