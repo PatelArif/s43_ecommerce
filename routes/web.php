@@ -79,12 +79,26 @@ Route::get('/', [AdminController::class, 'admin']);
 
 Route::post('/login', [AdminController::class, 'login']);
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-Route::get('/layout-static', [AdminController::class, 'layoutStatic']);
 Route::get('/layout-sidenav-light', [AdminController::class, 'layoutSidenavLight']);
 Route::get('/charts', [AdminController::class, 'charts']);
 Route::get('/password', [AdminController::class, 'password']);
 Route::get('/register', [AdminController::class, 'register']);
 Route::get('/tables', [AdminController::class, 'tables']);
+
+// ✅ subCategory management routes
+Route::get('/allCategories', [CategoryController::class, 'categories'])->name('categories.index');
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+// ✅ subCategory management routes
+Route::get('/subCategories', [CategoryController::class, 'subCategories'])->name('subCategories.index');
+Route::post('/subCategories', [CategoryController::class, 'subCategoriesStore'])->name('subCategories.store');
+Route::get('/subCategories/{id}/edit', [CategoryController::class, 'subCategoriesEdit'])->name('subCategories.edit');
+Route::put('/subCategories/{id}', [CategoryController::class, 'subCategoriesUpdate'])->name('subCategories.update');
+Route::delete('/subCategories/{id}', [CategoryController::class, 'subCategoriesDestroy'])->name('subCategories.destroy');
+
 
 
 

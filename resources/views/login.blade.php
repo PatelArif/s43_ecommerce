@@ -59,38 +59,8 @@ Swal.fire({
                                 <div class="account-item">
                                    
                                 <div class="contact-form-item">
-                               <form id="user_login_form" method="POST">
-                                         @csrf
-                                        <div class="row g-4">
-                                            <div class="col-lg-12">
-                                                <div class="form-clt">
-                                                    <input type="text" name="email" id="email20" placeholder="Your Email" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-clt">
-                                                    <input type="password" name="password" id="password" placeholder="Password"required>
-                                                    <span onclick="togglePassword()" style="position:absolute; right:10px; top:15px; cursor:pointer;">👁️</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="from-cheak-items">
-                                                    <div class="form-check d-flex gap-2 from-customradio">
-                                                        <input class="form-check-input" type="radio"  name="remember"id="flexRadioDefault2">
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            Remember Me
-                                                        </label>
-                                                    </div>
-                                                    <span>Forgot Password?</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <button type="submit" class="theme-btn header-btn w-100">
-                                                    Login
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                              @include('includes/login_form')
+
                                 </div>
                             </div>
                         </div>
@@ -103,58 +73,3 @@ Swal.fire({
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script>
-    
-   $('#user_login_form').on('submit', function(e) {
-    e.preventDefault();  // Prevent the default form submission
-    
-    $.ajax({
-        url: '/login',  // Your API endpoint
-        type: 'POST',
-        data: $(this).serialize(),  // Serialize the form data to send in the request
-        success: function(response) {
-            console.log(response);  // Log the response to check if it's correct
-            Swal.fire({
-                title: 'Success!',
-                text: response.message,
-                icon: 'success',
-                confirmButtonText: 'OK'
-            }).then(() => {
-                window.location.href = '/my-account';  // Redirect to another page after success
-            });
-        },
-        error: function(xhr, status, error) {
-            // Log the error for debugging
-            console.log("Error: ", error);
-            
-            var errors = xhr.responseJSON.errors;  // Get errors from the response
-
-            // Loop through errors and show them in SweetAlert
-            if (errors) {
-                var errorMessages = "";
-                for (var key in errors) {
-                    if (errors.hasOwnProperty(key)) {
-                        errorMessages += errors[key][0] + "\n";  // Add each error message to the string
-                    }
-                }
-                
-                Swal.fire({
-                    title: 'Error!',
-                    text: errorMessages,  // Display all error messages in the alert
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-            } else {
-                // If no specific errors, show a generic error
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'An unexpected error occurred. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-            }
-        }
-    });
-});
-
-</script>

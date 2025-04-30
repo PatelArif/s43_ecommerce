@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -57,8 +58,10 @@ public function user_edit(Request $request)
         'last_name'  => 'required|string|max:255',
         'email'      => 'required|email|unique:users,email,' . $user->id,
         'number'     => 'nullable|string|max:20',
-       
+       'profile_image' => 'nullable|image|max:2048', // max 2MB
+
     ]);
+
 
     // Check if user wants to change password
     if ($request->filled('new_password')) {
@@ -71,6 +74,25 @@ public function user_edit(Request $request)
         }
         $user->password = Hash::make($request->new_password);
     }
+if ($request->hasFile('profile_image')) {
+    $image = $request->file('profile_image');
+
+    // Ensure directory exists
+    $folderPath = public_path('uploads/profile_images');
+    if (! file_exists($folderPath)) {
+        mkdir($folderPath, 0755, true);
+    }
+
+    // Resize image if >1MB (optional)
+    $imageName = strtolower($request->first_name . '_' . $request->last_name) . '.' . $image->getClientOriginalExtension();
+    $imagePath = 'uploads/profile_images/' . $imageName;
+
+    // Move file
+    $image->move(public_path('uploads/profile_images'), $imageName);
+
+    // Save path in DB
+    $user->profile_image = $imagePath;
+}
 
     // Update user info
     $user->first_name = $request->first_name;

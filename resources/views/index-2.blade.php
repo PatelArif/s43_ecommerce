@@ -88,7 +88,7 @@
                         <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                             <div class="offcanvas__logo">
                                 <a href="index-2.html">
-                                    <img src="assets/img/logo/main_logo2.png" alt="logo-img">
+                                    <img src="assets/img/logo/logo4.png" alt="logo-img">
                                 </a>
                             </div>
                             <div class="offcanvas__close">
@@ -275,10 +275,10 @@
                     <div class="header-main">
                         <div class="logo">
                             <a href="index-2.html" class="header-logo">
-                                <img src="assets/img/logo/main_logo2.png" alt="logo-img">
+                                <img src="assets/img/logo/logo4.png" alt="logo-img">
                             </a>
                             <a href="index-2.html" class="header-logo-2 d-none">
-                                <img src="assets/img/logo/main_logo2.png" alt="logo-img">
+                                <img src="assets/img/logo/logo4.png" alt="logo-img">
                             </a>
                         </div>
                         <div class="mean__menu-wrapper">
@@ -1817,7 +1817,7 @@
                             <div class="single-footer-widget">
                                 <div class="widget-head">
                                     <a href="index-2.html" class="footer-logo">
-                                        <img src="assets/img/logo/main_logo2.png" alt="logo-img">
+                                        <img src="assets/img/logo/logo4.png" alt="logo-img">
                                     </a>
                                 </div>
                                 <div class="footer-content">

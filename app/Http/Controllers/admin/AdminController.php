@@ -21,10 +21,8 @@ class AdminController extends Controller
     {
         return view('admin.index');
     }
-              public function layoutStatic()
-    {
-        return view('admin.layout-static');
-    }
+  
+
      public function layoutSidenavLight()
     {
         return view('admin.layout-sidenav-light');

@@ -3,12 +3,12 @@
     <div class="container">
         <div class="mega-menu-wrapper">
             <div class="header-main">
-                <div class="logo">
-                    <a href="{{ url('/') }}" class="header-logo">
-                        <img src="{{ asset('assets/img/logo/main_logo2.png') }}" alt="logo-img">
+                <div class="logo" style="width:70px">
+                    <a href="{{ url('/') }}" class="header-logo"style="width:70px">
+                        <img src="{{ asset('assets/img/logo/logo4.png') }}" alt="logo-img"style="width:70px">
                     </a>
                     <a href="{{ url('/') }}" class="header-logo-2 d-none">
-                        <img src="{{ asset('assets/img/logo/main_logo2.png') }}" alt="logo-img">
+                        <img src="{{ asset('assets/img/logo/logo4.png') }}" alt="logo-img"style="width:70px">
                     </a>
                 </div>
                 <div class="mean__menu-wrapper">

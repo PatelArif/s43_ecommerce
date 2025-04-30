@@ -221,7 +221,7 @@
                             <div class="single-footer-widget">
                                 <div class="widget-head">
                                     <a href="index-2.html" class="footer-logo">
-                                        <img src="assets/img/logo/main_logo2.png" alt="logo-img">
+                                        <img src="assets/img/logo/logo4.png" alt="logo-img">
                                     </a>
                                 </div>
                                 <div class="footer-content">

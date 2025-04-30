@@ -37,7 +37,9 @@ div:where(.swal2-icon).swal2-warning {
                                 <div class="sidebar-account">
                                     <div class="account-avatar">
                                         <div class="image">
-                                            <img src="assets/img/avater.jpg" alt="img">
+                                            {{-- <img src="assets/img/avater.jpg" alt="img"> --}}
+                                            <img src="{{ $user->profile_image ? asset($user->profile_image) : asset('images/default.png') }}" alt="Profile" class="img-fluid" />
+
                                         </div>
                                         <h6 class="mb_4">{{ $user->first_name }} {{ $user->last_name }} </h6>
                                         <div class="body-text-1">{{ $user->email }}</div>
@@ -80,6 +82,12 @@ div:where(.swal2-icon).swal2-warning {
                                          @csrf
                                             <div class="account-info">
                                                 <h3>Information</h3>
+                                                <div class="col-lg-12">
+        <div class="form-clt">
+            <label for="profile_image">Upload Profile Picture</label>
+            <input type="file" name="profile_image" id="profile_image" accept="image/*">
+        </div>
+    </div>
                                                 <div class="row g-4">
                                                     <div class="col-lg-6">
                                                         <div class="form-clt">
@@ -336,69 +344,75 @@ div:where(.swal2-icon).swal2-warning {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-   let originalData = $('#user_edit_form').serialize(); // Store original form state
+  let originalData = $('#user_edit_form').serialize();
+let imageChanged = false; // Track if image has changed
 
-    $('#user_edit_form').on('submit', function(e) {
-        e.preventDefault();  // Prevent default form submit
+// Detect image input change
+$('#profile_image').on('change', function () {
+    imageChanged = true;
+});
 
-        let currentData = $(this).serialize();
+$('#user_edit_form').on('submit', function(e) {
+    e.preventDefault();
 
-        // Check if any changes were made
-        if (originalData === currentData) {
+    let currentData = $(this).serialize();
+
+    // Check if text fields changed or image was selected
+    if (originalData === currentData && !imageChanged) {
+        Swal.fire({
+            title: 'No Changes Detected',
+            text: 'Please update some fields before submitting.',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+        return;
+    }
+
+    const $submitBtn = $(this).find('button[type="submit"]');
+    $submitBtn.prop('disabled', true).text('Updating...');
+
+    let formData = new FormData(this); // Use FormData for file upload support
+
+    $.ajax({
+        url: '/user_edit',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
             Swal.fire({
-                title: 'No Changes Detected',
-                text: 'Please update some fields before submitting.',
-                icon: 'info',
+                title: 'Success!',
+                text: response.message || 'Profile updated successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = '/my-account';
+            });
+        },
+        error: function(xhr) {
+            let errors = xhr.responseJSON?.errors;
+            let errorMessages = "";
+
+            if (errors) {
+                for (let key in errors) {
+                    errorMessages += errors[key][0] + "\n";
+                }
+            } else {
+                errorMessages = xhr.responseJSON?.message || "An unexpected error occurred.";
+            }
+
+            Swal.fire({
+                title: 'Error!',
+                text: errorMessages,
+                icon: 'error',
                 confirmButtonText: 'OK'
             });
-            return;
+        },
+        complete: function() {
+            $submitBtn.prop('disabled', false).text('Update Profile');
         }
-
-        // Disable the submit button to prevent multiple clicks
-        const $submitBtn = $(this).find('button[type="submit"]');
-        $submitBtn.prop('disabled', true).text('Updating...');
-
-        $.ajax({
-            url: '/user_edit',  // Update this URL to your actual route
-            type: 'POST',
-            data: $(this).serialize(),  // Serialize form data
-            success: function(response) {
-                console.log(response);
-                
-                Swal.fire({
-                    title: 'Success!',
-                    text: response.message || 'Profile updated successfully!',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href = '/my-account';  // Redirect after success
-                });
-            },
-            error: function(xhr) {
-                console.log("Error: ", xhr);
-
-                var errors = xhr.responseJSON?.errors;
-                let errorMessages = "";
-
-                if (errors) {
-                    for (var key in errors) {
-                        if (errors.hasOwnProperty(key)) {
-                            errorMessages += errors[key][0] + "\n";
-                        }
-                    }
-                } else {
-                    errorMessages = xhr.responseJSON?.message || "An unexpected error occurred.";
-                }
-
-                Swal.fire({
-                    title: 'Error!',
-                    text: errorMessages,
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-            }
-        });
     });
+});
 </script>
 
 <script>

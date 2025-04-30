@@ -51,9 +51,9 @@
                 <div class="offcanvas__wrapper">
                     <div class="offcanvas__content">
                         <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
-                            <div class="offcanvas__logo">
+                            <div class="offcanvas__logo"style="max-width:100%">
                                 <a href="index-2s">
-                                    <img src="assets/img/logo/main_logo2.png" alt="logo-img">
+                                    <img src="assets/img/logo/logo4.png" alt="logo-img"style="max-width:100%">
                                 </a>
                             </div>
                             <div class="offcanvas__close">
@@ -119,58 +119,7 @@
         </div>
         <div class="offcanvas__overlay"></div>
 
-        <!-- Sidebar Area Here -->
-        <div id="targetElement" class="side_bar slideInRight side_bar_hidden">
-            <div class="side_bar_overlay"></div>
-            <div class="cart-title mb-50">
-                <h4>Login / Register</h4>
-            </div>
-            <div class="login-sidebar">
-                <form id="user_login_form" method="POST" action="{{ url('login.submit') }}">
-                                         @csrf
-                                        <div class="row g-4">
-                                            <div class="col-lg-12">
-                                                <div class="form-clt">
-                                                    <input type="text" name="email" id="email20" placeholder="Your Email" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-clt">
-                                                    <input type="password" name="password" id="password" placeholder="Password"required>
-                                                    <span onclick="togglePassword()" style="position:absolute; right:10px; top:15px; cursor:pointer;">👁️</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="from-cheak-items">
-                                                    <div class="form-check d-flex gap-2 from-customradio">
-                                                        <input class="form-check-input" type="radio"  name="remember"id="flexRadioDefault2">
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            Remember Me
-                                                        </label>
-                                                    </div>
-                                                    <span>Forgot Password?</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <button type="submit" class="theme-btn header-btn w-100">
-                                                    Login
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                {{-- <p class="text">Or login with</p>
-                <div class="social-item">
-                    <a href="#" class="facebook-text"><img src="assets/img/facebook.png" alt="img">FACEBOOK</a>
-                    <a href="#" class="facebook-text google-text"><img src="assets/img/google.png" alt="img">Google</a>
-                </div> --}}
-                <div class="user-icon-box">
-                    <img src="assets/img/user.png" alt="img">
-                    <p>No account yet?</p>
-                    <a href="{{url('/register')}}">Create an Account</a>
-                </div>
-            </div>
-            <button id="closeButton" class="x-mark-icon"><i class="fas fa-times"></i></button>
-        </div>
+   
 
          <!-- Header top Section Start -->
          <div class="header-top-section style-2">
@@ -187,9 +136,12 @@
                                 {{ Auth::user()->first_name }}  {{ Auth::user()->last_name }}</a>
                             </button>
                                @else
-                            <button id="openButton" class="account-text d-flex align-items-center gap-2">
-                                <i class="fa-regular fa-user"></i>
-                                Login / Register
+                            <button class="account-text d-flex align-items-center gap-2">
+                           
+                                  <a href="{{url('/login')}}" class="text-white"><i class="fa-regular fa-user text-white"></i>
+                                     Login / Register
+                              </a>
+                               
                             </button>
                               @endauth
                         </div>
