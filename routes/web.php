@@ -61,7 +61,7 @@ Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 
 // User edit
-Route::post('/signup', [RegisterController::class, 'user_register']);
+Route::post('/signup', [RegisterController::class, 'user_register'])->name('user_register');
 Route::post('/user_edit', [AuthController::class, 'user_edit']);
 
 // Authenticated routes
@@ -86,7 +86,7 @@ Route::get('/register', [AdminController::class, 'register']);
 Route::get('/tables', [AdminController::class, 'tables']);
 
 // ✅ subCategory management routes
-Route::get('/allCategories', [CategoryController::class, 'categories'])->name('categories.index');
+Route::get('/allCategories', [CategoryController::class, 'index'])->name('categories.index');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
@@ -99,7 +99,18 @@ Route::get('/subCategories/{id}/edit', [CategoryController::class, 'subCategorie
 Route::put('/subCategories/{id}', [CategoryController::class, 'subCategoriesUpdate'])->name('subCategories.update');
 Route::delete('/subCategories/{id}', [CategoryController::class, 'subCategoriesDestroy'])->name('subCategories.destroy');
 
+// ✅ Product management routes
+Route::get('/products', [ProductDetailController::class, 'index'])->name('products.index');
+Route::post('/products', [ProductDetailController::class, 'store'])->name('products.store');
+// Route to fetch a product for editing
+Route::get('/products/{id}', [ProductDetailController::class, 'show'])->name('products.show');
 
+
+Route::get('/products/{id}/edit', [ProductDetailController::class, 'edit'])->name('products.edit');
+Route::put('/products/{id}', [ProductDetailController::class, 'update'])->name('products.update');
+Route::delete('/products/{id}', [ProductDetailController::class, 'destroy'])->name('products.destroy');
+
+Route::get('/allUsers', [AdminController::class, 'allUsers'])->name('admin.allUsers');
 
 
 

@@ -4,6 +4,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\AdminUser;
+use App\Models\User;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -22,6 +24,12 @@ class AdminController extends Controller
         return view('admin.index');
     }
   
+public function allUsers()
+{
+    
+    $users = User::all(); // adjust if using a different model
+    return view('admin.allUsers', compact('users'));
+}
 
      public function layoutSidenavLight()
     {

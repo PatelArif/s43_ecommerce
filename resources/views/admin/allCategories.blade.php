@@ -55,10 +55,10 @@
     </div> --}}
     {{-- <div class="card-body"> --}}
   <div class="table-responsive">
-  <table class="table table-striped table-hover table-bordered align-middle">
+  <table class="table table-striped table-hover table-bordered align-middle" id="datatable">
             <thead>
                 <tr>
-                    <th class="text-center">#</th>
+                    <th class="text-center">Sr No.</th>
                     <th class="text-center">Name</th>
                     <th class="text-center">Image</th>
                     <th class="text-center">Actions</th>
@@ -70,8 +70,8 @@
                     <td class="text-center"><h5>{{ $index + 1 }}</h5></td>
                     <td class="text-center"><h5>{{ $category->name }}</h5></td>
                     <td class="text-center">
-                        @if($category->Image)
-                            <img src="{{ asset('storage/' . $category->Image) }}" alt="Category Image" width="100">
+                        @if($category->image)
+                            <img src="{{ asset('storage/' . $category->image) }}" alt="Category Image" width="100">
                         @else
                             <span class="text-muted">No Image</span>
                         @endif

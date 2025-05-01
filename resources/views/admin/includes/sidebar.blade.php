@@ -9,19 +9,30 @@
                             </a>
                           
                             <div class="sb-sidenav-menu-heading">Manage Website Data</div>
-                               <a class="nav-link" href="{{url('admin/categories')}}">
+                               <a class="nav-link" href="{{url('admin/allUsers')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                Website Users
                             </a>
-                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#categories" aria-expanded="false" aria-controls="categories">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                Manage Categories
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="categories" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{url('admin/allCategories')}}">All Categories</a>
                                     <a class="nav-link" href="{{url('admin/subCategories')}}">Sub Categories</a>
+                                </nav>
+                            </div>
+                              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#products" aria-expanded="false" aria-controls="products">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                               Manage Products
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="products" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{url('admin/products')}}">All Products</a>
+                                    {{-- <a class="nav-link" href="{{url('admin/subCategories')}}">Sub Categories</a> --}}
                                 </nav>
                             </div>
                             <a class="nav-link" href="{{url('admin/categories')}}">

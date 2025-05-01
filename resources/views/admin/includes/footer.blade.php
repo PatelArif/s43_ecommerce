@@ -23,6 +23,24 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     
                  <script src="{{ asset('assets/admin/js/datatables-simple-demo.js') }}"></script>
+                 <!-- jQuery (required for DataTables) -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<!-- Initialize DataTable -->
+<script>
+    $(document).ready(function () {
+        $('#datatable').DataTable({
+            paging: true,
+            searching: true,
+            info: true
+        });
+    });
+</script>
+
 
     </body>
 </html>

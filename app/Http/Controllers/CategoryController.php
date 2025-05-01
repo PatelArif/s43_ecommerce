@@ -1,52 +1,59 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Category; // ✅ This line is required
+use App\Models\Category;
+use App\Models\Subcategory;
+use App\Models\Product;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\Request; // ✅ This line is required
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+
 class CategoryController extends Controller
 {
-  public function detail($slug)
-{
-    return view('productCategory', compact('slug',));
-}
- public function categories()
+    public function detail($slug)
     {
-     
-         $categories = Category::all();
+        return view('productCategory', compact('slug', ));
+    }
+    public function index()
+    {
+
+        $categories = Category::all();
         return view('admin.allCategories', compact('categories'));
     }
     // Store a new category
-    public function categoriesStore(Request $request)
-    {
-        $request->validate([
-            'name'  => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
 
-        $data = [
-            'name' => $request->name,
-        ];
 
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('subCategories', 'public');
-        }
+public function store(Request $request)
+{
+    $request->validate([
+        'name'  => 'required|string|max:255',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        Category::create($data);
+    $category = new Category();
+    $category->name = $request->name;
 
-        return redirect()->route('subCategories.index')->with('success', 'Category added successfully.');
+    if ($request->hasFile('image')) {
+        // Store the image using Laravel's Storage facade
+        $category->image = $request->file('image')->store('categories', 'public');
     }
+
+    $category->save();
+
+    return redirect()->route('categories.index')->with('success', 'Category added successfully.');
+}
 
     // Show edit form
     public function categoriesEdit($id)
     {
         $category = Category::findOrFail($id);
-        return view('admin.subCategories.edit', compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     // Update a category
-    public function categoriesUpdate(Request $request, $id)
+    public function Update(Request $request, $id)
     {
         $request->validate([
             'name'  => 'required|string|max:255',
@@ -68,11 +75,11 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return redirect()->route('subCategories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
 
     // Delete a category
-    public function categoriesDestroy($id)
+    public function destroy($id)
     {
         $category = Category::findOrFail($id);
 
@@ -83,81 +90,94 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        return redirect()->route('subCategories.index')->with('success', 'Category deleted successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
-    // Show Sub categories
-    public function subCategories()
-    {
-     
-         $categories = Category::all();
-        return view('admin.subCategories', compact('categories'));
+   // Show Subcategories
+
+public function subCategories(Request $request)
+{
+    $query = Subcategory::with('category');
+
+    if ($request->has('category_id') && $request->category_id != '') {
+        $query->where('category_id', $request->category_id);
     }
-    // Store a new category
-    public function subCategoriesStore(Request $request)
-    {
-        $request->validate([
-            'name'  => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
 
-        $data = [
-            'name' => $request->name,
-        ];
+    $subCategories = $query->paginate(); // 10 items per page
+    $categories = Category::all(); // for filter dropdown
 
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('subCategories', 'public');
+    return view('admin.subCategories', compact('subCategories', 'categories'));
+}
+
+// Store a new Subcategory
+public function subCategoriesStore(Request $request)
+{
+    $request->validate([
+        'category_id' => 'required|exists:categories,id',
+        'name'        => 'required|string|max:255',
+        'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    $data = [
+        'category_id' => $request->category_id,
+        'name'        => $request->name,
+    ];
+
+    if ($request->hasFile('image')) {
+        $data['image'] = $request->file('image')->store('subcategories', 'public');
+    }
+
+    Subcategory::create($data);
+
+    return redirect()->route('subCategories.index')->with('success', 'Subcategory added successfully.');
+}
+
+// Show edit form
+public function subCategoriesEdit($id)
+{
+    $subcategory = Subcategory::findOrFail($id);
+    return view('admin.subCategories.edit', compact('subcategory'));
+}
+
+// Update a subcategory
+public function subCategoriesUpdate(Request $request, $id)
+{
+    $request->validate([
+        'category_id' => 'required|exists:categories,id',
+        'name'        => 'required|string|max:255',
+        'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    $subcategory = Subcategory::findOrFail($id);
+    $subcategory->category_id = $request->category_id;
+    $subcategory->name        = $request->name;
+
+    if ($request->hasFile('image')) {
+        // Delete old image
+        if ($subcategory->image && Storage::disk('public')->exists($subcategory->image)) {
+            Storage::disk('public')->delete($subcategory->image);
         }
 
-        Category::create($data);
-
-        return redirect()->route('subCategories.index')->with('success', 'Category added successfully.');
+        // Store new image
+        $subcategory->image = $request->file('image')->store('subcategories', 'public');
     }
 
-    // Show edit form
-    public function subCategoriesEdit($id)
-    {
-        $category = Category::findOrFail($id);
-        return view('admin.subCategories.edit', compact('category'));
+    $subcategory->save();
+
+    return redirect()->route('subCategories.index')->with('success', 'Subcategory updated successfully.');
+}
+
+// Delete a subcategory
+public function subCategoriesDestroy($id)
+{
+    $subcategory = Subcategory::findOrFail($id);
+
+    // Delete image from storage
+    if ($subcategory->image && Storage::disk('public')->exists($subcategory->image)) {
+        Storage::disk('public')->delete($subcategory->image);
     }
 
-    // Update a category
-    public function subCategoriesUpdate(Request $request, $id)
-    {
-        $request->validate([
-            'name'  => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+    $subcategory->delete();
 
-        $category       = Category::findOrFail($id);
-        $category->name = $request->name;
-
-        if ($request->hasFile('image')) {
-            // Delete old image
-            if ($category->image && Storage::disk('public')->exists($category->image)) {
-                Storage::disk('public')->delete($category->image);
-            }
-
-            // Store new image
-            $category->image = $request->file('image')->store('categories', 'public');
-        }
-
-        $category->save();
-
-        return redirect()->route('subCategories.index')->with('success', 'Category updated successfully.');
-    }
-
-    // Delete a category
-    public function subCategoriesDestroy($id)
-    {
-        $category = Category::findOrFail($id);
-
-        // Delete image from storage
-        if ($category->image && Storage::disk('public')->exists($category->image)) {
-            Storage::disk('public')->delete($category->image);
-        }
-
-        $category->delete();
-
-        return redirect()->route('subCategories.index')->with('success', 'Category deleted successfully.');
-    }
+    return redirect()->route('subCategories.index')->with('success', 'Subcategory deleted successfully.');
+}
 }
