@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -23,7 +24,7 @@ class AuthController extends Controller
     ]);
 
     // Log the input credentials for debugging
-    \Log::info('Login attempt with credentials:', $request->only('email', 'password'));
+    // \Log::info('Login attempt with credentials:', $request->only('email', 'password'));
 
     // Prepare credentials
     $credentials = $request->only('email', 'password');
@@ -32,13 +33,13 @@ class AuthController extends Controller
     $remember = $request->has('remember');
 
   if (Auth::attempt($credentials, $remember)) {
-    \Log::info('Login successful for user: ' . Auth::user()->email);
+    // \Log::info('Login successful for user: ' . Auth::user()->email);
     return response()->json([
         'message'  => 'Login successful',
         'redirect' => '/my-account',
     ]);
 } else {
-    \Log::info('Login failed for user with email: ' . $request->email);
+    // \Log::info('Login failed for user with email: ' . $request->email);
     return response()->json([
         'errors' => [
             'login' => ['Invalid credentials'],
@@ -117,7 +118,7 @@ if ($request->hasFile('profile_image')) {
 }
 public function logout()
 {
-    \Log::info('Logging out user: ' . Auth::user()->email);
+    // \Log::info('Logging out user: ' . Auth::user()->email);
 
     Auth::logout();
     session()->invalidate();

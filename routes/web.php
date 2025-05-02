@@ -110,8 +110,11 @@ Route::get('/products/{id}/edit', [ProductDetailController::class, 'edit'])->nam
 Route::put('/products/{id}', [ProductDetailController::class, 'update'])->name('products.update');
 Route::delete('/products/{id}', [ProductDetailController::class, 'destroy'])->name('products.destroy');
 
-Route::get('/allUsers', [AdminController::class, 'allUsers'])->name('admin.allUsers');
 
+Route::get('/allUsers', [AdminController::class, 'allUsers'])->name('admin.allUsers');
+Route::post('/allUsers', [AdminController::class, 'store'])->name('store');
+Route::put('/allUsers/{id}', [AdminController::class, 'update'])->name('update');
+Route::delete('/allUsers/{id}', [AdminController::class, 'destroy'])->name('users.destroy');
 
 
 });

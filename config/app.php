@@ -134,7 +134,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+         Illuminate\Log\LogServiceProvider::class,
         /*
          * Third Party Service Providers...
          */

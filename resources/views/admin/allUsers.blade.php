@@ -4,9 +4,8 @@
 @include('admin.includes.header')
 
 <div id="layoutSidenav">
-
     @include('admin.includes.sidebar')
-    
+
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
@@ -17,7 +16,7 @@
                     </button>
                 </div>
 
-                <!-- Reusable Add/Edit User Modal -->
+                <!-- Modal -->
                 <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <form id="userForm" method="POST" enctype="multipart/form-data">
@@ -30,12 +29,20 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label for="userName" class="form-label">Full Name</label>
-                                        <input type="text" name="name" id="userName" class="form-control" required>
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" name="first_name" id="firstName" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <input type="text" name="last_name" id="lastName" class="form-control" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="userEmail" class="form-label">Email</label>
                                         <input type="email" name="email" id="userEmail" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="userMobile" class="form-label">Mobile</label>
+                                        <input type="text" name="mobile" id="userMobile" class="form-control" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="userProfileImage" class="form-label">Profile Image</label>
@@ -44,7 +51,11 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="userPassword" class="form-label">Password</label>
-                                        <input type="password" name="password" id="userPassword" class="form-control">
+                                        <input class="form-control" id="userPassword" type="password" name="password" placeholder="Create a password" >
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputPasswordConfirm" class="form-label">Confirm Password</label>
+                                        <input class="form-control" id="inputPasswordConfirm" type="password" name="password_confirmation" placeholder="Confirm password" >
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -81,10 +92,9 @@
                                     </td>
                                     <td class="text-center">
                                         <button class="btn btn-lg btn-warning"
-                                            onclick="openEditModal({{ $user->id }}, '{{ $user->name }}', '{{ $user->email }}', '{{ $user->profile_image }}')">
+                                            onclick="openEditModal({{ $user->id }}, '{{ $user->first_name }}', '{{ $user->last_name }}', '{{ $user->email }}', '{{ $user->mobile }}', '{{ $user->profile_image }}')">
                                             <i class="fas fa-edit"></i>
                                         </button>
-
                                         <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline"
                                               onsubmit="return confirm('Are you sure you want to delete this user?');">
                                             @csrf
@@ -97,39 +107,97 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </main>
-        @include('admin.includes.footer')
+
+        <!-- Toast Container -->
+        <div id="toast-container" style="position: fixed; top: 1rem; right: 1rem; z-index: 9999;"></div>
 
         <script>
         function openAddModal() {
-            document.getElementById('userModalLabel').innerText = 'Add User';
-            document.getElementById('userForm').action = "{{ route('user_register') }}";
+            const form = document.getElementById('userForm');
+            form.reset();
             document.getElementById('formMethod').value = 'POST';
-            document.getElementById('userName').value = '';
-            document.getElementById('userEmail').value = '';
-            document.getElementById('userProfileImage').value = '';
+            form.action = "{{ route('store') }}";
+            document.getElementById('userModalLabel').textContent = 'Add User';
+            document.getElementById('modalSubmitBtn').textContent = 'Save';
             document.getElementById('existingImage').innerHTML = '';
-            document.getElementById('userPassword').value = '';
             new bootstrap.Modal(document.getElementById('userModal')).show();
         }
 
-        function openEditModal(id, name, email, profileImage) {
-            document.getElementById('userModalLabel').innerText = 'Edit User';
-            document.getElementById('userForm').action = `/admin/users/${id}`;
+        function openEditModal(id, firstName, lastName, email, mobile, profileImage) {
+            const form = document.getElementById('userForm');
+            form.reset();
+            form.action = `/admin/allUsers/${id}`;
             document.getElementById('formMethod').value = 'PUT';
-            document.getElementById('userName').value = name;
+            document.getElementById('userModalLabel').textContent = 'Edit User';
+            document.getElementById('modalSubmitBtn').textContent = 'Update';
+            document.getElementById('firstName').value = firstName;
+            document.getElementById('lastName').value = lastName;
             document.getElementById('userEmail').value = email;
-            document.getElementById('userProfileImage').value = '';
-            
-            let imageHtml = profileImage
-                ? `<img src="/storage/${profileImage}" width="70" alt="Current Image">`
+            document.getElementById('userMobile').value = mobile;
+            document.getElementById('existingImage').innerHTML = profileImage
+                ? `<img src="/storage/${profileImage}" alt="Current Image" class="img-thumbnail" width="100">`
                 : '<span class="text-muted">No Image</span>';
-            document.getElementById('existingImage').innerHTML = imageHtml;
-
             new bootstrap.Modal(document.getElementById('userModal')).show();
+        }
+
+        document.getElementById('userForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+            const method = document.getElementById('formMethod').value;
+
+            if (method === 'PUT') {
+                formData.append('_method', 'PUT');
+            }
+
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                },
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) return response.json().then(err => { throw err });
+                return response.json();
+            })
+            .then(data => {
+                showToast('success', data.message || 'User saved successfully!');
+                setTimeout(() => location.reload(), 1500);
+            })
+            .catch(error => {
+                if (error.errors) {
+                    Object.values(error.errors).flat().forEach(msg => showToast('error', msg));
+                } else {
+                    showToast('error', 'An unknown error occurred.');
+                }
+            });
+        });
+
+        function showToast(type, message) {
+            const toast = document.createElement('div');
+            toast.className = `toast align-items-center text-white ${type === 'error' ? 'bg-danger' : 'bg-success'} border-0`;
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'assertive');
+            toast.setAttribute('aria-atomic', 'true');
+            toast.style.minWidth = '250px';
+            toast.style.marginBottom = '0.5rem';
+            toast.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">${message}</div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>`;
+            document.getElementById('toast-container').appendChild(toast);
+            const bsToast = new bootstrap.Toast(toast, { delay: 3000 });
+            bsToast.show();
+            toast.addEventListener('hidden.bs.toast', () => toast.remove());
         }
         </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        @include('admin.includes.footer')
     </div>
 </div>
