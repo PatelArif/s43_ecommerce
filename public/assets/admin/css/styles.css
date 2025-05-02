@@ -11015,7 +11015,7 @@ body {
   position: relative;
 }
 .sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
-  font-size: 0.9rem;
+  font-size: 20px;
 }
 .sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-sidenav-collapse-arrow {
   display: inline-block;
@@ -11023,7 +11023,7 @@ body {
   transition: transform 0.15s ease;
 }
 .sb-sidenav .sb-sidenav-menu .nav .nav-link.collapsed .sb-sidenav-collapse-arrow {
-  transform: rotate(-90deg);
+  transform: rotate(90deg);
 }
 .sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-nested {
   margin-left: 1.5rem;
@@ -11084,7 +11084,7 @@ body {
   color: #0d6efd;
 }
 .sb-sidenav-light .sb-sidenav-menu .nav-link.active {
-  color: #0d6efd;
+  color: #3333;
 }
 .sb-sidenav-light .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
   color: #0d6efd;
@@ -11262,3 +11262,46 @@ body {
  .datatable-pagination a:focus {
    box-shadow: none !important;
  }
+ /* Rotate icon when open */
+ .sb-sidenav .sb-sidenav-collapse-arrow i {
+   transition: transform 0.3s ease;
+    color: #014421!important;
+ }
+
+ .sb-sidenav .nav-link[aria-expanded="true"] .sb-sidenav-collapse-arrow i {
+   transform: rotate(90deg);
+    color: #014421!important;
+
+ }
+.custm_link.active{
+    background-color: #ffffff !important;
+      color: #014421 !important;
+      font-weight: bold;
+      border-left: 4px solid #014421;
+      margin-left: -1rem;
+      padding-left: 1.25rem;
+
+}
+        /* All pagination buttons */
+        .page-link.active,
+        .datatable-pagination a.active,
+        .active>.page-link,
+        .datatable-pagination .active>a {
+          background-color: #014421 !important;
+          color: #ffffff !important;
+        }
+    
+        .page-link:focus,.datatable-pagination a:focus {
+          box-shadow: none !important;
+        }
+                .page-link
+        {
+                  color: #333 !important;
+                  border:0px solid !important;
+                }
+        .page-link,
+        .datatable-pagination a {
+          color: #333 !important;
+        }
+    
+        /* Hover state */

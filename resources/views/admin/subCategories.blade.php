@@ -1,20 +1,7 @@
 @push('title')
 <title>S4E Admin</title>
 @endpush
-<style>
-    /* All pagination buttons */
- .page-link.active, .datatable-pagination a.active, .active > .page-link, .datatable-pagination .active > a{
-  background-color:#014421 !important;
-  color:#ffffff !important;
- }
- .page-link:focus, .datatable-pagination a:focus{
-  box-shadow:none!important;
- }
- .page-link, .datatable-pagination a{
-  color:#333!important;
- }
-    /* Hover state */
-</style>
+
 
 
 @include('admin.includes.header')

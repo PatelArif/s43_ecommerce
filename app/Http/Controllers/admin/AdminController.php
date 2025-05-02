@@ -1,14 +1,18 @@
 <?php
 namespace App\Http\Controllers\admin;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
-use App\Models\AdminUser;
-use App\Models\User;
+
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+use App\Models\AdminUser;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Subcategory;
 
 class AdminController extends Controller
 {
@@ -20,10 +24,15 @@ class AdminController extends Controller
     {
         return view('admin.login');
     }
-            public function dashboard()
-    {
-        return view('admin.index');
-    }
+   public function dashboard()
+{
+    $categoryCount = Category::count();
+    $subCategoryCount = SubCategory::count();
+    $productCount = Product::count();
+    $userCount = User::count();
+
+    return view('admin.index', compact('categoryCount', 'subCategoryCount', 'productCount', 'userCount'));
+}
   
 
      public function layoutSidenavLight()
