@@ -10,4 +10,9 @@ class Category extends Model
 
     // You can define fillable or guarded properties here if needed
     protected $fillable = ['name', 'image'];
+    public function subcategories()
+{
+    return $this->hasMany(\App\Models\Subcategory::class);
+}
+
 }

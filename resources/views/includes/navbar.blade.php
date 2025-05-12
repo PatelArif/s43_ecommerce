@@ -93,17 +93,26 @@
                                         Shop
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </a>
-                                    <ul class="submenu">
-                                        <li><a href="{{ url('/allBags') }}">All Categories</a></li>
-                                        <li><a href="{{ url('/juteBags') }}">Jute Bags</a></li>
-                                        <li><a href="{{ url('/canvasBags') }}">Canvas Bags </a></li>
-                                        <li><a href="{{ url('/banjaraBags') }}">Banjara Bags </a></li>
-                                        <li><a href="{{ url('/totBags') }}">Tot Bags </a></li>
+                                <ul class="submenu">
+    <li><a href="{{ url('/allCategories') }}">All Categories</a></li>
 
-                                        {{-- <li><a href="{{ url('/shop-right-sidebar') }}">Shop Right Sidebar</a></li> --}}
-                                        <li><a href="{{ url('/shop-cart') }}">Shop Cart</a></li>
-                                        <li><a href="{{ url('/checkout') }}">Checkout</a></li>
-                                    </ul>
+    @foreach($categories as $category)
+        <li class="submenu-category">
+            <a href="{{ url('/category/' . $category->id) }}">{{ $category->name }}</a>  <!-- Link to category page -->
+            @if($category->subcategories->count() > 0)
+                <ul class="submenu">
+                    @foreach($category->subcategories as $subcategory)
+                        <li><a href="{{ url('/subcategory/' . $subcategory->id) }}">{{ $subcategory->name }}</a></li>  <!-- Link to subcategory page -->
+                    @endforeach
+                </ul>
+            @endif
+        </li>
+    @endforeach
+
+    <li><a href="{{ url('/shop-cart') }}">Shop Cart</a></li>
+    <li><a href="{{ url('/checkout') }}">Checkout</a></li>
+</ul>
+
                                 </li>
                                 <li>
                                     <a href="{{ url('#') }}">

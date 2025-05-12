@@ -12,15 +12,27 @@ use Intervention\Image\Facades\Image;
 
 class CategoryController extends Controller
 {
-    public function detail($slug)
-    {
-        return view('productCategory', compact('slug', ));
-    }
+public function detail($id)
+{
+    $category = Category::with('subcategories')->findOrFail($id);
+
+    $categories = Category::with('subcategories')->get();
+    return view('productCategory', compact('categories','category'));
+}
+
+
+
     public function index()
     {
 
         $categories = Category::all();
         return view('admin.allCategories', compact('categories'));
+    }
+     public function show()
+    {
+
+        $categories = Category::withCount('subcategories')->get();
+        return view('categories', compact('categories'));
     }
     // Store a new category
 

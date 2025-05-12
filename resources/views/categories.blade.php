@@ -59,10 +59,11 @@
         <section class="shop-product-section section-padding pt-0 fix">
             <div class="container">
                 <div class="row g-4">
+                 @foreach($categories as $category)
                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                         <div class="shop-product-item">
                             <div class="product-image">
-                                <img src="assets/img/product/category/jute/7.webp" alt="img">
+                                <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}">
                                 <ul class="shop-icon d-flex justify-content-center align-items-center">
                                     <li>
                                         <a href="product-details.html"><i class="far fa-heart"></i></a>
@@ -79,102 +80,23 @@
                             </div>
                             <div class="content">
                                 <h3>
-                                    <a href="shop-grid.html">Jute Bags</a>
+                                    <a href="shop-grid.html">{{ $category->name }}</a>
                                 </h3>
-                                <p>23 Products</p>
-                                <a href="{{url('allBags/juteBags/')}}" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
+                                <p>{{ $category->subcategories_count ?? '0' }} Products</p>
+                                <a href="{{ url('/allCategories/' . $category->id) }}" class="link-btns">
+                                    Shop Now <i class="fa-solid fa-chevron-right"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                        <div class="shop-product-item">
-                            <div class="product-image">
-                                <img src="assets/img/product/jute.png" alt="img">
-                                <ul class="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="product-details.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
-                                    </li>
-                                    <li>
-                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="content">
-                                <h3>
-                                    <a href="shop-grid.html">Canvas bags</a>
-                                </h3>
-                                <p>23 Products</p>
-                                <a href="{{url('allBags/CanvasBags/')}}" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                        <div class="shop-product-item">
-                            <div class="product-image">
-                                <img src="assets/img/product/16b.png" alt="img">
-                                <ul class="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="product-details.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
-                                    </li>
-                                    <li>
-                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="content">
-                                <h3>
-                                    <a href="shop-grid.html">Tote Bags</a>
-                                </h3>
-                                <p>23 Products</p>
-                                <a href="{{url('allBags/ToteBags/')}}" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-               <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                        <div class="shop-product-item">
-                            <div class="product-image">
-                                <img src="assets/img/product/category/banajara/1.jpg" alt="img">
-                                <ul class="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="product-details.html"><i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
-                                    </li>
-                                    <li>
-                                        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="content">
-                                <h3>
-                                    <a href="shop-grid.html">Banjara Bags</a>
-                                </h3>
-                                <p>23 Products</p>
-                                <a href="{{url('allBags/banjaraBags/')}}" class="link-btns">Shop Now <i class="fa-solid fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                     
+                    @endforeach                     
                 </div>
-                <div class="shop-bottom">
+                {{-- <div class="shop-bottom">
                     <p class="wow fadeInUp" data-wow-delay=".3s">Showing 12 of 46 products</p>
                     <span class="text"></span>
                     <a href="product-details.html" class="theme-btn border-color wow fadeInUp" data-wow-delay=".5s">Load More</a>
-                </div>
-            </div>
+                </div> --}}
+                     </div>
         </section>
 
         <!-- Cta-Section Start -->

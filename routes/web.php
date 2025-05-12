@@ -8,11 +8,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\AdminController;
-
-
-
-
-
 use Illuminate\Support\Facades\Route;
 
 // Index Pages
@@ -28,11 +23,13 @@ Route::get('/order', [ShopController::class, 'order'])->name('order');
 
 
 // Category Routes
-Route::get('/allBags', [GeneralController::class, 'categories'])->name('categories');
-Route::get('/allBags/{slug}/', [CategoryController::class, 'detail'])->name('detail');
+Route::get('/allCategories', [CategoryController::class, 'show'])->name('categories');
+Route::get('/allCategories/{id}/', [CategoryController::class, 'detail'])->name('detail');
+Route::get('/allCategories/{id}/{sub_id}', [ProductDetailController::class, 'allproducts'])->name('allproducts');
+
 
 // Sub Category Routes
-Route::get('/allBags/{slug}/{id}', [SubCategoryController::class, 'productcategory'])->name('productcategory');
+Route::get('/allCategories/{slug}/{id}', [SubCategoryController::class, 'productcategory'])->name('productcategory');
 
 // Product routes
 Route::get('/juteBags', [ProductDetailController::class, 'juteBags'])->name('jute');

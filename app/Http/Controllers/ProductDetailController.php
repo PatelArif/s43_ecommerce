@@ -15,12 +15,24 @@ class ProductDetailController extends Controller
 {
     public function productDetails()
     {
-        return view('product-details');
+        
+          $categories = Category::with('subcategories')->get(); 
+        return view('product-details', compact('categories'));
     }
-        public function juteBags()
-    {
-        return view('juteBags');
-    }
+
+public function allproducts($id, $sub_id)
+{
+    // Fetch the category by its ID, including its subcategories
+   $categories = Category::with('subcategories')->get();
+
+
+    // Fetch the subcategory by its ID
+    $subcategory = Subcategory::findOrFail($sub_id);
+
+    // Return the view with both category and subcategory data
+    return view('allproducts', compact('subcategory', 'categories'));
+}
+
        public function totBags()
     {
         return view('totBags');
