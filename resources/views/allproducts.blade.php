@@ -173,9 +173,13 @@
                                             @endfor
                                         </div>
                                         <h6>{{ $product->after_discount_price }}  <del>${{ $product->price }}</del> <span class="text-danger">-{{ $product->discount }}%</span></h6>
-                                        
+                                         <p class="text-danger p-5">  <a href="{{url('/checkout')}}" class="theme-btn">
+                                                    <span> Buy now</span>
+                                                </a></p> 
                                     </div>
+                                    
                                 </div>
+                                
                             </div>
                         @endforeach
                     </div>

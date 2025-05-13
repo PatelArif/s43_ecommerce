@@ -14,11 +14,15 @@ class CategoryController extends Controller
 {
 public function detail($id)
 {
-    $category = Category::with('subcategories')->findOrFail($id);
+    $category = Category::with(['subcategories' => function ($query) {
+        $query->withCount('products');
+    }])->findOrFail($id);
 
     $categories = Category::with('subcategories')->get();
-    return view('productCategory', compact('categories','category'));
+
+    return view('productCategory', compact('categories', 'category'));
 }
+
 
 
 

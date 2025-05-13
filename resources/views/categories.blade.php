@@ -82,7 +82,7 @@
                                 <h3>
                                     <a href="shop-grid.html">{{ $category->name }}</a>
                                 </h3>
-                                <p>{{ $category->subcategories_count ?? '0' }} Products</p>
+                                <p>{{ $category->subcategories_count ?? '0' }} Categories</p>
                                 <a href="{{ url('/allCategories/' . $category->id) }}" class="link-btns">
                                     Shop Now <i class="fa-solid fa-chevron-right"></i>
                                 </a>

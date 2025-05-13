@@ -157,7 +157,7 @@
                     <ul class="contact-list">
                         <li>
                             <i class="fa-solid fa-phone"></i>
-                            <a href="tel:+98679 70493">+98679 70493</a>
+                            <a href="tel:+91 9867970493">9867970493</a>
                         </li>
                         <li>
                             <i class="fa-solid fa-envelope"></i>
@@ -165,7 +165,7 @@
                         </li>
                     </ul>
                     <p>
-                        Summer sale discount off <span class="color">50%</span> off! <span>Shop Now</span>
+                    <span class="color">Get upto 50%</span> off On Every Purchase!  <span>Shop Now</span>
                     </p>
                     <div class="flag-wrap">
                         <div class="flag">

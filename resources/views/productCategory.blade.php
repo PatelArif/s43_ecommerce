@@ -58,7 +58,10 @@
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-regular fa-star"></i>
                         </div>
-                        <h6>$76.00 <del>$99.00</del></h6>
+                        <p>{{ $subcategory->products_count ?? 0 }} Products</p>
+                           <a href="{{ url('/allCategories/' . $category->id . '/' . $subcategory->id) }}" class="link-btns">
+                                    Shop Now <i class="fa-solid fa-chevron-right"></i>
+                                </a>
                     </div>
                 </div>
             </div>

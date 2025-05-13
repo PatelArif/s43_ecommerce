@@ -7,12 +7,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Subcategory;
 class AuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('login'); // Make sure this Blade file exists
+        $categories = Category::with('subcategories')->get();
+        return view('login', compact('categories'));
+
     }
 
    public function login(Request $request)
@@ -113,8 +117,9 @@ if ($request->hasFile('profile_image')) {
     if (!$user) {
         return redirect('/login');
     }
+    $categories = Category::with('subcategories')->get();
+    return view('my-account', compact('categories','user'));
 
-    return view('my-account', ['user' => $user]);
 }
 public function logout()
 {

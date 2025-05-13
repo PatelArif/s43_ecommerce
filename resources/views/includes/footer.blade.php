@@ -7,7 +7,7 @@
                             <div class="single-footer-widget">
                                 <div class="widget-head">
                                     <a href="index-2.html" class="footer-logo">
-                                        <img src="assets/img/logo/white-logo.svg" alt="logo-img">
+                                        <img src="assets/img/logo/logo4.png" alt="logo-img"style="max-width: 100px;">
                                     </a>
                                 </div>
                                 <div class="footer-content">
@@ -17,9 +17,13 @@
                                         </p>
                                         <div class="social-icon style-3 d-flex align-items-center">
                                             <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
+                                            <a href="https://www.instagram.com/" target="_blank">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
+
+                                            {{-- <a href="#"><i class="fab fa-twitter"></i></a> --}}
                                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                            <a href="#"><i class="fa-brands fa-vimeo-v"></i></a>
+                                            {{-- <a href="#"><i class="fa-brands fa-vimeo-v"></i></a> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +103,7 @@
                                 <div class="footer-content">
                                     <div class="text">
                                         <p>Got Questions? Call us</p>
-                                        <a href="tel:+67041390762">+670 413 90 762</a>
+                                        <a href="tel:+91 9867970493"> 9867970493</a>
                                     </div>
                                     <ul class="contact-list">
                                         <li>
@@ -108,8 +112,8 @@
                                         </li>
                                         <li>
                                             <i class="fa-regular fa-location-dot"></i>
-                                            79 Sleepy Hollow St.<br>
-                                            Jamaica, New York 1432
+                                           Mumbai<br>
+                                            
                                         </li>
                                     </ul>
                                 </div>
@@ -120,7 +124,7 @@
                 <div class="footer-bottom">
                     <div class="footer-wrapper style-2">
                       <p class="wow fadeInUp" data-wow-delay=".3s">
-                            ©All Rights reserved | by <span>Ecomas.</span>
+                            ©All Rights reserved | by <span>Daniyal Studios</span>
                         </p>
                         <div class="bottom-list wow fadeInUp" data-wow-delay=".5s">
                             <div class="app-image">

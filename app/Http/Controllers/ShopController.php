@@ -1,21 +1,31 @@
 <?php
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Subcategory;
 class ShopController extends Controller
 {
     public function cart()
     {
-        return view('shop-cart');
+        $categories = Category::with('subcategories')->get();
+        return view('shop-cart', compact('categories'));
+
+ 
     }
 
     public function checkout()
     {
-        return view('checkout');
+        $categories = Category::with('subcategories')->get();
+        return view('checkout', compact('categories'));
+
     }
 
     public function order()
     {
-        return view('order');
+        $categories = Category::with('subcategories')->get();
+        return view('order', compact('categories'));
+
     }
  
     // public function leftSidebar()

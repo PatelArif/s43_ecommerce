@@ -102,7 +102,7 @@
                                 @if($category->subcategories->count() > 0)
                                     <ul class="submenu">
                                         @foreach($category->subcategories as $subcategory)
-                                            <li><a href="{{ url('/allCategories/' . $subcategory->id) }}">{{ $subcategory->name }}</a></li>  <!-- Link to subcategory page -->
+                                            <li><a href="{{ url('/allCategories/' . $category->id.'/'. $subcategory->id) }}">{{ $subcategory->name }}</a></li>  <!-- Link to subcategory page -->
                                         @endforeach
                                     </ul>
                                 @endif
