@@ -36,7 +36,7 @@ Route::get('/juteBags', [ProductDetailController::class, 'juteBags'])->name('jut
 Route::get('/canvasBags', [ProductDetailController::class, 'canvasBags'])->name('canvasBags');
 Route::get('/banjaraBags', [ProductDetailController::class, 'banjaraBags'])->name('banjara');
 Route::get('/totBags', [ProductDetailController::class, 'totBags'])->name('tot');
-Route::get('/product-details', [ShopController::class, 'productDetails'])->name('productDetails');
+Route::get('/product-details', [ProductDetailController::class, 'productDetails'])->name('productDetails');
 // Route::get('/shop-left-sidebar', [ShopController::class, 'leftSidebar'])->name('shopLeftSidebar');
 // Route::get('/shop-right-sidebar', [ShopController::class, 'rightSidebar'])->name('shopRightSidebar');
 

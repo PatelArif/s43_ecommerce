@@ -78,7 +78,8 @@
                     </td>
                     <td class="text-center">
                    <button class="btn btn-lg btn-warning"
-                        onclick="openEditModal({{ $category->id }}, '{{ $category->name }}', '{{ $category->Image }}')">
+                      onclick="openEditModal({{ $category->id }}, '{{ addslashes($category->name) }}', '{{ $category->image }}')"
+>
                         <i class="fas fa-edit"></i>
                     </button>
 
@@ -101,6 +102,10 @@
                 </main>
              @include('admin.includes.footer')
              <script>
+    const assetBaseUrl = "{{ asset('storage') }}";
+  
+</script>
+             <script>
 function openAddModal() {
     document.getElementById('categoryModalLabel').innerText = 'Add Category';
     document.getElementById('categoryForm').action = "{{ route('categories.store') }}";
@@ -117,12 +122,15 @@ function openEditModal(id, name, image) {
     document.getElementById('formMethod').value = 'PUT';
     document.getElementById('categoryName').value = name;
     document.getElementById('categoryImage').value = '';
-    
+
     let imageHtml = image
-        ? `<img src="/storage/${image}" width="70" alt="Current Image">`
+        ? `<img src="${assetBaseUrl}/${image}" width="70" alt="Current Image">`
         : '<span class="text-muted">No Image</span>';
+
     document.getElementById('existingImage').innerHTML = imageHtml;
 
     new bootstrap.Modal(document.getElementById('categoryModal')).show();
 }
+
+
 </script>

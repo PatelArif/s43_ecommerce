@@ -94,20 +94,20 @@
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </a>
                                 <ul class="submenu">
-    <li><a href="{{ url('/allCategories') }}">All Categories</a></li>
+                        <li><a href="{{ url('/allCategories') }}">All Categories</a></li>
 
-    @foreach($categories as $category)
-        <li class="submenu-category">
-            <a href="{{ url('/category/' . $category->id) }}">{{ $category->name }}</a>  <!-- Link to category page -->
-            @if($category->subcategories->count() > 0)
-                <ul class="submenu">
-                    @foreach($category->subcategories as $subcategory)
-                        <li><a href="{{ url('/subcategory/' . $subcategory->id) }}">{{ $subcategory->name }}</a></li>  <!-- Link to subcategory page -->
-                    @endforeach
-                </ul>
-            @endif
-        </li>
-    @endforeach
+                        @foreach($categories as $category)
+                            <li class="submenu-category">
+                                <a href="{{ url('/allCategories/' . $category->id) }}">{{ $category->name }}</a>  <!-- Link to category page -->
+                                @if($category->subcategories->count() > 0)
+                                    <ul class="submenu">
+                                        @foreach($category->subcategories as $subcategory)
+                                            <li><a href="{{ url('/allCategories/' . $subcategory->id) }}">{{ $subcategory->name }}</a></li>  <!-- Link to subcategory page -->
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @endforeach
 
     <li><a href="{{ url('/shop-cart') }}">Shop Cart</a></li>
     <li><a href="{{ url('/checkout') }}">Checkout</a></li>

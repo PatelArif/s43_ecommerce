@@ -111,17 +111,14 @@ public function store(Request $request)
         'base'           => 'nullable|string',
     ]);
 
-    // Calculate after discount price
     $price = $request->input('price');
     $discount = $request->input('discount', 0);
     $afterDiscountPrice = $price - ($price * ($discount / 100));
 
     $data = $request->only([
         'category_id', 'subcategory_id', 'title', 'description',
-        'price', 'discount', 'height', 'width', 'handle', 'base'
+        'price', 'discount', 'height', 'width', 'handle', 'base','after_discount_price'
     ]);
-
-    // Add the calculated after discount price
     $data['after_discount_price'] = $afterDiscountPrice;
 
     $categoryName = Str::slug(Category::find($request->category_id)->name);
@@ -132,11 +129,18 @@ public function store(Request $request)
             $suffix   = $img === 'main_image' ? 'main' : $index;
             $file     = $request->file($img);
             $filename = "{$productTitle}-{$suffix}.{$file->getClientOriginalExtension()}";
-            $path     = storage_path("app/public/{$categoryName}/{$filename}");
+            
+            // Full path to save image
+            $folderPath = storage_path("app/public/{$categoryName}");
+            $fullPath = "{$folderPath}/{$filename}";
 
-            $image = Image::make($file); // Use Intervention Image
+            // ✅ Ensure directory exists
+            if (!file_exists($folderPath)) {
+                mkdir($folderPath, 0755, true);
+            }
 
-            // Resize if image size is greater than 2MB
+            $image = Image::make($file);
+
             if ($file->getSize() > 2 * 1024 * 1024) {
                 $image->resize(1200, null, function ($constraint) {
                     $constraint->aspectRatio();
@@ -144,12 +148,13 @@ public function store(Request $request)
                 });
             }
 
-            $image->save($path); // Save image
-            $data[$img] = "{$categoryName}/{$filename}"; // Save the path to the database
+            $image->save($fullPath); // Save to disk
+            $data[$img] = "{$categoryName}/{$filename}"; // Save relative path to DB
         }
     }
 
-    Product::create($data); // Create the product
+    Product::create($data);
+
     return redirect()->route('products.index')->with('success', 'Product added successfully.');
 }
 
@@ -185,7 +190,7 @@ public function update(Request $request, $id)
     // Fill the product fields
     $product->fill($request->only([
         'category_id', 'subcategory_id', 'title', 'description',
-        'price', 'discount', 'height', 'width', 'handle', 'base'
+        'price', 'discount', 'height', 'width', 'handle', 'base','after_discount_price'
     ]));
 
     // Set the calculated after_discount_price

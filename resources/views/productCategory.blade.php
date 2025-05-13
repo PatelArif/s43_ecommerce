@@ -28,7 +28,7 @@
                 <div class="product-details-item">
                     <div class="shop-image">
                         <img src="{{ asset('storage/' . $subcategory->image) }}" alt="{{ $subcategory->name }}">
-                        <ul class="shop-icon d-grid justify-content-center align-items-center">
+                        {{-- <ul class="shop-icon d-grid justify-content-center align-items-center">
                             <li>
                                 <a href="{{ url('/allCategories/' . $category->slug . '/' . $subcategory->slug) }}">
                                     <i class="fa-regular fa-cart-shopping"></i>
@@ -42,7 +42,7 @@
                             <li>
                                 <a href="shop-cart.html"><i class="far fa-heart"></i></a>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     <div class="content">
                         <p>{{ $category->name }}</p>

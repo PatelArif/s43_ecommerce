@@ -132,11 +132,11 @@
                             </ul>
                         </div>
                     </div>
-                    <div id="openButton2">
+                    {{-- <div id="openButton2">
                         <div class="filter-button">
                             <h6><a href="#"><span><img src="assets/img/filter.png" alt="img"></span>Filter</a></h6>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -145,10 +145,10 @@
                     <div class="row">
                         @foreach($subcategory->products as $product)  <!-- Loop through products in this subcategory -->
                             <div class="col-xl-3 col-lg-6 col-md-6">
-                                <div class="product-details-item">
+                                <div class="product-details-item ">
                                     <div class="shop-image">
-                                        <img src="{{ asset('storage/' . $product->image) }}" alt="img">
-                                        <ul class="shop-icon d-grid justify-content-center align-items-center">
+                                        <img src="{{ asset('storage/' . $product->main_image) }}" alt="{{$product->title}}">
+                                        {{-- <ul class="shop-icon d-grid justify-content-center align-items-center">
                                             <li>
                                                 <a href="{{ route('productDetails', $product->id) }}"><i class="fa-regular fa-cart-shopping"></i></a>
                                             </li>
@@ -160,19 +160,20 @@
                                             <li>
                                                 <a href="shop-cart.html"><i class="far fa-heart"></i></a>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                     <div class="content">
                                         <p>{{ $product->store_name }}</p>
                                         <h4>
-                                            <a href="{{ route('productDetails', $product->id) }}">{{ $product->name }}</a>
+                                            <a href="{{ route('productDetails', $product->id) }}">{{ $product->name }}</a> 
                                         </h4>
                                         <div class="star">
                                             @for($i = 0; $i < 5; $i++)
                                                 <i class="fa-solid fa-star"></i>
                                             @endfor
                                         </div>
-                                        <h6>${{ $product->price }} <del>${{ $product->original_price }}</del></h6>
+                                        <h6>{{ $product->after_discount_price }}  <del>${{ $product->price }}</del> <span class="text-danger">-{{ $product->discount }}%</span></h6>
+                                        
                                     </div>
                                 </div>
                             </div>

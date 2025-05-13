@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="product-details-content">
-                            <h3 class="pb-3">{{$id}}</h3>
+                            <h3 class="pb-3"></h3>
                             <div class="star pb-3">
                                 <a href="#"> <i class="fas fa-star"></i></a>
                                 <a href="#"><i class="fas fa-star"></i></a>
