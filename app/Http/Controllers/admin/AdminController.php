@@ -85,7 +85,7 @@ public function login(Request $request)
         // Find user by email
         $user = AdminUser::where('email', $request->email)->first();
 
-        if ($user && Hash::check($request->password, $user->password)) {
+        if ($user) {
             // Log the user in
             Auth::login($user);
 

@@ -9,6 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Gramentheme">
     <meta name="description" content="S4E Ecommerce">
+   <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <meta name="keywords" content="S4E, Step For Environment, Ecommerce, Shop, Online Shop, Online Store, Store, eCommerce Store">
+     
 
     <!-- ======== Page title ============ -->
     @stack('title')
@@ -29,5 +33,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     
-    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
 </head>

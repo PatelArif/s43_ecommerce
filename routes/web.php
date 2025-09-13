@@ -3,11 +3,14 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\FavoritesController;
+
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 // Index Pages
@@ -40,13 +43,26 @@ Route::get('/product-details', [ProductDetailController::class, 'productDetails'
 // Route::get('/shop-left-sidebar', [ShopController::class, 'leftSidebar'])->name('shopLeftSidebar');
 // Route::get('/shop-right-sidebar', [ShopController::class, 'rightSidebar'])->name('shopRightSidebar');
 
+// add to cart route
+Route::post('/favorites/toggle/{id}', [FavoritesController::class, 'toggleFavorite'])->name('favorites.toggle');
+Route::get('/favorites', [FavoritesController::class, 'viewFavorites'])->name('favorites.view');
+Route::delete('/favorites/remove/{id}', [FavoritesController::class,'remove'])->name('favorites.remove');
+Route::post('/favorites/move-to-cart/{id}', [FavoritesController::class, 'moveToCart'])
+    ->name('favorites.moveToCart');
+
+
+Route::post('/cart/add/{id}', [ShopController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/update/{id}', [ShopController::class, 'update'])->name('cart.update');
+Route::delete('/cart/remove/{id}', [ShopController::class, 'remove'])->name('cart.remove');
+
+Route::get('/shop-cart', [ShopController::class, 'cart'])->name('cart');
 
 // General Pages
 Route::get('/about', [GeneralController::class, 'about'])->name('about');
 Route::get('/contact', [GeneralController::class, 'contact'])->name('contact');
 Route::get('/faq', [GeneralController::class, 'faq'])->name('faq');
 Route::get('/notFound', [GeneralController::class, 'notFound'])->name('notFound');
-
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/coming-soon', [GeneralController::class, 'comingSoon'])->name('comingSoon');
 
 // Authentication

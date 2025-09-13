@@ -1,8 +1,21 @@
 @include('includes.head')
 @include('includes.header')
+      <section class="contact-us-section bg-custm contact-padding fix position-relative">
+    <!-- Particles background -->
+    <div id="particles-js" class="particles"></div>
 
+            <div class="container-fluid">
+                <div class="conatct-main-wrapper">
+                    <div class="content p-5">
+                        <h2>About Step4Environment</h2>
+                      
+                    </div>
+                    </div>
+
+                    </div>
+                </section>
          <!-- About-Section Start -->
-         <section class="about-section section-padding fix">
+         <section class="about-section section-padding pt-5 fix">
             <div class="container">
                 <div class="about-wrapper-2">
                     <div class="row g-4 align-items-center">
@@ -121,7 +134,7 @@
          </section> --}}
 
           <!-- Testimonial-Section Start -->
-         <section class="testimonial-section fix">
+         {{-- <section class="testimonial-section fix">
             <div class="testimonial-wrapper">
                 <div class="row g-0">
                     <div class="col-xl-6">
@@ -210,7 +223,7 @@
                     </div>
                 </div>
             </div>
-         </section>
+         </section> --}}
 
         <!-- footer-section Start -->
       

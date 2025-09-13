@@ -1,71 +1,61 @@
 @include('includes.head')
 @include('includes.header')
+@if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: '{{ session('success') }}',
+        });
+    </script>
+@endif
+   <section class="contact-us-section bg-custm contact-padding fix position-relative">
+    <!-- Particles background -->
+    <div id="particles-js" class="particles"></div>
+
+    <div class="container-fluid  position-relative z-10">
+        <div class="conatct-main-wrapper">
+            <div class="content p-5 text-white">
+                <h2>Keep In Touch with Us</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
          <!-- contact-us-Section Start -->
-        <section class="contact-us-section section-padding fix">
+        <section class="contact-us-section section-padding1 fix">
             <div class="container">
                 <div class="conatct-main-wrapper">
-                    <div class="content">
-                        <h2>Keep In Touch with Us</h2>
-                        <ul class="list">
-                            <li>
-                                <a href="index-2.html">Home</a>
-                            </li>
-                            <li>
-                                Contact
-                            </li>
-                        </ul>
-                    </div>
                     <div class="contact-box-wrapper">
                         <div class="row g-4">
                             <div class="col-lg-8">
                                 <div class="comment-form-wrap">
                                     <h3>Sent A Message</h3>
-                                    <form action="https://ex-coders.com/html/ecomas/contact.php" id="contact-form2" method="POST">
-                                        <div class="row g-4">
-                                            <div class="col-lg-12">
-                                                <div class="form-clt">
-                                                    <input type="text" name="name" id="name" placeholder="Your Name">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-clt">
-                                                    <input type="text" name="email" id="email20" placeholder="Email address">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-clt">
-                                                    <div class="form">
-                                                        <select class="single-select w-100">
-                                                            <option> Subject</option>
-                                                            <option>  Subject-1</option>
-                                                            <option> Subject-2</option>
-                                                            <option> Subject-3</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-clt">
-                                                    <textarea name="message" id="message" placeholder="Type your message"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="from-cheak-items">
-                                                    <div class="form-check d-flex gap-2 from-customradio">
-                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                                        <label class="form-check-label" for="flexRadioDefault2">
-                                                            Save my name, email, and website in this browser for the next time I comment.
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <button type="submit" class="theme-btn">
-                                                    Post Comment
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
+        <form id="contact-form2">
+    @csrf
+    <div class="row g-4">
+        <div class="col-lg-12">
+            <div class="form-clt">
+                <input type="text" name="name" id="name" placeholder="Your Name" required>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-clt">
+                <input type="email" name="email" id="email" placeholder="Email address" required>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-clt">
+                <textarea name="message" id="message" placeholder="Type your message" required></textarea>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <button type="submit" class="theme-btn">Post Comment</button>
+        </div>
+    </div>
+</form>
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -76,9 +66,8 @@
                                         </div>
                                         <div class="content">
                                             <h6>
-                                                <a href="mailto:contact@support.com">
-                                                    contact@support.com
-                                                </a>
+                                            <a href="mailto:stepforenvironment01@gmail.com">stepforenvironment01@gmail.com</a>
+
                                             </h6>
                                         </div>
                                     </div>
@@ -88,8 +77,7 @@
                                         </div>
                                         <div class="content">
                                             <h6>
-                                                84 sleepy hollow st. <br>
-                                                jamaica, New York 1432
+                                               Mumbai, India
                                             </h6>
                                         </div>
                                     </div>
@@ -121,11 +109,67 @@
             <div class="container">
                 <div class="map-items">
                     <div class="googpemap">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6678.7619084840835!2d144.9618311901502!3d-37.81450084255415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642b4758afc1d%3A0x3119cc820fdfc62e!2sEnvato!5e0!3m2!1sen!2sbd!4v1641984054261!5m2!1sen!2sbd" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15080.8515767458!2d72.8776558!3d19.0759837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63f1b9aa3a9%3A0x22f0b6e962f8d833!2sMumbai%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sin!4v1693730570000!5m2!1sen!2sin" 
+  width="600" 
+  height="450" 
+  style="border:0;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
                     </div>
                 </div>
             </div>
         </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#contact-form2').on('submit', function(e) {
+        e.preventDefault();
+
+        let formData = {
+            _token: $('input[name=_token]').val(),
+            name: $('#name').val(),
+            email: $('#email').val(),
+            message: $('#message').val()
+        };
+
+        $.ajax({
+            url: "{{ route('contact.store') }}",
+            method: "POST",
+            data: formData,
+            success: function(response) {
+                // Clear form
+                $('#contact-form2')[0].reset();
+
+                // SweetAlert success
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Message Sent!',
+                    text: 'Thank you for contacting us.',
+                });
+            },
+            error: function(xhr) {
+                let errors = xhr.responseJSON.errors;
+                let errorMessage = '';
+
+                $.each(errors, function(key, value){
+                    errorMessage += value + '\n';
+                });
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: errorMessage,
+                });
+            }
+        });
+    });
+});
+</script>
 
 @include('includes.footer')
      

@@ -1,4 +1,5 @@
-   @include('admin.includes.header')
+@include('includes.head')
+@include('includes.header')
 
     <body class="bg-primary">
         <div id="layoutAuthentication">

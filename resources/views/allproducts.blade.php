@@ -4,6 +4,7 @@
 @include('includes.head')
 @include('includes.header')
 
+
 <!-- Modal Version 2 -->
 <div class="modal modal-common-wrap fade" id="exampleModal2" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -82,33 +83,29 @@
         </div>
     </div>
 </div>
+    <section class="contact-us-section bg-custm contact-padding fix position-relative">
+    <!-- Particles background -->
+    <div id="particles-js" class="particles"></div>
 
+            <div class="container-fluid">
+                <div class="conatct-main-wrapper">
+                    <div class="content p-5">
+                        <h2> {{$subcategory->name}}</h2>
+                      
+                    </div>
+                    </div>
+
+                    </div>
+     </section>
 <!-- product-details-Section Start -->
-<section class="product-details-section section-padding fix">
+<section class="product-details-section section-padding pt-0 fix">
     <div class="container">
         <div class="product-details-wrapper">
-            <div class="top-content">
-                <h2>{{$subcategory->name}}</h2>
-                <ul class="list">
-                    <li>Home</li>
-                    <li>{{$subcategory->name}}</li>
-                </ul>
-            </div>
+      
             <div class="product-details-sideber">
                 <div class="product-details-wrap">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a href="#Course" data-bs-toggle="tab" class="nav-link active">
-                                <i class="fa-regular fa-grid-2"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#Curriculum" data-bs-toggle="tab" class="nav-link">
-                                <i class="fas fa-bars"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <p>Showing 1–14 of 26 results</p>
+    
+                    {{-- <p>Showing 1–14 of 26 results</p> --}}
                 </div>
                 <div class="shop-right">
                     <div class="form-clt">

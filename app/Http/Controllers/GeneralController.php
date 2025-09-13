@@ -9,7 +9,6 @@ use App\Models\Subcategory;
 class GeneralController extends Controller
 {
     public function about() {
-        
         $categories = Category::with('subcategories')->get();
         return view('about', compact('categories'));
 
@@ -17,7 +16,8 @@ class GeneralController extends Controller
     }
 
     public function contact() {
-        return view('contact');
+        $categories = Category::with('subcategories')->get();
+        return view('contact', compact('categories'));
     }
 
     public function faq() {

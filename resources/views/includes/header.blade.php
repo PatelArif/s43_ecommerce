@@ -119,36 +119,6 @@
         </div>
         <div class="offcanvas__overlay"></div>
 
-   
-
-         <!-- Header top Section Start -->
-         <div class="header-top-section style-2">
-            <div class="container">
-                <div class="header-top-wrapper style-3">
-                    <p>
-                        Free shipping on orders over ₹1000
-                    </p>
-                    <div class="flag-wrapper">
-                        <div class="content">
-                             @auth
-                               <button  class="account-text d-flex align-items-center gap-2">
-                                 <a href="{{url('/my-account')}}" class="text-white"><i class="fa-regular fa-user text-white"></i>
-                                {{ Auth::user()->first_name }}  {{ Auth::user()->last_name }}</a>
-                            </button>
-                               @else
-                            <button class="account-text d-flex align-items-center gap-2">
-                           
-                                  <a href="{{url('/login')}}" class="text-white"><i class="fa-regular fa-user text-white"></i>
-                                     Login / Register
-                              </a>
-                               
-                            </button>
-                              @endauth
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
          <!-- Header bottom Start -->
         <div class="header-bottom-section">
@@ -165,23 +135,26 @@
                         </li>
                     </ul>
                     <p>
-                    <span class="color">Get upto 50%</span> off On Every Purchase!  <span>Shop Now</span>
+                    {{-- <span class="color">Get upto 50%</span> off On Every Purchase!  <span>Shop Now</span> --}}
                     </p>
                     <div class="flag-wrap">
-                        <div class="flag">
-                            {{-- <img src="assets/img/flag.png" alt="flag"> --}}
-                        </div>
-                        <div class="nice-select" tabindex="0">
-                            <span class="current">
-                                India
-                            </span>
-                            <ul class="list">
-                                <li data-value="1" class="option selected focus">
-                                    India
-                                </li>
+                    <div class="content">
+                             @auth
+                               <button  class="account-text d-flex align-items-center gap-2">
+                                 <a href="{{url('/my-account')}}" class=""><i class="fa-regular fa-user "></i>
+                                {{ Auth::user()->first_name }}  {{ Auth::user()->last_name }}</a>
+                            </button>
+                               @else
+                            <button class="account-text d-flex align-items-center gap-2">
+                           
+                                  <a href="{{url('/login')}}" class=""><i class="fa-regular fa-user "></i>
+                                     Login / Register
+                              </a>
                                
-                            </ul>
-                         </div>
+                            </button>
+                              @endauth
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -203,3 +176,4 @@
                 </div>
             </div>
         </div>
+

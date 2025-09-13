@@ -14,13 +14,17 @@ class CategoryController extends Controller
 {
 public function detail($id)
 {
-    $category = Category::with(['subcategories' => function ($query) {
-        $query->withCount('products');
-    }])->findOrFail($id);
+    $category = Category::findOrFail($id);
 
+    // Get subcategories directly, always as a paginator
+    $subcategories = \App\Models\Subcategory::where('category_id', $category->id)
+                        ->withCount('products')
+                        ->paginate(); // 8 per page
+
+    // For menu/sidebar
     $categories = Category::with('subcategories')->get();
 
-    return view('productCategory', compact('categories', 'category'));
+    return view('productCategory', compact('categories', 'category', 'subcategories'));
 }
 
 
