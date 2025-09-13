@@ -17,8 +17,23 @@ class IndexController extends Controller
             ->inRandomOrder()
             ->take(8)
             ->get();
-
-        return view("index", compact("categories", "products"));
+        $latestProducts = Product::latest()
+            ->take(5)
+            ->get();
+        $discountProducts = Product::whereNotNull("discount")
+            ->where("discount", ">", 0)
+            ->take(4)
+            ->inRandomOrder()
+            ->get();
+        return view(
+            "index",
+            compact(
+                "categories",
+                "products",
+                "latestProducts",
+                "discountProducts"
+            )
+        );
     }
 
     public function index2()

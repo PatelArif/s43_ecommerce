@@ -536,37 +536,36 @@ $(document).ready(function () {
         });
     });
 
-    // Optional: Donation increment/decrement
+    // Donation step
+    const donationStep = 10;
+
     $('.donation-increment').click(function() {
-        let donation = parseInt($('#donationAmount').text());
-        donation++;
+        let donation = parseInt($('#donationAmount').text()) || 0;
+        donation += donationStep; // increment by 10
         $('#donationAmount').text(donation);
         $('#subtotal-donation').text(`₹${donation.toLocaleString('en-IN')}`);
 
         let total = 0;
         $('td.price-usd').each(function(index, td){
-            if (index % 2 == 1) { // subtotal column
-                total += parseFloat($(td).text().replace(/[₹,]/g,''));
-            }
+            if (index % 2 === 1) total += parseFloat($(td).text().replace(/[₹,]/g,'')); // subtotal columns
         });
         $('#grandTotal').text(`₹${(total + donation).toLocaleString('en-IN', {minimumFractionDigits:2})}`);
     });
 
     $('.donation-decrement').click(function() {
-        let donation = parseInt($('#donationAmount').text());
-        if (donation > 0) donation--;
+        let donation = parseInt($('#donationAmount').text()) || 0;
+        if (donation > donationStep) donation -= donationStep; // decrement by 10 minimum
         $('#donationAmount').text(donation);
         $('#subtotal-donation').text(`₹${donation.toLocaleString('en-IN')}`);
 
         let total = 0;
         $('td.price-usd').each(function(index, td){
-            if (index % 2 == 1) { // subtotal column
-                total += parseFloat($(td).text().replace(/[₹,]/g,''));
-            }
+            if (index % 2 === 1) total += parseFloat($(td).text().replace(/[₹,]/g,'')); // subtotal columns
         });
         $('#grandTotal').text(`₹${(total + donation).toLocaleString('en-IN', {minimumFractionDigits:2})}`);
     });
 });
+
 
 // quantity update ajax end 
 // remove from cart ajax start
@@ -633,5 +632,50 @@ $(document).ready(function () {
     });
 });
 // remove from cart ajax end
+$(document).ready(function() {
+    $('.view-product-btn').on('click', function() {
+        let productId = $(this).data('id');
+
+        $.ajax({
+            url: '/product/' + productId + '/details',
+            type: 'GET',
+            success: function(product) {
+                // Update modal content dynamically
+                $('#exampleModal2 .shop-details-image img').attr('src', '/storage/' + product.main_image);
+                $('#exampleModal2 .product-details-content h3').text(product.title);
+                $('#exampleModal2 .product-details-content p').first().text(product.description);
+                $('#exampleModal2 .price-list h3').text(product.after_discount_price + ' ₹ only');
+
+                // Update other details
+                $('#exampleModal2 .details-info span:contains("Height")').text('Height: ' + product.height);
+                $('#exampleModal2 .details-info span:contains("Width")').text('Width: ' + product.width);
+                $('#exampleModal2 .details-info span:contains("Handle")').text('Handle: ' + product.handle);
+                $('#exampleModal2 .details-info span:contains("Base")').text('Base: ' + product.base);
+
+                // You can also handle other images if you have a carousel
+            }
+        });
+    });
+});
+
+
+// view product ajax end
+
+document.querySelectorAll('.zoom-container').forEach(container => {
+    const img = container.querySelector('.zoom-image');
+
+    container.addEventListener('mousemove', function(e){
+        const rect = img.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        img.style.transformOrigin = `${x}% ${y}%`;
+        img.style.transform = 'scale(2)'; // zoom level
+    });
+
+    container.addEventListener('mouseleave', function(){
+        img.style.transform = 'scale(1)';
+        img.style.transformOrigin = 'center center';
+    });
+});
 
 

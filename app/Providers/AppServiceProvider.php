@@ -32,20 +32,28 @@ class AppServiceProvider extends ServiceProvider
                     'items'   => $cartItems->toArray()
                 ]);
 
-                $globalCart = $cartItems
-                    ->mapWithKeys(fn($item) => [
-                        $item->product_id => [
-                            'name'     => $item->product->title,
-                            'quantity' => $item->quantity,
-                            'price'    => $item->product->discount > 0
-                                ? $item->product->after_discount_price
-                                : $item->product->price,
-                            'image'    => $item->product->main_image
-                                ? asset('storage/' . $item->product->main_image)
-                                : asset('assets/img/product/9.png'),
-                        ]
-                    ])
-                    ->toArray();
+           $globalCart = $cartItems
+    ->mapWithKeys(function ($item) {
+        $product = $item->product;
+
+        // Determine which price to use
+        $price = ($product->discount > 0 && $product->after_discount_price)
+            ? $product->after_discount_price
+            : $product->price;
+
+        return [
+            $item->product_id => [
+                'name'     => $product->title,
+                'quantity' => $item->quantity,
+                'price'    => $price,
+                'image'    => $product->main_image
+                    ? asset('storage/' . $product->main_image)
+                    : asset('assets/img/product/9.png'),
+            ]
+        ];
+    })
+    ->toArray();
+
 
                 // Log after mapping
                 Log::info('Cart mapped for views', [

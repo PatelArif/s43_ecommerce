@@ -121,6 +121,39 @@ if ($request->hasFile('profile_image')) {
     return view('my-account', compact('categories','user'));
 
 }
+public function updateAddress(Request $request)
+{
+    $user = Auth::user();
+
+    if (!$user) {
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }
+
+    // Validate inputs
+    $request->validate([
+        'phone'        => 'nullable|string|max:20',
+        'address_line' => 'nullable|string|max:255',
+        'city'         => 'nullable|string|max:100',
+        'state'        => 'nullable|string|max:100',
+        'zip_code'     => 'nullable|string|max:20',
+        'country'      => 'nullable|string|max:100',
+    ]);
+
+    // Update user address fields
+    $user->update($request->only([
+        'phone',
+        'address_line',
+        'city',
+        'state',
+        'zip_code',
+        'country'
+    ]));
+
+    return response()->json([
+        'message' => 'Address updated successfully.'
+    ]);
+}
+
 public function logout()
 {
     // \Log::info('Logging out user: ' . Auth::user()->email);

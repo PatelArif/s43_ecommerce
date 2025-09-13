@@ -83,11 +83,11 @@
                 </table>
             </div>
 
-            @if(session('favorites') && count(session('favorites')) > 0)
+            {{-- @if(session('favorites') && count(session('favorites')) <0) --}}
                 <div class="d-flex justify-content-end pt-4">
                     <a href="{{ route('index') }}" class="theme-btn alt-color radius-xs">Continue Shopping</a>
                 </div>
-            @endif
+            {{-- @endif --}}
         </div>
     </div>
 </div>

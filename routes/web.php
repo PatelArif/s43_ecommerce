@@ -42,6 +42,7 @@ Route::get('/totBags', [ProductDetailController::class, 'totBags'])->name('tot')
 Route::get('/product-details', [ProductDetailController::class, 'productDetails'])->name('productDetails');
 // Route::get('/shop-left-sidebar', [ShopController::class, 'leftSidebar'])->name('shopLeftSidebar');
 // Route::get('/shop-right-sidebar', [ShopController::class, 'rightSidebar'])->name('shopRightSidebar');
+Route::get('/product-details/{id}', [ProductDetailController::class, 'shopPage']);
 
 // add to cart route
 Route::post('/favorites/toggle/{id}', [FavoritesController::class, 'toggleFavorite'])->name('favorites.toggle');
@@ -77,6 +78,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::post('/signup', [RegisterController::class, 'user_register'])->name('user_register');
 Route::post('/user_edit', [AuthController::class, 'user_edit']);
 
+Route::post('/update-address', [AuthController::class, 'updateAddress'])->name('user.updateAddress');
 // Authenticated routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/my-account', [AuthController::class, 'myAccount'])->name('my-account');

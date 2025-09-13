@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image; 
+use Intervention\Image\Facades\Image;
 
 class ProductDetailController extends Controller
 {
@@ -19,10 +19,17 @@ class ProductDetailController extends Controller
     }
 
     public function allproducts($id, $sub_id)
-    {   
+    {
         $categories = Category::with("subcategories")->get();
         $subcategory = Subcategory::findOrFail($sub_id);
         return view("allproducts", compact("subcategory", "categories"));
+    }
+    public function shopPage($id)
+    {
+        // Fetch a single product by ID
+        $product = Product::findOrFail($id);
+
+        return view("product-details", compact("product"));
     }
 
     public function totBags()
@@ -37,7 +44,7 @@ class ProductDetailController extends Controller
     {
         return view("canvasBags");
     }
-  
+
     // admin products
     public function index(Request $request)
     {

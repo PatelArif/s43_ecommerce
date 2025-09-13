@@ -15,12 +15,13 @@
 <div class="cart-section section-padding pt-4">
     <div class="container">
         <div class="cart-list-area">
-            <div class="table-responsive">
-                <table class="table common-table">
+             <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover align-middle"id="datatable">
                     <thead data-aos="fade-down">
                         <tr>
                             <th class="text-center">Sr No.</th>
-                            <th class="text-center">Product</th>
+                            <th class="text-center">Product Image</th>
+                            <th class="text-center">Product Name</th>
                             <th class="text-center">Price</th>
                             <th class="text-center">Quantity</th>
                             <th class="text-center">Subtotal</th>
@@ -48,8 +49,14 @@
                                                 </button>
                                             </form>
 
-                                            <img class="w-100" src="{{ $item['image'] }}" alt="{{ $item['name'] }}" style="max-width:60px;">
-                                            <span class="head text-nowrap">{{ $item['name'] }}</span>
+                                            <img class="w-100" src="{{ $item['image'] }}" alt="{{ $item['name'] }}" style="max-width:250px;">
+                                            <p class="head ">{{ $item['name'] }}</p>
+                                        </div>
+                                    </td>
+                                      <td style="white-space: normal; word-wrap: break-word; max-width:200px;">
+
+                                        <div class="cart-item-thumb d-flex align-items-center gap-2">
+                                            <p class="head ">{{ $item['name'] }}</p>
                                         </div>
                                     </td>
 
@@ -84,9 +91,12 @@
                                         Help us make the planet greener!
                                     </small>
                                 </td>
+
+                                 <td></td>
                                 <td class="text-center">
                                     <span class="price-usd" id="fixed-donation" data-price="10">₹10</span>
                                 </td>
+
                                 <td class="text-center">
                                     <div class="quantity d-inline-flex align-items-center justify-content-center gap-1 py-2 px-4 border n50-border_20 text-sm">
                                         <button type="button" class="donation-decrement">
@@ -106,6 +116,9 @@
                             <!-- Grand Total Row -->
                             <tr>
                                 <td></td>
+
+                                <td></td>
+                                 <td></td>
                                 <td></td>
                                 <td class="text-end fw-bold">Grand Total:</td>
                                 <td class="text-center fw-bold" id="grandTotal">₹{{ number_format($total + 10, 2) }}</td>
@@ -125,7 +138,7 @@
                         <input type="text" placeholder="Enter coupon code">
                         <button type="submit" class="theme-btn alt-color radius-xs">Apply</button>
                     </form>
-                    <a href="{{ route('checkout') }}" class="theme-btn alt-color radius-xs">Proceed to Checkout</a>
+                    <a href="#" class="theme-btn alt-color radius-xs">Proceed to Checkout ₹{{ number_format($total + 10, 2) }}</a>
                 </div>
             @endif
         </div>
