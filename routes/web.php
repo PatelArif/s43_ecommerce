@@ -52,7 +52,7 @@ Route::post('/favorites/move-to-cart/{id}', [FavoritesController::class, 'moveTo
 
 
 Route::post('/cart/add/{id}', [ShopController::class, 'addToCart'])->name('cart.add');
-Route::post('/cart/update/{id}', [ShopController::class, 'update'])->name('cart.update');
+Route::post('/cart/update-quantity/{id}', [ShopController::class, 'updateQuantity'])->name('cart.updateQuantity');
 Route::delete('/cart/remove/{id}', [ShopController::class, 'remove'])->name('cart.remove');
 
 Route::get('/shop-cart', [ShopController::class, 'cart'])->name('cart');

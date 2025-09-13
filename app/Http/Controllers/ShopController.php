@@ -65,128 +65,153 @@ class ShopController extends Controller
     /**
      * Add a product to cart
      */
-    public function addToCart(Request $request, $id)
-    {
-        $product = Product::findOrFail($id);
-        $cart = session()->get('cart', []);
-
-        // Update session cart
-        if (isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                "name" => $product->title,
-                "quantity" => 1,
-                "price" => $product->discount > 0 ? $product->after_discount_price : $product->price,
-                "image" => $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/product/9.png')
-            ];
-        }
-        session()->put('cart', $cart);
-
-        // Sync with DB if logged in
-        if (auth()->check()) {
-            $cartItem = Cart::firstOrNew([
-                'user_id' => auth()->id(),
-                'product_id' => $id,
-            ]);
-
-            $cartItem->quantity = $cartItem->exists ? $cartItem->quantity + 1 : 1;
-            $cartItem->save();
-        }
-
-        return response()->json([
-            'success' => true,
-            'message' => $product->title . ' added to cart!',
-            'cart' => $cart,
-            'cart_count' => count($cart),
-            'cart_total' => collect($cart)->sum(fn($item) => $item['price'] * $item['quantity'])
-        ]);
-    }
-
-    /**
-     * Update cart quantity
-     */
-    public function update(Request $request, $id)
-    {
-        $cart = session()->get('cart', []);
-
-        if(isset($cart[$id])) {
-            if($request->action === 'increment') {
-                $cart[$id]['quantity']++;
-                $message = 'Item quantity increased';
-            } elseif($request->action === 'decrement') {
-                $cart[$id]['quantity']--;
-                $message = 'Item quantity decreased';
-            } else {
-                $cart[$id]['quantity'] = max(0, (int)$request->quantity);
-                $message = 'Item quantity updated';
-            }
-
-            // Remove if quantity is 0
-            if($cart[$id]['quantity'] <= 0){
-                unset($cart[$id]);
-                session()->put('cart', $cart);
-
-                // Remove from DB if logged in
-                if (auth()->check()) {
-                    Cart::where('user_id', auth()->id())
-                        ->where('product_id', $id)
-                        ->delete();
-                }
-
-                return response()->json([
-                    'status'=>'success',
-                    'message'=>'Item removed',
-                    'cartCount'=>count($cart),
-                    'total'=>collect($cart)->sum(fn($item)=>$item['price']*$item['quantity'])
-                ]);
-            }
-        }
-
-        session()->put('cart', $cart);
-
-        // Update DB if logged in
-        if (auth()->check() && isset($cart[$id])) {
-            Cart::where('user_id', auth()->id())
-                ->where('product_id', $id)
-                ->update(['quantity' => $cart[$id]['quantity']]);
-        }
-
-        return response()->json([
-            'status'=>'success',
-            'message'=>$message,
-            'quantity'=>$cart[$id]['quantity'],
-            'subtotal'=>$cart[$id]['price'] * $cart[$id]['quantity'],
-            'total'=>collect($cart)->sum(fn($item)=>$item['price']*$item['quantity']),
-            'cartCount'=>count($cart)
-        ]);
-    }
-
-    /**
-     * Remove an item from cart
-     */
-public function remove(Request $request, $id)
+public function addToCart(Request $request, $id)
 {
-    $favorites = session()->get('favorites', []);
+    $product = Product::findOrFail($id);
 
-    if (isset($favorites[$id])) {
-        unset($favorites[$id]);
-        session()->put('favorites', $favorites);
+    // Session cart for guests
+    $cart = session()->get('cart', []);
 
-        if (auth()->check()) {
-            Favorite::where('user_id', auth()->id())
-                ->where('product_id', $id)
-                ->delete();
-        }
+    if (isset($cart[$id])) {
+        $cart[$id]['quantity']++;
+    } else {
+        $cart[$id] = [
+            "name" => $product->title,
+            "quantity" => 1,
+            "price" => $product->discount > 0 ? $product->after_discount_price : $product->price,
+            "image" => $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/product/9.png')
+        ];
     }
 
-    $count = count($favorites);
+    session()->put('cart', $cart);
+
+    // Logged-in users → update DB and return DB cart
+    if (auth()->check()) {
+        $cartItem = Cart::firstOrNew([
+            'user_id' => auth()->id(),
+            'product_id' => $id,
+        ]);
+
+        $cartItem->quantity = $cartItem->exists ? $cartItem->quantity + 1 : 1;
+        $cartItem->save();
+
+        // Fetch latest DB cart for the user
+        $dbCartItems = Cart::with('product')->where('user_id', auth()->id())->get();
+
+        $cart = $dbCartItems->mapWithKeys(function($item) {
+            return [
+                $item->product_id => [
+                    'name'     => $item->product->title,
+                    'quantity' => $item->quantity,
+                    'price'    => $item->product->discount > 0 ? $item->product->after_discount_price : $item->product->price,
+                    'image'    => $item->product->main_image ? asset('storage/' . $item->product->main_image) : asset('assets/img/product/9.png'),
+                ]
+            ];
+        })->toArray();
+    }
 
     return response()->json([
         'success' => true,
-        'count'   => $count,   // 👈 very important
+        'message' => $product->title . ' added to cart!',
+        'cart' => $cart,
+        'cart_count' => count($cart),
+        'cart_total' => collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']),
     ]);
 }
+
+
+public function updateQuantity(Request $request, $id)
+{
+    $action = $request->input('action'); // 'increment' or 'decrement'
+
+    if (!auth()->check()) {
+        // guest user → update session
+        $cart = session()->get('cart', []);
+        if (isset($cart[$id])) {
+            if ($action === 'increment') {
+                $cart[$id]['quantity']++;
+            } elseif ($action === 'decrement' && $cart[$id]['quantity'] > 1) {
+                $cart[$id]['quantity']--;
+            }
+            session()->put('cart', $cart);
+        }
+    } else {
+        // logged-in user → update DB
+        $cartItem = Cart::firstOrNew([
+            'user_id' => auth()->id(),
+            'product_id' => $id,
+        ]);
+
+        if (!$cartItem->exists) {
+            $cartItem->quantity = 1;
+            $cartItem->save();
+        } else {
+            if ($action === 'increment') {
+                $cartItem->quantity++;
+            } elseif ($action === 'decrement' && $cartItem->quantity > 1) {
+                $cartItem->quantity--;
+            }
+            $cartItem->save();
+        }
+
+        // fetch latest DB cart for response
+        $cartItems = Cart::with('product')->where('user_id', auth()->id())->get();
+        $cart = $cartItems->mapWithKeys(fn($item) => [
+            $item->product_id => [
+                'name'     => $item->product->title,
+                'quantity' => $item->quantity,
+                'price'    => $item->product->discount > 0 ? $item->product->after_discount_price : $item->product->price,
+                'image'    => $item->product->main_image ? asset('storage/' . $item->product->main_image) : asset('assets/img/product/9.png'),
+            ]
+        ])->toArray();
+    }
+
+    $cart_total = collect($cart ?? session()->get('cart', []))->sum(fn($item) => $item['price'] * $item['quantity']);
+
+    return response()->json([
+        'success' => true,
+        'cart' => $cart ?? session()->get('cart', []),
+        'cart_count' => count($cart ?? session()->get('cart', [])),
+        'cart_total' => $cart_total,
+    ]);
+}
+public function remove($id)
+{
+    if (!auth()->check()) {
+        // Guest: remove from session
+        $cart = session()->get('cart', []);
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put('cart', $cart);
+        }
+    } else {
+        // Logged-in: remove from DB
+        Cart::where('user_id', auth()->id())->where('product_id', $id)->delete();
+    }
+
+    // Get latest cart for response
+    $cart = auth()->check() 
+        ? Cart::with('product')->where('user_id', auth()->id())->get()
+            ->mapWithKeys(fn($item) => [
+                $item->product_id => [
+                    'name'     => $item->product->title,
+                    'quantity' => $item->quantity,
+                    'price'    => $item->product->discount > 0 ? $item->product->after_discount_price : $item->product->price,
+                    'image'    => $item->product->main_image ? asset('storage/' . $item->product->main_image) : asset('assets/img/product/9.png'),
+                ]
+            ])->toArray()
+        : session()->get('cart', []);
+
+    $cart_total = collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']);
+
+    return response()->json([
+        'success' => true,
+        'cart' => $cart,
+        'cart_count' => count($cart),
+        'cart_total' => $cart_total,
+    ]);
+}
+
 
 
 }

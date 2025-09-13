@@ -169,6 +169,9 @@ $("#adminUserForm").on("submit", function (e) {
         }
     });
 });
+
+
+// favrorites cart ajax start
 $(document).on("click", ".move-to-cart-btn", function (e) {
     e.preventDefault();
 
@@ -260,7 +263,7 @@ $(document).on("click", ".move-to-cart-btn", function (e) {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".remove-favorite-form").forEach(form => {
+    document.querySelectorAll(".remove-favorite-form").forEach((form) => {
         form.addEventListener("submit", function (e) {
             e.preventDefault();
 
@@ -310,8 +313,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         });
                     }
                 });
-
-
         });
     });
 });
@@ -373,7 +374,10 @@ $(document).ready(function () {
         });
     });
 });
+// favorites cart ajax end
 
+
+// add to cart ajax start
 $(document).ready(function () {
     $.ajaxSetup({
         headers: {
@@ -387,11 +391,13 @@ $(document).ready(function () {
         var button = $(this);
         var url = button.data("url");
 
+        button.prop("disabled", true); // prevent double clicks
+
         $.ajax({
             url: url,
             type: "POST",
             success: function (res) {
-                // SweetAlert2 toast
+                // Toast notification
                 Swal.fire({
                     toast: true,
                     position: "top-end",
@@ -403,7 +409,7 @@ $(document).ready(function () {
                     customClass: { container: "swal-toast-container" },
                 });
 
-                // Update header cart count badge
+                // Update header cart count
                 var cartBadge = $("#cart-count-badge");
                 if (res.cart_count > 0) {
                     cartBadge.text(res.cart_count).show();
@@ -411,7 +417,7 @@ $(document).ready(function () {
                     cartBadge.hide();
                 }
 
-                // Update cart-box items
+                // Update mini-cart items
                 var cartItemsList = $("#cart-items-list");
                 cartItemsList.empty();
 
@@ -419,10 +425,14 @@ $(document).ready(function () {
                     $.each(res.cart, function (id, item) {
                         cartItemsList.append(`
                             <li>
-                                <img src="${item.image}" alt="${item.name}" width="50">
+                                <img src="${
+                                    item.image
+                                }" alt="${item.name}" width="50">
                                 <div class="cart-product">
                                     <a href="#">${item.name}</a>
-                                    <span>₹${item.price} x ${item.quantity}</span>
+                                    <span>₹${Number(item.price).toLocaleString(
+                                        "en-IN"
+                                    )} x ${item.quantity}</span>
                                 </div>
                             </li>
                         `);
@@ -432,7 +442,9 @@ $(document).ready(function () {
                     var totalSection = `
                         <div class="shopping-items">
                             <span>Total :</span>
-                            <span>₹${res.cart_total}</span>
+                            <span>₹${Number(res.cart_total).toLocaleString(
+                                "en-IN"
+                            )}</span>
                         </div>
                         <div class="cart-button mb-4">
                             <a href="/shop-cart" class="theme-btn">View Cart</a>
@@ -443,18 +455,21 @@ $(document).ready(function () {
                     cartItemsList.append(
                         '<li class="border-none text-center"><p>Your cart is empty</p></li>'
                     );
-                    $("#cart-total-section").html(""); // remove total section
+                    $("#cart-total-section").html("");
                 }
 
-                // Change button to Go to Cart
-                button.html(
-                    '<i class="fa-regular fa-cart-shopping"></i> Go to Cart'
-                );
-                button.removeClass("add-to-cart-btn");
-                button.off("click");
-                button.click(function () {
-                    window.location.href = "/shop-cart";
-                });
+                // Update button behavior
+                button
+                    .html(
+                        '<i class="fa-regular fa-cart-shopping"></i> Go to Cart'
+                    )
+                    .removeClass("add-to-cart-btn")
+                    .off("click")
+                    .click(function () {
+                        window.location.href = "/shop-cart";
+                    });
+
+                button.prop("disabled", false); // re-enable button
             },
             error: function (xhr) {
                 Swal.fire({
@@ -466,97 +481,157 @@ $(document).ready(function () {
                     timer: 1500,
                     timerProgressBar: true,
                 });
+                button.prop("disabled", false);
+                console.error(xhr.responseText);
             },
         });
     });
 });
+// add to cart ajax end
+// quantity update cart ajax start
+$(document).ready(function () {
+    $.ajaxSetup({
+        headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
+    });
 
+    function updateCartRow(id, quantity, price) {
+        const subtotal = quantity * price;
+        $(`#cart-row-${id} .quantityValue`).val(quantity);
+        $(`#cart-row-${id} .price-usd`).eq(1).text(`₹${subtotal.toLocaleString('en-IN', {minimumFractionDigits:2})}`);
+    }
 
-let donation = 10; // initial donation
-const donationStep = 10; // step for donation
+    $('.quantityIncrement, .quantityDecrement').click(function () {
+        const button = $(this);
+        const id = button.data('id');
+        const action = button.data('action');
 
-function getCartTotal() {
-    let cartTotal = 0;
-    $('.price-usd[id^="subtotal-"]')
-        .not("#subtotal-donation")
-        .each(function () {
-            let val = parseFloat($(this).text().replace("₹", ""));
-            console.log("Cart item subtotal:", val);
-            cartTotal += val;
+        $.ajax({
+            url: `/cart/update-quantity/${id}`,
+            type: 'POST',
+            data: { action: action },
+            success: function (res) {
+                if (res.success) {
+                    const item = res.cart[id];
+                    if (item) {
+                        updateCartRow(id, item.quantity, item.price);
+                    }
+
+                    // Update grand total
+                    let total = 0;
+                    Object.values(res.cart).forEach(i => {
+                        total += i.price * i.quantity;
+                    });
+
+                    const donation = parseFloat($('#donationAmount').text()) || 0;
+                    $('#grandTotal').text(`₹${(total + donation).toLocaleString('en-IN', {minimumFractionDigits:2})}`);
+
+                    // Update header badge
+                    $('#cart-count-badge').text(res.cart_count).show();
+                }
+            },
+            error: function (xhr) {
+                console.error(xhr.responseText);
+                alert('Failed to update cart!');
+            }
         });
-    console.log("Total cart subtotal:", cartTotal);
-    return cartTotal;
-}
+    });
 
-function updateGrandTotal() {
-    let cartTotal = getCartTotal();
-    $("#subtotal-donation").text("₹" + donation); // update donation subtotal
-    let grandTotal = cartTotal + donation;
-    console.log("Donation:", donation, "Grand Total:", grandTotal);
-    $("#grandTotal").text("₹" + grandTotal.toFixed(2));
-    $("#donationAmount").text(donation); // update donation display
-}
+    // Optional: Donation increment/decrement
+    $('.donation-increment').click(function() {
+        let donation = parseInt($('#donationAmount').text());
+        donation++;
+        $('#donationAmount').text(donation);
+        $('#subtotal-donation').text(`₹${donation.toLocaleString('en-IN')}`);
 
-// Donation increment
-$(".donation-increment").click(function () {
-    donation += donationStep;
-    console.log("Donation incremented to:", donation);
-    updateGrandTotal();
+        let total = 0;
+        $('td.price-usd').each(function(index, td){
+            if (index % 2 == 1) { // subtotal column
+                total += parseFloat($(td).text().replace(/[₹,]/g,''));
+            }
+        });
+        $('#grandTotal').text(`₹${(total + donation).toLocaleString('en-IN', {minimumFractionDigits:2})}`);
+    });
+
+    $('.donation-decrement').click(function() {
+        let donation = parseInt($('#donationAmount').text());
+        if (donation > 0) donation--;
+        $('#donationAmount').text(donation);
+        $('#subtotal-donation').text(`₹${donation.toLocaleString('en-IN')}`);
+
+        let total = 0;
+        $('td.price-usd').each(function(index, td){
+            if (index % 2 == 1) { // subtotal column
+                total += parseFloat($(td).text().replace(/[₹,]/g,''));
+            }
+        });
+        $('#grandTotal').text(`₹${(total + donation).toLocaleString('en-IN', {minimumFractionDigits:2})}`);
+    });
 });
 
-// Donation decrement (minimum 10)
-$(".donation-decrement").click(function () {
-    if (donation > 10) {
-        donation -= donationStep;
-        console.log("Donation decremented to:", donation);
-        updateGrandTotal();
-    } else {
-        console.log("Donation already at minimum:", donation);
-    }
+// quantity update ajax end 
+// remove from cart ajax start
+$(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
+
+    // Remove product
+    $(document).on("submit", ".remove-cart-form", function (e) {
+        e.preventDefault();
+        const form = $(this);
+        const id = form.closest("tr").attr("id").replace("cart-row-", "");
+
+        $.ajax({
+            url: `/cart/remove/${id}`,
+            type: "DELETE",
+            success: function (res) {
+                if (res.success) {
+                    // Remove row from table
+                    $(`#cart-row-${id}`).remove();
+
+                    // Update grand total
+                    let total = 0;
+                    Object.values(res.cart).forEach((i) => {
+                        total += i.price * i.quantity;
+                    });
+                    const donation =
+                        parseFloat($("#donationAmount").text()) || 0;
+                    $("#grandTotal").text(
+                        `₹${(total + donation).toLocaleString("en-IN", {
+                            minimumFractionDigits: 2,
+                        })}`
+                    );
+
+                    // Update header badge
+                    $("#cart-count-badge").text(res.cart_count).show();
+
+                    // If cart empty
+                    if (res.cart_count === 0) {
+                        $("tbody").html(
+                            '<tr><td colspan="5" class="text-center">Your cart is empty.</td></tr>'
+                        );
+                        $("#cart-total-section").html("");
+                    }
+
+                    Swal.fire({
+                        toast: true,
+                        position: "top-end",
+                        icon: "success",
+                        title: "Item removed from cart!",
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    });
+                }
+            },
+            error: function (xhr) {
+                alert("Failed to remove item!");
+            },
+        });
+    });
 });
+// remove from cart ajax end
 
-// Quantity increment/decrement buttons (for products)
-$(".btn-action").click(function () {
-    let id = $(this).data("id");
-    let action = $(this).data("action");
-    if (!id) return; // skip if no product id (avoid donation row)
-
-    let quantityInput = $(this).siblings(".quantityValue");
-    let currentQty = parseInt(quantityInput.val());
-    console.log(
-        "Clicked",
-        action,
-        "for product ID:",
-        id,
-        "Current quantity:",
-        currentQty
-    );
-
-    if (action === "increment") {
-        quantityInput.val(currentQty + 1);
-    } else if (action === "decrement") {
-        quantityInput.val(Math.max(0, currentQty - 1));
-    }
-
-    // Update subtotal
-    let price =
-        parseFloat(
-            $(this)
-                .closest("tr")
-                .find(".price-usd")
-                .first()
-                .text()
-                .replace("₹", "")
-        ) / currentQty;
-    let newQty = parseInt(quantityInput.val());
-    let newSubtotal = price * newQty;
-    $("#subtotal-" + id).text("₹" + newSubtotal.toFixed(2));
-    console.log("Updated subtotal for ID", id, ":", newSubtotal);
-
-    // Update grand total
-    updateGrandTotal();
-});
-
-// Initial call to set totals correctly on page load
-updateGrandTotal();
 
