@@ -3,10 +3,159 @@
 @endpush
 @include('includes.head')
 @include('includes.header')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 <style>
     .section-padding {
         padding: 50px 0;
     }
+     .hero-slider {
+      position: relative;
+      height: 90vh;
+      overflow: hidden;
+    }
+
+    .hero-slider .carousel-item {
+      height: 90vh;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgb(135 254 191 / 30%); /* Green overlay */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      padding: 0 20px;
+      
+    }
+
+    .hero-overlay h1 {
+      font-size: 55px;
+      font-weight: 700;
+      color:#ffffff
+      
+    }
+
+    .hero-overlay h2 {
+      font-size: 45px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+.bg_text{
+    margin-top:20px;
+   background: #29282898;
+padding: 20px;
+border-radius: 25px;
+}
+    .hero-overlay  p {
+      max-width: 600px;
+      margin: 20px auto;
+      font-size: 25px;
+      font-weight:550;
+      color:#fff3f3;
+    
+      
+    }
+ .hero-overlay .badge  {
+      max-width: 600px;
+      margin: 20px auto;
+      font-size: 20px;
+      
+    }
+    .hero-buttons .btn {
+      margin-top: 30px ;
+      font-size: 25px;
+      font-weight: 500;
+      background: #145A32;
+      color:#fff;
+      border: none;
+    }
+.hero-buttons .btn:hover {
+    background: #1E8449; /* slightly lighter green on hover */
+    color: #fff;          /* keep text white */
+    transform: translateY(-3px); /* small lift effect */
+    transition: all 0.3s ease;  /* smooth transition */
+}
+
+    .hero-features {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+      font-size: 25px;
+      align-items: center;
+    }
+
+    .hero-features i {
+      margin-right: 8px;
+    }
+ 
+
+.category-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.15);
+}
+.category-card .icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e6f2ec;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  transition: transform 0.3s;
+}
+.category-card:hover .icon {
+  transform: scale(1.1);
+}
+.category-card h5 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.category-card p {
+  font-size: 0.95rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+.category-card .product-count {
+  font-size: 0.85rem;
+  color: #adb5bd;
+}
+.explore-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #145A32;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+.explore-btn i {
+  transition: transform 0.3s;
+}
+.category-card:hover .explore-btn i {
+  transform: translateX(5px);
+}
+
 </style>
 <!-- Modal Version 2 -->
 @include('includes.productView')
@@ -23,9 +172,169 @@
     </div>
 </div>
 
+ <div id="heroCarousel" class="carousel slide hero-slider" data-bs-ride="carousel">
+        <!-- THUMBNAILS ON SLIDER -->
+        <div class="d-flex justify-content-center position-absolute w-100" style="bottom: 20px; z-index: 10; gap: 10px;">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="border-0 p-0">
+            <img src="../assets/img/slider/jute.jpeg" alt="Jute Bags" style="width:60px; height:60px; object-fit:cover; border-radius:8px; border: 2px solid #fff;">
+        </button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" class="border-0 p-0">
+            <img src="../assets/img/slider/natural_soap.jpeg" alt="Soap" style="width:60px; height:60px; object-fit:cover; border-radius:8px; border: 2px solid #fff;">
+        </button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" class="border-0 p-0">
+            <img src="../assets/img/slider/oraganic_skincare.jpeg" alt="Face Wash" style="width:60px; height:60px; object-fit:cover; border-radius:8px; border: 2px solid #fff;">
+        </button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" class="border-0 p-0">
+            <img src="../assets/img/slider/toothpaste.jpeg" alt="Tooth Powder" style="width:60px; height:60px; object-fit:cover; border-radius:8px; border: 2px solid #fff;">
+        </button>
+        </div>
+
+   <div class="carousel-inner">
+
+  <!-- Slide 1: Jute Bags -->
+     <div class="carousel-item active" style="background-image: url('../assets/img/slider/jute.jpeg');">
+        <div class="hero-overlay">
+        <div>
+            <span class="badge bg-success mb-3"> 100% Sustainable Accessories</span>
+            <h1>Natural Products for <h2>Jute Bags</h2></h1>
+            <div class="bg_text p-3 mb-3" style="display: inline-block;">
+ <p>Durable and stylish jute bags made sustainably for your daily use.</p>
+      <div class="hero-buttons ">
+            <button class="btn btn-light">Shop Jute Bags</button>
+            <button class="btn btn-light">Explore</button>
+            </div>
+            <div class="hero-features">
+            <div><i class="bi bi-arrow-repeat"></i> 100% Recyclable</div>
+            <div><i class="bi bi-heart"></i> Cruelty Free</div>
+            <div><i class="bi bi-leaf"></i> Organic Certified</div>
+            </div>
+           
+            </div>
+           
+                   
+        </div>
+        </div>
+    </div>
+
+ 
+
+  <!-- Slide 2: Soap -->
+  <div class="carousel-item" style="background-image: url('../assets/img/slider/natural_soap.jpeg');">
+    <div class="hero-overlay">
+      <div>
+        <span class="badge bg-success mb-3"> 100% Eco-Friendly Skincare</span>
+        <h1>Natural Products for <h2>Natural Soap</h2></h1>
+         <div class="bg_text p-3 mb-3" style="display: inline-block;">
+        <p>Organic, cruelty-free soaps made with natural ingredients for soft, healthy skin.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-light">Shop Soap</button>
+          <button class="btn btn-light">Explore</button>
+        </div>
+        <div class="hero-features">
+          <div><i class="bi bi-arrow-repeat"></i> 100% Recyclable</div>
+          <div><i class="bi bi-heart"></i> Cruelty Free</div>
+          <div><i class="bi bi-leaf"></i> Organic Certified</div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3: Face Wash -->
+  <div class="carousel-item" style="background-image: url('../assets/img/slider/oraganic_skincare.jpeg');">
+    <div class="hero-overlay">
+      <div>
+        <span class="badge bg-success mb-3"> 100% Eco-Friendly Skincare</span>
+        <h1>Natural Products for <h2>Face Wash</h2></h1>
+         <div class="bg_text p-3 mb-3" style="display: inline-block;">
+        <p>Refreshing and gentle face wash that nourishes your skin naturally.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-light">Shop Face Wash</button>
+          <button class="btn btn-light">Explore</button>
+        </div>
+        <div class="hero-features">
+          <div><i class="bi bi-arrow-repeat"></i> 100% Recyclable</div>
+          <div><i class="bi bi-heart"></i> Cruelty Free</div>
+          <div><i class="bi bi-leaf"></i> Organic Certified</div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 4: Tooth Powder -->
+  <div class="carousel-item " style="background-image: url('../assets/img/slider/toothpaste.jpeg');">
+    <div class="hero-overlay">
+      <div>
+        <span class="badge bg-success mb-3"> 100% Eco-Friendly Oral Care</span>
+        <h1>Natural Products for <h2>Tooth Powder</h2></h1>
+         <div class="bg_text p-3 mb-3" style="display: inline-block;">
+        <p>Gentle and natural tooth powder that protects your teeth and the environment.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-light">Shop Tooth Powder</button>
+          <button class="btn btn-light">Explore</button>
+        </div>
+        <div class="hero-features">
+          <div><i class="bi bi-arrow-repeat"></i> 100% Recyclable</div>
+          <div><i class="bi bi-heart"></i> Cruelty Free</div>
+          <div><i class="bi bi-leaf"></i> Organic Certified</div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+    </div>
+
+    {{-- <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button> --}}
+
+  </div>
+
+
+
+<section class="py-5 bg-light">
+  <div class="container">
+     <div class="section-title text-center">
+         <h2>Shop by Category</h2>
+      </div>
+    <div class="text-center mb-5">
+      <h4>Discover our carefully curated eco-friendly products organized by category. Each product is selected for its sustainability and quality.</h4>
+    </div>
+
+  <div class="row g-4">
+    @foreach($categories as $category)
+      <div class="col-md-4">
+        <div class="category-card h-100 p-4 text-center position-relative border rounded shadow-sm">
+          <div class="icon mb-3 d-inline-flex align-items-center justify-content-center rounded-circle" 
+               style="width: 60px; height: 60px; background-color: #D4EDDA;">
+            <i class="{{ $category->icon }} fs-3 text-success"></i>
+          </div>
+          <h5 class="mb-2 fw-bold">{{ $category->name }}</h5>
+          <p class="mb-3 text-muted" style="font-size: 0.9rem;">{{ $category->description }}</p>
+          <div class="product-count mb-3 fw-semibold">{{ $category->product_count }} products</div>
+          <a href="{{ url('/allCategories/' . $category->id) }}" class="explore-btn btn btn-outline-success d-flex align-items-center justify-content-between w-100 px-3 py-2 rounded">
+            <span>Explore</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    @endforeach
+  </div>
+  </div>
+</section>
+
 
 <!-- Hero Section Start -->
-<section class="hero-section-3">
+{{-- <section class="hero-section-3">
 
     <div class="swiper hero-slider">
         <div class="swiper-wrapper">
@@ -76,7 +385,7 @@
 
         </div>
     </div>
-</section>
+</section> --}}
 
 <!-- Feature-Section Start -->
 {{-- <section class="feature-section fix">
@@ -131,7 +440,7 @@
          </section> --}}
 
 <!-- Shop-bg-section Start -->
-<section class="shop-bg-section fix">
+{{-- <section class="shop-bg-section fix">
     <div class="row g-4">
         <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
             <div class="bg-image bg-cover" style="background-image: url(assets/img/hero/multipurpose.png);">
@@ -162,7 +471,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <!-- Product-store-section Start -->
 <section class="product-store-section section-padding fix">
@@ -242,7 +551,7 @@
                      </div>
                      @endforeach
                   @else
-                     <div class="col-12 text-center p-5 bg-secondary">
+                     <div class="col-12 text-center p-5 bg-secondary" style="border-radius: 20px;">
                         <h2 class="no-products-message text-white">No products available at the moment. </h2>
                      </div>
                   @endif
@@ -265,7 +574,7 @@
                    Latest Collections
                 </h2>
             </div>
-            <a href="{{ url('/allCategories/' . $product->category->id . '/' . $product->subcategory->id) }}" class="theme-btn theme-btn-2 wow fadeInUp" data-wow-delay=".5s">
+            <a href="{{ url('/allCategories') }}" class="theme-btn theme-btn-2 wow fadeInUp" data-wow-delay=".5s">
                 View More Items
             </a>
         </div>

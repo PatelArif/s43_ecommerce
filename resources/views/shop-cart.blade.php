@@ -138,7 +138,7 @@
                         <input type="text" placeholder="Enter coupon code">
                         <button type="submit" class="theme-btn alt-color radius-xs">Apply</button>
                     </form>
-                    <a href="#" class="theme-btn alt-color radius-xs">Proceed to Checkout ₹{{ number_format($total + 10, 2) }}</a>
+                    <a href="{{ url('/checkout') }}" class="theme-btn alt-color radius-xs" >Proceed to Checkout </a>
                 </div>
             @endif
         </div>

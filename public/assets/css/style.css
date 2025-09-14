@@ -4361,7 +4361,7 @@ span {
 }
 
 .offcanvas__wrapper .offcanvas__content .offcanvas__contact ul li {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     text-transform: capitalize;
 }
@@ -7951,6 +7951,9 @@ input.main-search-input::placeholder {
     font-size: 16px;
     font-weight: 400;
     color: var(--white);
+    border: 5px solid #fff;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
 
 .product-wrapper .tab-content .product-store-item .product-image .cart-btn .theme-btn i {
@@ -9555,10 +9558,12 @@ input.main-search-input::placeholder {
     padding: 50px 25px;
     background: #F3F5F6;
     text-align: center;
+    box-shadow: rgb(37 167 93) 3px 3px 6px 0px inset,
+        rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 
 .shop-product-item .product-image {
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
     object-fit: cover;
     position: relative;
 }
@@ -9566,7 +9571,7 @@ input.main-search-input::placeholder {
 .shop-product-item .product-image img {
     max-width: 100%;
     width: 200px;
-    height: 185px;
+    /* height: 185px; */
     transition: all 0.4s ease-in-out;
 }
 
@@ -9782,6 +9787,9 @@ input.main-search-input::placeholder {
 
 .product-details-wrapper .tab-content .product-details-item {
     margin-top: 40px;
+    box-shadow: rgb(37 167 93) 3px 3px 6px 0px inset,
+        rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    
 }
 
 .product-details-wrapper .tab-content .product-details-item .shop-image {
@@ -9829,6 +9837,7 @@ input.main-search-input::placeholder {
 
 .product-details-wrapper .tab-content .product-details-item .content {
     margin-top: 20px;
+        padding: 0px 10px;
 }
 
 .product-details-wrapper .tab-content .product-details-item .content h4 {
@@ -12241,5 +12250,159 @@ input.main-search-input::placeholder {
   line-height: 1.5;
 }
 .offcanvas__logo img{
-    max-width:100px;
+    max-width:100px!important;
+}
+.category-card {
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.category-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.category-image img {
+    transition: transform 0.4s ease;
+    min-height: 300px;
+        max-height: 300px;
+}
+
+.category-card:hover .category-image img {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    gap: 12px;
+}
+
+.category-card:hover .overlay {
+    opacity: 1;
+}
+
+.icon-btn {
+    width: 42px;
+    height: 42px;
+    background: #fff;
+    color: #145A32;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+    font-size: 16px;
+}
+
+.icon-btn:hover {
+    background: #145A32;
+    color: #fff;
+}
+
+.category-title {
+    color: #145A32;
+    text-decoration: none;
+}
+
+.category-title:hover {
+    color: #0d3c20;
+}
+.subcategory-card {
+  transition: all 0.3s ease;
+  background: #fff;
+}
+.subcategory-card:hover {
+transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.fixed-img { 
+       
+  height: 300px;       /* Fixed height for subcategory images */
+  object-fit: cover;   /* Keeps aspect ratio */
+}
+
+.subcategory-title {
+  color: #145A32;
+  text-decoration: none;
+}
+.subcategory-title:hover {
+  color: #0d3c20;
+}
+.product-card {
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Image wrapper */
+.product-image {
+    overflow: hidden;
+    position: relative;
+}
+
+.fixed-img {
+    height: 250px;
+    /* uniform image height */
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover .fixed-img {
+    transform: scale(1.1);
+}
+
+/* Overlay icons */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    display: flex;
+    gap: 12px;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .overlay {
+    opacity: 1;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #145A32;
+    transition: all 0.2s;
+}
+
+.icon-btn:hover {
+    background: #145A32;
+    color: #fff;
+}
+
+/* Titles */
+.product-title {
+    color: #145A32;
+    text-decoration: none;
+}
+
+.product-title:hover {
+    color: #0d3c20;
 }

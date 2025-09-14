@@ -10,6 +10,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\ContactController as AdminContactController;
+
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +67,10 @@ Route::get('/faq', [GeneralController::class, 'faq'])->name('faq');
 Route::get('/notFound', [GeneralController::class, 'notFound'])->name('notFound');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/coming-soon', [GeneralController::class, 'comingSoon'])->name('comingSoon');
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('/contacts', [App\Http\Controllers\Admin\ContactController::class, 'index'])->name('contacts.index');
+    Route::delete('/contacts/{id}', [App\Http\Controllers\Admin\ContactController::class, 'destroy'])->name('contacts.destroy');
+});
 
 // Authentication
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -131,7 +137,9 @@ Route::post('/allUsers', [AdminController::class, 'store'])->name('store');
 Route::put('/allUsers/{id}', [AdminController::class, 'update'])->name('update');
 Route::delete('/allUsers/{id}', [AdminController::class, 'destroy'])->name('users.destroy');
 
-
+   // Contact Submissions (Admin)
+    Route::get('/contacts', [AdminContactController::class, 'index'])->name('contacts.index');
+    Route::delete('/contacts/{id}', [AdminContactController::class, 'destroy'])->name('contacts.destroy');
 });
 
 

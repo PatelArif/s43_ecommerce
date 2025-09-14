@@ -83,6 +83,7 @@ class ProductDetailController extends Controller
             "handle" => $product->handle,
             "base" => $product->base,
             "subcategory_id" => $product->subcategory_id,
+            "feature_product" => $product->feature_product,
             "category_id" => $product->category_id,
             "main_image" => $product->main_image,
             "image_1" => $product->image_1,
@@ -176,7 +177,7 @@ class ProductDetailController extends Controller
 
     public function update(Request $request, $id)
     {
-        $product = Product::findOrFail($id);
+         $product = Product::findOrFail($id);
 
         $request->validate([
             "category_id" => "required|exists:categories,id",
@@ -193,9 +194,12 @@ class ProductDetailController extends Controller
             "after_discount_price" => "nullable|numeric|min:0",
             "height" => "nullable|string",
             "width" => "nullable|string",
-            "handle" => "nullable|string",
+            "productHandle" => "nullable|boolean",
             "base" => "nullable|string",
+             "featureProduct" => "nullable|boolean", 
         ]);
+$product->handle = $request->boolean("productHandle");
+$feature_product = $request->boolean("featureProduct");
 
         // Calculate after_discount_price dynamically based on price and discount
         $price = $request->input("price");
@@ -216,6 +220,7 @@ class ProductDetailController extends Controller
                 "handle",
                 "base",
                 "after_discount_price",
+                "feature_product",
             ])
         );
 

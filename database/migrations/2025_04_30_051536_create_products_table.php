@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('height')->nullable();
             $table->string('width')->nullable();
             $table->string('handle')->nullable();
+            $table->boolean('feature_product')->default(0);
             $table->string('base')->nullable();
             $table->timestamps();
         });

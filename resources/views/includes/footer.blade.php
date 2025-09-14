@@ -44,7 +44,7 @@
 
                                 <ul class="list-items style-color">
                                     <li>
-                                       <a href="{{ url('order') }}">Track Orders</a>
+                                       <a href="#">Track Orders</a>
                                     </li>
                                     {{-- <li>
                                     <a href="{{ url('product-details') }}">Shipping</a>
@@ -54,7 +54,7 @@
                                         <a href="{{ url('my-account') }}">My Account</a>
                                     </li>
                                     <li>
-                                      <a href="{{ url('order') }}">Order History</a>
+                                      <a href="#">Order History</a>
                                     </li>
                                 </ul>
                             </div>
@@ -70,17 +70,17 @@
                                 </div>
                                 <ul class="list-items style-color">
                                     <li>
-                                        <a href="contact.html">
+                                        <a href="#">
                                             Privacy Policy
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">
+                                        <a href="#">
                                             Terms & Conditions
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">
+                                        <a href="{{ url('/contact') }}">
                                             Contact Us
                                         </a>
                                     </li>

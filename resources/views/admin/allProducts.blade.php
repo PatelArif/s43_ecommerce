@@ -129,7 +129,7 @@
             <label for="productDescription" class="form-label">Description</label>
             <textarea id="productDescription" name="description" class="form-control" rows="3" required></textarea>
           </div>
-
+       
           <!-- Price & Discount -->
           <div class="mb-3 col-md-6">
             <label for="productPrice" class="form-label">Price</label>
@@ -156,9 +156,13 @@
           </div>
 
           <!-- Handle -->
-          <div class="mb-3 col-md-6">
-              <label for="productHandle" class="form-label">Handle</label>
-              <input type="text" id="productHandle" name="handle" class="form-control">
+              <div class="mb-3 col-md-6">
+          <label for="productHandle" class="form-label">Handle</label>
+          <select id="productHandle" name="productHandle"  id="productHandle" class="form-control" required>
+              <option value="">-- Select --</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+          </select>
           </div>
 
           <!-- Base -->
@@ -166,6 +170,15 @@
               <label for="productBase" class="form-label">Base</label>
               <input type="text" id="productBase" name="base" class="form-control">
           </div>
+            <div class="mb-3 col-md-6">
+          <label for="featureProduct" class="form-label">Feature Product</label>
+          <select id="featureProduct" name="featureProduct" class="form-control" required>
+              <option value="">-- Select --</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+          </select>
+          </div>
+
           <!-- Images -->
           @foreach (['main_image' => 'Main Image', 'image_1' => 'Image 1', 'image_2' => 'Image 2', 'image_3' => 'Image 3', 'image_4' => 'Image 4'] as $field => $label)
           <div class="mb-3 col-md-6">
@@ -231,6 +244,8 @@ function openEditProductModal(id) {
       document.getElementById('productHeight').value = product.height;
       document.getElementById('productWidth').value = product.width;
       document.getElementById('productHandle').value = product.handle;
+      document.getElementById('featureProduct').value = product.feature_product;
+
       document.getElementById('productBase').value = product.base;
       document.getElementById('productDescription').value = product.description || '';
       document.getElementById('productCategory').value = product.category_id;

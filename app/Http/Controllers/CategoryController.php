@@ -33,7 +33,7 @@ public function detail($id)
     public function index()
     {
 
-        $categories = Category::all();
+         $categories = Category::all();
         return view('admin.allCategories', compact('categories'));
     }
      public function show()
@@ -122,7 +122,7 @@ public function subCategories(Request $request)
         $query->where('category_id', $request->category_id);
     }
 
-    $subCategories = $query->paginate(); // 10 items per page
+    $subCategories = $query->get(); // 10 items per page
     $categories = Category::all(); // for filter dropdown
 
     return view('admin.subCategories', compact('subCategories', 'categories'));

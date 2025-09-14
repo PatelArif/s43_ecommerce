@@ -57,17 +57,20 @@
                         </a>
                     </nav>
                 </div>
-
+{{-- 
                 <a class="nav-link {{ request()->is('admin/categories') ? 'active' : '' }}" href="{{ url('admin/categories') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                     Categories
-                </a>
+                </a> --}}
 
                 <a class="nav-link {{ request()->is('admin/orders') ? 'active' : '' }}" href="{{ url('admin/orders') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
                     Orders
                 </a>
-
+                <a class="nav-link {{ request()->is('admin/contacts') ? 'active' : '' }}" href="{{ url('admin/contacts') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
+                    Contacts
+                </a>
                 <a class="nav-link {{ request()->is('admin/settings') ? 'active' : '' }}" href="{{ url('admin/settings') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
                     Settings
