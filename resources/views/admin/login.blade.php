@@ -88,12 +88,17 @@
     <script>
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 80, "density": { "enable": true, "value_area": 1000 } },
+                "number": { "value": 50, "density": { "enable": true, "value_area": 1000 } },
                 "color": { "value": "#166337" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.5 },
-                "size": { "value": 8 },
-                "line_linked": { "enable": true, "distance": 150, "color": "#166337", "opacity": 0.9, "width": 1 },
+                "shape": {   "type": "image", // use image for leaves
+            "image": {
+                "src": "assets/img/6959474.png", // leaf image
+                "width": 150,
+                "height": 150
+            }},
+                "opacity": { "value": 0.9 },
+                "size": { "value": 25 },
+                "line_linked": { "enable": false, "distance": 150, "color": "#166337", "opacity": 0.9, "width": 5 },
                 "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "bounce" }
             },
             "interactivity": {

@@ -36,8 +36,13 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li> <form action="{{ route('admin_logout') }}" method="POST" id="logout-form">
-</li>
+                   <form action="{{ route('admin_logout') }}" method="POST" id="logout-form">
+    @csrf
+    <li>
+        <button type="submit" class="dropdown-item">Logout</button>
+    </li>
+</form>
+
                     </ul>
                 </li>
             </ul>

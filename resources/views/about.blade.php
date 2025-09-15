@@ -1,5 +1,6 @@
 @include('includes.head')
 @include('includes.header')
+<style>.header-1 {background:transparent;}</style>
       <section class="contact-us-section bg-custm contact-padding fix position-relative">
     <!-- Particles background -->
     <div id="particles-js" class="particles"></div>

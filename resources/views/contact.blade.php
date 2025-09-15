@@ -1,5 +1,7 @@
 @include('includes.head')
 @include('includes.header')
+<style>.header-1 {background:transparent;}</style>
+
 @if(session('success'))
     <script>
         Swal.fire({

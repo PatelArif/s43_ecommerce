@@ -202,49 +202,34 @@
 <script src="{{ asset('assets/js/main.js') }}"></script>
 <script src="{{ asset('assets/js/script.js') }}"></script>
 <script>
-particlesJS("particles-js", {
-  "particles": {
-    "number": {
-      "value": 30,
-      "density": { "enable": true, "value_area": 400 }
+ particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 70, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#166337" },
+                "shape": {   "type": "image", // use image for leaves
+            "image": {
+                "src": "../../assets/img/6959474.png", // leaf image
+                "width": 150,
+                "height": 150
+            }},
+                "opacity": { "value": 0.9 },
+                "size": { "value": 25 },
+                "line_linked": { "enable": false, "distance": 150, "color": "#166337", "opacity": 0.9, "width": 5 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "bounce" }
+            },
+            "interactivity": {
+    "detect_on": "window", // was "canvas"
+    "events": { 
+        "onhover": { "enable": true, "mode": "repulse" }, 
+        "onclick": { "enable": true, "mode": "push" } 
     },
-    "color": { "value": "#ffffff" },
-    "shape": {
-      "type": "image",
-      "image": {
-        "src": "assets/img/hero/leaves-design.png",
-        "width": 50,
-        "height": 50
-      }
-    },
-    "opacity": {
-      "value": 0.7,
-      "random": true
-    },
-    "size": {
-      "value": 30,
-      "random": true
-    },
-    "line_linked": { "enable": false },
-    "move": {
-      "enable": true,
-      "speed": 1,
-      "direction": "bottom",
-      "random": true,
-      "straight": false,
-      "out_mode": "out"
-    }
-  },
-  "interactivity": {
-    "events": {
-      "onhover": { "enable": true, "mode": "bubble" }
-    },
-    "modes": {
-      "bubble": { "distance": 150, "size": 18, "duration": 2, "opacity": 1 }
-    }
-  },
-  "retina_detect": true
-});
+    "modes": { 
+        "repulse": { "distance": 200 }, // make it more noticeable
+        "push": { "particles_nb": 4 } 
+    }},
+            "retina_detect": true
+        });
+
 </script>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
