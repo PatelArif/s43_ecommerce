@@ -1,11 +1,4 @@
-/*
-Theme Name: Ecomas 
-Author: Gramentheme
-Author URI: https://themeforest.net/user/Gramentheme/portfolio
-Description: Ecomas - Multipurpose Ecommerce HTML Template
-Service Html Template 
-Version: 1.0.0
-*/
+
 /*CSS Table Of Content Ends Here*/
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&amp;display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&amp;display=swap");
@@ -25,7 +18,9 @@ Version: 1.0.0
     --bg-3: #F3F7FF;
     --box-shadow: 0px 1px 14px 0px rgba(0, 0, 0, 0.13);
 }
-
+html {
+    scroll-behavior: smooth;
+}
 .theme-btn {
     position: relative;
     z-index: 2;
@@ -3442,16 +3437,16 @@ span {
 }
 
 .header-bottom-section {
-    background: #fff    ;
+    background: #145A32    ;
     color:#fff!important;
 }
 .header-bottom-section .contact-list i {
-    color: #145A32 !important;
+    color: #ffff !important;
     font-weight: 550;
 }
 .header-bottom-section a {
-    color: #145A32 !important;
-    font-weight: 550;
+    color: #fff !important;
+    font-weight: 400;
 }
 @media (max-width: 1399px) {
     .header-bottom-section {
@@ -3769,7 +3764,8 @@ span {
     /* position: static;
     background: linear-gradient(90deg, #145A32, #26aa5f); */
             position: absolute;
-            background: linear-gradient(90deg, #145A32, #26aa5f) ;
+            /* background: linear-gradient(90deg, #145A32, #26aa5f) ; */
+            background: #02020278;
             z-index: 9999;
             width:100%;
 }
@@ -8312,7 +8308,7 @@ input.main-search-input::placeholder {
     background: linear-gradient(90deg, #145A32, #26aa5f);
 }
 .contact-padding{
-    padding-top:90px;
+    padding-top:120px;
 }
 .shop-bg {
     background: #EFF1F5;
