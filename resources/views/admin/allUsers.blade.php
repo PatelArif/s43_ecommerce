@@ -1,12 +1,10 @@
 @push('title')
 <title>S4E Admin</title>
-@endpush
-@include('admin.includes.header')
+@endpush @include('admin.includes.header')
 
 <div id="layoutSidenav">
     @include('admin.includes.sidebar')
-
-    <div id="layoutSidenav_content">
+   <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
                 <div class="mb-4 pt-3 d-flex justify-content-between align-items-center">
@@ -196,8 +194,6 @@
             toast.addEventListener('hidden.bs.toast', () => toast.remove());
         }
         </script>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         @include('admin.includes.footer')
     </div>
 </div>

@@ -68,47 +68,31 @@ class AdminController extends Controller
 
 public function login(Request $request)
 {
-    try {
-        // Validate the request
-        $validator = Validator::make($request->all(), [
-            'email'    => 'required|email|max:255',
-            'password' => 'required|string|min:6',
-        ]);
+    $admin = AdminUser::where('email', $request->email)->first();
 
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => false,
-                'errors' => $validator->errors(),
-            ], 422);
-        }
-
-        // Find user by email
-        $user = AdminUser::where('email', $request->email)->first();
-
-        if ($user) {
-            // Log the user in
-            Auth::login($user);
-
-            return response()->json([
-                'status'  => true,
-                'message' => 'Login successful!',
-                'redirect' => route('admin.dashboard'), // Make sure this route exists
-            ]);
-        } else {
-            return response()->json([
-                'status'  => false,
-                'message' => 'Wrong credentials. Please check your email and password.',
-            ], 401); // Unauthorized
-        }
-
-    } catch (\Exception $e) {
+    if ($admin && $request->password === $admin->password) {
+        // Success
         return response()->json([
-            'status'  => false,
-            'message' => 'Something went wrong: ' . $e->getMessage(),
-        ], 500);
+            'status' => true,
+            'message' => 'Login successful',
+            'redirect' => route('admin.dashboard') // <-- Add this line
+        ]);
     }
-}
 
+    return response()->json([
+        'status' => false,
+        'message' => 'Wrong credentials. Please check your email and password.'
+    ]);
+}
+public function logout()
+{
+    // \Log::info('Logging out user: ' . Auth::user()->email);
+    Auth::logout();
+    session()->invalidate();
+    session()->regenerateToken();
+
+    return redirect('/admin/')->with('logout_success', 'You have been logged out successfully!');
+}
  public function store(Request $request)
     {
          

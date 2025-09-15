@@ -73,7 +73,7 @@ $("#adminUserForm").on("submit", function (e) {
 });
     $('#adminLoginForm').on('submit', function (e) {
         e.preventDefault();
-
+console.log("Form submitted"); // Debugging line to check if the event is triggered
         const formData = new FormData(this);
         const csrfToken = $('meta[name="csrf-token"]').attr('content');
 

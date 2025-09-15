@@ -16,7 +16,7 @@
     }
 
     .hero-slider .carousel-item {
-      height: 90vh;
+      height: 100vh;
       background-size: cover;
       background-position: center;
       position: relative;
@@ -28,7 +28,7 @@
       left: 0;
       height: 100%;
       width: 100%;
-      background: rgb(135 254 191 / 30%); /* Green overlay */
+      background: rgb(3 93 45 / 30%); /* Green overlay */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -192,40 +192,36 @@ border-radius: 25px;
    <div class="carousel-inner">
 
   <!-- Slide 1: Jute Bags -->
-     <div class="carousel-item active" style="background-image: url('../assets/img/slider/jute.jpeg');">
-        <div class="hero-overlay">
-        <div>
-            <span class="badge bg-success mb-3"> 100% Sustainable Accessories</span>
-            <h1>Natural Products for <h2>Jute Bags</h2></h1>
-            <div class="bg_text p-3 mb-3" style="display: inline-block;">
- <p>Durable and stylish jute bags made sustainably for your daily use.</p>
-      <div class="hero-buttons ">
-            <button class="btn btn-light">Shop Jute Bags</button>
-            <button class="btn btn-light">Explore</button>
-            </div>
-            <div class="hero-features">
-            <div><i class="bi bi-arrow-repeat"></i> 100% Recyclable</div>
-            <div><i class="bi bi-heart"></i> Cruelty Free</div>
-            <div><i class="bi bi-leaf"></i> Organic Certified</div>
-            </div>
-           
-            </div>
-           
-                   
+<!-- Slide 1: Jute Bags -->
+<div class="carousel-item active" style="background-image: url('../assets/img/slider/jute.jpeg');">
+  <div class="hero-overlay">
+    <div>
+      <span class="badge bg-success mb-3">Eco-Friendly Lifestyle Choice</span>
+      <h1>Carry Nature with <h2>Eco-Friendly Bags</h2></h1>
+      <div class="bg_text p-3 mb-3" style="display: inline-block;">
+        <p>Strong, stylish, and sustainable jute bags — the perfect blend of fashion and responsibility.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-light">Shop Jute Bags</button>
+          <button class="btn btn-light">Explore</button>
         </div>
+        <div class="hero-features">
+          <div><i class="bi bi-arrow-repeat"></i> 100% Recyclable</div>
+          <div><i class="bi bi-heart"></i> Cruelty Free</div>
+          <div><i class="bi bi-leaf"></i> Organic Certified</div>
         </div>
+      </div>
     </div>
+  </div>
+</div>
 
- 
-
-  <!-- Slide 2: Soap -->
-  <div class="carousel-item" style="background-image: url('../assets/img/slider/natural_soap.jpeg');">
-    <div class="hero-overlay">
-      <div>
-        <span class="badge bg-success mb-3"> 100% Eco-Friendly Skincare</span>
-        <h1>Natural Products for <h2>Natural Soap</h2></h1>
-         <div class="bg_text p-3 mb-3" style="display: inline-block;">
-        <p>Organic, cruelty-free soaps made with natural ingredients for soft, healthy skin.</p>
+<!-- Slide 2: Natural Soap -->
+<div class="carousel-item" style="background-image: url('../assets/img/slider/natural_soap.jpeg');">
+  <div class="hero-overlay">
+    <div>
+      <span class="badge bg-success mb-3">Gentle on Skin, Kind to Earth</span>
+      <h1>Pure Goodness with <h2>Natural Soap</h2></h1>
+      <div class="bg_text p-3 mb-3" style="display: inline-block;">
+        <p>Crafted with plant-based ingredients for a nourishing, chemical-free cleansing experience.</p>
         <div class="hero-buttons">
           <button class="btn btn-light">Shop Soap</button>
           <button class="btn btn-light">Explore</button>
@@ -235,20 +231,19 @@ border-radius: 25px;
           <div><i class="bi bi-heart"></i> Cruelty Free</div>
           <div><i class="bi bi-leaf"></i> Organic Certified</div>
         </div>
-        </div>
-
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Slide 3: Face Wash -->
-  <div class="carousel-item" style="background-image: url('../assets/img/slider/oraganic_skincare.jpeg');">
-    <div class="hero-overlay">
-      <div>
-        <span class="badge bg-success mb-3"> 100% Eco-Friendly Skincare</span>
-        <h1>Natural Products for <h2>Face Wash</h2></h1>
-         <div class="bg_text p-3 mb-3" style="display: inline-block;">
-        <p>Refreshing and gentle face wash that nourishes your skin naturally.</p>
+<!-- Slide 3: Face Wash -->
+<div class="carousel-item" style="background-image: url('../assets/img/slider/oraganic_skincare.jpeg');">
+  <div class="hero-overlay">
+    <div>
+      <span class="badge bg-success mb-3">Refresh Your Natural Glow</span>
+      <h1>Rejuvenate with <h2>Herbal Face Wash</h2></h1>
+      <div class="bg_text p-3 mb-3" style="display: inline-block;">
+        <p>Infused with natural extracts to gently cleanse, hydrate, and revitalize your skin every day.</p>
         <div class="hero-buttons">
           <button class="btn btn-light">Shop Face Wash</button>
           <button class="btn btn-light">Explore</button>
@@ -258,20 +253,19 @@ border-radius: 25px;
           <div><i class="bi bi-heart"></i> Cruelty Free</div>
           <div><i class="bi bi-leaf"></i> Organic Certified</div>
         </div>
-        </div>
-
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Slide 4: Tooth Powder -->
-  <div class="carousel-item " style="background-image: url('../assets/img/slider/toothpaste.jpeg');">
-    <div class="hero-overlay">
-      <div>
-        <span class="badge bg-success mb-3"> 100% Eco-Friendly Oral Care</span>
-        <h1>Natural Products for <h2>Tooth Powder</h2></h1>
-         <div class="bg_text p-3 mb-3" style="display: inline-block;">
-        <p>Gentle and natural tooth powder that protects your teeth and the environment.</p>
+<!-- Slide 4: Tooth Powder -->
+<div class="carousel-item" style="background-image: url('../assets/img/slider/toothpaste.jpeg');">
+  <div class="hero-overlay">
+    <div>
+      <span class="badge bg-success mb-3">Bright Smile, Green Choice</span>
+      <h1>Whiten Naturally with <h2>Tooth Powder</h2></h1>
+      <div class="bg_text p-3 mb-3" style="display: inline-block;">
+        <p>A safe, fluoride-free alternative that strengthens enamel and keeps your smile eco-friendly.</p>
         <div class="hero-buttons">
           <button class="btn btn-light">Shop Tooth Powder</button>
           <button class="btn btn-light">Explore</button>
@@ -281,21 +275,12 @@ border-radius: 25px;
           <div><i class="bi bi-heart"></i> Cruelty Free</div>
           <div><i class="bi bi-leaf"></i> Organic Certified</div>
         </div>
-        </div>
-
       </div>
     </div>
   </div>
-    </div>
+</div>
 
-    {{-- <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button> --}}
+    </div>
 
   </div>
 
@@ -490,7 +475,7 @@ border-radius: 25px;
                      <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="product-store-item">
                            <div class="product-image">
-                              <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/product/9.png') }}"
+                              <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/generated images/bags2.png') }}"
                                  alt="{{ $product->name }}"
                                  onerror="this.onerror=null;this.src='{{ asset('assets/img/product/9.png') }}';">
                               <div class="sale-box">
@@ -665,7 +650,7 @@ border-radius: 25px;
                 <div class="col-xl-3 col-lg-4 col-md-6">
                     <div class="product-sell-item">
                         <div class="product-image">
-                            <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/product/placeholder.png') }}" alt="{{ $product->title }}">
+                            <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/generated images/bags2.png') }}" alt="{{ $product->title }}">
                             <div class="cart-btn">
                                 <a href="{{ url('/shop-cart') }}" class="theme-btn">
                                     <i class="fa-regular fa-cart-shopping"></i> Add To Cart

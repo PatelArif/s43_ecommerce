@@ -97,6 +97,7 @@ Route::prefix('admin')->group(function () {
   Route::get('/create', [AdminController::class, 'create'])->name('admin.create');
   Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
 Route::get('/', [AdminController::class, 'admin']);
+Route::post('/logout', [AdminController::class, 'logout'])->name('admin_logout');
 
 Route::post('/login', [AdminController::class, 'login']);
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
