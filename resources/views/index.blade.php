@@ -11,12 +11,12 @@
     }
      .hero-slider {
       position: relative;
-      height: 90vh;
+      height: 95vh;
       overflow: hidden;
     }
 
     .hero-slider .carousel-item {
-      height: 100vh;
+      height: 95vh;
       background-size: cover;
       background-position: center;
       position: relative;
@@ -288,34 +288,36 @@ border-radius: 25px;
 
 <section class="py-5 bg-light">
   <div class="container">
-     <div class="section-title text-center">
+     <div class="section-title text-center wow fadeInDown" data-wow-delay="0.2s">
          <h2>Shop by Category</h2>
       </div>
-    <div class="text-center mb-5">
+
+    <div class="text-center mb-5 wow fadeInUp" data-wow-delay="0.4s">
       <h4>Discover our carefully curated eco-friendly products organized by category. Each product is selected for its sustainability and quality.</h4>
     </div>
 
-  <div class="row g-4">
-    @foreach($categories as $category)
-      <div class="col-md-4">
-        <div class="category-card h-100 p-4 text-center position-relative border rounded shadow-sm">
-          <div class="icon mb-3 d-inline-flex align-items-center justify-content-center rounded-circle" 
-               style="width: 60px; height: 60px; background-color: #D4EDDA;">
-            <i class="{{ $category->icon }} fs-3 text-success"></i>
+    <div class="row g-4">
+      @foreach($categories as $category)
+        <div class="col-md-4">
+          <div class="category-card h-100 p-4 text-center position-relative border rounded shadow-sm wow fadeInUp" data-wow-delay="{{ $loop->index * 0.2 }}s">
+            <div class="icon mb-3 d-inline-flex align-items-center justify-content-center rounded-circle" 
+                 style="width: 60px; height: 60px; background-color: #D4EDDA;">
+              <i class="{{ $category->icon }} fs-3 text-success"></i>
+            </div>
+            <h5 class="mb-2 fw-bold">{{ $category->name }}</h5>
+            <p class="mb-3 text-muted" style="font-size: 0.9rem;">{{ $category->description }}</p>
+            <div class="product-count mb-3 fw-semibold">{{ $category->product_count }} products</div>
+            <a href="{{ url('/allCategories/' . $category->id) }}" class="explore-btn btn btn-outline-success d-flex align-items-center justify-content-between w-100 px-3 py-2 rounded">
+              <span>Explore</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
           </div>
-          <h5 class="mb-2 fw-bold">{{ $category->name }}</h5>
-          <p class="mb-3 text-muted" style="font-size: 0.9rem;">{{ $category->description }}</p>
-          <div class="product-count mb-3 fw-semibold">{{ $category->product_count }} products</div>
-          <a href="{{ url('/allCategories/' . $category->id) }}" class="explore-btn btn btn-outline-success d-flex align-items-center justify-content-between w-100 px-3 py-2 rounded">
-            <span>Explore</span>
-            <i class="bi bi-arrow-right"></i>
-          </a>
         </div>
-      </div>
-    @endforeach
-  </div>
+      @endforeach
+    </div>
   </div>
 </section>
+
 
 
 <!-- Hero Section Start -->
@@ -472,7 +474,7 @@ border-radius: 25px;
                <div class="row">
                   @if ($products->count() > 0)
                      @foreach ($products as $product)
-                     <div class="col-xl-3 col-lg-4 col-md-6">
+                     <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ $loop->index * 0.15 }}s">
                         <div class="product-store-item">
                            <div class="product-image">
                               <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/generated images/bags2.png') }}"
@@ -536,7 +538,7 @@ border-radius: 25px;
                      </div>
                      @endforeach
                   @else
-                     <div class="col-12 text-center p-5 bg-secondary" style="border-radius: 20px;">
+                     <div class="col-12 text-center p-5 bg-secondary wow fadeIn" data-wow-delay=".3s" style="border-radius: 20px;">
                         <h2 class="no-products-message text-white">No products available at the moment. </h2>
                      </div>
                   @endif
@@ -547,12 +549,13 @@ border-radius: 25px;
    </div>
 </section>
 
+
 <!-- shop-discover-section Start -->
 <section class="shop-discover-section section-padding fix">
     <div class="container">
         <div class="section-title-area">
             <div class="section-title">
-                <h6 class="sub-title wow fadeInUp">
+                <h6 class="sub-title wow fadeInUp" data-wow-delay=".1s">
                     <strong>Handpicked for You</strong>
                 </h6>
                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
@@ -566,12 +569,13 @@ border-radius: 25px;
 
         <div class="shop-discover-wrapper">
             <div class="row g-5">
-                <div class="col-lg-6">
+                <!-- Left Slider -->
+                <div class="col-lg-6 wow fadeInLeft" data-wow-delay=".4s">
                     <div class="swiper discover-slider">
                         <div class="swiper-wrapper">
                             @foreach ($latestProducts as $product)
                                 <div class="swiper-slide">
-                                    <div class="shop-discover-item">
+                                    <div class="shop-discover-item wow fadeInUp" data-wow-delay="{{ $loop->index * 0.2 }}s">
                                         <div class="shop-image">
                                             <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/product/9.png') }}"
                                                  alt="{{ $product->title }}">
@@ -600,38 +604,39 @@ border-radius: 25px;
                             @endforeach
                         </div>
                     </div>
-                    <div class="swiper-dot-5">
+                    <div class="swiper-dot-5 wow fadeInUp" data-wow-delay=".6s">
                         <div class="dot-5"></div>
                     </div>
                 </div>
 
                 <!-- Right Banner -->
-                <div class="col-lg-6">
-    @php 
-        $bannerProduct = $latestProducts->first();
-    @endphp
+                <div class="col-lg-6 wow fadeInRight" data-wow-delay=".6s">
+                    @php 
+                        $bannerProduct = $latestProducts->first();
+                    @endphp
 
-    @if($bannerProduct)
-        <div class="bg-image-2 bg-cover" 
-             style="background-image: url('{{ $bannerProduct->main_image ? asset('storage/' . $bannerProduct->main_image) : asset('assets/img/product/1.png') }}');">
-            <div class="content">
-                <h3>
-                    <a href="{{ url('product-details/'.$bannerProduct->id) }}">
-                        {{ $bannerProduct->title }}
-                    </a>
-                </h3>
-                <a href="{{ url('product-details/'.$bannerProduct->id) }}" class="theme-btn">
-                    Explore More <i class="fa-regular fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    @endif
-</div>
+                    @if($bannerProduct)
+                        <div class="bg-image-2 bg-cover" 
+                             style="background-image: url('{{ $bannerProduct->main_image ? asset('storage/' . $bannerProduct->main_image) : asset('assets/img/product/1.png') }}');">
+                            <div class="content wow fadeInUp" data-wow-delay=".8s">
+                                <h3>
+                                    <a href="{{ url('product-details/'.$bannerProduct->id) }}">
+                                        {{ $bannerProduct->title }}
+                                    </a>
+                                </h3>
+                                <a href="{{ url('product-details/'.$bannerProduct->id) }}" class="theme-btn">
+                                    Explore More <i class="fa-regular fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    @endif
+                </div>
 
             </div>
         </div>
     </div>
 </section>
+
 
 
 <!-- Product-sell-section Start -->

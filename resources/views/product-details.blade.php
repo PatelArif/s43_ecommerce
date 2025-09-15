@@ -1,6 +1,6 @@
 @include('includes.head')
 @include('includes.header')
-<style>.header-1 {background:transparent;}</style>
+<style>.header-1 {background:transparent;}.sticky {position: fixed !important;background: linear-gradient(90deg, #145A32, #26aa5f);}</style>
 
 <!-- Contact / Product Title Section -->
 <section class="contact-us-section bg-custm contact-padding fix position-relative">

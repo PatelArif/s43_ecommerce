@@ -104,7 +104,7 @@
                                         </li>
                                         <li>
                                             <i class="fa-regular fa-location-dot"></i>
-                                           Mumbai<br>
+                                           Pragati chawl, chawl no 14, opp to Modern school kamraj nagar vasant Rao naik marg Ghatkopar East Mumbai 400077.<br>
                                             
                                         </li>
                                     </ul>
@@ -121,22 +121,6 @@
   <a href="#" class="footer-link">Patel Company</a>.
 </p>
 
-
-{{-- 
-                        <div class="bottom-list wow fadeInUp" data-wow-delay=".5s">
-                            <div class="app-image">
-                             <img src="{{ asset('assets/img/footer/01.png') }}" alt="img">
-                            </div>
-                            <div class="app-image">
-                                 <img src="{{ asset('assets/img/footer/02.png') }}" alt="img">
-                            </div>
-                            <div class="app-image">
-                                 <img src="{{ asset('assets/img/footer/03.png') }}" alt="img">
-                            </div>
-                            <div class="app-image">
-                                 <img src="{{ asset('assets/img/footer/04.png') }}" alt="img">
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -382,6 +366,40 @@ $('.remove-cart-form').submit(function(e){
 
 });
 </script>
+<script src="https://unpkg.com/@studio-freight/lenis"></script>
+<script>
+  const lenis = new Lenis({
+    duration: 1.8, // ⬆️ make higher (1.8–2.2 = very floaty)
+    easing: (t) => Math.sin((t * Math.PI) / 2), // sine ease-out, super smooth
+    smoothWheel: true,
+    smoothTouch: true,
+    wheelMultiplier: 1.5, // adjust scroll sensitivity
+  })
+
+  // Debug scroll events (optional)
+  lenis.on('scroll', ({ scroll }) => {
+    // console.log(scroll)
+  })
+
+  // Animation frame loop
+  function raf(time) {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
+  }
+  requestAnimationFrame(raf)
+
+  // Smooth anchor scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+      e.preventDefault()
+      const target = document.querySelector(this.getAttribute("href"))
+      if (target) {
+        lenis.scrollTo(target, { offset: -50, duration: 2 }) // slow scroll to section
+      }
+    })
+  })
+</script>
+
 
     </body>
 

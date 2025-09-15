@@ -1,6 +1,6 @@
 @include('includes.head')
 @include('includes.header')
-<style>.header-1 {background:transparent;}</style>
+<style>.header-1 {background:transparent;}.sticky {position: fixed !important;background: linear-gradient(90deg, #145A32, #26aa5f);}</style>
 
 @if(session('success'))
     <script>
@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="content">
                                             <h6>
-                                               Mumbai, India
+                                              Pragati Chawl 14, Opp. Modern School, Kamraj Nagar, Ghatkopar (E),<br> Mumbai – 400077
                                             </h6>
                                         </div>
                                     </div>
@@ -112,7 +112,7 @@
                 <div class="map-items">
                     <div class="googpemap">
 <iframe 
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15080.8515767458!2d72.8776558!3d19.0759837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63f1b9aa3a9%3A0x22f0b6e962f8d833!2sMumbai%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sin!4v1693730570000!5m2!1sen!2sin" 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.768111678094!2d72.9080271!3d19.0792769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c62e3a6a0fcb%3A0x4d87a40f9a06b1a5!2sPragati%20Chawl%2C%20Kamraj%20Nagar%2C%20Ghatkopar%20East%2C%20Mumbai%2C%20Maharashtra%20400077!5e0!3m2!1sen!2sin!4v1726423456789!5m2!1sen!2sin" 
   width="600" 
   height="450" 
   style="border:0;" 
@@ -120,6 +120,7 @@
   loading="lazy" 
   referrerpolicy="no-referrer-when-downgrade">
 </iframe>
+
                     </div>
                 </div>
             </div>
