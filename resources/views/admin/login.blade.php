@@ -23,6 +23,10 @@
         @keyframes fadeIn {
             to { opacity: 1; }
         }
+        .cardShadow{
+                box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+        
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center bg-green-50 relative overflow-hidden">
@@ -31,7 +35,7 @@
   <div id="particles-js" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></div>
 
     <!-- Login Card -->
-    <div class="bg-white rounded-xl shadow-lg p-5 max-w-lg w-full fade-in">
+    <div class="bg-white rounded-xl  p-5 max-w-lg w-full fade-in cardShadow">
         <div class="flex flex-col items-center mb-6">
             <div class="bg-green- w-16 h-16 rounded-xl flex items-center justify-center mb-4">
                 <img src="../assets/img/logo/logo4.png" alt="step4environment" class="w-250 h-250">

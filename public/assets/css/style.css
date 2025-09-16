@@ -3483,7 +3483,36 @@ span {
 .header-main .main-menu ul li:last-child {
     margin-inline-end: 0;
 }
-
+.about1::before {
+    position: absolute;
+    left: -20;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('../img/4.jpg');
+    background-repeat: no-repeat;
+    background-position: Left top;
+    background-size: 100%;
+    opacity: 1;
+    content: "";
+    z-index: 0;
+}
+.about2::before {
+    position: absolute;
+    left: -20;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('../img/bg-2.jpg');
+    background-repeat: no-repeat;
+    background-position: Left top;
+    background-size: 100%;
+    opacity: 1;
+    content: "";
+    z-index: 0;
+}
 .header-main .main-menu ul li a {
     display: inline-block;
     font-size: 19px;

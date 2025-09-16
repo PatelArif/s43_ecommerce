@@ -17,9 +17,10 @@ class IndexController extends Controller
             ->inRandomOrder()
             ->take(8)
             ->get();
-        $latestProducts = Product::latest()
-            ->take(5)
-            ->get();
+       $latestProducts = Product::latest() // defaults to created_at desc
+       ->inRandomOrder()
+    ->take(5)
+    ->get();
         $discountProducts = Product::whereNotNull("discount")
             ->where("discount", ">", 0)
             ->take(4)

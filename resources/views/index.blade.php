@@ -101,10 +101,11 @@ border-radius: 25px;
  
 
 .category-card {
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
   transition: transform 0.3s, box-shadow 0.3s;
   padding: 2rem;
   border-radius: 1rem;
-  background-color: #fff;
+  background-color: #f2f2f2;
   position: relative;
   overflow: hidden;
 }
@@ -286,8 +287,8 @@ border-radius: 25px;
 
 
 
-<section class="py-5 bg-light">
-  <div class="container">
+<section class="py-5 bg-light position-relative about1">
+  <div class="container position-relative" style="z-index:1;">
      <div class="section-title text-center wow fadeInDown" data-wow-delay="0.2s">
          <h2>Shop by Category</h2>
       </div>
@@ -299,7 +300,7 @@ border-radius: 25px;
     <div class="row g-4">
       @foreach($categories as $category)
         <div class="col-md-4">
-          <div class="category-card h-100 p-4 text-center position-relative border rounded shadow-sm wow fadeInUp" data-wow-delay="{{ $loop->index * 0.2 }}s">
+          <div class="category-card h-100 p-4 text-center position-relative border rounded  wow fadeInUp" data-wow-delay="{{ $loop->index * 0.2 }}s">
             <div class="icon mb-3 d-inline-flex align-items-center justify-content-center rounded-circle" 
                  style="width: 60px; height: 60px; background-color: #D4EDDA;">
               <i class="{{ $category->icon }} fs-3 text-success"></i>
@@ -551,8 +552,8 @@ border-radius: 25px;
 
 
 <!-- shop-discover-section Start -->
-<section class="shop-discover-section section-padding fix">
-    <div class="container">
+<section class="py-5 bg-light position-relative about2">
+  <div class="container position-relative" style="z-index:1;">
         <div class="section-title-area">
             <div class="section-title">
                 <h6 class="sub-title wow fadeInUp" data-wow-delay=".1s">

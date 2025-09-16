@@ -9,7 +9,7 @@ use App\Models\Subcategory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
-
+use Illuminate\Support\Facades\File;
 class ProductDetailController extends Controller
 {
     public function productDetails()
@@ -198,8 +198,8 @@ class ProductDetailController extends Controller
             "base" => "nullable|string",
              "featureProduct" => "nullable|boolean", 
         ]);
-$product->handle = $request->boolean("productHandle");
-$feature_product = $request->boolean("featureProduct");
+            $product->handle = $request->boolean("productHandle");
+            $feature_product = $request->boolean("featureProduct");
 
         // Calculate after_discount_price dynamically based on price and discount
         $price = $request->input("price");
@@ -248,8 +248,12 @@ $feature_product = $request->boolean("featureProduct");
                 $suffix = $img === "main_image" ? "main" : $index;
                 $extension = $request->file($img)->getClientOriginalExtension();
                 $filename = "{$productTitle}-{$suffix}.{$extension}";
-                $path = storage_path("app/public/{$categoryName}/{$filename}");
+                 $folder = storage_path("app/public/{$categoryName}");
 
+                  if (!File::exists($folder)) {
+                        File::makeDirectory($folder, 0755, true);
+                    }
+                 $path = "{$folder}/{$filename}";
                 $image = Image::make($request->file($img)->getPathname()); // Use Intervention Image
 
                 // Resize if image size is greater than 2MB
@@ -261,7 +265,7 @@ $feature_product = $request->boolean("featureProduct");
                 }
 
                 $image->save($path); // Save image
-                $product->$img = "{$categoryName}/{$filename}"; // Update image path
+                 $product->$img = "{$categoryName}/{$filename}"; // Update image path
             }
         }
 
