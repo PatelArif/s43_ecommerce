@@ -1,41 +1,48 @@
 <?php
 namespace App\Http\Controllers\admin;
 
-use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\Slider;
+use App\Models\Subcategory;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
-use App\Models\AdminUser;
-use App\Models\User;
-use App\Models\Product;
-use App\Models\Category;
-use App\Models\Subcategory;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class AdminController extends Controller
 {
-      public function create()
+
+    protected function throttleKey(Request $request)
+    {
+        return Str::lower($request->input('email')) . '|' . $request->ip();
+    }
+    public function create()
     {
         return view('admin.create');
     }
-          public function admin()
+    public function admin()
     {
         return view('admin.login');
     }
-   public function dashboard()
-{
-    $categoryCount = Category::count();
-    $subCategoryCount = SubCategory::count();
-    $productCount = Product::count();
-    $userCount = User::count();
+    public function dashboard()
+    {
 
-    return view('admin.index', compact('categoryCount', 'subCategoryCount', 'productCount', 'userCount'));
-}
-  
+        $categoryCount    = Category::count();
+        $subCategoryCount = SubCategory::count();
+        $productCount     = Product::count();
+        $userCount        = User::count();
+        $slider           = Slider::count();
 
-     public function layoutSidenavLight()
+        return view('admin.index', compact('categoryCount', 'subCategoryCount', 'productCount', 'slider', 'userCount'));
+    }
+
+    public function layoutSidenavLight()
     {
         return view('admin.layout-sidenav-light');
     }
@@ -60,92 +67,114 @@ class AdminController extends Controller
         return view('admin.tables');
     }
 
-  public function allUsers()
+    public function allUsers()
     {
         $users = User::all();
         return view('admin.allUsers', compact('users'));
     }
 
-public function login(Request $request)
-{
-    $admin = AdminUser::where('email', $request->email)->first();
-
-    if ($admin && $request->password === $admin->password) {
-        // Success
-        return response()->json([
-            'status' => true,
-            'message' => 'Login successful',
-            'redirect' => route('admin.dashboard') // <-- Add this line
-        ]);
-    }
-
-    return response()->json([
-        'status' => false,
-        'message' => 'Wrong credentials. Please check your email and password.'
-    ]);
-}
-public function logout()
-{
-    // \Log::info('Logging out user: ' . Auth::user()->email);
-    Auth::logout();
-    session()->invalidate();
-    session()->regenerateToken();
-
-    return redirect('/admin/')->with('logout_success', 'You have been logged out successfully!');
-}
- public function store(Request $request)
+    public function login(Request $request)
     {
-         
-       try {
-    $request->validate([
-        'first_name'    => 'required|string|max:255',
-        'last_name'     => 'required|string|max:255',
-        'email'         => 'required|email|unique:users,email',
-        'mobile'        => 'required|numeric|digits_between:8,20',
-        'password'      => 'required|string|min:6|confirmed',
-        'profile_image' => 'nullable|image|max:2048',
-    ]);
-} catch (ValidationException $e) {
-    return response()->json(['errors' => $e->errors()], 422);
-}
 
+        $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required|string',
+        ]);
+        $role = $request->input('role');
+        if ($role !== 'admin') {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Access denied. Admins only.',
+            ], 403);
+        }
+        // Too many attempts?
+        if (RateLimiter::tooManyAttempts($this->throttleKey($request), 5)) {
+            return response()->json([
+                'errors' => [
+                    'login' => ['Too many login attempts. Please try again later.'],
+                ],
+            ], 429);
+        }
+        $credentials = $request->only('email', 'password');
+        $remember    = $request->has('remember');
 
-      $user = new User();
+        if (Auth::attempt($credentials)) {
+            RateLimiter::clear($this->throttleKey($request)); // reset attempts
 
-if ($request->hasFile('profile_image')) {
-    $user->profile_image = $request->file('profile_image')->store('profiles', 'public');
-}
+            return response()->json([
+                'status'   => true,
+                'message'  => 'Login successful',
+                'redirect' => '/admin/dashboard',
+            ]);
+        }
 
-$user->first_name = $request->first_name;
-$user->last_name  = $request->last_name;
-$user->name       = $request->first_name . ' ' . $request->last_name;
-$user->email      = $request->email;
-$user->mobile     = $request->mobile;
-$user->password   = Hash::make($request->password);
+                                                             // Record failed attempt
+        RateLimiter::hit($this->throttleKey($request), 300); // lock for 5 mins
 
-$user->save();
+        return response()->json([
+            'status'  => false,
+            'message' => 'Invalid credentials',
+        ], 401);
+    }
+    public function logout()
+    {
+        // \Log::info('Logging out user: ' . Auth::user()->email);
+        Auth::logout();
+        session()->invalidate();
+        session()->regenerateToken();
 
-return response()->json(['message' => 'User created successfully.']);
+        return redirect('/admin/')->with('logout_success', 'You have been logged out successfully!');
+    }
+    public function store(Request $request)
+    {
+
+        try {
+            $request->validate([
+                'first_name'    => 'required|string|max:255',
+                'last_name'     => 'required|string|max:255',
+                'email'         => 'required|email|unique:users,email',
+                'mobile'        => 'required|numeric|digits_between:8,20',
+                'password'      => 'required|string|min:6|confirmed',
+                'profile_image' => 'nullable|image|max:2048',
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
+
+        $user = new User();
+
+        if ($request->hasFile('profile_image')) {
+            $user->profile_image = $request->file('profile_image')->store('profiles', 'public');
+        }
+
+        $user->first_name = $request->first_name;
+        $user->last_name  = $request->last_name;
+        $user->name       = $request->first_name . ' ' . $request->last_name;
+        $user->email      = $request->email;
+        $user->mobile     = $request->mobile;
+        $user->password   = Hash::make($request->password);
+
+        $user->save();
+
+        return response()->json(['message' => 'User created successfully.']);
 
     }
 
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-try {
-    $request->validate([
-       'first_name' => 'required|string|max:255',
-            'last_name'  => 'required|string|max:255',
-            'email'      => 'required|email|unique:users,email,' . $user->id,
-            'mobile'     => 'required|string|max:20',
-            // 'password'   => 'nullable|string|min:6|confirmed',
-            'profile_image' => 'nullable|image|max:2048',
-    ]);
-} catch (ValidationException $e) {
-    return response()->json(['errors' => $e->errors()], 422);
-}
-
-       
+        try {
+            $request->validate([
+                'first_name'    => 'required|string|max:255',
+                'last_name'     => 'required|string|max:255',
+                'email'         => 'required|email|unique:users,email,' . $user->id,
+                'mobile'        => 'required|string|max:20',
+                // 'password'   => 'nullable|string|min:6|confirmed',
+                'profile_image' => 'nullable|image|max:2048',
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
 
         if ($request->hasFile('profile_image')) {
             if ($user->profile_image) {
