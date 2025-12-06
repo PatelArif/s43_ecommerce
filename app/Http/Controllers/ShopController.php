@@ -4,214 +4,187 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Category;
-use App\Models\Subcategory;
 use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
     /**
-     * Display the cart page
+     * Show Cart Page
      */
     public function cart()
     {
-        $categories = Category::with('subcategories')->get();
-
-        if (auth()->check()) {
-            // Fetch cart from DB for logged-in users
-            $cartItems = Cart::with('product')
-                ->where('user_id', auth()->id())
-                ->get();
-
-            $cart = [];
-            foreach ($cartItems as $item) {
-                $cart[$item->product_id] = [
-                    'name' => $item->product->title,
-                    'quantity' => $item->quantity,
-                    'price' => $item->product->discount > 0 
-                        ? $item->product->after_discount_price 
-                        : $item->product->price,
-                    'image' => $item->product->main_image
-                        ? asset('storage/' . $item->product->main_image)
-                        : asset('assets/img/product/9.png'),
-                ];
-            }
-        } else {
-            // Guest fallback - session
-            $cart = session('cart', []);
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Please login to view your cart.');
         }
 
-        return view('shop-cart', compact('categories', 'cart'));
+        $cartItems = Cart::with('product')
+            ->where('user_id', Auth::id())
+            ->get();
+
+        $cart = [];
+        $subtotal = 0;
+
+        foreach ($cartItems as $item) {
+            $price    = $item->product->price;
+            $quantity = $item->quantity;
+            $lineTotal = $price * $quantity;
+
+            $subtotal += $lineTotal;
+
+            $cart[] = [
+                'id'       => $item->id,
+                'name'     => $item->product->title,
+                'image'    => $item->product->main_image,
+                'price'    => $price,
+                'quantity' => $quantity,
+                'subtotal' => $lineTotal,
+                'product_id'=> $item->product->id
+            ];
+        }
+
+        $donation   = session('donation', 0);
+        $grandTotal = $subtotal + $donation;
+
+        return view('shop-cart', compact('cart', 'subtotal', 'donation', 'grandTotal'));
+    }
+public function getCartSummary()
+{
+    $cartItems = Cart::with('product')
+        ->where('user_id', Auth::id())
+        ->get();
+
+    $count = $cartItems->sum('quantity');
+    $total = $cartItems->sum(fn($item) => $item->product->price * $item->quantity);
+
+    return response()->json([
+        'count' => $count,
+        'total' => $total
+    ]);
+}
+
+    /**
+     * Add to Cart
+     */
+    public function addToCart($id)
+    {
+        if (!Auth::check()) {
+            return response()->json([
+                'success'  => false,
+                'redirect' => route('login'),
+                'message'  => 'Please login to add items to your cart.'
+            ], 401);
+        }
+
+        $product = Product::findOrFail($id);
+
+        $cartItem = Cart::firstOrNew([
+            'user_id'    => Auth::id(),
+            'product_id' => $id,
+        ]);
+        $cartItem->quantity = $cartItem->exists ? $cartItem->quantity + 1 : 1;
+        $cartItem->save();
+        $total_cartItem = $cartItem->count();
+
+        return response()->json([
+            'success' => true,
+            'total_cartItem'=> $total_cartItem,
+            'message' => "{$product->name} added to cart successfully."
+        ]);
     }
 
     /**
-     * Checkout page
+     * Update Cart Item Quantity
+     */
+    public function updateCart(Request $request, $id)
+    {
+        $request->validate(['quantity' => 'required|integer|min:1']);
+
+        if (!Auth::check()) {
+            return response()->json([
+                'success'  => false,
+                'redirect' => route('login'),
+                'message'  => 'Please login to update your cart.'
+            ], 401);
+        }
+
+        $cartItem = Cart::where('user_id', Auth::id())
+            ->where('product_id', $id)
+            ->first();
+
+        if (!$cartItem) {
+            return response()->json(['success' => false, 'message' => 'Item not found in cart.'], 404);
+        }
+
+        $cartItem->quantity = $request->quantity;
+        $cartItem->save();
+
+        return response()->json(['success' => true, 'message' => 'Cart updated successfully.']);
+    }
+
+    /**
+     * Remove Cart Item
+     */
+    public function remove($id)
+    { 
+        if (!Auth::check()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Please login first.'
+            ], 401);
+        }
+
+       $cartItem = Cart::where('user_id', Auth::id())
+                ->where('product_id', $id)
+                ->first();
+
+if (!$cartItem) {
+    return response()->json(['success' => false, 'message' => 'Item not found.']);
+}
+
+$cartItem->delete();
+$cartCount = Cart::where('user_id', Auth::id())->count();
+return response()->json([
+    'success' => true,
+    'message' => 'Item removed successfully.',
+    'total_cartItem' => $cartCount
+]);
+    }
+
+    /**
+     * Store Donation
+     */
+    public function storeDonation(Request $request)
+{
+    $request->validate([
+        'donation' => 'nullable|numeric|min:0'
+    ]);
+
+    // store in session temporarily
+    session(['donation' => $request->donation ?? 0]);
+
+    return response()->json([
+        'status' => 'success',
+        'redirect' => route('checkout')
+    ]);
+}
+
+
+    /**
+     * Checkout
      */
     public function checkout()
     {
-        $categories = Category::with('subcategories')->get();
-        return view('checkout', compact('categories'));
-    }
-
-    /**
-     * Orders page
-     */
-    public function order()
-    {
-        $categories = Category::with('subcategories')->get();
-        return view('order', compact('categories'));
-    }
-
-    /**
-     * Add a product to cart
-     */
-public function addToCart(Request $request, $id)
-{
-    $product = Product::findOrFail($id);
-
-    // Session cart for guests
-    $cart = session()->get('cart', []);
-
-    if (isset($cart[$id])) {
-        $cart[$id]['quantity']++;
-    } else {
-        $cart[$id] = [
-            "name" => $product->title,
-            "quantity" => 1,
-            "price" => $product->discount > 0 ? $product->after_discount_price : $product->price,
-            "image" => $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/product/9.png')
-        ];
-    }
-
-    session()->put('cart', $cart);
-
-    // Logged-in users → update DB and return DB cart
-    if (auth()->check()) {
-        $cartItem = Cart::firstOrNew([
-            'user_id' => auth()->id(),
-            'product_id' => $id,
-        ]);
-
-        $cartItem->quantity = $cartItem->exists ? $cartItem->quantity + 1 : 1;
-        $cartItem->save();
-
-        // Fetch latest DB cart for the user
-        $dbCartItems = Cart::with('product')->where('user_id', auth()->id())->get();
-
-        $cart = $dbCartItems->mapWithKeys(function($item) {
-            return [
-                $item->product_id => [
-                    'name'     => $item->product->title,
-                    'quantity' => $item->quantity,
-                    'price'    => $item->product->discount > 0 ? $item->product->after_discount_price : $item->product->price,
-                    'image'    => $item->product->main_image ? asset('storage/' . $item->product->main_image) : asset('assets/img/product/9.png'),
-                ]
-            ];
-        })->toArray();
-    }
-
-    return response()->json([
-        'success' => true,
-        'message' => $product->title . ' added to cart!',
-        'cart' => $cart,
-        'cart_count' => count($cart),
-        'cart_total' => collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']),
-    ]);
-}
-
-
-public function updateQuantity(Request $request, $id)
-{
-    $action = $request->input('action'); // 'increment' or 'decrement'
-
-    if (!auth()->check()) {
-        // guest user → update session
-        $cart = session()->get('cart', []);
-        if (isset($cart[$id])) {
-            if ($action === 'increment') {
-                $cart[$id]['quantity']++;
-            } elseif ($action === 'decrement' && $cart[$id]['quantity'] > 1) {
-                $cart[$id]['quantity']--;
-            }
-            session()->put('cart', $cart);
-        }
-    } else {
-        // logged-in user → update DB
-        $cartItem = Cart::firstOrNew([
-            'user_id' => auth()->id(),
-            'product_id' => $id,
-        ]);
-
-        if (!$cartItem->exists) {
-            $cartItem->quantity = 1;
-            $cartItem->save();
-        } else {
-            if ($action === 'increment') {
-                $cartItem->quantity++;
-            } elseif ($action === 'decrement' && $cartItem->quantity > 1) {
-                $cartItem->quantity--;
-            }
-            $cartItem->save();
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Please login first.');
         }
 
-        // fetch latest DB cart for response
-        $cartItems = Cart::with('product')->where('user_id', auth()->id())->get();
-        $cart = $cartItems->mapWithKeys(fn($item) => [
-            $item->product_id => [
-                'name'     => $item->product->title,
-                'quantity' => $item->quantity,
-                'price'    => $item->product->discount > 0 ? $item->product->after_discount_price : $item->product->price,
-                'image'    => $item->product->main_image ? asset('storage/' . $item->product->main_image) : asset('assets/img/product/9.png'),
-            ]
-        ])->toArray();
+        $cartItems = Cart::where('user_id', Auth::id())->with('product')->get();
+
+        $subtotal = $cartItems->sum(fn($item) => $item->product->price * $item->quantity);
+        $donation = session('donation', 0);
+        $total    = $subtotal + $donation;
+
+        return view('checkout', compact('cartItems', 'subtotal', 'donation', 'total'));
     }
-
-    $cart_total = collect($cart ?? session()->get('cart', []))->sum(fn($item) => $item['price'] * $item['quantity']);
-
-    return response()->json([
-        'success' => true,
-        'cart' => $cart ?? session()->get('cart', []),
-        'cart_count' => count($cart ?? session()->get('cart', [])),
-        'cart_total' => $cart_total,
-    ]);
-}
-public function remove($id)
-{
-    if (!auth()->check()) {
-        // Guest: remove from session
-        $cart = session()->get('cart', []);
-        if (isset($cart[$id])) {
-            unset($cart[$id]);
-            session()->put('cart', $cart);
-        }
-    } else {
-        // Logged-in: remove from DB
-        Cart::where('user_id', auth()->id())->where('product_id', $id)->delete();
-    }
-
-    // Get latest cart for response
-    $cart = auth()->check() 
-        ? Cart::with('product')->where('user_id', auth()->id())->get()
-            ->mapWithKeys(fn($item) => [
-                $item->product_id => [
-                    'name'     => $item->product->title,
-                    'quantity' => $item->quantity,
-                    'price'    => $item->product->discount > 0 ? $item->product->after_discount_price : $item->product->price,
-                    'image'    => $item->product->main_image ? asset('storage/' . $item->product->main_image) : asset('assets/img/product/9.png'),
-                ]
-            ])->toArray()
-        : session()->get('cart', []);
-
-    $cart_total = collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']);
-
-    return response()->json([
-        'success' => true,
-        'cart' => $cart,
-        'cart_count' => count($cart),
-        'cart_total' => $cart_total,
-    ]);
-}
-
-
-
 }

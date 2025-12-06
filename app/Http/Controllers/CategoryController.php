@@ -47,22 +47,41 @@ public function detail($id)
 
 public function store(Request $request)
 {
-    $request->validate([
+    // Validate request
+    $validated = $request->validate([
         'name'  => 'required|string|max:255',
         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
-    $category = new Category();
-    $category->name = $request->name;
+    $imagePath = null;
 
     if ($request->hasFile('image')) {
-        // Store the image using Laravel's Storage facade
-        $category->image = $request->file('image')->store('categories', 'public');
+        $image = $request->file('image');
+
+        // Create folder if it doesn't exist
+        $destinationPath = public_path('storage/categories');
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 0755, true);
+        }
+
+        // Generate a unique filename
+        $filename = time() . '_' . $image->getClientOriginalName();
+
+        // Move the image to storage/categories
+        $image->move($destinationPath, $filename);
+
+        // Store relative path in DB
+        $imagePath = 'categories/' . $filename;
     }
 
-    $category->save();
+    // Create category
+    $category = Category::create([
+        'name'  => $validated['name'],
+        'image' => $imagePath,
+    ]);
 
-    return redirect()->route('categories.index')->with('success', 'Category added successfully.');
+    return redirect()->route('categories.index')
+                     ->with('success', 'Category added successfully.');
 }
 
     // Show edit form

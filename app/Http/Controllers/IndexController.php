@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Product;
+use App\Models\Slider;
 class IndexController extends Controller
 {
     public function index()
     {
+        $sliders = Slider::orderBy('id')->get();
         $categories = Category::with("subcategories")->get();
         $products = Product::where(function ($q) {
             $q->whereNull("discount")->orWhere("discount", 0);
@@ -17,13 +19,13 @@ class IndexController extends Controller
             ->inRandomOrder()
             ->take(8)
             ->get();
-       $latestProducts = Product::latest() // defaults to created_at desc
+       $latestProducts = Product::latest() 
        ->inRandomOrder()
     ->take(5)
     ->get();
         $discountProducts = Product::whereNotNull("discount")
             ->where("discount", ">", 0)
-            ->take(4)
+            ->take(8)
             ->inRandomOrder()
             ->get();
         return view(
@@ -32,7 +34,8 @@ class IndexController extends Controller
                 "categories",
                 "products",
                 "latestProducts",
-                "discountProducts"
+                "discountProducts",
+                "sliders"
             )
         );
     }
