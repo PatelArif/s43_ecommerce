@@ -1,21 +1,19 @@
 <?php
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\GeneralController;
-use App\Http\Controllers\IndexController;
-use App\Http\Controllers\ShopController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\FavoritesController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\SubCategoryController;
-use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\AdminSliderController;
 use App\Http\Controllers\admin\ContactController as AdminContactController;
-use Barryvdh\DomPDF\Facade\Pdf;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FavoritesController;
+use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductDetailController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\SubCategoryController;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
 
 // Index Pages
@@ -28,7 +26,6 @@ Route::get('/index-4', [IndexController::class, 'index4'])->name('index4');
 Route::get('/shop-cart', [ShopController::class, 'cart'])->name('shopCart');
 // Route::get('/checkout', [ShopController::class, 'checkout'])->name('checkout');
 Route::get('/order', [ShopController::class, 'order'])->name('order');
-
 
 // Category Routes
 Route::get('/allCategories', [CategoryController::class, 'show'])->name('categories');
@@ -61,7 +58,7 @@ Route::get('/product-details/{id}', [ProductDetailController::class, 'shopPage']
 // add to cart route
 Route::post('/favorites/toggle/{id}', [FavoritesController::class, 'toggleFavorite'])->name('favorites.toggle');
 Route::get('/favorites', [FavoritesController::class, 'viewFavorites'])->name('favorites.view');
-Route::delete('/favorites/remove/{id}', [FavoritesController::class,'remove'])->name('favorites.remove');
+Route::delete('/favorites/remove/{id}', [FavoritesController::class, 'remove'])->name('favorites.remove');
 Route::post('/favorites/move-to-cart/{id}', [FavoritesController::class, 'moveToCart'])
     ->name('favorites.moveToCart');
 
@@ -88,7 +85,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 // Authentication
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
 
 Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])
     ->name('password.request');
@@ -118,72 +114,56 @@ Route::middleware('auth')->group(function () {
     Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
 });
 Route::post('/orders/send-invoice-image', [OrderController::class, 'sendInvoiceImage'])->name('orders.sendInvoiceImage');
-Route::get('/test-mail', function(){
-    Mail::raw('Test email', function($message){
+Route::get('/test-mail', function () {
+    Mail::raw('Test email', function ($message) {
         $message->to('patelarif9498@gmail.com')->subject('Test Mail');
     });
     return 'Mail sent to arif';
 });
 Route::get('/order/{order}/invoice', [OrderController::class, 'invoice'])->name('order.invoice');
-
 Route::get('/my-orders', [OrderController::class, 'myOrders'])->name('myOrders');
 
-// routes/web.php
 Route::post('/cart/donation', [ShopController::class, 'storeDonation'])->name('cart.donation');
-
 Route::post('/orders/{id}/approve', [OrderController::class, 'approve'])->name('orders.approve');
-
-
-
-
 
 Route::get('/admin/', [AdminController::class, 'admin']);
 Route::post('/admin/login', [AdminController::class, 'login']);
 
 Route::middleware(['auth_check'])->prefix('admin')->group(function () {
-   Route::get('/create', [AdminController::class, 'create'])->name('admin.create');
-  Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
-Route::post('/logout', [AdminController::class, 'logout'])->name('admin_logout');
+    Route::get('/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
+    Route::post('/logout', [AdminController::class, 'logout'])->name('admin_logout');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/layout-sidenav-light', [AdminController::class, 'layoutSidenavLight']);
+    Route::get('/charts', [AdminController::class, 'charts']);
+    Route::get('/password', [AdminController::class, 'password']);
+    Route::get('/register', [AdminController::class, 'register']);
+    Route::get('/tables', [AdminController::class, 'tables']);
+    Route::get('/allCategories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+    Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+    Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+    Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    Route::get('/subCategories', [CategoryController::class, 'subCategories'])->name('subCategories.index');
+    Route::post('/subCategories', [CategoryController::class, 'subCategoriesStore'])->name('subCategories.store');
+    Route::get('/subCategories/{id}/edit', [CategoryController::class, 'subCategoriesEdit'])->name('subCategories.edit');
+    Route::put('/subCategories/{id}', [CategoryController::class, 'subCategoriesUpdate'])->name('subCategories.update');
+    Route::delete('/subCategories/{id}', [CategoryController::class, 'subCategoriesDestroy'])->name('subCategories.destroy');
 
-Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-Route::get('/layout-sidenav-light', [AdminController::class, 'layoutSidenavLight']);
-Route::get('/charts', [AdminController::class, 'charts']);
-Route::get('/password', [AdminController::class, 'password']);
-Route::get('/register', [AdminController::class, 'register']);
-Route::get('/tables', [AdminController::class, 'tables']);
+    Route::get('/products', [ProductDetailController::class, 'index'])->name('products.index');
+    Route::post('/products', [ProductDetailController::class, 'store'])->name('products.store');
+    Route::get('/products/{id}', [ProductDetailController::class, 'show'])->name('products.show');
 
-// ✅ subCategory management routes
-Route::get('/allCategories', [CategoryController::class, 'index'])->name('categories.index');
-Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
-Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
-Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
-Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    Route::get('/products/{id}/edit', [ProductDetailController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{id}', [ProductDetailController::class, 'update'])->name('products.update');
+    Route::delete('/products/{id}', [ProductDetailController::class, 'destroy'])->name('products.destroy');
 
-// ✅ subCategory management routes
-Route::get('/subCategories', [CategoryController::class, 'subCategories'])->name('subCategories.index');
-Route::post('/subCategories', [CategoryController::class, 'subCategoriesStore'])->name('subCategories.store');
-Route::get('/subCategories/{id}/edit', [CategoryController::class, 'subCategoriesEdit'])->name('subCategories.edit');
-Route::put('/subCategories/{id}', [CategoryController::class, 'subCategoriesUpdate'])->name('subCategories.update');
-Route::delete('/subCategories/{id}', [CategoryController::class, 'subCategoriesDestroy'])->name('subCategories.destroy');
+    Route::get('/allUsers', [AdminController::class, 'allUsers'])->name('admin.allUsers');
+    Route::post('/allUsers', [AdminController::class, 'store'])->name('store');
+    Route::put('/allUsers/{id}', [AdminController::class, 'update'])->name('update');
+    Route::delete('/allUsers/{id}', [AdminController::class, 'destroy'])->name('users.destroy');
 
-// ✅ Product management routes
-Route::get('/products', [ProductDetailController::class, 'index'])->name('products.index');
-Route::post('/products', [ProductDetailController::class, 'store'])->name('products.store');
-// Route to fetch a product for editing
-Route::get('/products/{id}', [ProductDetailController::class, 'show'])->name('products.show');
-
-
-Route::get('/products/{id}/edit', [ProductDetailController::class, 'edit'])->name('products.edit');
-Route::put('/products/{id}', [ProductDetailController::class, 'update'])->name('products.update');
-Route::delete('/products/{id}', [ProductDetailController::class, 'destroy'])->name('products.destroy');
-
-
-Route::get('/allUsers', [AdminController::class, 'allUsers'])->name('admin.allUsers');
-Route::post('/allUsers', [AdminController::class, 'store'])->name('store');
-Route::put('/allUsers/{id}', [AdminController::class, 'update'])->name('update');
-Route::delete('/allUsers/{id}', [AdminController::class, 'destroy'])->name('users.destroy');
-
-   // Contact Submissions (Admin)
+    // Contact Submissions (Admin)
     Route::get('/contacts', [AdminContactController::class, 'index'])->name('contacts.index');
     Route::delete('/contacts/{id}', [AdminContactController::class, 'destroy'])->name('contacts.destroy');
 
@@ -198,11 +178,4 @@ Route::delete('/allUsers/{id}', [AdminController::class, 'destroy'])->name('user
     Route::post('/orders/{order}/approve', [OrderController::class, 'approve'])->name('admin.orders.approve');
     Route::post('/orders/{order}/reject', [OrderController::class, 'reject'])->name('admin.orders.reject');
 
-
-
 });
-
-
-
-
-
