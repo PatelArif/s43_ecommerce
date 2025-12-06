@@ -58,7 +58,7 @@
                                 <td>{{ $product->subcategory->name ?? '—' }}</td>
                                 <td>
                                     @if($product->main_image)
-                                        <img src="{{ asset('public/storage/'. $product->main_image) }}" alt="Image" width="80">
+                                        <img src="{{ asset('/storage/'. $product->main_image) }}" alt="Image" width="80">
                                     @else
                                         <span class="text-muted">No Image</span>
                                     @endif
@@ -256,7 +256,7 @@ function openEditProductModal(id) {
       const catSlug = product.category_slug;
       ['main_image','image_1','image_2','image_3','image_4'].forEach(f => {
         if (product[f]) {
-          const url = `/public/storage/${product[f]}`;
+          const url = `//storage/${product[f]}`;
           document.getElementById('preview_' + f).innerHTML = `<img src="${url}" width="100" class="img-thumbnail" />`;
         }
       });

@@ -38,7 +38,7 @@
                                 <td class="text-center">{{ $slider->title }}</td>
                                 <td class="text-center">
                                     @if($slider->image)
-                                        <img src="{{ asset('public/storage/' . $slider->image) }}" width="120" class="img-fluid rounded">
+                                        <img src="{{ asset('storage/' . $slider->image) }}" width="120" class="img-fluid rounded">
                                     @else
                                         <span class="text-muted">No Image</span>
                                     @endif
