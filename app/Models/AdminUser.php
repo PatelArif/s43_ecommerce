@@ -15,9 +15,8 @@ class AdminUser extends Authenticatable
 
     protected $fillable = ['email', 'password'];
 
-    protected $hidden = ['password'];
-       public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
+   protected $hidden = [
+        'remember_token',
+    ];
+     
 }
