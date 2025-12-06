@@ -83,7 +83,7 @@
                                     <td class="text-center"><h5>{{ $user->email }}</h5></td>
                                     <td class="text-center">
                                         @if($user->profile_image)
-                                            <img src="{{ asset('storage/' . $user->profile_image) }}" alt="User Image" width="100">
+                                            <img src="{{ asset('public/storage/' . $user->profile_image) }}" alt="User Image" width="100">
                                         @else
                                             <span class="text-muted">No Image</span>
                                         @endif
@@ -135,7 +135,7 @@
             document.getElementById('userEmail').value = email;
             document.getElementById('userMobile').value = mobile;
             document.getElementById('existingImage').innerHTML = profileImage
-                ? `<img src="/storage/${profileImage}" alt="Current Image" class="img-thumbnail" width="100">`
+                ? `<img src="public/storage/${profileImage}" alt="Current Image" class="img-thumbnail" width="100">`
                 : '<span class="text-muted">No Image</span>';
             new bootstrap.Modal(document.getElementById('userModal')).show();
         }

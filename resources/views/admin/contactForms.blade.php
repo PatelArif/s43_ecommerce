@@ -11,9 +11,9 @@
             <div class="container-fluid px-4">
                 <div class="mb-4 pt-3 d-flex justify-content-between align-items-center">
                   <h2>Contact Messages</h2>
-                    <button class="btn btn-primary" onclick="openAddModal()">
+                    {{-- <button class="btn btn-primary" onclick="openAddModal()">
                         <i class="fas fa-plus"></i> Add Category
-                    </button>
+                    </button> --}}
 
                 </div>
 
@@ -59,7 +59,7 @@
         </main>
         @include('admin.includes.footer')
         <script>
-            const assetBaseUrl = "{{ asset('storage') }}";
+            const assetBaseUrl = "{{ asset('public/storage') }}";
         </script>
         <script>
             function openAddModal() {

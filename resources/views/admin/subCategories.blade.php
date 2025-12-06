@@ -93,7 +93,7 @@
     <td class="text-center"><h5>{{ $subcategory->category->name ?? '—' }}</h5></td> {{-- Show related category --}}
     <td class="text-center">
         @if($subcategory->image)
-            <img src="{{ asset('storage/' . $subcategory->image) }}" alt="Subcategory Image" width="100">
+            <img src="{{ asset('public/storage/' . $subcategory->image) }}" alt="Subcategory Image" width="100">
         @else
             <span class="text-muted">No Image</span>
         @endif
@@ -145,7 +145,7 @@ function openEditModal(id, name, image, categoryId) {
     document.getElementById('parentCategory').value = categoryId;
 
     let imageHtml = image
-        ? `<img src="/storage/${image}" width="70" alt="Current Image">`
+        ? `<img src="/public/storage/${image}" width="70" alt="Current Image">`
         : '<span class="text-muted">No Image</span>';
     document.getElementById('existingImage').innerHTML = imageHtml;
 
