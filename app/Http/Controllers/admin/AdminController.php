@@ -88,13 +88,14 @@ class AdminController extends Controller
             ], 403);
         }
         // Too many attempts?
-        if (RateLimiter::tooManyAttempts($this->throttleKey($request), 5)) {
+        if (RateLimiter::tooManyAttempts($this->throttleKey($request), 30)) {
             return response()->json([
                 'errors' => [
                     'login' => ['Too many login attempts. Please try again later.'],
                 ],
             ], 429);
         }
+        // $credentials = $request->only('email', 'password', 'role');
         $credentials = $request->only('email', 'password');
         $remember    = $request->has('remember');
 
