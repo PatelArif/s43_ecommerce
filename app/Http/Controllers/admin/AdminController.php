@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
@@ -95,8 +96,8 @@ class AdminController extends Controller
                 ],
             ], 429);
         }
-        // $credentials = $request->only('email', 'password', 'role');
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password', 'role');
+        // $credentials = $request->only('email', 'password');
         $remember    = $request->has('remember');
 
         if (Auth::attempt($credentials)) {
@@ -119,7 +120,7 @@ class AdminController extends Controller
     }
     public function logout()
     {
-        // \Log::info('Logging out user: ' . Auth::user()->email);
+        Log::info('Logging out user: ' . Auth::user()->email);
         Auth::logout();
         session()->invalidate();
         session()->regenerateToken();

@@ -1,13 +1,13 @@
 <?php
-
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpFoundation\Response;
 
-use App\Models\User;
 class AuthCheck
 {
     /**
@@ -17,7 +17,8 @@ class AuthCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
-              if (!Auth::check() || Auth::user()->role !== 'admin') {
+        if (! Auth::check() || Auth::user()->role !== 'admin') {
+            Log::info(Auth::user());
             // redirect non-admins
             return redirect('/admin/')->with('error', 'Access Denied!');
         }
