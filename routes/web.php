@@ -3,15 +3,18 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\FavoritesController;
-
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\AdminSliderController;
 use App\Http\Controllers\admin\ContactController as AdminContactController;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +26,7 @@ Route::get('/index-4', [IndexController::class, 'index4'])->name('index4');
 
 // Shop Pages
 Route::get('/shop-cart', [ShopController::class, 'cart'])->name('shopCart');
-Route::get('/checkout', [ShopController::class, 'checkout'])->name('checkout');
+// Route::get('/checkout', [ShopController::class, 'checkout'])->name('checkout');
 Route::get('/order', [ShopController::class, 'order'])->name('order');
 
 
@@ -32,7 +35,16 @@ Route::get('/allCategories', [CategoryController::class, 'show'])->name('categor
 Route::get('/allCategories/{id}/', [CategoryController::class, 'detail'])->name('detail');
 Route::get('/allCategories/{id}/{sub_id}', [ProductDetailController::class, 'allproducts'])->name('allproducts');
 
+Route::get('/generate-pdf', function () {
+    $data = [
+        'title' => 'Welcome to DOMPDF in Laravel 12',
+        'date'  => date('m/d/Y'),
+    ];
 
+    $pdf = Pdf::loadView('emails.invoice_mail', $data);
+
+    return $pdf->download('myfile.pdf');
+});
 // Sub Category Routes
 Route::get('/allCategories/{slug}/{id}', [SubCategoryController::class, 'productcategory'])->name('productcategory');
 
@@ -53,9 +65,10 @@ Route::delete('/favorites/remove/{id}', [FavoritesController::class,'remove'])->
 Route::post('/favorites/move-to-cart/{id}', [FavoritesController::class, 'moveToCart'])
     ->name('favorites.moveToCart');
 
+Route::get('/order/{id}/invoice-pdf', [OrderController::class, 'downloadInvoice'])->name('order.invoicePdf');
 
 Route::post('/cart/add/{id}', [ShopController::class, 'addToCart'])->name('cart.add');
-Route::post('/cart/update-quantity/{id}', [ShopController::class, 'updateQuantity'])->name('cart.updateQuantity');
+Route::post('/cart/update/{id}', [ShopController::class, 'updateCart'])->name('cart.update');
 Route::delete('/cart/remove/{id}', [ShopController::class, 'remove'])->name('cart.remove');
 
 Route::get('/shop-cart', [ShopController::class, 'cart'])->name('cart');
@@ -76,6 +89,18 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
+Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])
+    ->name('password.request');
+
+Route::post('/forgot-password', [AuthController::class, 'sendResetLink'])
+    ->name('password.email');
+
+Route::get('/reset-password/{token}', [AuthController::class, 'showResetForm'])
+    ->name('password.reset');
+
+Route::post('/reset-password', [AuthController::class, 'resetPassword'])
+    ->name('password.update');
 // Register
 Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
@@ -86,20 +111,40 @@ Route::post('/user_edit', [AuthController::class, 'user_edit']);
 
 Route::post('/update-address', [AuthController::class, 'updateAddress'])->name('user.updateAddress');
 // Authenticated routes
-Route::middleware(['auth'])->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/my-account', [AuthController::class, 'myAccount'])->name('my-account');
+    Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout', [OrderController::class, 'store'])->name('checkout.store');
+    Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
 });
+Route::post('/orders/send-invoice-image', [OrderController::class, 'sendInvoiceImage'])->name('orders.sendInvoiceImage');
+Route::get('/test-mail', function(){
+    Mail::raw('Test email', function($message){
+        $message->to('patelarif9498@gmail.com')->subject('Test Mail');
+    });
+    return 'Mail sent to arif';
+});
+Route::get('/order/{order}/invoice', [OrderController::class, 'invoice'])->name('order.invoice');
+
+Route::get('/my-orders', [OrderController::class, 'myOrders'])->name('myOrders');
+
+// routes/web.php
+Route::post('/cart/donation', [ShopController::class, 'storeDonation'])->name('cart.donation');
+
+Route::post('/orders/{id}/approve', [OrderController::class, 'approve'])->name('orders.approve');
 
 
 
-// admin routes
-Route::prefix('admin')->group(function () {
-  Route::get('/create', [AdminController::class, 'create'])->name('admin.create');
+
+
+Route::get('/admin/', [AdminController::class, 'admin']);
+Route::post('/admin/login', [AdminController::class, 'login']);
+
+Route::middleware(['auth_check'])->prefix('admin')->group(function () {
+   Route::get('/create', [AdminController::class, 'create'])->name('admin.create');
   Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
-Route::get('/', [AdminController::class, 'admin']);
 Route::post('/logout', [AdminController::class, 'logout'])->name('admin_logout');
 
-Route::post('/login', [AdminController::class, 'login']);
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/layout-sidenav-light', [AdminController::class, 'layoutSidenavLight']);
 Route::get('/charts', [AdminController::class, 'charts']);
@@ -141,7 +186,22 @@ Route::delete('/allUsers/{id}', [AdminController::class, 'destroy'])->name('user
    // Contact Submissions (Admin)
     Route::get('/contacts', [AdminContactController::class, 'index'])->name('contacts.index');
     Route::delete('/contacts/{id}', [AdminContactController::class, 'destroy'])->name('contacts.destroy');
+
+    Route::get('/sliders', [AdminSliderController::class, 'index'])->name('sliders.index');
+    Route::get('/sliders/{slider}', [AdminSliderController::class, 'show'])->name('sliders.show');
+
+    Route::post('/sliders', [AdminSliderController::class, 'store'])->name('sliders.store');
+    Route::put('/sliders/{slider}', [AdminSliderController::class, 'update'])->name('sliders.update');
+    Route::delete('/sliders/{slider}', [AdminSliderController::class, 'destroy'])->name('sliders.destroy');
+    Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders.index');
+    Route::get('/orders/status/{status}', [OrderController::class, 'filterByStatus'])->name('admin.orders.status');
+    Route::post('/orders/{order}/approve', [OrderController::class, 'approve'])->name('admin.orders.approve');
+    Route::post('/orders/{order}/reject', [OrderController::class, 'reject'])->name('admin.orders.reject');
+
+
+
 });
+
 
 
 

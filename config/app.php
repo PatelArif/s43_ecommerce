@@ -134,7 +134,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-         Illuminate\Log\LogServiceProvider::class,
+        Illuminate\Log\LogServiceProvider::class,
+        Illuminate\Mail\MailServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Third Party Service Providers...
          */
@@ -145,13 +147,15 @@ return [
          */
         // Add your custom service providers here
     ],
-        'aliases' => [
-            'App'           => App::class,
-            'Artisan'       => Illuminate\Support\Facades\Artisan::class,
-            'Auth'          => Illuminate\Support\Facades\Auth::class,
-            // other aliases...
-            'Image' => Intervention\Image\Facades\Image::class, // Add this line
-        ],
+    'aliases'         => [
+        'App'      => App::class,
+        'Artisan'  => Illuminate\Support\Facades\Artisan::class,
+        'Auth'     => Illuminate\Support\Facades\Auth::class,
+                                                               // other aliases...
+        'Image'    => Intervention\Image\Facades\Image::class, // Add this line
+        'Password' => Illuminate\Support\Facades\Password::class,
+        'Mail'     => Illuminate\Support\Facades\Mail::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------
