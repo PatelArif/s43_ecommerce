@@ -214,28 +214,28 @@
         }), $(".btn-action").click((function() {
             let t = $(this).data("id"),
                 a = $(this).data("action");
-            // $.ajax({
-            //     url: "/cart/update/" + t,
-            //     type: "POST",
-            //     data: {
-            //         action: a
-            //     },
-            //     success: function(a) {
-            //         "success" === a.status && ($("#cart-row-" + t +
-            //                 " .quantityValue").val(a.quantity), $("#subtotal-" +
-            //                 t).text("₹" + a.subtotal.toFixed(2)), $(
-            //                 "#grandTotal").text("₹" + a.total.toFixed(2)), Swal
-            //             .fire({
-            //                 toast: !0,
-            //                 position: "top-end",
-            //                 icon: "success",
-            //                 title: a.message,
-            //                 showConfirmButton: !1,
-            //                 timer: 1500,
-            //                 timerProgressBar: !0
-            //             }), 0 == a.quantity && $("#cart-row-" + t).remove())
-            //     }
-            // })
+            $.ajax({
+                url: "/cart/update/" + t,
+                type: "POST",
+                data: {
+                    action: a
+                },
+                success: function(a) {
+                    "success" === a.status && ($("#cart-row-" + t +
+                            " .quantityValue").val(a.quantity), $("#subtotal-" +
+                            t).text("₹" + a.subtotal.toFixed(2)), $(
+                            "#grandTotal").text("₹" + a.total.toFixed(2)), Swal
+                        .fire({
+                            toast: !0,
+                            position: "top-end",
+                            icon: "success",
+                            title: a.message,
+                            showConfirmButton: !1,
+                            timer: 1500,
+                            timerProgressBar: !0
+                        }), 0 == a.quantity && $("#cart-row-" + t).remove())
+                }
+            })
         })), $(".remove-cart-form").submit((function(t) {
             t.preventDefault();
             let a = $(this);
@@ -256,7 +256,7 @@
                         timerProgressBar: !0
                     }), 0 === t.total && $("tbody").html(
                         '<tr><td colspan="4" class="text-center">Your cart is empty.</td></tr>'
-                    ))
+                        ))
                 }
             })
         }))
