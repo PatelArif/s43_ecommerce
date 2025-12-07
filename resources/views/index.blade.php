@@ -275,7 +275,7 @@
                                             <div class="product-image">
                                                 <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/generated images/bags2.png') }}"
                                                     alt="{{ $product->name }}"
-                                                    onerror="this.onerror=null;this.src='{{ asset('assets/img/product/9.png') }}';">
+                                                    onerror="this.onerror=null;this.src='{{ asset('{{config('constants.ASSETS_PATH') }}img/product/9.png') }}';">
                                                 <div class="sale-box">
                                                     @if ($product->discount > 0)
                                                         <div class="box">{{ $product->discount }}% off</div>
@@ -375,7 +375,7 @@
                                         <div class="shop-discover-item wow fadeInUp"
                                             data-wow-delay="{{ $loop->index * 0.2 }}s">
                                             <div class="shop-image">
-                                                <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/product/9.png') }}"
+                                                <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('{{config('constants.ASSETS_PATH') }}img/product/9.png') }}"
                                                     alt="{{ $product->title }}">
                                             </div>
                                             <div class="content">

@@ -5,10 +5,10 @@
          <div class="header-main">
             <div class="logo" style="width:70px">
                <a href="{{ url('/') }}" class="header-logo"style="width:70px">
-               <img src="{{ asset('assets/img/logo/logo4.png') }}" alt="logo-img"style="width:70px">
+               <img src="{{ asset('{{config('constants.ASSETS_PATH')}}img/logo/logo4.png') }}" alt="logo-img"style="width:70px">
                </a>
                <a href="{{ url('/') }}" class="header-logo-2 d-none">
-               <img src="{{ asset('assets/img/logo/logo4.png') }}" alt="logo-img"style="width:70px">
+               <img src="{{ asset('{{config('constants.ASSETS_PATH')}}img/logo/logo4.png') }}" alt="logo-img"style="width:70px">
                </a>
             </div>
             <div class="mean__menu-wrapper">

@@ -44,7 +44,7 @@
     <div class="bg-white rounded-xl  p-5 max-w-lg w-full fade-in cardShadow">
         <div class="flex flex-col items-center mb-6">
             <div class="bg-green- w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-                <img src="../assets/img/logo/logo4.png" alt="step4environment" class="w-250 h-250">
+                <img src="../{{config('constants.ASSETS_PATH')}}img/logo/logo4.png" alt="step4environment" class="w-250 h-250">
             </div>
             <h1 class="text-2xl font-bold text-green-700">Step4Environment</h1>
             <p class="text-gray-500 text-sm">Admin Dashboard for Sustainable Commerce</p>

@@ -142,7 +142,7 @@
     <div class="invoice-header">
         <div class="logo">
 
-            {{-- <img src="https://dev-testing.stepforenvironment.com/assets/img/logo/logo4.png" alt="logo"> --}}
+            {{-- <img src="https://dev-testing.stepforenvironment.com/{{config('constants.ASSETS_PATH')}}img/logo/logo4.png" alt="logo"> --}}
             <div>
                 <h2>Step For Environment</h2>
                 <small>Eco-friendly • Sustainable • Reusable</small>

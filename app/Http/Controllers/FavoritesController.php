@@ -110,7 +110,7 @@ class FavoritesController extends Controller
                             : $item->product->price,
                         'image' => $item->product->main_image
                             ? asset('storage/' . $item->product->main_image)
-                            : asset('assets/img/product/9.png'),
+                            : asset(config('constants.ASSETS_PATH') .'img/product/9.png'),
                     ]
                 ])
                 ->toArray();
@@ -131,7 +131,7 @@ class FavoritesController extends Controller
                     "name" => $product->title,
                     "quantity" => 1,
                     "price" => $product->discount > 0 ? $product->after_discount_price : $product->price,
-                    "image" => $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/product/9.png')
+                    "image" => $product->main_image ? asset('storage/' . $product->main_image) : asset(config('constants.ASSETS_PATH') .'img/product/9.png')
                 ];
             }
             session()->put('cart', $cart);

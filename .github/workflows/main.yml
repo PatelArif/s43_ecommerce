@@ -68,10 +68,10 @@ jobs:
 
               # Rename env file
               cp .env.example-dev .env
-              
+
               # rename Constant file
               rm config/constants.php
-              cp config/constants-dev.php  constants.php
+              cp config/constants-dev.php  config/constants.php
 
               # Laravel optimizations
               php artisan config:cache
