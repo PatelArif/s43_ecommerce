@@ -26,7 +26,8 @@ jobs:
         - name: Prepare Deployment Package
           run: |
             rm -rf .git
-            zip -r deploy.zip . -x "vendor/*" ".git/*"
+            # zip -r deploy.zip . -x "vendor/*" ".git/*"
+            zip -r deploy.zip . -x ".git/*"
 
         - name: Copy Files to Hostinger
           uses: appleboy/scp-action@v0.1.7
@@ -38,20 +39,31 @@ jobs:
             source: "deploy.zip"
             target: ${{ secrets.DEPLOY_PATH }}
 
-  # - name: Run Deploy Commands on Server
-  #   uses: appleboy/ssh-action@v1.0.3
-  #   with:
-  #     host: ${{ secrets.SSH_HOST }}
-  #     username: ${{ secrets.SSH_USER }}
-  #     port: ${{ secrets.SSH_PORT }}
-  #     key: ${{ secrets.SSH_PRIVATE_KEY }}
-  #     script: |
-  #       cd ${{ secrets.DEPLOY_PATH }}
-  #       unzip -o deploy.zip
-  #       rm deploy.zip
-  #       composer install --no-dev --optimize-autoloader
-  #       php artisan migrate --force
-  #       php artisan config:clear
-  #       php artisan config:cache
-  #       php artisan route:cache
-  #       php artisan view:cache
+
+        - name: Run Deployment Commands on Hostinger
+          uses: appleboy/ssh-action@v1.0.3
+          with:
+            host: ${{ secrets.SSH_HOST }}
+            username: ${{ secrets.SSH_USER }}
+            port: ${{ secrets.SSH_PORT }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            script: |
+              cd ${{ secrets.DEPLOY_PATH }}
+
+              # Extract without overriding uploads (storage) or environment file
+              unzip -o deploy.zip -x "storage/*" ".env"
+              rm deploy.zip
+
+              # Install composer dependencies on server
+              # composer install --no-dev --optimize-autoloader
+
+              # Correct permissions for Laravel
+              chmod -R 775 storage bootstrap/cache
+
+              # Ensure storage symlink exists
+              php artisan storage:link || true
+
+              # Laravel optimizations
+              php artisan config:cache
+              php artisan route:cache
+              php artisan view:cache
