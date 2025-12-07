@@ -37,6 +37,20 @@ function showconfirmpw() {
 // loginBtn.addEventListener("click", () => {
 //     container.classList.remove("active");
 // });
+$(document).ready(function () {
+    // Show forgot password form
+    $("#forgotPasswordLink").on("click", function () {
+        $(".login_section").addClass("d-none");
+        $(".forgotPasswordSection").removeClass("d-none");
+    });
+
+    // Back to login form
+    $("#backToLogin").on("click", function () {
+        $(".forgotPasswordSection").addClass("d-none");
+        $(".login_section").removeClass("d-none");
+    });
+});
+
 $("#adminUserForm").on("submit", function (e) {
     e.preventDefault();
 
@@ -71,105 +85,103 @@ $("#adminUserForm").on("submit", function (e) {
         },
     });
 });
-    $('#adminLoginForm').on('submit', function (e) {
-        e.preventDefault();
-console.log("Form submitted"); // Debugging line to check if the event is triggered
-        const formData = new FormData(this);
-        const csrfToken = $('meta[name="csrf-token"]').attr('content');
+$("#adminLoginForm").on("submit", function (e) {
+    e.preventDefault();
+    console.log("Form submitted"); // Debugging line to check if the event is triggered
+    const formData = new FormData(this);
+    const csrfToken = $('meta[name="csrf-token"]').attr("content");
 
-        $.ajax({
-            url: '/admin/login', // Change this to the correct route for login
-            type: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': csrfToken,
-            },
-            data: formData,
-            contentType: false, // This is necessary for FormData to be properly sent
-            processData: false, // Prevents jQuery from processing the data
-            success: function (data) {
-                if (data.status) {
-                    // If login is successful, redirect to the dashboard
-                    window.location.href = data.redirect;
-                } else {
-                    // Display error message
-                    $('#responseMessage').text(data.message);
-                }
-            },
-            error: function (xhr, status, error) {
-                let errorMessage = 'Something went wrong. Please try again later.';
-                if (xhr.responseJSON && xhr.responseJSON.message) {
-                    errorMessage = xhr.responseJSON.message;
-                }
-                $('#responseMessage').text(errorMessage);
-            }
-        });
-    });
-
-
-    function togglePassword() {
-        var passwordField = document.getElementById("password");
-        var passwordIcon = document.querySelector("span");
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            passwordIcon.textContent = "🙈"; // Change the icon when visible
-        } else {
-            passwordField.type = "password";
-            passwordIcon.textContent = "👁️"; // Change the icon back when hidden
-        }
-    }
-
- $('#user_login_form').on('submit', function(e) {
-    e.preventDefault();  // Prevent the default form submission
-    
     $.ajax({
-        url: '/login',  // Your API endpoint
-        type: 'POST',
-        data: $(this).serialize(),  // Serialize the form data to send in the request
-        success: function(response) {
-            console.log(response);  // Log the response to check if it's correct
-            Swal.fire({
-                title: 'Success!',
-                text: response.message,
-                icon: 'success',
-                confirmButtonText: 'OK'
-            }).then(() => {
-                window.location.href = '/my-account';  // Redirect to another page after success
-            });
+        url: "/admin/login", // Change this to the correct route for login
+        type: "POST",
+        headers: {
+            "X-CSRF-TOKEN": csrfToken,
         },
-        error: function(xhr, status, error) {
-            // Log the error for debugging
-            console.log("Error: ", error);
-            
-            var errors = xhr.responseJSON.errors;  // Get errors from the response
-
-            // Loop through errors and show them in SweetAlert
-            if (errors) {
-                var errorMessages = "";
-                for (var key in errors) {
-                    if (errors.hasOwnProperty(key)) {
-                        errorMessages += errors[key][0] + "\n";  // Add each error message to the string
-                    }
-                }
-                
-                Swal.fire({
-                    title: 'Error!',
-                    text: errorMessages,  // Display all error messages in the alert
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
+        data: formData,
+        contentType: false, // This is necessary for FormData to be properly sent
+        processData: false, // Prevents jQuery from processing the data
+        success: function (data) {
+            if (data.status) {
+                // If login is successful, redirect to the dashboard
+                window.location.href = data.redirect;
             } else {
-                // If no specific errors, show a generic error
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'An unexpected error occurred. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
+                // Display error message
+                $("#responseMessage").text(data.message);
             }
-        }
+        },
+        error: function (xhr, status, error) {
+            let errorMessage = "Something went wrong. Please try again later.";
+            if (xhr.responseJSON && xhr.responseJSON.message) {
+                errorMessage = xhr.responseJSON.message;
+            }
+            $("#responseMessage").text(errorMessage);
+        },
     });
 });
 
+function togglePassword() {
+    var passwordField = document.getElementById("password");
+    var passwordIcon = document.querySelector("span");
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        passwordIcon.textContent = "🙈"; // Change the icon when visible
+    } else {
+        passwordField.type = "password";
+        passwordIcon.textContent = "👁️"; // Change the icon back when hidden
+    }
+}
+
+$("#user_login_form").on("submit", function (e) {
+    e.preventDefault(); // Prevent default form submission
+
+    $.ajax({
+        url: "/login",
+        type: "POST",
+        data: $(this).serialize(),
+        success: function (response) {
+            if (response.status === true) {
+                // Success - show SweetAlert
+                Swal.fire({
+                    title: "Success!",
+                    text: response.message,
+                    icon: "success",
+                    confirmButtonText: "OK",
+                }).then(() => {
+                    // Redirect using Laravel's redirect
+                    window.location.href = response.redirect;
+                });
+            } else {
+                // Laravel returned status: false (invalid credentials)
+                Swal.fire({
+                    title: "Error!",
+                    text: response.message || "Invalid credentials",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                });
+            }
+        },
+        error: function (xhr) {
+            // For validation errors or too many attempts
+            let errorMessages = "";
+            if (xhr.responseJSON?.errors) {
+                for (let key in xhr.responseJSON.errors) {
+                    errorMessages += xhr.responseJSON.errors[key][0] + "\n";
+                }
+            } else if (xhr.responseJSON?.message) {
+                errorMessages = xhr.responseJSON.message;
+            } else {
+                errorMessages = "An unexpected error occurred.";
+            }
+
+            Swal.fire({
+                title: "Error!",
+                text: errorMessages,
+                icon: "error",
+                confirmButtonText: "OK",
+            });
+        },
+    });
+});
 
 // favrorites cart ajax start
 $(document).on("click", ".move-to-cart-btn", function (e) {
@@ -376,306 +388,207 @@ $(document).ready(function () {
 });
 // favorites cart ajax end
 
-
 // add to cart ajax start
-$(document).ready(function () {
+
+// Set CSRF header globally
+
+$(document).on("click", ".cart-action-btn", function (e) {
+    e.preventDefault();
+    let btn = $(this);
+    let url = btn.data("url");
+
+    // If already converted to "Go To Cart", just redirect
+    if (btn.hasClass("go-to-cart")) {
+        window.location.href = "/shop-cart"; // use correct route name
+        return;
+    }
     $.ajaxSetup({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
     });
 
-    $(".add-to-cart-btn").click(function (e) {
-        e.preventDefault();
-
-        var button = $(this);
-        var url = button.data("url");
-
-        button.prop("disabled", true); // prevent double clicks
-
-        $.ajax({
-            url: url,
-            type: "POST",
-            success: function (res) {
-                // Toast notification
+    $.ajax({
+        url: url,
+        type: "POST",
+        success: function (response) {
+            if (response.success) {
                 Swal.fire({
                     toast: true,
                     position: "top-end",
                     icon: "success",
-                    title: res.message,
+                    title: response.message || "Item added to cart!",
                     showConfirmButton: false,
-                    timer: 1500,
-                    timerProgressBar: true,
-                    customClass: { container: "swal-toast-container" },
-                });
-
-                // Update header cart count
-                var cartBadge = $("#cart-count-badge");
-                if (res.cart_count > 0) {
-                    cartBadge.text(res.cart_count).show();
-                } else {
-                    cartBadge.hide();
-                }
-
-                // Update mini-cart items
-                var cartItemsList = $("#cart-items-list");
-                cartItemsList.empty();
-
-                if (Object.keys(res.cart).length > 0) {
-                    $.each(res.cart, function (id, item) {
-                        cartItemsList.append(`
-                            <li>
-                                <img src="${
-                                    item.image
-                                }" alt="${item.name}" width="50">
-                                <div class="cart-product">
-                                    <a href="#">${item.name}</a>
-                                    <span>₹${Number(item.price).toLocaleString(
-                                        "en-IN"
-                                    )} x ${item.quantity}</span>
-                                </div>
-                            </li>
-                        `);
-                    });
-
-                    // Update total section
-                    var totalSection = `
-                        <div class="shopping-items">
-                            <span>Total :</span>
-                            <span>₹${Number(res.cart_total).toLocaleString(
-                                "en-IN"
-                            )}</span>
-                        </div>
-                        <div class="cart-button mb-4">
-                            <a href="/shop-cart" class="theme-btn">View Cart</a>
-                        </div>
-                    `;
-                    $("#cart-total-section").html(totalSection);
-                } else {
-                    cartItemsList.append(
-                        '<li class="border-none text-center"><p>Your cart is empty</p></li>'
-                    );
-                    $("#cart-total-section").html("");
-                }
-
-                // Update button behavior
-                button
-                    .html(
-                        '<i class="fa-regular fa-cart-shopping"></i> Go to Cart'
-                    )
-                    .removeClass("add-to-cart-btn")
-                    .off("click")
-                    .click(function () {
-                        window.location.href = "/shop-cart";
-                    });
-
-                button.prop("disabled", false); // re-enable button
-            },
-            error: function (xhr) {
-                Swal.fire({
-                    toast: true,
-                    position: "top-end",
-                    icon: "error",
-                    title: "Something went wrong!",
-                    showConfirmButton: false,
-                    timer: 1500,
+                    timer: 2000,
                     timerProgressBar: true,
                 });
-                button.prop("disabled", false);
-                console.error(xhr.responseText);
-            },
-        });
-    });
-});
-// add to cart ajax end
-// quantity update cart ajax start
-$(document).ready(function () {
-    $.ajaxSetup({
-        headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
-    });
 
-    function updateCartRow(id, quantity, price) {
-        const subtotal = quantity * price;
-        $(`#cart-row-${id} .quantityValue`).val(quantity);
-        $(`#cart-row-${id} .price-usd`).eq(1).text(`₹${subtotal.toLocaleString('en-IN', {minimumFractionDigits:2})}`);
-    }
+                $("#cart-count-badge").text(response.total_cartItem);
 
-    $('.quantityIncrement, .quantityDecrement').click(function () {
-        const button = $(this);
-        const id = button.data('id');
-        const action = button.data('action');
-
-        $.ajax({
-            url: `/cart/update-quantity/${id}`,
-            type: 'POST',
-            data: { action: action },
-            success: function (res) {
-                if (res.success) {
-                    const item = res.cart[id];
-                    if (item) {
-                        updateCartRow(id, item.quantity, item.price);
-                    }
-
-                    // Update grand total
-                    let total = 0;
-                    Object.values(res.cart).forEach(i => {
-                        total += i.price * i.quantity;
-                    });
-
-                    const donation = parseFloat($('#donationAmount').text()) || 0;
-                    $('#grandTotal').text(`₹${(total + donation).toLocaleString('en-IN', {minimumFractionDigits:2})}`);
-
-                    // Update header badge
-                    $('#cart-count-badge').text(res.cart_count).show();
-                }
-            },
-            error: function (xhr) {
-                console.error(xhr.responseText);
-                alert('Failed to update cart!');
+                // Change button to "Go To Cart"
+                btn.html(
+                    '<i class="fa-regular fa-cart-shopping"></i> Go To Cart'
+                );
+                btn.removeClass("add-to-cart-btn").addClass("go-to-cart");
             }
-        });
-    });
-
-    // Donation step
-    const donationStep = 10;
-
-    $('.donation-increment').click(function() {
-        let donation = parseInt($('#donationAmount').text()) || 0;
-        donation += donationStep; // increment by 10
-        $('#donationAmount').text(donation);
-        $('#subtotal-donation').text(`₹${donation.toLocaleString('en-IN')}`);
-
-        let total = 0;
-        $('td.price-usd').each(function(index, td){
-            if (index % 2 === 1) total += parseFloat($(td).text().replace(/[₹,]/g,'')); // subtotal columns
-        });
-        $('#grandTotal').text(`₹${(total + donation).toLocaleString('en-IN', {minimumFractionDigits:2})}`);
-    });
-
-    $('.donation-decrement').click(function() {
-        let donation = parseInt($('#donationAmount').text()) || 0;
-        if (donation > donationStep) donation -= donationStep; // decrement by 10 minimum
-        $('#donationAmount').text(donation);
-        $('#subtotal-donation').text(`₹${donation.toLocaleString('en-IN')}`);
-
-        let total = 0;
-        $('td.price-usd').each(function(index, td){
-            if (index % 2 === 1) total += parseFloat($(td).text().replace(/[₹,]/g,'')); // subtotal columns
-        });
-        $('#grandTotal').text(`₹${(total + donation).toLocaleString('en-IN', {minimumFractionDigits:2})}`);
-    });
-});
-
-
-// quantity update ajax end 
-// remove from cart ajax start
-$(document).ready(function () {
-    $.ajaxSetup({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        error: function (xhr) {
+            if (xhr.status === 401 && xhr.responseJSON?.redirect) {
+                alert(xhr.responseJSON.message);
+                window.location.href = xhr.responseJSON.redirect;
+            } else {
+                alert("Something went wrong!");
+            }
         },
     });
+});
 
-    // Remove product
-    $(document).on("submit", ".remove-cart-form", function (e) {
+// Update cart quantity example
+// $(document).on("click", ".cart-action-btn", function () {
+//     let pid = $(this).data("id");
+//     let url = $(this).data("url");
+
+//     let qty = $('.cart-quantity-input[data-product-id="' + pid + '"]').val();
+
+//     $.post(
+//         url,
+//         {
+//             quantity: qty,
+//             _token: $('meta[name="csrf-token"]').attr("content"),
+//         },
+//         function (response) {
+//             if (response.success) {
+//                 $("#cart-count").text(response.cart_count);
+//             }
+//         }
+//     );
+// });
+
+
+// quantity update ajax end
+// remove from cart ajax start
+$(document).ready(function () {
+    $(".remove-cart-form").on("submit", function (e) {
         e.preventDefault();
-        const form = $(this);
-        const id = form.closest("tr").attr("id").replace("cart-row-", "");
+
+        let form = $(this);
+        let cartId = form.data("id");
+        let url = form.attr("action");
 
         $.ajax({
-            url: `/cart/remove/${id}`,
-            type: "DELETE",
-            success: function (res) {
-                if (res.success) {
-                    // Remove row from table
-                    $(`#cart-row-${id}`).remove();
+            url: url,
+            type: "POST",
+            data: form.serialize(),
+            success: function (response) {
+                if (response.success) {
+                    // Remove the table row
+                    form.closest("tr").remove();
 
-                    // Update grand total
-                    let total = 0;
-                    Object.values(res.cart).forEach((i) => {
-                        total += i.price * i.quantity;
-                    });
-                    const donation =
-                        parseFloat($("#donationAmount").text()) || 0;
-                    $("#grandTotal").text(
-                        `₹${(total + donation).toLocaleString("en-IN", {
-                            minimumFractionDigits: 2,
-                        })}`
-                    );
+                    // update badge if you have one
+                    $("#cart-count-badge").text(response.total_cartItem);
 
-                    // Update header badge
-                    $("#cart-count-badge").text(res.cart_count).show();
-
-                    // If cart empty
-                    if (res.cart_count === 0) {
-                        $("tbody").html(
-                            '<tr><td colspan="5" class="text-center">Your cart is empty.</td></tr>'
+                    // If no rows left, show "Your cart is empty"
+                    if ($("#datatable tbody tr").length === 1) {
+                        // because last row is Grand Total
+                        $("#datatable tbody").html(
+                            '<tr><td colspan="6" class="text-center">Your cart is empty.</td></tr>'
                         );
-                        $("#cart-total-section").html("");
                     }
 
-                    Swal.fire({
-                        toast: true,
-                        position: "top-end",
-                        icon: "success",
-                        title: "Item removed from cart!",
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true,
-                    });
+                    alert(response.message);
+                } else {
+                    alert(response.message);
                 }
             },
+
             error: function (xhr) {
-                alert("Failed to remove item!");
+                alert("Something went wrong!");
             },
         });
     });
 });
+
 // remove from cart ajax end
-$(document).ready(function() {
-    $('.view-product-btn').on('click', function() {
-        let productId = $(this).data('id');
+$(document).ready(function () {
+    $(".view-product-btn").on("click", function () {
+        let productId = $(this).data("id");
 
         $.ajax({
-            url: '/product/' + productId + '/details',
-            type: 'GET',
-            success: function(product) {
+            url: "/product/" + productId + "/details",
+            type: "GET",
+            success: function (product) {
                 // Update modal content dynamically
-                $('#exampleModal2 .shop-details-image img').attr('src', '/storage/' + product.main_image);
-                $('#exampleModal2 .product-details-content h3').text(product.title);
-                $('#exampleModal2 .product-details-content p').first().text(product.description);
-                $('#exampleModal2 .price-list h3').text(product.after_discount_price + ' ₹ only');
+                $("#exampleModal2 .shop-details-image img").attr(
+                    "src",
+                    "/storage/" + product.main_image
+                );
+                $("#exampleModal2 .product-details-content h3").text(
+                    product.title
+                );
+                $("#exampleModal2 .product-details-content p")
+                    .first()
+                    .text(product.description);
+                $("#exampleModal2 .price-list h3").text(
+                    product.after_discount_price + " ₹ only"
+                );
 
                 // Update other details
-                $('#exampleModal2 .details-info span:contains("Height")').text('Height: ' + product.height);
-                $('#exampleModal2 .details-info span:contains("Width")').text('Width: ' + product.width);
-                $('#exampleModal2 .details-info span:contains("Handle")').text('Handle: ' + product.handle);
-                $('#exampleModal2 .details-info span:contains("Base")').text('Base: ' + product.base);
+                $('#exampleModal2 .details-info span:contains("Height")').text(
+                    "Height: " + product.height
+                );
+                $('#exampleModal2 .details-info span:contains("Width")').text(
+                    "Width: " + product.width
+                );
+                $('#exampleModal2 .details-info span:contains("Handle")').text(
+                    "Handle: " + product.handle
+                );
+                $('#exampleModal2 .details-info span:contains("Base")').text(
+                    "Base: " + product.base
+                );
 
                 // You can also handle other images if you have a carousel
-            }
+            },
         });
     });
 });
-
 
 // view product ajax end
 
-document.querySelectorAll('.zoom-container').forEach(container => {
-    const img = container.querySelector('.zoom-image');
+document.querySelectorAll(".zoom-container").forEach((container) => {
+    const img = container.querySelector(".zoom-image");
 
-    container.addEventListener('mousemove', function(e){
+    container.addEventListener("mousemove", function (e) {
         const rect = img.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
         const y = ((e.clientY - rect.top) / rect.height) * 100;
         img.style.transformOrigin = `${x}% ${y}%`;
-        img.style.transform = 'scale(2)'; // zoom level
+        img.style.transform = "scale(2)"; // zoom level
     });
 
-    container.addEventListener('mouseleave', function(){
-        img.style.transform = 'scale(1)';
-        img.style.transformOrigin = 'center center';
+    container.addEventListener("mouseleave", function () {
+        img.style.transform = "scale(1)";
+        img.style.transformOrigin = "center center";
     });
 });
 
-
+$(document).on("click", "#addDonation", function () {
+    Swal.fire({
+        title: "Add Donation",
+        text: "Would you like to add a donation to support nature?",
+        icon: "question",
+        input: "number",
+        inputLabel: "Enter amount (in multiples of 10)",
+        inputValue: 10,
+        inputAttributes: {
+            min: 10,
+            step: 10,
+        },
+        showCancelButton: true,
+        confirmButtonText: "Add Donation",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let donation = parseInt(result.value) || 0;
+            window.location.href = "/checkout?donation=" + donation;
+        }
+    });
+});

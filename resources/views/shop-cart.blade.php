@@ -2,13 +2,14 @@
 @include('includes.header')
 
 <style>
-.swal2-input {
-    color:#000!important;
-}
-.quantityValue {
-    width: 40px;
-    text-align: center;
-}
+    .swal2-input {
+        color: #000 !important;
+    }
+
+    .quantityValue {
+        width: 40px;
+        text-align: center;
+    }
 </style>
 
 <section class="contact-us-section bg-custm contact-padding fix position-relative">
@@ -38,26 +39,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if(isset($cart) && count($cart) > 0)
-                            @php 
-                                $srNo = 1; 
+                        @if (isset($cart) && count($cart) > 0)
+                            @php
+                                $srNo = 1;
                                 $donation = session('donation', 0);
                                 $grandTotalWithDonation = $grandTotal + $donation;
                             @endphp
 
-                            @foreach($cart as $item)
+                            @foreach ($cart as $item)
                                 <tr id="cart-row-{{ $item['id'] }}">
                                     <td class="text-center">{{ $srNo++ }}</td>
                                     <td>
                                         <div class="cart-item-thumb d-flex align-items-center gap-2">
-                                            <form action="{{ route('cart.remove', $item['product_id']) }}" method="POST" class="remove-cart-form">
+                                            <form action="{{ route('cart.remove', $item['product_id']) }}"
+                                                method="POST" class="remove-cart-form">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-link p-0 text-danger" title="Remove">
+                                                <button type="submit" class="btn btn-link p-0 text-danger"
+                                                    title="Remove">
                                                     <i class="fas fa-times"></i>
                                                 </button>
                                             </form>
-                                            <img class="w-100" src="{{ asset('storage/' . $item['image']) }}" alt="{{ $item['name'] }}" style="max-width:150px;">
+                                            <img class="w-100" src="{{ asset('storage/' . $item['image']) }}"
+                                                alt="{{ $item['name'] }}" style="max-width:150px;">
                                         </div>
                                     </td>
                                     <td style="white-space: normal; word-wrap: break-word; max-width:200px;">
@@ -65,12 +69,16 @@
                                     </td>
                                     <td class="text-center">₹{{ number_format($item['price'], 2) }}</td>
                                     <td class="text-center">
-                                        <div class="quantity d-inline-flex align-items-center gap-1 py-2 px-4 border n50-border_20 text-sm">
-                                            <button type="button" class="btn-action" data-id="{{ $item['id'] }}" data-action="decrement">
+                                        <div
+                                            class="quantity d-inline-flex align-items-center gap-1 py-2 px-4 border n50-border_20 text-sm">
+                                            <button type="button" class="btn-action"
+                                                data-id="{{ $item['product_id'] }}" data-action="decrement">
                                                 <i class="fal fa-minus"></i>
                                             </button>
-                                            <input type="text" class="quantityValue" value="{{ $item['quantity'] }}" readonly>
-                                            <button type="button" class="btn-action" data-id="{{ $item['id'] }}" data-action="increment">
+                                            <input type="text" class="quantityValue" value="{{ $item['quantity'] }}"
+                                                readonly>
+                                            <button type="button" class="btn-action"
+                                                data-id="{{ $item['product_id'] }}" data-action="increment">
                                                 <i class="fal fa-plus"></i>
                                             </button>
                                         </div>
@@ -78,18 +86,19 @@
                                     <td class="text-center">₹{{ number_format($item['subtotal'], 2) }}</td>
                                 </tr>
                             @endforeach
-                                   @if(!empty($donation) && $donation > 0)
-    <tr>
-        <td colspan="5" class="text-end fw-bold">Donation:</td>
-        <td class="text-center">
-            ₹<span id="cartDonation">{{ number_format($donation, 2) }}</span>
-        </td>
-    </tr>
-@endif
+                            @if (!empty($donation) && $donation > 0)
+                                <tr>
+                                    <td colspan="5" class="text-end fw-bold">Donation:</td>
+                                    <td class="text-center">
+                                        ₹<span id="cartDonation">{{ number_format($donation, 2) }}</span>
+                                    </td>
+                                </tr>
+                            @endif
 
                             <tr>
                                 <td colspan="5" class="text-end fw-bold">Grand Total:</td>
-                                <td class="text-center fw-bold">₹<span id="grandTotal">{{ $grandTotalWithDonation }}</span></td>
+                                <td class="text-center fw-bold">₹<span
+                                        id="grandTotal">{{ $grandTotalWithDonation }}</span></td>
                             </tr>
                         @else
                             <tr>
@@ -100,7 +109,7 @@
                 </table>
             </div>
 
-            @if(isset($cart) && count($cart) > 0)
+            @if (isset($cart) && count($cart) > 0)
                 <div class="coupon-items flex-wrap pt-4" style="text-align: right;">
                     {{-- <button class="theme-btn alt-color radius-xs" id="addDonation">Add Donation</button> --}}
                     <a href="#" class="theme-btn alt-color radius-xs checkoutBtn">Proceed to Checkout</a>
@@ -118,73 +127,98 @@
 @include('includes.footer')
 
 <script>
-/** ✅ Update Quantity **/
-$(document).on('click', '.btn-action', function () {
-    let id = $(this).data('id');
-    let action = $(this).data('action');
+    $(document).on('click', '.btn-action', function() {
 
-    $.ajax({
-        url: '/cart/update/' + id,
-        type: 'POST',
-        data: {
-            action: action,
-            _token: $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function() {
-            location.reload();
-        }
-    });
-});
+        let id = $(this).data('id');
+        let action = $(this).data('action');
+        let row = $("#cart-row-" + id);
 
-/** ✅ Add Donation **/
-$(document).on('click', '#addDonation', function (e) {
-    e.preventDefault();
-    Swal.fire({
-        title: 'Enter your donation amount',
-        input: 'number',
-        inputValue: 10,
-        inputAttributes: { min: 10, step: 10 },
-        showCancelButton: true,
-        confirmButtonText: 'Add Donation',
-        preConfirm: (donation) => {
-            if(donation < 10 || donation % 10 !== 0){
-                Swal.showValidationMessage("Donation must be at least ₹10 and multiples of 10");
+        $.ajax({
+            url: "/cart/update/" + id,
+            type: "POST",
+            data: {
+                action: action,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(res) {
+                if (res.success) {
+
+                    // Update quantity
+                    row.find(".quantityValue").val(res.quantity);
+
+                    // Update row subtotal
+                    row.find("td:nth-child(6)").html("₹" + res.subtotal);
+
+                    // Update grand total
+                    $("#grandTotal").html(res.grand_total);
+                }
             }
-            return donation;
-        }
-    }).then((result) => {
-        if(result.isConfirmed){
-            $.post("{{ route('cart.donation') }}", {donation: result.value, _token: '{{ csrf_token() }}'}, function(response){
-                location.reload();
-            });
-        }
-    });
-});
+        });
 
-/** ✅ Checkout with optional donation **/
-$(document).on('click', '.checkoutBtn', function(e){
-    e.preventDefault();
-    Swal.fire({
-        title: 'Support Nature?',
-        text: "Add a small donation (Min ₹10, multiples of 10)",
-        icon: 'question',
-        input: 'number',
-        inputValue: {{ session('donation', 10) }},
-        inputAttributes: { min: 10, step: 10 },
-        showCancelButton: true,
-        confirmButtonText: 'Yes, Add Donation',
-        cancelButtonText: 'No, Continue',
-        preConfirm: (donation) => {
-            if(donation < 10 || donation % 10 !== 0){
-                Swal.showValidationMessage("Donation must be at least ₹10 and multiples of 10");
+    });
+
+
+    /** ✅ Add Donation **/
+    $(document).on('click', '#addDonation', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Enter your donation amount',
+            input: 'number',
+            inputValue: 10,
+            inputAttributes: {
+                min: 10,
+                step: 10
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Add Donation',
+            preConfirm: (donation) => {
+                if (donation < 10 || donation % 10 !== 0) {
+                    Swal.showValidationMessage("Donation must be at least ₹10 and multiples of 10");
+                }
+                return donation;
             }
-            return donation;
-        }
-    }).then((result) => {
-        let donation = result.isConfirmed ? result.value : 0;
-        $.post("{{ route('cart.donation') }}", {donation: donation, _token: '{{ csrf_token() }}'}, function(response){
-            window.location.href = "{{ route('checkout') }}";
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post("{{ route('cart.donation') }}", {
+                    donation: result.value,
+                    _token: '{{ csrf_token() }}'
+                }, function(response) {
+                    location.reload();
+                });
+            }
         });
     });
-});
+
+    /** ✅ Checkout with optional donation **/
+    $(document).on('click', '.checkoutBtn', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Support Nature?',
+            text: "Add a small donation (Min ₹10, multiples of 10)",
+            icon: 'question',
+            input: 'number',
+            inputValue: {{ session('donation', 10) }},
+            inputAttributes: {
+                min: 10,
+                step: 10
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Add Donation',
+            cancelButtonText: 'No, Continue',
+            preConfirm: (donation) => {
+                if (donation < 10 || donation % 10 !== 0) {
+                    Swal.showValidationMessage("Donation must be at least ₹10 and multiples of 10");
+                }
+                return donation;
+            }
+        }).then((result) => {
+            let donation = result.isConfirmed ? result.value : 0;
+            $.post("{{ route('cart.donation') }}", {
+                donation: donation,
+                _token: '{{ csrf_token() }}'
+            }, function(response) {
+                window.location.href = "{{ route('checkout') }}";
+            });
+        });
+    });
 </script>
