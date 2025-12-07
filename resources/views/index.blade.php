@@ -40,7 +40,7 @@
         <div class="carousel-inner">
             @foreach ($sliders as $index => $slider)
                 <div class="carousel-item {{ $index === 0 ? 'active' : '' }}"
-                    style="background-image: url('{{ $slider->image ? asset('storage/' . $slider->image) : '' }}');">
+                    style="background-image: url('{{ $slider->image ? asset(config('constants.IMAGE_PATH') . $slider->image) : '' }}');">
                     <div class="hero-overlay">
                         <div>
                             @if ($slider->sub_title)

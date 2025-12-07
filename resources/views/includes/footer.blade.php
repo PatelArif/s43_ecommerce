@@ -175,20 +175,20 @@
             </div>
         </div>
         </div> --}}
-<script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
-<script src="{{ asset('assets/js/viewport.jquery.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.waypoints.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
-<script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.meanmenu.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
-<script src="{{ asset('assets/js/wow.min.js') }}"></script>
-<script src="{{ asset('assets/js/main.js') }}"></script>
-<script src="{{ asset('assets/js/script.js') }}"></script>
-<script src="{{ asset('assets/js/particles.js') }}"></script>
-<script src="{{ asset('assets/js/lenis.min.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/jquery-3.7.1.min.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/viewport.jquery.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/jquery.waypoints.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/jquery.counterup.min.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/swiper-bundle.min.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/jquery.meanmenu.min.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/wow.min.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/main.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/script.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/particles.js') }}"></script>
+<script src="{{ asset(config('constants.ASSETS_PATH') . '/js/lenis.min.js') }}"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
@@ -256,7 +256,7 @@
                         timerProgressBar: !0
                     }), 0 === t.total && $("tbody").html(
                         '<tr><td colspan="4" class="text-center">Your cart is empty.</td></tr>'
-                        ))
+                    ))
                 }
             })
         }))
