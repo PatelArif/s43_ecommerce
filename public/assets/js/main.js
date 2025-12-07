@@ -1001,55 +1001,46 @@
         }
 
         // >> Mouse Cursor Start <<//
-        function mousecursor() {
-            if ($("body")) {
-                const e = document.querySelector(".cursor-inner"),
-                    t = document.querySelector(".cursor-outer");
-                let n,
-                    i = 0,
-                    o = !1;
-                (window.onmousemove = function (s) {
-                    o ||
-                        (t.style.transform =
-                            "translate(" +
-                            s.clientX +
-                            "px, " +
-                            s.clientY +
-                            "px)"),
-                        (e.style.transform =
-                            "translate(" +
-                            s.clientX +
-                            "px, " +
-                            s.clientY +
-                            "px)"),
-                        (n = s.clientY),
-                        (i = s.clientX);
-                }),
-                    $("body").on(
-                        "mouseenter",
-                        "a, .cursor-pointer",
-                        function () {
-                            e.classList.add("cursor-hover"),
-                                t.classList.add("cursor-hover");
-                        }
-                    ),
-                    $("body").on(
-                        "mouseleave",
-                        "a, .cursor-pointer",
-                        function () {
-                            ($(this).is("a") &&
-                                $(this).closest(".cursor-pointer").length) ||
-                                (e.classList.remove("cursor-hover"),
-                                t.classList.remove("cursor-hover"));
-                        }
-                    ),
-                    (e.style.visibility = "visible"),
-                    (t.style.visibility = "visible");
-            }
-        }
-        $(function () {
-            mousecursor();
-        });
+ function mousecursor() {
+     const e = document.querySelector(".cursor-inner");
+     const t = document.querySelector(".cursor-outer");
+
+     // STOP function if elements do not exist
+     if (!e || !t) return;
+
+     let mouseX = 0,
+         mouseY = 0,
+         stopped = false;
+
+     window.onmousemove = function (s) {
+         if (!stopped) {
+             t.style.transform = `translate(${s.clientX}px, ${s.clientY}px)`;
+         }
+         e.style.transform = `translate(${s.clientX}px, ${s.clientY}px)`;
+         mouseY = s.clientY;
+         mouseX = s.clientX;
+     };
+
+     $("body").on("mouseenter", "a, .cursor-pointer", function () {
+         e.classList.add("cursor-hover");
+         t.classList.add("cursor-hover");
+     });
+
+     $("body").on("mouseleave", "a, .cursor-pointer", function () {
+         if ($(this).is("a") && $(this).closest(".cursor-pointer").length)
+             return;
+         e.classList.remove("cursor-hover");
+         t.classList.remove("cursor-hover");
+     });
+
+     e.style.visibility = "visible";
+     t.style.visibility = "visible";
+ }
+
+ $(function () {
+     mousecursor();
+ });
+
 
         //>> Back To Top Slider Start <<//
         $windowOn.on("scroll", function () {
