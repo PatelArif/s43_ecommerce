@@ -55,7 +55,7 @@ jobs:
 
               # Create Storage Backup
               rm -rf ../demo_storage_old
-              cp storage ../demo_storage_old
+              cp -r storage ../demo_storage_old
               
               # Extract without overriding uploads (storage) or environment file
               unzip -o deploy.zip -x ".env"
@@ -68,7 +68,7 @@ jobs:
               chmod -R 775 storage bootstrap/cache
 
               # Move Storage Backup
-              cp ../demo_storage_old storage
+              cp -r ../demo_storage_old storage
 
               # Ensure storage symlink exists
               php artisan storage:link || true
