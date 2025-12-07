@@ -27,8 +27,8 @@ jobs:
           run: |
             rm -rf .git
             # zip -r deploy.zip . -x "vendor/*" ".git/*"
-            # zip -r deploy.zip . -x ".git/*" ".github/*" ".storage/*"
-            zip -r deploy.zip . -x ".git/*" ".github/*"
+            zip -r deploy.zip . -x ".git/*" ".github/*" ".storage/*"
+            # zip -r deploy.zip . -x ".git/*" ".github/*"
 
             
 
@@ -53,6 +53,10 @@ jobs:
             script: |
               cd ${{ secrets.DEPLOY_PATH }}
 
+              # Create Storage Backup
+              rm -rf ../demo_storage_old
+              cp storage ../demo_storage_old
+              
               # Extract without overriding uploads (storage) or environment file
               unzip -o deploy.zip -x ".env"
               rm deploy.zip
@@ -63,6 +67,9 @@ jobs:
               # Correct permissions for Laravel
               chmod -R 775 storage bootstrap/cache
 
+              # Move Storage Backup
+              cp ../demo_storage_old storage
+
               # Ensure storage symlink exists
               php artisan storage:link || true
 
@@ -71,7 +78,7 @@ jobs:
 
               # rename Constant file
               rm config/constants.php
-              cp config/constants-dev.php  config/constants.php
+              cp config/constants-dev.php  config/constants.php              
 
               # Laravel optimizations
               php artisan config:cache
