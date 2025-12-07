@@ -175,7 +175,7 @@
                 <div class="content p-3 d-flex flex-column flex-grow-1 text-center">
                     <p class="text-muted small mb-1">Step For Environment</p>
                     <h5 class="fw-bold mb-2">
-                        <a href="{{ route('productDetails', $product->id) }}" class="product-title">
+                        <a href="{{ url('product-details/'.$product->id) }}" class="product-title">
                             {{ $product->title }}
                         </a>
                     </h5>
