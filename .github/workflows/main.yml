@@ -23,20 +23,20 @@ jobs:
         - name: Install Composer Dependencies
           run: composer install --no-dev --optimize-autoloader
 
-  # - name: Prepare Deployment Package
-  #   run: |
-  #     rm -rf .git
-  #     zip -r deploy.zip . -x "vendor/*" ".git/*"
+        - name: Prepare Deployment Package
+          run: |
+            rm -rf .git
+            zip -r deploy.zip . -x "vendor/*" ".git/*"
 
-  # - name: Copy Files to Hostinger
-  #   uses: appleboy/scp-action@v0.1.7
-  #   with:
-  #     host: ${{ secrets.SSH_HOST }}
-  #     username: ${{ secrets.SSH_USER }}
-  #     port: ${{ secrets.SSH_PORT }}
-  #     key: ${{ secrets.SSH_PRIVATE_KEY }}
-  #     source: "deploy.zip"
-  #     target: ${{ secrets.DEPLOY_PATH }}
+        - name: Copy Files to Hostinger
+          uses: appleboy/scp-action@v0.1.7
+          with:
+            host: ${{ secrets.SSH_HOST }}
+            username: ${{ secrets.SSH_USER }}
+            port: ${{ secrets.SSH_PORT }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            source: "deploy.zip"
+            target: ${{ secrets.DEPLOY_PATH }}
 
   # - name: Run Deploy Commands on Server
   #   uses: appleboy/ssh-action@v1.0.3
