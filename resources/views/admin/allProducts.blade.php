@@ -254,9 +254,11 @@ function openEditProductModal(id) {
       // Reset and preview existing images
       resetImagePreviews();
       const catSlug = product.category_slug;
+      const image_path = "{{ config('constants.IMAGE_PATH') }}";
+          
       ['main_image','image_1','image_2','image_3','image_4'].forEach(f => {
         if (product[f]) {
-          const url = `//storage/${product[f]}`;
+          const url = `/${image_path}${product[f]}`;
           document.getElementById('preview_' + f).innerHTML = `<img src="${url}" width="100" class="img-thumbnail" />`;
         }
       });

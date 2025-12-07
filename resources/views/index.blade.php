@@ -27,7 +27,7 @@
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ $index }}"
                     class="border-0 p-0 {{ $index === 0 ? 'active' : '' }}">
                     @if ($slider->image)
-                        <img src="{{ asset('storage/' . $slider->image) }}" alt="{{ $slider->title }}"
+                        <img src="{{ asset(config('constants.IMAGE_PATH') . $slider->image) }}" alt="{{ $slider->title }}"
                             style="width:60px; height:60px; object-fit:cover; border-radius:8px; border: 2px solid #fff;">
                     @else
                         <span class="text-muted">No Image</span>
