@@ -27,7 +27,7 @@ jobs:
           run: |
             rm -rf .git
             # zip -r deploy.zip . -x "vendor/*" ".git/*"
-            zip -r deploy.zip . -x ".git/*"
+            zip -r deploy.zip . -x ".git/*" ".github/*" ".storage/*"
 
         - name: Copy Files to Hostinger
           uses: appleboy/scp-action@v0.1.7
@@ -51,7 +51,7 @@ jobs:
               cd ${{ secrets.DEPLOY_PATH }}
 
               # Extract without overriding uploads (storage) or environment file
-              unzip -o deploy.zip -x "storage/*" ".env"
+              unzip -o deploy.zip -x ".env"
               rm deploy.zip
 
               # Install composer dependencies on server
