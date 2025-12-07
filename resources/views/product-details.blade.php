@@ -222,7 +222,7 @@
                 <div id="review" class="tab-pane fade">
                     <!-- Example Review -->
                     <div class="admin-items d-flex flex-wrap flex-md-nowrap align-items-center pb-4">
-                        <div class="admin-img me-4"><img src="assets/img/shop/01.jpg" alt="image"></div>
+                        <div class="admin-img me-4"><img src="{{config('constants.ASSETS_PATH') }}img/shop/01.jpg" alt="image"></div>
                         <div class="content p-4">
                             <div class="head-content pb-1 d-flex justify-content-between">
                                 <h5>Miklos Salsa <span>27 June 2025 at 5:44pm</span></h5>

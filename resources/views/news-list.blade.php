@@ -27,7 +27,7 @@
                         <div class="news-post-item">
                            <div class="news-grid-item style-2">
                             <div class="news-image">
-                                <img src="assets/img/news/18.jpg" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/news/18.jpg" alt="img">
                             </div>
                             <div class="news-content">
                                 <ul class="news-meta">
@@ -54,7 +54,7 @@
                         </div>
                         <div class="news-grid-item style-2">
                             <div class="news-image">
-                                <img src="assets/img/news/19.jpg" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/news/19.jpg" alt="img">
                             </div>
                             <div class="news-content">
                                 <ul class="news-meta">
@@ -81,7 +81,7 @@
                         </div>
                         <div class="news-grid-item style-2">
                             <div class="news-image">
-                                <img src="assets/img/news/20.jpg" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/news/20.jpg" alt="img">
                             </div>
                             <div class="news-content">
                                 <ul class="news-meta">
@@ -108,7 +108,7 @@
                         </div>
                         <div class="news-grid-item style-2">
                             <div class="news-image">
-                                <img src="assets/img/news/21.jpg" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/news/21.jpg" alt="img">
                             </div>
                             <div class="news-content">
                                 <ul class="news-meta">
@@ -135,7 +135,7 @@
                         </div>
                         <div class="news-grid-item style-2">
                             <div class="news-image">
-                                <img src="assets/img/news/22.jpg" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/news/22.jpg" alt="img">
                             </div>
                             <div class="news-content">
                                 <ul class="news-meta">
@@ -162,7 +162,7 @@
                         </div>
                         <div class="news-grid-item style-2 mb-0">
                             <div class="news-image">
-                                <img src="assets/img/news/23.jpg" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/news/23.jpg" alt="img">
                             </div>
                             <div class="news-content">
                                 <ul class="news-meta">
@@ -224,7 +224,7 @@
                                 <div class="recent-post-area">
                                     <div class="recent-items">
                                         <div class="recent-thumb">
-                                            <img src="assets/img/news/pp1.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/news/pp1.jpg" alt="img">
                                         </div>
                                         <div class="recent-content">
                                             <h6>
@@ -242,7 +242,7 @@
                                     </div>
                                     <div class="recent-items">
                                         <div class="recent-thumb">
-                                            <img src="assets/img/news/pp2.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/news/pp2.jpg" alt="img">
                                         </div>
                                         <div class="recent-content">
                                             <h6>
@@ -260,7 +260,7 @@
                                     </div>
                                     <div class="recent-items">
                                         <div class="recent-thumb">
-                                            <img src="assets/img/news/pp3.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/news/pp3.jpg" alt="img">
                                         </div>
                                         <div class="recent-content">
                                             <h6>

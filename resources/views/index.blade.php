@@ -176,7 +176,7 @@
                         <div class="feature-wrapper">
                             <div class="feature-item style-2 wow fadeInUp" data-wow-delay=".2s">
                                 <div class="icon">
-                                    <img src="assets/img/icon/01.svg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/icon/01.svg" alt="img">
                                 </div>
                                 <div class="content">
                                     <h6>
@@ -187,7 +187,7 @@
                             </div>
                             <div class="feature-item wow fadeInUp" data-wow-delay=".4s">
                                 <div class="icon">
-                                    <img src="assets/img/icon/02.svg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/icon/02.svg" alt="img">
                                 </div>
                                 <div class="content">
                                     <h6>
@@ -198,7 +198,7 @@
                             </div>
                             <div class="feature-item wow fadeInUp" data-wow-delay=".6s">
                                 <div class="icon">
-                                    <img src="assets/img/icon/03.svg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/icon/03.svg" alt="img">
                                 </div>
                                 <div class="content">
                                     <h6>
@@ -209,7 +209,7 @@
                             </div>
                             <div class="feature-item wow fadeInUp" data-wow-delay=".8s">
                                 <div class="icon">
-                                    <img src="assets/img/icon/04.svg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/icon/04.svg" alt="img">
                                 </div>
                                 <div class="content">
                                     <h6>
@@ -514,7 +514,7 @@
             </button>
         </div>
         <div class="shape">
-            <img src="assets/img/testimonial/circle.png" alt="img">
+            <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/circle.png" alt="img">
         </div>
         <div class="container">
             <div class="swiper testimonial-slider-2">
@@ -536,7 +536,7 @@
                                 </p>
                                 <div class="info-item">
                                     <div class="client-image">
-                                        <img src="assets/img/testimonial/client-3.png" alt="Eco-friendly bag">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/client-3.png" alt="Eco-friendly bag">
                                     </div>
                                     <div class="text">
                                         <h6>Smita More</h6>
@@ -564,7 +564,7 @@
                                 </p>
                                 <div class="info-item">
                                     <div class="client-image">
-                                        <img src="assets/img/testimonial/client-2.png" alt="Eco-friendly customer">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/client-2.png" alt="Eco-friendly customer">
                                     </div>
                                     <div class="text">
                                         <h6>Priya Sharma</h6>
@@ -592,7 +592,7 @@
                                 </p>
                                 <div class="info-item">
                                     <div class="client-image">
-                                        <img src="assets/img/testimonial/client-1.png" alt="Eco bag user">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/client-1.png" alt="Eco bag user">
                                     </div>
                                     <div class="text">
                                         <h6>Rahul Verma</h6>
@@ -615,7 +615,7 @@
                     <div class="swiper-slide">
                         <div class="instagram-banner-items mt-0">
                             <div class="banner-image">
-                                <img src="assets/img/product/6.png" alt="insta-img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/product/6.png" alt="insta-img">
                                 <a href="{{ url('/allCategories') }}" class="icon">
                                     <i class="fa fa-shopping-bag"></i>
                                 </a>
@@ -625,7 +625,7 @@
                     <div class="swiper-slide">
                         <div class="instagram-banner-items mt-0">
                             <div class="banner-image">
-                                <img src="assets/img/product/2.png" alt="insta-img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/product/2.png" alt="insta-img">
                                 <a href="{{ url('/allCategories') }}" class="icon">
                                     <i class="fa fa-shopping-bag"></i>
                                 </a>
@@ -635,7 +635,7 @@
                     <div class="swiper-slide">
                         <div class="instagram-banner-items mt-0">
                             <div class="banner-image">
-                                <img src="assets/img/product/3.png" alt="insta-img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/product/3.png" alt="insta-img">
                                 <a href="{{ url('/allCategories') }}" class="icon">
                                     <i class="fa fa-shopping-bag"></i>
                                 </a>
@@ -645,7 +645,7 @@
                     <div class="swiper-slide">
                         <div class="instagram-banner-items mt-0">
                             <div class="banner-image">
-                                <img src="assets/img/product/4.png" alt="insta-img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/product/4.png" alt="insta-img">
                                 <a href="{{ url('/allCategories') }}" class="icon">
                                     <i class="fa fa-shopping-bag"></i>
                                 </a>
@@ -655,7 +655,7 @@
                     <div class="swiper-slide">
                         <div class="instagram-banner-items mt-0">
                             <div class="banner-image">
-                                <img src="assets/img/product/9.png" alt="insta-img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/product/9.png" alt="insta-img">
                                 <a href="{{ url('/allCategories') }}" class="icon">
                                     <i class="fa fa-shopping-bag"></i>
                                 </a>

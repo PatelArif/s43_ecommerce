@@ -15,7 +15,7 @@
                                     <div class="shop-details-image">
                                     <div class="tab-content">
                                         <div class="shop-thumb">
-                                            <img src="assets/img/shop/popup.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/shop/popup.jpg" alt="img">
                                         </div>
                                         </div>
                                     </div>
@@ -91,7 +91,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="product-details-item mt-0">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-1.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/shop/shop-1.jpg" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -125,7 +125,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="product-details-item mt-0">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-2.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/shop/shop-2.jpg" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -159,7 +159,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="product-details-item mt-0">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-3.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/shop/shop-3.jpg" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -193,7 +193,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="product-details-item mt-0">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-4.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/shop/shop-4.jpg" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -227,7 +227,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="product-details-item mt-0">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-5.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/shop/shop-5.jpg" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -261,7 +261,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="product-details-item mt-0">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-6.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/shop/shop-6.jpg" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -295,7 +295,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="product-details-item mt-0">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-7.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/shop/shop-7.jpg" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -329,7 +329,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="product-details-item mt-0">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-8.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/shop/shop-8.jpg" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -363,7 +363,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="product-details-item mt-0">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-9.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/shop/shop-9.jpg" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -397,7 +397,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="product-details-item mt-0">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-10.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/shop/shop-10.jpg" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -431,7 +431,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="product-details-item mt-0">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-11.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/shop/shop-11.jpg" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -465,7 +465,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="product-details-item mt-0">
                                         <div class="shop-image">
-                                            <img src="assets/img/shop/shop-12.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/shop/shop-12.jpg" alt="img">
                                             <ul class="shop-icon d-grid justify-content-center align-items-center">
                                                 <li>
                                                     <a href="product-details.html"><i class="fa-regular fa-cart-shopping"></i></a>
@@ -774,26 +774,26 @@
                                 <div class="brand-post">
                                     <div class="brand-item">
                                         <div class="brand-image">
-                                            <img src="assets/img/brand/b1.png" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/brand/b1.png" alt="img">
                                         </div>
                                         <div class="brand-image">
-                                            <img src="assets/img/brand/b2.png" alt="img">
-                                        </div>
-                                    </div>
-                                    <div class="brand-item">
-                                        <div class="brand-image">
-                                            <img src="assets/img/brand/b3.png" alt="img">
-                                        </div>
-                                        <div class="brand-image">
-                                            <img src="assets/img/brand/b4.png" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/brand/b2.png" alt="img">
                                         </div>
                                     </div>
                                     <div class="brand-item">
                                         <div class="brand-image">
-                                            <img src="assets/img/brand/b5.png" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/brand/b3.png" alt="img">
                                         </div>
                                         <div class="brand-image">
-                                            <img src="assets/img/brand/b6.png" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/brand/b4.png" alt="img">
+                                        </div>
+                                    </div>
+                                    <div class="brand-item">
+                                        <div class="brand-image">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/brand/b5.png" alt="img">
+                                        </div>
+                                        <div class="brand-image">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/brand/b6.png" alt="img">
                                         </div>
                                     </div>
                                 </div>

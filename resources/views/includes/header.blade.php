@@ -53,7 +53,7 @@
           <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
             <div class="offcanvas__logo"style="max-width:100%">
               <a href="index-2s">
-              <img src="assets/img/logo/logo4.png" alt="logo-img"style="max-width:100%">
+              <img src="{{config('constants.ASSETS_PATH') }}img/logo/logo4.png" alt="logo-img"style="max-width:100%">
               </a>
             </div>
             <div class="offcanvas__close">

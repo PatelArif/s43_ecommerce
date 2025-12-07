@@ -9,7 +9,7 @@
                     <div class="single-footer-widget">
                         <div class="widget-head">
                             <a href="{{ url('/') }}" class="footer-logo">
-                                {{-- <img src="assets/img/logo/logo4.png" alt="logo-img"style="max-width: 100px;"> --}}
+                                {{-- <img src="{{config('constants.ASSETS_PATH') }}img/logo/logo4.png" alt="logo-img"style="max-width: 100px;"> --}}
 
                                 <h3> Step For Environment</h3>
 

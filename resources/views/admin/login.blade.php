@@ -117,7 +117,7 @@
                 "shape": {
                     "type": "image", // use image for leaves
                     "image": {
-                        "src": "assets/img/6959474.png", // leaf image
+                        "src": "{{config('constants.ASSETS_PATH') }}img/6959474.png", // leaf image
                         "width": 150,
                         "height": 150
                     }

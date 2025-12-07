@@ -32,7 +32,7 @@
             <div class="sidebar-account">
               <div class="account-avatar">
                 <div class="image">
-                  {{-- <img src="assets/img/avater.jpg" alt="img"> --}}
+                  {{-- <img src="{{config('constants.ASSETS_PATH') }}img/avater.jpg" alt="img"> --}}
                   <img src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) : asset('images/default.png') }}" alt="Profile" class="img-fluid" />
                 </div>
                 <h6 class="mb_4">{{ $user->first_name }} {{ $user->last_name }} </h6>

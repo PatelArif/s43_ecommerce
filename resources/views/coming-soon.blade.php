@@ -46,14 +46,14 @@
          <!-- Coming-soon-Section Start -->
         <section class="coming-soon-section fix">
             <div class="shape">
-                <img src="assets/img/coming-shape.png" alt="img">
+                <img src="{{config('constants.ASSETS_PATH') }}img/coming-shape.png" alt="img">
             </div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <div class="cooming-soon-item">
                            <div class="logo-image">
-                                <img src="assets/img/logo/white-logo-2.svg" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/logo/white-logo-2.svg" alt="img">
                            </div>
                            <h3>
                               we will be born in
@@ -89,26 +89,26 @@
 
       
         <!--<< All JS Plugins >>-->
-        <script src="assets/js/jquery-3.7.1.min.js"></script>
+        <script src="{{config('constants.ASSETS_PATH') }}js/jquery-3.7.1.min.js"></script>
         <!--<< Viewport Js >>-->
-        <script src="assets/js/viewport.jquery.js"></script>
+        <script src="{{config('constants.ASSETS_PATH') }}js/viewport.jquery.js"></script>
         <!--<< Bootstrap Js >>-->
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/jquery.nice-select.min.js"></script>
+        <script src="{{config('constants.ASSETS_PATH') }}js/bootstrap.bundle.min.js"></script>
+        <script src="{{config('constants.ASSETS_PATH') }}js/jquery.nice-select.min.js"></script>
         <!--<< Waypoints Js >>-->
-        <script src="assets/js/jquery.waypoints.js"></script>
+        <script src="{{config('constants.ASSETS_PATH') }}js/jquery.waypoints.js"></script>
         <!--<< Counterup Js >>-->
-        <script src="assets/js/jquery.counterup.min.js"></script>
+        <script src="{{config('constants.ASSETS_PATH') }}js/jquery.counterup.min.js"></script>
         <!--<< Swiper Slider Js >>-->
-        <script src="assets/js/swiper-bundle.min.js"></script>
+        <script src="{{config('constants.ASSETS_PATH') }}js/swiper-bundle.min.js"></script>
         <!--<< MeanMenu Js >>-->
-        <script src="assets/js/jquery.meanmenu.min.js"></script>
+        <script src="{{config('constants.ASSETS_PATH') }}js/jquery.meanmenu.min.js"></script>
         <!--<< Magnific Popup Js >>-->
-        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="{{config('constants.ASSETS_PATH') }}js/jquery.magnific-popup.min.js"></script>
         <!--<< Wow Animation Js >>-->
-        <script src="assets/js/wow.min.js"></script>
+        <script src="{{config('constants.ASSETS_PATH') }}js/wow.min.js"></script>
         <!--<< Main.js >>-->
-        <script src="assets/js/main.js"></script>
+        <script src="{{config('constants.ASSETS_PATH') }}js/main.js"></script>
     </body>
 
 <!-- Mirrored from ex-coders.com/html/ecomas/coming-soon.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Mar 2025 02:07:59 GMT -->

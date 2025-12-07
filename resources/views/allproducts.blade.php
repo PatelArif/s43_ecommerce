@@ -19,7 +19,7 @@
                             <div class="shop-details-image">
                                 <div class="tab-content">
                                     <div class="shop-thumb">
-                                        <img src="assets/img/shop/popup.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/shop/popup.jpg" alt="img">
                                     </div>
                                 </div>
                             </div>
@@ -131,7 +131,7 @@
                     </div>
                     <div id="openButton2">
                         <div class="filter-button">
-                            <h6><a href="#"><span><img src="assets/img/filter.png" alt="img"></span>Filter</a></h6>
+                            <h6><a href="#"><span><img src="{{config('constants.ASSETS_PATH') }}img/filter.png" alt="img"></span>Filter</a></h6>
                         </div>
                     </div> 
                 </div> --}}
