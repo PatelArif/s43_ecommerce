@@ -57,7 +57,7 @@
                                                     <i class="fas fa-times"></i>
                                                 </button>
                                             </form>
-                                            <img class="w-100" src="{{ asset('public/storage/' . $item['image']) }}" alt="{{ $item['name'] }}" style="max-width:150px;">
+                                            <img class="w-100" src="{{ asset('storage/' . $item['image']) }}" alt="{{ $item['name'] }}" style="max-width:150px;">
                                         </div>
                                     </td>
                                     <td style="white-space: normal; word-wrap: break-word; max-width:200px;">
