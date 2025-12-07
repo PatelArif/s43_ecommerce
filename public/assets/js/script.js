@@ -444,26 +444,16 @@ $(document).on("click", ".cart-action-btn", function (e) {
 });
 
 // Update cart quantity example
-// $(document).on("click", ".cart-action-btn", function () {
-//     let pid = $(this).data("id");
-//     let url = $(this).data("url");
+$(document).on("change", ".cart-quantity-input", function () {
+    let pid = $(this).data("product-id");
+    let qty = $(this).val();
 
-//     let qty = $('.cart-quantity-input[data-product-id="' + pid + '"]').val();
-
-//     $.post(
-//         url,
-//         {
-//             quantity: qty,
-//             _token: $('meta[name="csrf-token"]').attr("content"),
-//         },
-//         function (response) {
-//             if (response.success) {
-//                 $("#cart-count").text(response.cart_count);
-//             }
-//         }
-//     );
-// });
-
+    $.post("/cart/update/" + pid, { quantity: qty }, function (response) {
+        if (response.success) {
+            $("#cart-count").text(response.cart_count);
+        }
+    });
+});
 
 // quantity update ajax end
 // remove from cart ajax start

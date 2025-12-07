@@ -1,10 +1,10 @@
-(function($) {
+(function ($) {
     "use strict";
 
     const $documentOn = $(document);
     const $windowOn = $(window);
 
-    $documentOn.ready( function() {
+    $documentOn.ready(function () {
         //>> Mobile Menu Js Start <<//
         $("#mobile-menu").meanmenu({
             meanMenuContainer: ".mobile-menu",
