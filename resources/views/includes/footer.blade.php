@@ -185,191 +185,31 @@
 <script src="{{ asset('assets/js/wow.min.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
 <script src="{{ asset('assets/js/script.js') }}"></script>
-<script>
- particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 70, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#166337" },
-                "shape": {   "type": "image", // use image for leaves
-            "image": {
-                "src": "../../assets/img/6959474.png", // leaf image
-                "width": 150,
-                "height": 150
-            }},
-                "opacity": { "value": 0.9 },
-                "size": { "value": 25 },
-                "line_linked": { "enable": false, "distance": 150, "color": "#166337", "opacity": 0.9, "width": 5 },
-                "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "bounce" }
-            },
-            "interactivity": {
-    "detect_on": "window", // was "canvas"
-    "events": { 
-        "onhover": { "enable": true, "mode": "repulse" }, 
-        "onclick": { "enable": true, "mode": "push" } 
-    },
-    "modes": { 
-        "repulse": { "distance": 200 }, // make it more noticeable
-        "push": { "particles_nb": 4 } 
-    }},
-            "retina_detect": true
-        });
-
-</script>
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
+<script src="{{ asset('assets/js/particles.js') }}"></script>
+<script src="{{ asset('assets/js/lenis.min.js') }}"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 
 <script>
-particlesJS("particles-footer", {
-  "particles": {
-    "number": { "value": 150, "density": { "enable": true, "value_area": 600 } },
-    "color": { "value": "#ffffff" },
-    "shape": { "type": "box" },
-    "opacity": { "value": 0.5 },
-    "size": { "value": 3, "random": true },
-    "line_linked": { "enable": true, "distance": 100, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-    "move": { "enable": true, "speed": 2 }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
-    "modes": {
-      "grab": { "distance": 400, "line_linked": { "opacity": 1 } },
-      "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 },
-      "repulse": { "distance": 150, "duration": 0.4 },
-      "push": { "particles_nb": 4 },
-      "remove": { "particles_nb": 2 }
-    }
-  },
-  "retina_detect": true
+ $(document).ready(function() {
+    $('#ordersTable').DataTable({
+        "paging": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "pageLength": 10
+    });
 });
 
-// Stats.js monitor
-var count_particles, stats, update;
-stats = new Stats;
-stats.setMode(0);
-stats.domElement.style.position = 'absolute';
-stats.domElement.style.left = '0px';
-stats.domElement.style.top = '0px';
-document.body.appendChild(stats.domElement);
-
-count_particles = document.createElement("div");
-count_particles.className = "js-count-particles";
-count_particles.style.position = "absolute";
-count_particles.style.bottom = "0px";
-count_particles.style.left = "0px";
-count_particles.style.color = "#fff";
-count_particles.style.padding = "5px";
-document.body.appendChild(count_particles);
-
-update = function() {
-  stats.begin();
-  stats.end();
-  if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-    count_particles.innerText = 'Particles: ' + window.pJSDom[0].pJS.particles.array.length;
-  }
-  requestAnimationFrame(update);
-};
-requestAnimationFrame(update);
 </script>
-
-
 <script>
-  // This JavaScript code automatically inserts the current year
   document.getElementById('year').textContent = new Date().getFullYear();
-  
-</script>   
-<script>
-$(document).ready(function(){
-
-    // Setup CSRF token for all AJAX requests
-    $.ajaxSetup({
-        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-    });
-
-    // Handle increment/decrement
-    $('.btn-action').click(function(){
-        let id = $(this).data('id');
-        let action = $(this).data('action');
-
-        $.ajax({
-            url: '/cart/update/' + id,
-            type: 'POST',
-            data: { action: action },
-            success: function(res){
-                if(res.status === 'success'){
-                    // Update quantity
-                    $('#cart-row-' + id + ' .quantityValue').val(res.quantity);
-                    // Update subtotal
-                    $('#subtotal-' + id).text('₹' + res.subtotal.toFixed(2));
-                    // Update grand total
-                    $('#grandTotal').text('₹' + res.total.toFixed(2));
-
-                    // Show toast
-                    Swal.fire({
-                        toast: true,
-                        position: 'top-end',
-                        icon: 'success',
-                        title: res.message,
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true
-                    });
-
-                    // Remove row if quantity is 0
-                    if(res.quantity == 0){
-                        $('#cart-row-' + id).remove();
-                    }
-                }
-            }
-        });
-    });
-
-    // Handle remove from cart
-// Remove item
-$('.remove-cart-form').submit(function(e){
-    e.preventDefault();
-    let form = $(this);
-
-    $.ajax({
-        url: form.attr('action'),
-        type: 'POST',
-        data: form.serialize(),
-        success: function(res){
-            if(res.status === 'success'){
-                // Remove the row from UI
-                $('#cart-row-' + res.id).remove();
-
-                // Update grand total
-                $('#grandTotal').text('₹' + parseFloat(res.total).toFixed(2));
-
-                // Show toast
-                Swal.fire({
-                    toast: true,
-                    position: 'top-end',
-                    icon: 'success',
-                    title: res.message,
-                    showConfirmButton: false,
-                    timer: 1500,
-                    timerProgressBar: true
-                });
-
-                // If cart becomes empty, show empty row
-                if(res.total === 0){
-                    $('tbody').html('<tr><td colspan="4" class="text-center">Your cart is empty.</td></tr>');
-                }
-            }
-        }
-    });
-});
-
-
-
-});
+$(document).ready((function(){$.ajaxSetup({headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")}}),$(".btn-action").click((function(){let t=$(this).data("id"),a=$(this).data("action");$.ajax({url:"/cart/update/"+t,type:"POST",data:{action:a},success:function(a){"success"===a.status&&($("#cart-row-"+t+" .quantityValue").val(a.quantity),$("#subtotal-"+t).text("₹"+a.subtotal.toFixed(2)),$("#grandTotal").text("₹"+a.total.toFixed(2)),Swal.fire({toast:!0,position:"top-end",icon:"success",title:a.message,showConfirmButton:!1,timer:1500,timerProgressBar:!0}),0==a.quantity&&$("#cart-row-"+t).remove())}})})),$(".remove-cart-form").submit((function(t){t.preventDefault();let a=$(this);$.ajax({url:a.attr("action"),type:"POST",data:a.serialize(),success:function(t){"success"===t.status&&($("#cart-row-"+t.id).remove(),$("#grandTotal").text("₹"+parseFloat(t.total).toFixed(2)),Swal.fire({toast:!0,position:"top-end",icon:"success",title:t.message,showConfirmButton:!1,timer:1500,timerProgressBar:!0}),0===t.total&&$("tbody").html('<tr><td colspan="4" class="text-center">Your cart is empty.</td></tr>'))}})}))}));
 </script>
-<script src="https://unpkg.com/@studio-freight/lenis"></script>
 <script>
   const lenis = new Lenis({
-    duration: 1.8, // ⬆️ make higher (1.8–2.2 = very floaty)
+    duration: 1.5, // ⬆️ make higher (1.8–2.2 = very floaty)
     easing: (t) => Math.sin((t * Math.PI) / 2), // sine ease-out, super smooth
     smoothWheel: true,
     smoothTouch: true,
@@ -399,9 +239,5 @@ $('.remove-cart-form').submit(function(e){
     })
   })
 </script>
-
-
-    </body>
-
-<!-- Mirrored from ex-coders.com/html/ecomas/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Mar 2025 02:07:17 GMT -->
+</body>
 </html>

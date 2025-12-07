@@ -1,5 +1,5 @@
-@include('includes.head')
-@include('includes.header')
+@extends("app")
+@section('content')
 <style>.header-1 {background:transparent;}.sticky {position: fixed !important;background: linear-gradient(90deg, #145A32, #26aa5f);}</style>
       <section class="contact-us-section bg-custm contact-padding fix position-relative">
     <!-- Particles background -->
@@ -228,4 +228,4 @@
 
         <!-- footer-section Start -->
       
-@include('includes.footer')
+@endsection

@@ -107,14 +107,11 @@
                         </div>
 
                         <!-- Buttons -->
-                        <div class="shop-btn mt-3">
-                            <a href="#" data-url="{{ route('cart.add', $product->id) }}" class="theme-btn add-to-cart-btn me-2">
-                                <span>Add to cart</span>
-                            </a>
-                            <a href="{{ url('/checkout') }}" class="theme-btn">
-                                <span>Buy now</span>
-                            </a>
-                        </div>
+                         <button type="button" class="theme-btn cart-action-btn"
+                                                                data-id="{{ $product->id }}"
+                                                                data-url="{{ route('cart.add', $product->id) }}">
+                                                                <i class="fa-regular fa-cart-shopping"></i> Add To Cart
+                                                            </button>
 
                         <!-- Meta Info -->
                         <h6 class="details-info mt-3"><span>SKU:</span> <a href="{{url('/checkout')}}">124224</a></h6>

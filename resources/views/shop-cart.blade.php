@@ -1,6 +1,16 @@
 @include('includes.head')
 @include('includes.header')
 
+<style>
+.swal2-input {
+    color:#000!important;
+}
+.quantityValue {
+    width: 40px;
+    text-align: center;
+}
+</style>
+
 <section class="contact-us-section bg-custm contact-padding fix position-relative">
     <div id="particles-js" class="particles"></div>
     <div class="container-fluid">
@@ -15,9 +25,9 @@
 <div class="cart-section section-padding pt-4">
     <div class="container">
         <div class="cart-list-area">
-             <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover align-middle"id="datatable">
-                    <thead data-aos="fade-down">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover align-middle" id="data-table">
+                    <thead>
                         <tr>
                             <th class="text-center">Sr No.</th>
                             <th class="text-center">Product Image</th>
@@ -29,103 +39,61 @@
                     </thead>
                     <tbody>
                         @if(isset($cart) && count($cart) > 0)
-                            @php $total = 0; $srNo = 1; @endphp
-                            @foreach($cart as $id => $item)
-                                @php 
-                                    $subtotal = $item['price'] * $item['quantity']; 
-                                    $total += $subtotal; 
-                                @endphp
-                                <tr id="cart-row-{{ $id }}" class="align-items-center">
-                                    <td class="text-center">{{ $srNo++ }}</td>
+                            @php 
+                                $srNo = 1; 
+                                $donation = session('donation', 0);
+                                $grandTotalWithDonation = $grandTotal + $donation;
+                            @endphp
 
-                                    <!-- Product Column -->
+                            @foreach($cart as $item)
+                                <tr id="cart-row-{{ $item['id'] }}">
+                                    <td class="text-center">{{ $srNo++ }}</td>
                                     <td>
                                         <div class="cart-item-thumb d-flex align-items-center gap-2">
-                                            <form action="{{ route('cart.remove', $id) }}" method="POST" class="remove-cart-form">
+                                            <form action="{{ route('cart.remove', $item['product_id']) }}" method="POST" class="remove-cart-form">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-link p-0 text-danger" title="Remove">
                                                     <i class="fas fa-times"></i>
                                                 </button>
                                             </form>
-
-                                            <img class="w-100" src="{{ $item['image'] }}" alt="{{ $item['name'] }}" style="max-width:250px;">
-                                            <p class="head ">{{ $item['name'] }}</p>
+                                            <img class="w-100" src="{{ asset('public/storage/' . $item['image']) }}" alt="{{ $item['name'] }}" style="max-width:150px;">
                                         </div>
                                     </td>
-                                      <td style="white-space: normal; word-wrap: break-word; max-width:200px;">
-
-                                        <div class="cart-item-thumb d-flex align-items-center gap-2">
-                                            <p class="head ">{{ $item['name'] }}</p>
-                                        </div>
+                                    <td style="white-space: normal; word-wrap: break-word; max-width:200px;">
+                                        <p class="head">{{ $item['name'] }}</p>
                                     </td>
-
-                                    <!-- Price Column -->
-                                    <td class="text-center price-usd" data-price="{{ $item['price'] }}">₹{{ number_format($item['price'], 2) }}</td>
-
-                                    <!-- Quantity Column -->
+                                    <td class="text-center">₹{{ number_format($item['price'], 2) }}</td>
                                     <td class="text-center">
-                                        <div class="quantity d-inline-flex align-items-center justify-content-center gap-1 py-2 px-4 border n50-border_20 text-sm">
-                                            <button type="button" class="quantityDecrement btn-action" data-id="{{ $id }}" data-action="decrement">
+                                        <div class="quantity d-inline-flex align-items-center gap-1 py-2 px-4 border n50-border_20 text-sm">
+                                            <button type="button" class="btn-action" data-id="{{ $item['id'] }}" data-action="decrement">
                                                 <i class="fal fa-minus"></i>
                                             </button>
-                                            <input type="text" class="quantityValue text-center" value="{{ $item['quantity'] }}" readonly style="width:40px;">
-                                            <button type="button" class="quantityIncrement btn-action" data-id="{{ $id }}" data-action="increment">
+                                            <input type="text" class="quantityValue" value="{{ $item['quantity'] }}" readonly>
+                                            <button type="button" class="btn-action" data-id="{{ $item['id'] }}" data-action="increment">
                                                 <i class="fal fa-plus"></i>
                                             </button>
                                         </div>
                                     </td>
-
-                                    <!-- Subtotal Column -->
-                                    <td class="text-center price-usd" data-price="{{ $item['price'] }}">₹{{ number_format($item['price'], 2) }}</td>
-
+                                    <td class="text-center">₹{{ number_format($item['subtotal'], 2) }}</td>
                                 </tr>
                             @endforeach
+                                   @if(!empty($donation) && $donation > 0)
+    <tr>
+        <td colspan="5" class="text-end fw-bold">Donation:</td>
+        <td class="text-center">
+            ₹<span id="cartDonation">{{ number_format($donation, 2) }}</span>
+        </td>
+    </tr>
+@endif
 
-                            <!-- Donation Row -->
                             <tr>
-                                <td class="text-center">{{ $srNo }}</td>
-                                <td>
-                                    Donation to Nature<br>
-                                    <small style="font-weight: 500; color: green; font-size: 16px;">
-                                        Help us make the planet greener!
-                                    </small>
-                                </td>
-
-                                 <td></td>
-                                <td class="text-center">
-                                    <span class="price-usd" id="fixed-donation" data-price="10">₹10</span>
-                                </td>
-
-                                <td class="text-center">
-                                    <div class="quantity d-inline-flex align-items-center justify-content-center gap-1 py-2 px-4 border n50-border_20 text-sm">
-                                        <button type="button" class="donation-decrement">
-                                            <i class="fal fa-minus"></i>
-                                        </button>
-                                        <span id="donationAmount">10</span>
-                                        <button type="button" class="donation-increment">
-                                            <i class="fal fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <span class="price-usd" id="subtotal-donation">₹10</span>
-                                </td>
-                            </tr>
-
-                            <!-- Grand Total Row -->
-                            <tr>
-                                <td></td>
-
-                                <td></td>
-                                 <td></td>
-                                <td></td>
-                                <td class="text-end fw-bold">Grand Total:</td>
-                                <td class="text-center fw-bold" id="grandTotal">₹{{ number_format($total + 10, 2) }}</td>
+                                <td colspan="5" class="text-end fw-bold">Grand Total:</td>
+                                <td class="text-center fw-bold">₹<span id="grandTotal">{{ $grandTotalWithDonation }}</span></td>
                             </tr>
                         @else
                             <tr>
-                                <td colspan="5" class="text-center">Your cart is empty.</td>
+                                <td colspan="6" class="text-center">Your cart is empty.</td>
                             </tr>
                         @endif
                     </tbody>
@@ -133,16 +101,90 @@
             </div>
 
             @if(isset($cart) && count($cart) > 0)
-                <div class="coupon-items d-flex flex-md-nowrap flex-wrap justify-content-between align-items-center gap-4 pt-4">
-                    <form action="#" class="d-flex flex-sm-nowrap flex-wrap align-items-center gap-3">
-                        <input type="text" placeholder="Enter coupon code">
-                        <button type="submit" class="theme-btn alt-color radius-xs">Apply</button>
-                    </form>
-                    <a href="{{ url('/checkout') }}" class="theme-btn alt-color radius-xs" >Proceed to Checkout </a>
+                <div class="coupon-items flex-wrap pt-4" style="text-align: right;">
+                    {{-- <button class="theme-btn alt-color radius-xs" id="addDonation">Add Donation</button> --}}
+                    <a href="#" class="theme-btn alt-color radius-xs checkoutBtn">Proceed to Checkout</a>
+                </div>
+            @else
+                <div class="coupon-items flex-wrap pt-4" style="text-align: right;">
+                    <a href="{{ url('/') }}" class="theme-btn alt-color radius-xs">Continue Shopping</a>
                 </div>
             @endif
+
         </div>
     </div>
 </div>
 
 @include('includes.footer')
+
+<script>
+/** ✅ Update Quantity **/
+$(document).on('click', '.btn-action', function () {
+    let id = $(this).data('id');
+    let action = $(this).data('action');
+
+    $.ajax({
+        url: '/cart/update/' + id,
+        type: 'POST',
+        data: {
+            action: action,
+            _token: $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function() {
+            location.reload();
+        }
+    });
+});
+
+/** ✅ Add Donation **/
+$(document).on('click', '#addDonation', function (e) {
+    e.preventDefault();
+    Swal.fire({
+        title: 'Enter your donation amount',
+        input: 'number',
+        inputValue: 10,
+        inputAttributes: { min: 10, step: 10 },
+        showCancelButton: true,
+        confirmButtonText: 'Add Donation',
+        preConfirm: (donation) => {
+            if(donation < 10 || donation % 10 !== 0){
+                Swal.showValidationMessage("Donation must be at least ₹10 and multiples of 10");
+            }
+            return donation;
+        }
+    }).then((result) => {
+        if(result.isConfirmed){
+            $.post("{{ route('cart.donation') }}", {donation: result.value, _token: '{{ csrf_token() }}'}, function(response){
+                location.reload();
+            });
+        }
+    });
+});
+
+/** ✅ Checkout with optional donation **/
+$(document).on('click', '.checkoutBtn', function(e){
+    e.preventDefault();
+    Swal.fire({
+        title: 'Support Nature?',
+        text: "Add a small donation (Min ₹10, multiples of 10)",
+        icon: 'question',
+        input: 'number',
+        inputValue: {{ session('donation', 10) }},
+        inputAttributes: { min: 10, step: 10 },
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Add Donation',
+        cancelButtonText: 'No, Continue',
+        preConfirm: (donation) => {
+            if(donation < 10 || donation % 10 !== 0){
+                Swal.showValidationMessage("Donation must be at least ₹10 and multiples of 10");
+            }
+            return donation;
+        }
+    }).then((result) => {
+        let donation = result.isConfirmed ? result.value : 0;
+        $.post("{{ route('cart.donation') }}", {donation: donation, _token: '{{ csrf_token() }}'}, function(response){
+            window.location.href = "{{ route('checkout') }}";
+        });
+    });
+});
+</script>

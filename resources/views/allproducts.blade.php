@@ -148,7 +148,7 @@
                 <!-- Product Image -->
                 <div class="product-image">
                     <a href="{{ route('productDetails', $product->id) }}">
-                        <img src="{{ asset('storage/' . $product->main_image) }}" 
+                        <img src="{{ asset('public/storage/' . $product->main_image) }}" 
                              alt="{{ $product->name }}" 
                              class="img-fluid w-100 fixed-img">
                     </a>

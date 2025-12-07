@@ -1,12 +1,27 @@
-@include('includes.head')
-@include('includes.header')
-@if(session('success'))
-<div class="alert alert-success">
-  {{ session('success') }}
-</div>
-@endif
+@extends('app')
+
+@push('title')
+    <title>Contact us | Step4Environment</title>
+@endpush
+
+@section('content')
+
 <style>div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) { border: 0; border-radius: .25em; background: initial; background-color: #DC0807; color: #fff; font-size: 1em; } div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel) { border: 0; border-radius: .25em; background: initial; background-color: #028540; color: #fff; font-size: 1em; } div:where(.swal2-icon).swal2-warning { border-color: #4f6d44; color: #dc3545; }
 </style>
+      <section class="contact-us-section bg-custm contact-padding fix position-relative">
+    <!-- Particles background -->
+    <div id="particles-js" class="particles"></div>
+
+            <div class="container-fluid">
+                <div class="conatct-main-wrapper">
+                    <div class="content p-5">
+                        <h2>My Account</h2>
+                      
+                    </div>
+                    </div>
+
+                    </div>
+                </section>
 <!-- My-account-Section Start -->
 <section class="my-account-section section-padding fix">
   <div class="container">
@@ -18,7 +33,7 @@
               <div class="account-avatar">
                 <div class="image">
                   {{-- <img src="assets/img/avater.jpg" alt="img"> --}}
-                  <img src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) : asset('images/default.png') }}" alt="Profile" class="img-fluid" />
+                  <img src="{{ $user->profile_image ? asset('public/storage/' . $user->profile_image) : asset('images/default.png') }}" alt="Profile" class="img-fluid" />
                 </div>
                 <h6 class="mb_4">{{ $user->first_name }} {{ $user->last_name }} </h6>
                 <div class="body-text-1">{{ $user->email }}</div>
@@ -56,6 +71,11 @@
           <div class="tab-content">
             <div id="Course" class="tab-pane fade show active">
               <div class="account-details">
+                @if(session('success'))
+<div class="alert alert-success">
+  {{ session('success') }}
+</div>
+@endif
                 <form id="user_edit_form" method="POST" >
                   @csrf
                   <div class="account-info">
@@ -115,106 +135,68 @@
                     </div>
                   </div>
                   <div class="text-center mt-4">
-                    <button type="submit" class="btn edit_btn">
+                    <button type="submit" class="btn edit_btn" >
                     Update Profile
                     </button>
                   </div>
                 </form>
               </div>
             </div>
-            <div id="Curriculum" class="tab-pane fade">
-              <div class="cart-list-area">
-                <div class="table-responsive">
-                  <table class="table common-table">
-                    <thead data-aos="fade-down">
-                      <tr>
-                        <th class="text-center">Product</th>
-                        <th class="text-center">Price</th>
-                        <th class="text-center">Subtotal</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="align-items-center py-3">
+   <div id="Curriculum" class="tab-pane fade show">
+  <div class="account-info">
+    <h3 class="mb-3">My Orders</h3>
+
+    <div class="table-responsive">
+        <table id="ordersTable" class="table table-hover table-bordered text-center align-middle dt-responsive nowrap" style="width:100%">
+            <thead class="table-success">
+                <tr>
+                    <th>Sr No</th>
+                    <th>Order #</th>
+                    <th>Total</th>
+                    <th>Payment</th>
+                    <th>Status</th>
+                    <th>Order Date</th>
+                    <th>Invoice</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($orders as $index => $order)
+                    <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $order->order_number ?? $order->id }}</td>
+                        <td>${{ number_format($order->total, 2) }}</td>
+                        <td>{{ ucfirst($order->payment_method) }}</td>
                         <td>
-                          <div class="cart-item-thumb d-flex align-items-center gap-4">
-                            <i class="fas fa-times"></i>
-                            <img class="w-100" src="assets/img/cart/03.jpg" alt="product">
-                            <span class="head text-nowrap">Prayer for Meany</span>
-                          </div>
+                            @if($order->status == 'pending')
+                                <span class="badge bg-warning text-dark">{{ ucfirst($order->status) }}</span>
+                            @elseif($order->status == 'approved')
+                                <span class="badge bg-success">{{ ucfirst($order->status) }}</span>
+                            @elseif($order->status == 'rejected')
+                                <span class="badge bg-danger">{{ ucfirst($order->status) }}</span>
+                            @endif
                         </td>
-                        <td class="text-center">
-                          <span class="price-usd">
-                          $12.40 USD
-                          </span>
-                        </td>
-                        <td class="text-center">
-                          <span class="price-usd">
-                          $12.40 USD
-                          </span>
-                        </td>
-                      </tr>
-                      <tr class="align-items-center py-3">
+                        <td>{{ $order->created_at->format('d M Y, h:i A') }}</td>
                         <td>
-                          <div class="cart-item-thumb d-flex align-items-center gap-4">
-                            <i class="fas fa-times"></i>
-                            <img class="w-100" src="assets/img/cart/04.jpg" alt="product">
-                            <span class="head text-nowrap">Don Quixote</span>
-                          </div>
+                            <a href="{{ route('order.invoicePdf', $order->id) }}" class="btn btn-sm btn-success">
+                                View Invoice
+                            </a>
                         </td>
-                        <td class="text-center">
-                          <span class="price-usd">
-                          $25.50 USD
-                          </span>
-                        </td>
-                        <td class="text-center">
-                          <span class="price-usd">
-                          $25.50 USD
-                          </span>
-                        </td>
-                      </tr>
-                      <tr class="align-items-center py-3">
-                        <td>
-                          <div class="cart-item-thumb d-flex align-items-center gap-4">
-                            <i class="fas fa-times"></i>
-                            <img class="w-100" src="assets/img/cart/05.jpg" alt="product">
-                            <span class="head text-nowrap">Don Quixote</span>
-                          </div>
-                        </td>
-                        <td class="text-center">
-                          <span class="price-usd">
-                          $44.50 USD
-                          </span>
-                        </td>
-                        <td class="text-center">
-                          <span class="price-usd">
-                          $44.50 USD
-                          </span>
-                        </td>
-                      </tr>
-                      <tr class="align-items-center py-3">
-                        <td>
-                          <div class="cart-item-thumb d-flex align-items-center gap-4">
-                            <i class="fas fa-times"></i>
-                            <img class="w-100" src="assets/img/cart/06.jpg" alt="product">
-                            <span class="head text-nowrap">Don Quixote</span>
-                          </div>
-                        </td>
-                        <td class="text-center">
-                          <span class="price-usd">
-                          $39.50 USD
-                          </span>
-                        </td>
-                        <td class="text-center">
-                          <span class="price-usd">
-                          $39.50 USD
-                          </span>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="7">No orders found.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</div>
+
+
+
+
             <div id="Instructors" class="tab-pane fade">
               <div class="axil-dashboard-address">
                 <h5 class=" mb-4  text-black">
@@ -331,7 +313,6 @@
     </form>
   </div>
 </div>
-@include('includes.footer')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   let originalData = $('#user_edit_form').serialize();
@@ -438,3 +419,4 @@
       });
   });
 </script>
+@endsection

@@ -1,8 +1,10 @@
+@extends('app')
+
 @push('title')
-<title>All Caregories</title>
+    <title>All Categories| Step4Environment</title>
 @endpush
-@include('includes.head')
-@include('includes.header')
+
+@section('content')
     <section class="contact-us-section bg-custm contact-padding fix position-relative">
     <!-- Particles background -->
     <div id="particles-js" class="particles"></div>
@@ -28,7 +30,7 @@
                             
                             <!-- Image -->
                             <div class="category-image">
-                                <img src="{{ asset('storage/' . $category->image) }}" 
+                                <img src="{{ asset('public/storage/' . $category->image) }}" 
                                      alt="{{ $category->name }}" 
                                      class="img-fluid w-100 fixed-img">
                                 <div class="overlay d-flex justify-content-center align-items-center">
@@ -67,9 +69,4 @@
         </div>
     </div>
 </div>
-
-
-    
-
-
-@include('includes.footer')
+@endsection

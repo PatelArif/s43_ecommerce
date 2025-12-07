@@ -1,5 +1,10 @@
-@include('includes.head')
-@include('includes.header')
+@extends('app')
+
+@push('title')
+    <title>Contact us | Step4Environment</title>
+@endpush
+
+@section('content')
 <style>.header-1 {background:transparent;}.sticky {position: fixed !important;background: linear-gradient(90deg, #145A32, #26aa5f);}</style>
 
 @if(session('success'))
@@ -174,5 +179,5 @@ $(document).ready(function() {
 });
 </script>
 
-@include('includes.footer')
+@endsection
      

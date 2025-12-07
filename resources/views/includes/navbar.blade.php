@@ -87,7 +87,7 @@
                               {{-- 
                               <li><a href="{{ url('/about') }}">About Us</a></li>
                               --}}
-                              <li><a href="{{ url('/order') }}">Track Your Order</a></li>
+                              <li><a href="{{ url('/my-orders') }}">Track Your Order</a></li>
                               <li><a href="{{ url('/login') }}">Login</a></li>
                               <li><a href="{{ url('/register') }}">Sign-Up</a></li>
                               {{-- 
@@ -101,7 +101,7 @@
                         </li>
                         <li>
                            <a href="{{ url('#') }}">
-                           Shop
+                           Categories 
                            <i class="fa-solid fa-chevron-down"></i>
                            </a>
                            <ul class="submenu">
@@ -160,39 +160,38 @@
                   <span id="cart-count-badge" class="cart-count-badge">{{ count($globalCart) }}</span>
                   </a>
                   <!-- Dropdown cart -->
-                <div class="cart-box">
-   <ul id="cart-items-list" style="max-height: 250px; overflow-y: auto;">
-      @if($globalCart && count($globalCart) > 0)
-         @foreach($globalCart as $id => $item)
-         <li id="cart-item-{{ $id }}">
-            <img src="{{ $item['image'] }}" alt="{{ $item['name'] }}" width="50">
-            <div class="cart-product">
-               <a href="#">{{ $item['name'] }}</a>
-               <span>₹{{ $item['price'] }} x {{ $item['quantity'] }}</span>
-            </div>
-         </li>
-         @endforeach
-      @else
-         <li id="cart-empty">
-            <p>Your cart is empty</p>
-         </li>
-      @endif
-   </ul>
-   <div id="cart-total-section">
-      @if($globalCart && count($globalCart) > 0)
-      <div class="shopping-items">
-         <span>Total :</span>
-         <span id="cart-total-amount">
-         ₹{{ collect($globalCart)->sum(fn($item) => $item['price'] * $item['quantity']) }}
-         </span>        
-      </div>
-      <div class="cart-button mb-4">
-         <a href="/shop-cart" class="theme-btn">View Cart</a>
-      </div>
-      @endif
-   </div>
-</div>
-
+                  {{-- <div class="cart-box">
+                     <ul id="cart-items-list" style="max-height: 250px; overflow-y: auto;">
+                        @if($globalCart && count($globalCart) > 0)
+                        @foreach($globalCart as $id => $item)
+                        <li id="cart-item-{{ $id }}">
+                           <img src="{{ $item['image'] }}" alt="{{ $item['name'] }}" width="50">
+                           <div class="cart-product">
+                              <a href="#">{{ $item['name'] }}</a>
+                              <span>₹{{ $item['price'] }} x {{ $item['quantity'] }}</span>
+                           </div>
+                        </li>
+                        @endforeach
+                        @else
+                        <li id="cart-empty">
+                           <p>Your cart is emptyaaa</p>
+                        </li>
+                        @endif
+                     </ul>
+                     <div id="cart-total-section">
+                        @if($globalCart && count($globalCart) > 0)
+                        <div class="shopping-items">
+                           <span>Total :</span>
+                           <span id="cart-total-amount">
+                           ₹{{ collect($globalCart)->sum(fn($item) => $item['price'] * $item['quantity']) }}
+                           </span>        
+                        </div>
+                        <div class="cart-button mb-4">
+                           <a href="/shop-cart" class="theme-btn">View Cart</a>
+                        </div>
+                        @endif
+                     </div>
+                  </div> --}}
                </div>
                <div class="header__hamburger d-xl-none my-auto">
                   <div class="sidebar__toggle">
