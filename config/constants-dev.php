@@ -1,5 +1,5 @@
 <?php
 return [
-    'IMAGE_PATH'  => 'storage/',
+    'IMAGE_PATH'  => 'public/storage/',
     'ASSETS_PATH' => 'public/assets/',
 ];
