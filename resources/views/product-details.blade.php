@@ -39,7 +39,7 @@
                                 <li class="nav-item mb-2">
                                     <a href="#thumb{{ $index + 1 }}" data-bs-toggle="tab"
                                         class="nav-link {{ $index == 0 ? 'active' : '' }}">
-                                        <img src="{{ $product->$img ? asset('storage/' . $product->$img) : asset('{{config('constants.ASSETS_PATH') }}img/product/9.png') }}"
+                                        <img src="{{ $product->$img ? asset(config('constants.IMAGE_PATH') . $product->$img) : asset(config('constants.ASSETS_PATH').'img/product/9.png') }}"
                                             alt="thumbnail" class="zoom-image thumb-img">
                                     </a>
                                 </li>
@@ -53,7 +53,7 @@
                                     class="tab-pane fade {{ $index == 0 ? 'show active' : '' }}">
                                     <div class="shop-thumb zoom-container">
                                         <img class="zoom-image main-img"
-                                            src="{{ $product->$img ? asset('storage/' . $product->$img) : asset('{{config('constants.ASSETS_PATH') }}img/product/9.png') }}"
+                                            src="{{ $product->$img ? asset(config('constants.IMAGE_PATH'). $product->$img) : asset(config('constants.ASSETS_PATH').'img/product/9.png') }}"
                                             alt="product image">
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@
                             </div>
                             <div class="col-lg-6 mt-5 mt-lg-0">
                                 <div class="description-image">
-                                    <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('{{config('constants.ASSETS_PATH') }}img/product/9.png') }}"
+                                    <img src="{{ $product->main_image ? asset(config('constants.IMAGE_PATH') . $product->main_image) : asset(config('constants.ASSETS_PATH').'img/product/9.png') }}"
                                         class="img-fluid" alt="{{ $product->title }}">
                                 </div>
                             </div>
