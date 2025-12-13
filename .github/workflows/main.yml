@@ -71,7 +71,8 @@ jobs:
               cp -r ../demo_storage_old storage
 
               # Ensure storage symlink exists
-              php artisan storage:link || true
+              # php artisan storage:link || true
+              ln -s /home/u781200572/domains/stepforenvironment.com/public_html/demo/storage/app/public /home/u781200572/domains/stepforenvironment.com/public_html/demo/public/storage
 
               # Rename env file
               cp .env.example-dev .env
