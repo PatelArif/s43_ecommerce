@@ -33,7 +33,7 @@
                 $price = $product->discount > 0 ? $product->after_discount_price : $product->price;
                 $image = $product->main_image 
                     ? asset(config('constants.IMAGE_PATH')  . $product->main_image) 
-                    : asset('{{config('constants.ASSETS_PATH') }}img/product/9.png');
+                    : asset(config('constants.ASSETS_PATH').'img/product/9.png');
             @endphp
             <tr id="favorite-row-{{ $product->id }}" class="align-items-center">
                 <td class="text-center">{{ $srNo++ }}</td>
