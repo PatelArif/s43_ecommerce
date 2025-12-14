@@ -132,7 +132,7 @@ Route::get('/my-orders', [OrderController::class, 'myOrders'])->name('myOrders')
 // routes/web.php
 Route::post('/cart/donation', [ShopController::class, 'storeDonation'])->name('cart.donation');
 
-Route::post('/orders/{id}/approve', [OrderController::class, 'approve'])->name('orders.approve');
+// Route::post('/orders/{id}/approve', [OrderController::class, 'approve'])->name('orders.approve');
 
 
 
