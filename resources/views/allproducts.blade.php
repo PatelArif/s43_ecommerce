@@ -194,7 +194,7 @@
 
                     <!-- Button at bottom -->
                     <div class="mt-auto">
-                        <a href="{{ url('/checkout') }}" class="btn btn-outline-success btn-sm rounded-pill w-100">
+                        <a href="{{ url('product-details/'.$product->id) }}" class="btn btn-outline-success btn-sm rounded-pill w-100">
                             Buy Now <i class="fa-solid fa-chevron-right ms-1"></i>
                         </a>
                     </div>
