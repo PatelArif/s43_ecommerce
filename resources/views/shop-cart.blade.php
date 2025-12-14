@@ -72,13 +72,13 @@
                                     <td class="text-center">
                                         <div
                                             class="quantity d-inline-flex align-items-center gap-1 py-2 px-4 border n50-border_20 text-sm">
-                                            <button type="button" class="btn-action"
+                                            <button type="button" class="shop_btn-action"
                                                 data-id="{{ $item['product_id'] }}" data-action="decrement">
                                                 <i class="fal fa-minus"></i>
                                             </button>
                                             <input type="text" class="quantityValue" value="{{ $item['quantity'] }}"
                                                 readonly>
-                                            <button type="button" class="btn-action"
+                                            <button type="button" class="shop_btn-action"
                                                 data-id="{{ $item['product_id'] }}" data-action="increment">
                                                 <i class="fal fa-plus"></i>
                                             </button>
@@ -128,7 +128,7 @@
 @include('includes.footer')
 
 <script>
-    $(document).on('click', '.btn-action', function() {
+    $(document).on('click', '.shop_btn-action', function() {
 
         let id = $(this).data('id');
         let action = $(this).data('action');

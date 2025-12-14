@@ -139,6 +139,48 @@ class ShopController extends Controller
         ]);
     }
 
+public function updateCart(Request $request, $productId)
+{
+    $cartItem = Cart::where('user_id', auth()->id())
+        ->where('product_id', $productId)
+        ->first();
+
+    if (!$cartItem) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Cart item not found'
+        ]);
+    }
+
+    if ($request->action === 'increment') {
+        $cartItem->quantity += 1;
+    }
+
+    if ($request->action === 'decrement' && $cartItem->quantity > 1) {
+        $cartItem->quantity -= 1;
+    }
+
+    $cartItem->save();
+
+    // Recalculate totals
+    $cartItems = Cart::with('product')
+        ->where('user_id', auth()->id())
+        ->get();
+
+    $grandTotal = $cartItems->sum(function ($item) {
+        return $item->product->price * $item->quantity;
+    });
+
+    return response()->json([
+        'success' => true,
+        'quantity' => $cartItem->quantity,
+        'subtotal' => number_format(
+            $cartItem->product->price * $cartItem->quantity,
+            2
+        ),
+        'grand_total' => number_format($grandTotal + session('donation', 0), 2),
+    ]);
+}
     /**
      * Remove Cart Item
      */
