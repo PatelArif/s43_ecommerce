@@ -61,7 +61,7 @@
 </button>
 
                                            
-                                            <img class="w-100" src="{{ asset('storage/' . $item['image']) }}"
+                                            <img class="w-100" src="{{ asset(config('constants.IMAGE_PATH')  . $item['image']) }}"
                                                 alt="{{ $item['name'] }}" style="max-width:150px;">
                                         </div>
                                     </td>

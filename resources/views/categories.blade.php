@@ -30,7 +30,7 @@
                             
                             <!-- Image -->
                             <div class="category-image">
-                                <img src="{{ asset('storage/' . $category->image) }}" 
+                                <img src="{{ asset(config('constants.IMAGE_PATH')  . $category->image) }}" 
                                      alt="{{ $category->name }}" 
                                      class="img-fluid w-100 fixed-img">
                                 <div class="overlay d-flex justify-content-center align-items-center">

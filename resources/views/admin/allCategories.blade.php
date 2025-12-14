@@ -71,7 +71,7 @@
                     <td class="text-center"><h5>{{ $category->name }}</h5></td>
                     <td class="text-center">
                         @if($category->image)
-                            <img src="{{ asset('storage/' . $category->image) }}" alt="Category Image" width="100">
+                            <img src="{{ asset(config('constants.IMAGE_PATH')  . $category->image) }}" alt="Category Image" width="100">
                         @else
                             <span class="text-muted">No Image</span>
                         @endif

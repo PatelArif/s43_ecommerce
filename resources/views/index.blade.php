@@ -273,7 +273,7 @@
                                         data-wow-delay="{{ $loop->index * 0.15 }}s">
                                         <div class="product-store-item">
                                             <div class="product-image">
-                                                <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/generated images/bags2.png') }}"
+                                                <img src="{{ $product->main_image ? asset(config('constants.IMAGE_PATH')  . $product->main_image) : asset('assets/img/generated images/bags2.png') }}"
                                                     alt="{{ $product->name }}"
                                                     onerror="this.onerror=null;this.src='{{ asset(config('constants.ASSETS_PATH').'img/product/9.png') }}';">
                                                 <div class="sale-box">
@@ -375,7 +375,7 @@
                                         <div class="shop-discover-item wow fadeInUp"
                                             data-wow-delay="{{ $loop->index * 0.2 }}s">
                                             <div class="shop-image">
-                                                <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset(config('constants.ASSETS_PATH').'img/product/9.png') }}"
+                                                <img src="{{ $product->main_image ? asset(config('constants.IMAGE_PATH')  . $product->main_image) : asset(config('constants.ASSETS_PATH').'img/product/9.png') }}"
                                                     alt="{{ $product->title }}">
                                             </div>
                                             <div class="content">
@@ -415,7 +415,7 @@
 
                         @if ($bannerProduct)
                             <div class="bg-image-2 bg-cover"
-                                style="background-image: url('{{ $bannerProduct->main_image ? asset('storage/' . $bannerProduct->main_image) : asset('assets/img/product/1.png') }}');">
+                                style="background-image: url('{{ $bannerProduct->main_image ? asset(config('constants.IMAGE_PATH')  . $bannerProduct->main_image) : asset('assets/img/product/1.png') }}');">
                                 <div class="content wow fadeInUp" data-wow-delay=".8s">
                                     <h3>
                                         <a href="{{ url('product-details/' . $bannerProduct->id) }}">
@@ -451,7 +451,7 @@
                         <div class="product-sell-item">
                             <div class="product-image">
                                 <a href="{{ url('product-details/' . $product->id) }}">
-                                    <img src="{{ $product->main_image ? asset('storage/' . $product->main_image) : asset('assets/img/generated images/bags2.png') }}"
+                                    <img src="{{ $product->main_image ? asset(config('constants.IMAGE_PATH')  . $product->main_image) : asset('assets/img/generated images/bags2.png') }}"
                                         alt="{{ $product->title }}">
                                 </a>
                                 <div class="cart-btn">

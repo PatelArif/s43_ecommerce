@@ -29,7 +29,7 @@
 
                 {{-- Optional Download Button --}}
                 <p style="margin-top:30px; text-align:center;">
-                    <a href="{{ url('storage/'.$order->invoice_path) }}" target="_blank" 
+                    <a href="{{ url(config('constants.IMAGE_PATH') .$order->invoice_path) }}" target="_blank" 
                        style="background:#26aa5f; color:#fff; padding:12px 20px; border-radius:6px; text-decoration:none; font-weight:bold;">
                         Download Invoice
                     </a>

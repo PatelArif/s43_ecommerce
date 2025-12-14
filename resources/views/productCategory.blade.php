@@ -35,7 +35,7 @@
                            <!-- Image -->
                            <a href="{{ url('/allCategories/' . $category->id . '/' . $subcategory->id) }}">
                               <div class="subcategory-image">
-                                 <img src="{{ $subcategory->image ? asset('storage/' . $subcategory->image) : asset('images/default-subcategory.jpg') }}" 
+                                 <img src="{{ $subcategory->image ? asset(config('constants.IMAGE_PATH')  . $subcategory->image) : asset('images/default-subcategory.jpg') }}" 
                                       alt="{{ $subcategory->name }}" class="img-fluid w-100 fixed-img">
                               </div>
                            </a>
