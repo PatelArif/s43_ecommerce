@@ -282,7 +282,7 @@ class OrderController extends Controller
     // Reject order
     public function reject(Order $order)
     {
-        $order->status = 'rejected';
+        $order->status = 'Pending';
         $order->save();
 
         return redirect()->back()->with('success', 'Order rejected successfully!');

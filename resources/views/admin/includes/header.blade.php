@@ -8,7 +8,7 @@
         <meta name="author" content="Step For Environment Team">
         <meta name="robots" content="noindex, nofollow">
          @stack('title')
-         <link rel="icon" type="image/png" href="{{ asset({{ asset(config('constants.ASSETS_PATH').'img/logo/logo4.png') }}">
+         <link rel="icon" type="image/png" href="{{ asset(config('constants.ASSETS_PATH').'img/logo/logo4.png') }}">
 
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
           <link rel="stylesheet" href="{{ asset('assets/admin/css/styles.css') }}">
