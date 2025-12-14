@@ -83,7 +83,7 @@
                                     <td class="text-center"><h5>{{ $user->email }}</h5></td>
                                     <td class="text-center">
                                         @if($user->profile_image)
-                                            <img src="{{ asset('/storage/' . $user->profile_image) }}" alt="User Image" width="100">
+                                            <img src="{{ asset(config('constants.IMAGE_PATH'). $user->profile_image) }}" alt="User Image" width="100">
                                         @else
                                             <span class="text-muted">No Image</span>
                                         @endif
@@ -126,7 +126,8 @@
         function openEditModal(id, firstName, lastName, email, mobile, profileImage) {
             const form = document.getElementById('userForm');
             form.reset();
-            form.action = `/admin/allUsers/${id}`;
+      const image_path = "{{ config('constants.IMAGE_PATH') }}";
+                  form.action = `/admin/allUsers/${id}`;
             document.getElementById('formMethod').value = 'PUT';
             document.getElementById('userModalLabel').textContent = 'Edit User';
             document.getElementById('modalSubmitBtn').textContent = 'Update';
@@ -135,7 +136,7 @@
             document.getElementById('userEmail').value = email;
             document.getElementById('userMobile').value = mobile;
             document.getElementById('existingImage').innerHTML = profileImage
-                ? `<img src="/storage/${profileImage}" alt="Current Image" class="img-thumbnail" width="100">`
+                ? `<img src="/${image_path}${profileImage}" alt="Current Image" class="img-thumbnail" width="100">`
                 : '<span class="text-muted">No Image</span>';
             new bootstrap.Modal(document.getElementById('userModal')).show();
         }
