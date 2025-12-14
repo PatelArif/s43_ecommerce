@@ -271,21 +271,58 @@ class OrderController extends Controller
     }
 
     // Approve order
-    public function approve(Order $order)
-    {
-        $order->status = 'approved';
-        $order->save();
-
-        return redirect()->back()->with('success', 'Order approved successfully!');
-    }
 
     // Reject order
-    public function reject(Order $order)
-    {
-        $order->status = 'Pending';
-        $order->save();
 
-        return redirect()->back()->with('success', 'Order rejected successfully!');
-    }
+    public function approve($id)
+{
+    Order::where('id', $id)->update([
+        'status' => 'approved',
+        'approved_at' => now(),
+    ]);
+
+    return back()->with('success', 'Order approved');
+}
+
+public function reject($id)
+{
+    Order::where('id', $id)->update([
+        'status' => 'rejected',
+        'rejected_at' => now(),
+    ]);
+
+    return back()->with('success', 'Order rejected');
+}
+
+public function markReady($id)
+{
+    Order::where('id', $id)->update([
+        'status' => 'ready',
+        'ready_at' => now(),
+    ]);
+
+    return back()->with('success', 'Order ready for dispatch');
+}
+
+public function dispatch($id)
+{
+    Order::where('id', $id)->update([
+        'status' => 'dispatched',
+        'dispatched_at' => now(),
+    ]);
+
+    return back()->with('success', 'Order dispatched');
+}
+
+public function deliver($id)
+{
+    Order::where('id', $id)->update([
+        'status' => 'delivered',
+        'delivered_at' => now(),
+    ]);
+
+    return back()->with('success', 'Order delivered');
+}
+
 
 }

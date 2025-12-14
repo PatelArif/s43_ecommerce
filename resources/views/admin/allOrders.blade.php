@@ -79,48 +79,131 @@
                                     @endif
                                 </td>
 
-                                <td class="text-center">
-                                    @if ($order->status === 'pending')
-                                        <span class="badge bg-warning text-dark">Pending</span>
-                                    @elseif($order->status === 'approved')
-                                        <span class="badge bg-success">Approved</span>
-                                    @elseif($order->status === 'rejected')
-                                        <span class="badge bg-danger">Rejected</span>
-                                    @endif
-                                </td>
-                                <td class="text-center">
+                               <td class="text-center">
+    @switch($order->status)
 
-                                    {{-- Pending → Approve + Reject --}}
-                                    @if ($order->status === 'pending')
-                                        <form action="{{ route('admin.orders.approve', $order->id) }}" method="POST"
-                                            class="d-inline">
-                                            @csrf
-                                            <button type="submit" class="btn btn-sm btn-success">Approve</button>
-                                        </form>
+        @case('pending')
+            <span class="badge bg-warning text-dark">Pending</span>
+            @break
 
-                                        <form action="{{ route('admin.orders.reject', $order->id) }}" method="POST"
-                                            class="d-inline ms-1">
-                                            @csrf
-                                            <button type="submit" class="btn btn-sm btn-danger">Reject</button>
-                                        </form>
+        @case('approved')
+            <span class="badge bg-success">Approved</span>
+            @break
 
-                                        {{-- Approved → Only Reject --}}
-                                    @elseif($order->status === 'approved')
-                                        <form action="{{ route('admin.orders.reject', $order->id) }}" method="POST"
-                                            class="d-inline">
-                                            @csrf
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('Are you sure you want to reject this order?')">
-                                                Reject
-                                            </button>
-                                        </form>
+        @case('ready')
+            <span class="badge bg-primary">Ready to Dispatch</span>
+            @break
 
-                                        {{-- Rejected → No actions --}}
-                                    @else
-                                        <span class="text-muted">—</span>
-                                    @endif
+        @case('dispatched')
+            <span class="badge bg-info text-dark">Dispatched</span>
+            @break
 
-                                </td>
+        @case('delivered')
+            <span class="badge bg-dark">Delivered</span>
+            @break
+
+        @case('rejected')
+            <span class="badge bg-danger">Rejected</span>
+            @break
+
+        @default
+            <span class="badge bg-secondary">Unknown</span>
+
+    @endswitch
+</td>
+
+   <td class="text-center">
+
+    @if (!in_array($order->status, ['delivered', 'rejected']))
+
+        <div class="dropdown">
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown">
+                Select
+            </button>
+
+            <ul class="dropdown-menu">
+
+                {{-- PENDING --}}
+                @if ($order->status === 'pending')
+                    <li>
+                        <form action="{{ route('admin.orders.approve', $order->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item text-success">Approve</button>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="{{ route('admin.orders.reject', $order->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item text-danger">Reject</button>
+                        </form>
+                    </li>
+                @endif
+
+                {{-- APPROVED --}}
+                @if ($order->status === 'approved')
+                    <li>
+                        <form action="{{ route('admin.orders.ready', $order->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item text-primary">Ready to Dispatch</button>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="{{ route('admin.orders.reject', $order->id) }}" method="POST"
+                              onsubmit="return confirm('Reject this approved order?')">
+                            @csrf
+                            <button type="submit" class="dropdown-item text-danger">Reject</button>
+                        </form>
+                    </li>
+                @endif
+
+                {{-- READY --}}
+                @if ($order->status === 'ready')
+                    <li>
+                        <form action="{{ route('admin.orders.dispatch', $order->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item text-warning">Dispatch</button>
+                        </form>
+                    </li>
+                @endif
+
+                {{-- DISPATCHED --}}
+                @if ($order->status === 'dispatched')
+                    <li>
+                        <form action="{{ route('admin.orders.deliver', $order->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item text-info">Mark Delivered</button>
+                        </form>
+                    </li>
+                @endif
+
+            </ul>
+        </div>
+
+    {{-- DELIVERED --}}
+    @elseif ($order->status === 'delivered')
+        <span class="badge bg-success">Delivered</span>
+
+        @if($order->invoice_path)
+            <div class="mt-1">
+                <a href="{{ asset(config('constants.IMAGE_PATH') . $order->invoice_path) }}"
+                   target="_blank"
+                   class="btn btn-sm btn-outline-success">
+                    Invoice
+                </a>
+            </div>
+        @endif
+
+    {{-- REJECTED --}}
+    @else
+        <span class="badge bg-danger">Rejected</span>
+    @endif
+
+</td>
+
+
+
 
                             </tr>
                         @empty

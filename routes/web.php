@@ -198,6 +198,26 @@ Route::delete('/allUsers/{id}', [AdminController::class, 'destroy'])->name('user
     Route::get('/orders/status/{status}', [OrderController::class, 'filterByStatus'])->name('admin.orders.status');
     Route::post('/orders/{order}/approve', [OrderController::class, 'approve'])->name('admin.orders.approve');
     Route::post('/orders/{order}/reject', [OrderController::class, 'reject'])->name('admin.orders.reject');
+    // ✅ Approve order
+Route::post('/orders/{id}/approve', [OrderController::class, 'approve'])
+    ->name('admin.orders.approve');
+
+// ❌ Reject order
+Route::post('/orders/{id}/reject', [OrderController::class, 'reject'])
+    ->name('admin.orders.reject');
+
+// 📦 Mark Ready to Dispatch
+Route::post('/orders/{id}/ready', [OrderController::class, 'markReady'])
+    ->name('admin.orders.ready');
+
+// 🚚 Dispatch order
+Route::post('/orders/{id}/dispatch', [OrderController::class, 'dispatch'])
+    ->name('admin.orders.dispatch');
+
+// ✅ Mark Delivered
+Route::post('/orders/{id}/deliver', [OrderController::class, 'deliver'])
+    ->name('admin.orders.deliver');
+
 
 
 

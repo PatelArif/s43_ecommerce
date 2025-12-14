@@ -241,13 +241,31 @@
                 @foreach ($orders as $order)
                 
                     <div class="eco-order-card">
-                        @if ($order->status === 'pending')
-                            <div class="eco-order-ribbon eco-ribbon-pending">Pending</div>
-                        @elseif($order->status === 'approved')
-                            <div class="eco-order-ribbon eco-ribbon-approved">Approved</div>
-                        @elseif($order->status === 'rejected')
-                            <div class="eco-order-ribbon eco-ribbon-rejected">Rejected</div>
-                        @endif
+                       @switch($order->status)
+    @case('pending')
+        <div class="eco-order-ribbon eco-ribbon-pending">Pending</div>
+        @break
+
+    @case('approved')
+        <div class="eco-order-ribbon eco-ribbon-approved">Approved</div>
+        @break
+
+    @case('ready')
+        <div class="eco-order-ribbon eco-ribbon-approved">Packed</div>
+        @break
+
+    @case('dispatched')
+        <div class="eco-order-ribbon eco-ribbon-pending">Dispatched</div>
+        @break
+
+    @case('delivered')
+        <div class="eco-order-ribbon eco-ribbon-approved">Delivered</div>
+        @break
+
+    @case('rejected')
+        <div class="eco-order-ribbon eco-ribbon-rejected">Rejected</div>
+        @break
+@endswitch
 
                         <div class="eco-order-header">
                             <h3>Order #{{ $order->order_number }}</h3>
