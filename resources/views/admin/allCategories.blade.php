@@ -102,7 +102,7 @@
                 </main>
              @include('admin.includes.footer')
              <script>
-    const assetBaseUrl = "{{ asset('/storage') }}";
+    const assetBaseUrl = "{{ config('constants.IMAGE_PATH') }}";
   
 </script>
              <script>
@@ -124,7 +124,7 @@ function openEditModal(id, name, image) {
     document.getElementById('categoryImage').value = '';
 
     let imageHtml = image
-        ? `<img src="${assetBaseUrl}/${image}" width="70" alt="Current Image">`
+        ? `<img src="/${assetBaseUrl}${image}" width="70" alt="Current Image">`
         : '<span class="text-muted">No Image</span>';
 
     document.getElementById('existingImage').innerHTML = imageHtml;
