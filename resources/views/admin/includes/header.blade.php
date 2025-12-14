@@ -11,11 +11,11 @@
          <link rel="icon" type="image/png" href="{{ asset(config('constants.ASSETS_PATH').'img/logo/logo4.png') }}">
 
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-          <link rel="stylesheet" href="{{ asset('assets/admin/css/styles.css') }}">
+          <link rel="stylesheet" href="{{ asset(config('constants.ASSETS_PATH').'admin/css/styles.css') }}">
           <!-- DataTables CSS -->
-<link rel="stylesheet" href="{{ asset('assets/admin/css/datatables.min.css') }}">
+<link rel="stylesheet" href="{{ asset(config('constants.ASSETS_PATH').'admin/css/datatables.min.css') }}">
 
-        <script src="{{ asset('assets/admin/css/AwesomeFonts.css') }}" crossorigin="anonymous"></script>
+        <script src="{{ asset(config('constants.ASSETS_PATH').'admin/css/AwesomeFonts.css') }}" crossorigin="anonymous"></script>
 
     </head>
     <body class="sb-nav-fixed">
