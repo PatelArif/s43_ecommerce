@@ -3,6 +3,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Slider;
 use App\Models\Subcategory;
@@ -10,11 +11,12 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -31,17 +33,36 @@ class AdminController extends Controller
     {
         return view('admin.login');
     }
-    public function dashboard()
-    {
+   
+public function dashboard()
+{
+    // Website
+    $categoryCount    = Category::count();
+    $subCategoryCount = SubCategory::count();
+    $productCount     = Product::count();
+    $userCount        = User::count();
+    $slider           = Slider::count();
 
-        $categoryCount    = Category::count();
-        $subCategoryCount = SubCategory::count();
-        $productCount     = Product::count();
-        $userCount        = User::count();
-        $slider           = Slider::count();
+    // Orders
+    $totalOrders      = Order::count();
+    $pendingOrders    = Order::where('status','pending')->count();
+    $approvedOrders   = Order::where('status','approved')->count();
+    $dispatchedOrders = Order::where('status','dispatched')->count();
+    $deliveredOrders  = Order::where('status','delivered')->count();
 
-        return view('admin.index', compact('categoryCount', 'subCategoryCount', 'productCount', 'slider', 'userCount'));
-    }
+    // Revenue
+    $todayRevenue = Order::whereDate('created_at', Carbon::today())
+        ->where('status','delivered')
+        ->sum('total');
+
+    $totalRevenue = Order::where('status','delivered')->sum('total');
+
+    return view('admin.index', compact(
+        'categoryCount','subCategoryCount','productCount','slider','userCount',
+        'totalOrders','pendingOrders','approvedOrders','dispatchedOrders','deliveredOrders',
+        'todayRevenue','totalRevenue'
+    ));
+}
 
     public function layoutSidenavLight()
     {
@@ -98,7 +119,7 @@ class AdminController extends Controller
         }
         $credentials = $request->only('email', 'password', 'role');
         // $credentials = $request->only('email', 'password');
-        $remember    = $request->has('remember');
+        $remember = $request->has('remember');
 
         if (Auth::attempt($credentials)) {
             RateLimiter::clear($this->throttleKey($request)); // reset attempts
