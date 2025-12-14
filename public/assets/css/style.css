@@ -3598,17 +3598,22 @@ span {
 }
 .about2::before {
     position: absolute;
-    left: -20;
-    right: 0;
+    left: 0;
     top: 0;
-    height: 100%;
     width: 100%;
-    background-image: url('../img/bg-2.jpg');
-    background-repeat: no-repeat;
-    background-position: Left top;
-    background-size: 100%;
-    opacity: 1;
+    height: 100%;
     content: "";
+
+    background-image: url('../img/img.png');
+    background-repeat: no-repeat;
+
+    /* 🔥 IMPORTANT PART */
+    background-size: contain;
+    /* show full image */
+    background-position: right bottom;
+    /* move tree to left & bottom */
+
+    opacity: 1;
     z-index: 0;
 }
 .header-main .main-menu ul li a {
