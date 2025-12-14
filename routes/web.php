@@ -132,7 +132,7 @@ Route::get('/my-orders', [OrderController::class, 'myOrders'])->name('myOrders')
 // routes/web.php
 Route::post('/cart/donation', [ShopController::class, 'storeDonation'])->name('cart.donation');
 
-// Route::post('/orders/{id}/approve', [OrderController::class, 'approve'])->name('orders.approve');
+Route::post('/orders/{id}/approve', [OrderController::class, 'approve'])->name('orders.approve');
 
 
 
@@ -196,8 +196,8 @@ Route::delete('/allUsers/{id}', [AdminController::class, 'destroy'])->name('user
     Route::delete('/sliders/{slider}', [AdminSliderController::class, 'destroy'])->name('sliders.destroy');
     Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders.index');
     Route::get('/orders/status/{status}', [OrderController::class, 'filterByStatus'])->name('admin.orders.status');
-    Route::post('/orders/{order}/approve', [OrderController::class, 'approve'])->name('admin.orders.approve');
-    Route::post('/orders/{order}/reject', [OrderController::class, 'reject'])->name('admin.orders.reject');
+    // Route::post('/orders/{order}/approve', [OrderController::class, 'approve'])->name('admin.orders.approve');
+    // Route::post('/orders/{order}/reject', [OrderController::class, 'reject'])->name('admin.orders.reject');
     // ✅ Approve order
 Route::post('/orders/{id}/approve', [OrderController::class, 'approve'])
     ->name('admin.orders.approve');
