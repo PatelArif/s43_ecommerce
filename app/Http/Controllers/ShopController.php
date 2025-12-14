@@ -142,31 +142,47 @@ class ShopController extends Controller
     /**
      * Remove Cart Item
      */
-    public function remove($id)
-    {
-        if (! Auth::check()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Please login first.',
-            ], 401);
-        }
-
-        $cartItem = Cart::where('user_id', Auth::id())
-            ->where('product_id', $id)
-            ->first();
-
-        if (! $cartItem) {
-            return response()->json(['success' => false, 'message' => 'Item not found.']);
-        }
-
-        $cartItem->delete();
-        $cartCount = Cart::where('user_id', Auth::id())->count();
+   public function remove($id)
+{
+    if (!Auth::check()) {
         return response()->json([
-            'success'        => true,
-            'message'        => 'Item removed successfully.',
-            'total_cartItem' => $cartCount,
+            'success' => false,
+            'message' => 'Please login first.',
+        ], 401);
+    }
+
+    $cartItem = Cart::where('user_id', Auth::id())
+        ->where('product_id', $id)
+        ->first();
+
+    if (!$cartItem) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Item not found.'
         ]);
     }
+
+    $cartItem->delete();
+
+    $cartItems = Cart::where('user_id', Auth::id())->get();
+
+  $grandTotal = $cartItems->sum(function ($item) {
+    return $item->product->price * $item->quantity;
+});
+
+
+    $donation = session('donation', 0);
+    $grandTotalWithDonation = $grandTotal + $donation;
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Item removed successfully.',
+        'total_cartItem' => $cartItems->count(),
+        'grand_total' => number_format($grandTotalWithDonation, 2),
+        'donation' => number_format($donation, 2),
+    ]);
+}
+
 
     /**
      * Store Donation
