@@ -56,7 +56,7 @@ if (sidebarToggle) {
 $(document).ready(function(){
 
     const sliderModal = new bootstrap.Modal($('#sliderModal')[0]);
-    const assetBaseUrl = "{{ asset('storage') }}";
+    const assetBaseUrl = "{{ config('constants.IMAGE_PATH') }}";
 
     // Open Add Modal
     $('#addSliderBtn').click(function(){
@@ -87,7 +87,7 @@ $(document).ready(function(){
             $('#sliderModalLabel').text('Edit Slider');
 
             let imageHtml = slider.image 
-                ? `<img src="${assetBaseUrl}/${slider.image}" width="120" class="img-fluid rounded">` 
+                ? `<img src="/${assetBaseUrl}${slider.image}" width="120" class="img-fluid rounded">` 
                 : '<span class="text-muted">No Image</span>';
             $('#existingImage').html(imageHtml);
 
