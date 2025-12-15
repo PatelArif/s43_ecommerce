@@ -83,40 +83,28 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <section class="py-5 bg-light position-relative about1">
-        <div class="container position-relative" style="z-index:1;">
-            <div class="section-title text-center wow fadeInDown" data-wow-delay="0.2s">
-                <h2>Shop by Category</h2>
-            </div>
+<section class="py-5 pb-5  bg-light position-relative about1">
+    <div class="container position-relative pb-5" style="z-index:1;">
 
-            <div class="text-center mb-5 wow fadeInUp" data-wow-delay="0.4s">
-                <h4>Discover our carefully curated eco-friendly products organized by category. Each product is selected for
-                    its sustainability and quality.</h4>
-            </div>
-
-            <div class="row g-4">
-                @foreach ($categories as $category)
-                    <div class="col-md-4">
-                        <div class="category-card h-100 p-4 text-center position-relative border rounded  wow fadeInUp"
-                            data-wow-delay="{{ $loop->index * 0.2 }}s">
-                            <div class="icon mb-3 d-inline-flex align-items-center justify-content-center rounded-circle"
-                                style="width: 60px; height: 60px; background-color: #D4EDDA;">
-                                <i class="{{ $category->icon }} fs-3 text-success"></i>
-                            </div>
-                            <h5 class="mb-2 fw-bold">{{ $category->name }}</h5>
-                            <p class="mb-3 text-muted" style="font-size: 0.9rem;">{{ $category->description }}</p>
-                            <div class="product-count mb-3 fw-semibold">{{ $category->product_count }} products</div>
-                            <a href="{{ url('/allCategories/' . $category->id) }}"
-                                class="explore-btn btn btn-outline-success d-flex align-items-center justify-content-between w-100 px-3 py-2 rounded">
-                                <span>Explore</span>
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+        <div class="section-title text-center">
+            <h2>Shop by Category</h2>
         </div>
-    </section>
+
+        <div class="text-center mb-5">
+            <h4>
+               Discover our carefully curated eco-friendly products organized by category. Each product is selected for
+                    its sustainability and quality.
+            </h4>
+        </div>
+
+        {{-- AJAX wrapper --}}
+        <div id="homeCategoryWrapper">
+            @include('includes.home-category-list', ['categories' => $categories])
+        </div>
+
+    </div>
+</section>
+
     <!-- Hero Section Start -->
     {{-- <section class="hero-section-3">
 

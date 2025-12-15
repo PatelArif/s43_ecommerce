@@ -115,47 +115,47 @@ return [
     |
     */
 
-    'providers'       => [
-        /*
-         * Laravel Framework Service Providers...
-         */
-        Illuminate\Auth\AuthServiceProvider::class,
-        Illuminate\Broadcasting\BroadcastServiceProvider::class,
-        Illuminate\Bus\BusServiceProvider::class,
-        Illuminate\Cache\CacheServiceProvider::class,
-        Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
-        Illuminate\Cookie\CookieServiceProvider::class,
-        Illuminate\Database\DatabaseServiceProvider::class,
-        Illuminate\Encryption\EncryptionServiceProvider::class,
-        Illuminate\Filesystem\FilesystemServiceProvider::class,
-        Illuminate\Foundation\Providers\FoundationServiceProvider::class,
-        Illuminate\Hashing\HashServiceProvider::class,
-        Illuminate\Session\SessionServiceProvider::class,
-        Illuminate\Validation\ValidationServiceProvider::class,
-        Illuminate\Translation\TranslationServiceProvider::class,
-        Illuminate\View\ViewServiceProvider::class,
-        Illuminate\Log\LogServiceProvider::class,
-        Illuminate\Mail\MailServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
-        /*
-         * Third Party Service Providers...
-         */
-        Intervention\Image\ImageServiceProvider::class, // Added the Intervention Image service provider
+    // 'providers'       => [
+    //     /*
+    //      * Laravel Framework Service Providers...
+    //      */
+    //     Illuminate\Auth\AuthServiceProvider::class,
+    //     Illuminate\Broadcasting\BroadcastServiceProvider::class,
+    //     Illuminate\Bus\BusServiceProvider::class,
+    //     Illuminate\Cache\CacheServiceProvider::class,
+    //     Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
+    //     Illuminate\Cookie\CookieServiceProvider::class,
+    //     Illuminate\Database\DatabaseServiceProvider::class,
+    //     Illuminate\Encryption\EncryptionServiceProvider::class,
+    //     Illuminate\Filesystem\FilesystemServiceProvider::class,
+    //     Illuminate\Foundation\Providers\FoundationServiceProvider::class,
+    //     Illuminate\Hashing\HashServiceProvider::class,
+    //     Illuminate\Session\SessionServiceProvider::class,
+    //     Illuminate\Validation\ValidationServiceProvider::class,
+    //     Illuminate\Translation\TranslationServiceProvider::class,
+    //     Illuminate\View\ViewServiceProvider::class,
+    //     Illuminate\Log\LogServiceProvider::class,
+    //     Illuminate\Mail\MailServiceProvider::class,
+    //     Intervention\Image\ImageServiceProvider::class,
+    //     /*
+    //      * Third Party Service Providers...
+    //      */
+    //     Intervention\Image\ImageServiceProvider::class, // Added the Intervention Image service provider
 
-        /*
-         * Application Service Providers...
-         */
-        // Add your custom service providers here
-    ],
-    'aliases'         => [
-        'App'      => App::class,
-        'Artisan'  => Illuminate\Support\Facades\Artisan::class,
-        'Auth'     => Illuminate\Support\Facades\Auth::class,
-                                                               // other aliases...
-        'Image'    => Intervention\Image\Facades\Image::class, // Add this line
-        'Password' => Illuminate\Support\Facades\Password::class,
-        'Mail'     => Illuminate\Support\Facades\Mail::class,
-    ],
+    //     /*
+    //      * Application Service Providers...
+    //      */
+    //     // Add your custom service providers here
+    // ],
+    // 'aliases'         => [
+    //     'App'      => App::class,
+    //     'Artisan'  => Illuminate\Support\Facades\Artisan::class,
+    //     'Auth'     => Illuminate\Support\Facades\Auth::class,
+    //                                                            // other aliases...
+    //     'Image'    => Intervention\Image\Facades\Image::class, // Add this line
+    //     'Password' => Illuminate\Support\Facades\Password::class,
+    //     'Mail'     => Illuminate\Support\Facades\Mail::class,
+    // ],
 
     /*
     |--------------------------------------------------------------------------

@@ -39,6 +39,10 @@
             <input type="file" name="image" id="categoryImage" class="form-control" accept="image/*">
             <div id="existingImage" class="mt-2"></div>
           </div>
+            <div class="mb-3">
+            <label for="categoryIcon" class="form-label">Category Icon Name</label>
+            <input type="text" name="icon" id="categoryIcon" class="form-control" required>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary" id="modalSubmitBtn">Save</button>
@@ -78,7 +82,7 @@
                     </td>
                     <td class="text-center">
                    <button class="btn btn-lg btn-warning"
-                      onclick="openEditModal({{ $category->id }}, '{{ addslashes($category->name) }}', '{{ $category->image }}')"
+                      onclick="openEditModal({{ $category->id }}, '{{ addslashes($category->name) }}', '{{ $category->image }}', '{{ $category->icon }}')"
 >
                         <i class="fas fa-edit"></i>
                     </button>
@@ -111,16 +115,20 @@ function openAddModal() {
     document.getElementById('categoryForm').action = "{{ route('categories.store') }}";
     document.getElementById('formMethod').value = 'POST';
     document.getElementById('categoryName').value = '';
+    document.getElementById('categoryIcon').value = '';
     document.getElementById('categoryImage').value = '';
     document.getElementById('existingImage').innerHTML = '';
     new bootstrap.Modal(document.getElementById('categoryModal')).show();
 }
 
-function openEditModal(id, name, image) {
+function openEditModal(id, name, image, icon) {
     document.getElementById('categoryModalLabel').innerText = 'Edit Category';
     document.getElementById('categoryForm').action = `/admin/categories/${id}`;
     document.getElementById('formMethod').value = 'PUT';
-    document.getElementById('categoryName').value = name;
+    document.getElementById('categoryIcon').value = 	icon;
+    document.getElementById('categoryName').value = 	name;
+
+    
     document.getElementById('categoryImage').value = '';
 
     let imageHtml = image

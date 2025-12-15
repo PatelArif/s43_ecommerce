@@ -9,36 +9,37 @@ use App\Models\Product;
 use App\Models\Slider;
 class IndexController extends Controller
 {
-    public function index()
-    {
-        $sliders = Slider::orderBy('id')->get();
-        $categories = Category::with("subcategories")->get();
-        $products = Product::where(function ($q) {
-            $q->whereNull("discount")->orWhere("discount", 0);
-        })
-            ->inRandomOrder()
-            ->take(8)
-            ->get();
-       $latestProducts = Product::latest() 
-       ->inRandomOrder()
-    ->take(5)
-    ->get();
-        $discountProducts = Product::whereNotNull("discount")
-            ->where("discount", ">", 0)
-            ->take(8)
-            ->inRandomOrder()
-            ->get();
-        return view(
-            "index",
-            compact(
-                "categories",
-                "products",
-                "latestProducts",
-                "discountProducts",
-                "sliders"
-            )
-        );
+public function index(Request $request)
+{
+    $sliders = Slider::orderBy('id')->get();
+
+    $categories = Category::withCount('subcategories')->paginate(6);
+
+    if ($request->ajax()) {
+        return view('includes.home-category-list', compact('categories'))->render();
     }
+
+    $products = Product::where(function ($q) {
+        $q->whereNull("discount")->orWhere("discount", 0);
+    })->inRandomOrder()->take(8)->get();
+
+    $latestProducts = Product::latest()->inRandomOrder()->take(5)->get();
+
+    $discountProducts = Product::whereNotNull("discount")
+        ->where("discount", ">", 0)
+        ->inRandomOrder()
+        ->take(8)
+        ->get();
+
+    return view('index', compact(
+        'categories',
+        'products',
+        'latestProducts',
+        'discountProducts',
+        'sliders'
+    ));
+}
+
 
     public function index2()
     {
