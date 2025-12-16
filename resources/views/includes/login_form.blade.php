@@ -1,5 +1,6 @@
 <form id="user_login_form" method="POST" action="{{ route('login.submit') }}">
     @csrf
+    <input type="hidden"name="role" value="user">
     <div class="row g-4">
         <div class="col-lg-12">
             <div class="form-clt">

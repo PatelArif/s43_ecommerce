@@ -1,11 +1,9 @@
 <?php
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthCheck
@@ -17,11 +15,21 @@ class AuthCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! Auth::check() || Auth::user()->role !== 'admin') {
-            Log::info(Auth::user());
-            // redirect non-admins
-            return redirect('/admin/')->with('error', 'Access Denied!');
+        if (Auth::guard('web')->attempt([
+            'email'    => $request->email,
+            'password' => $request->password,
+            'role'     => 'user',
+        ])) {
+            return redirect('/dashboard');
         }
+        if (Auth::guard('admin')->attempt([
+            'email'    => $request->email,
+            'password' => $request->password,
+            'role'     => 'admin',
+        ])) {
+            return redirect('/admin/dashboard');
+        }
+
         return $next($request);
     }
 }

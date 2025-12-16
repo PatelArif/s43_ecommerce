@@ -125,10 +125,11 @@ class OrderController extends Controller
             (auth()->user()->zip_code ?? '') . ', ' .
             (auth()->user()->country ?? '')
         );
+         $user = Auth::id();
         // Save order
         $order = Order::create([
             'order_id'         => $orderId, // custom unique order id
-            'user_id'          => Auth::id(),
+            'user_id'          => $user,
             'shipping_address' => $shippingAddress,
             'subtotal'         => $subtotal,
             'total'            => $total,
