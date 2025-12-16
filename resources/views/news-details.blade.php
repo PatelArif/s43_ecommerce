@@ -40,12 +40,12 @@
                                         <div class="row g-4">
                                             <div class="col-lg-6">
                                                 <div class="details-image">
-                                                    <img src="assets/img/news/details-2.jpg" alt="img">
+                                                    <img src="{{config('constants.ASSETS_PATH') }}img/news/details-2.jpg" alt="img">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="details-image">
-                                                    <img src="assets/img/news/details-3.jpg" alt="img">
+                                                    <img src="{{config('constants.ASSETS_PATH') }}img/news/details-3.jpg" alt="img">
                                                 </div>
                                             </div>
                                         </div>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="news-comment-box">
                                     <div class="image">
-                                        <img src="assets/img/news/client.png" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/news/client.png" alt="img">
                                     </div>
                                     <div class="content">
                                         <p>
@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="blog-single-comment d-flex gap-4 pt-4 pb-0">
                                         <div class="image">
-                                            <img src="assets/img/news/comment-1.png" alt="image">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/news/comment-1.png" alt="image">
                                         </div>
                                         <div class="content">
                                             <div class="head d-flex flex-wrap gap-2 align-items-center justify-content-between">
@@ -99,7 +99,7 @@
                                     </div>
                                     <div class="blog-single-comment style-2 d-flex gap-4 pt-4 pb-0">
                                         <div class="image">
-                                            <img src="assets/img/news/comment-2.png" alt="image">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/news/comment-2.png" alt="image">
                                         </div>
                                         <div class="content">
                                             <div class="head d-flex flex-wrap gap-2 align-items-center justify-content-between">
@@ -185,7 +185,7 @@
                                     <div class="recent-post-area">
                                         <div class="recent-items">
                                             <div class="recent-thumb">
-                                                <img src="assets/img/news/pp1.jpg" alt="img">
+                                                <img src="{{config('constants.ASSETS_PATH') }}img/news/pp1.jpg" alt="img">
                                             </div>
                                             <div class="recent-content">
                                                 <h6>
@@ -203,7 +203,7 @@
                                         </div>
                                         <div class="recent-items">
                                             <div class="recent-thumb">
-                                                <img src="assets/img/news/pp2.jpg" alt="img">
+                                                <img src="{{config('constants.ASSETS_PATH') }}img/news/pp2.jpg" alt="img">
                                             </div>
                                             <div class="recent-content">
                                                 <h6>
@@ -221,7 +221,7 @@
                                         </div>
                                         <div class="recent-items">
                                             <div class="recent-thumb">
-                                                <img src="assets/img/news/pp3.jpg" alt="img">
+                                                <img src="{{config('constants.ASSETS_PATH') }}img/news/pp3.jpg" alt="img">
                                             </div>
                                             <div class="recent-content">
                                                 <h6>

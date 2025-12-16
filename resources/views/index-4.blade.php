@@ -28,7 +28,7 @@
                                                 <div class="hero-icon-item" data-animation="fadeInUp" data-delay="1.7s">
                                                     <div class="icon-item style-2">
                                                         <div class="icon">
-                                                            <img src="assets/img/icon/09.svg" alt="img">
+                                                            <img src="{{config('constants.ASSETS_PATH') }}img/icon/09.svg" alt="img">
                                                         </div>
                                                         <div class="content">
                                                             <h6>
@@ -39,7 +39,7 @@
                                                     </div>
                                                     <div class="icon-item style-2">
                                                         <div class="icon">
-                                                            <img src="assets/img/icon/10.svg" alt="img">
+                                                            <img src="{{config('constants.ASSETS_PATH') }}img/icon/10.svg" alt="img">
                                                         </div>
                                                         <div class="content">
                                                             <h6>
@@ -50,7 +50,7 @@
                                                     </div>
                                                     <div class="icon-item style-2">
                                                         <div class="icon">
-                                                            <img src="assets/img/icon/12.svg" alt="img">
+                                                            <img src="{{config('constants.ASSETS_PATH') }}img/icon/12.svg" alt="img">
                                                         </div>
                                                         <div class="content">
                                                             <h6>
@@ -84,7 +84,7 @@
                                                 <div class="hero-icon-item" data-animation="fadeInUp" data-delay="1.7s">
                                                     <div class="icon-item style-2">
                                                         <div class="icon">
-                                                            <img src="assets/img/icon/09.svg" alt="img">
+                                                            <img src="{{config('constants.ASSETS_PATH') }}img/icon/09.svg" alt="img">
                                                         </div>
                                                         <div class="content">
                                                             <h6>
@@ -95,7 +95,7 @@
                                                     </div>
                                                     <div class="icon-item style-2">
                                                         <div class="icon">
-                                                            <img src="assets/img/icon/10.svg" alt="img">
+                                                            <img src="{{config('constants.ASSETS_PATH') }}img/icon/10.svg" alt="img">
                                                         </div>
                                                         <div class="content">
                                                             <h6>
@@ -106,7 +106,7 @@
                                                     </div>
                                                     <div class="icon-item style-2">
                                                         <div class="icon">
-                                                            <img src="assets/img/icon/12.svg" alt="img">
+                                                            <img src="{{config('constants.ASSETS_PATH') }}img/icon/12.svg" alt="img">
                                                         </div>
                                                         <div class="content">
                                                             <h6>
@@ -140,7 +140,7 @@
                                                 <div class="hero-icon-item" data-animation="fadeInUp" data-delay="1.7s">
                                                     <div class="icon-item style-2">
                                                         <div class="icon">
-                                                            <img src="assets/img/icon/09.svg" alt="img">
+                                                            <img src="{{config('constants.ASSETS_PATH') }}img/icon/09.svg" alt="img">
                                                         </div>
                                                         <div class="content">
                                                             <h6>
@@ -151,7 +151,7 @@
                                                     </div>
                                                     <div class="icon-item style-2">
                                                         <div class="icon">
-                                                            <img src="assets/img/icon/10.svg" alt="img">
+                                                            <img src="{{config('constants.ASSETS_PATH') }}img/icon/10.svg" alt="img">
                                                         </div>
                                                         <div class="content">
                                                             <h6>
@@ -162,7 +162,7 @@
                                                     </div>
                                                     <div class="icon-item style-2">
                                                         <div class="icon">
-                                                            <img src="assets/img/icon/12.svg" alt="img">
+                                                            <img src="{{config('constants.ASSETS_PATH') }}img/icon/12.svg" alt="img">
                                                         </div>
                                                         <div class="content">
                                                             <h6>
@@ -201,7 +201,7 @@
                         <div class="swiper-slide">
                             <div class="shop-category-item">
                                 <div class="shop-category-image">
-                                    <img src="assets/img/shop/08.jpg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/shop/08.jpg" alt="img">
                                     <div class="content">
                                         <h3>
                                             <a href="shop-grid.html">Cleansers</a>
@@ -215,7 +215,7 @@
                         <div class="swiper-slide">
                             <div class="shop-category-item">
                                 <div class="shop-category-image">
-                                    <img src="assets/img/shop/09.jpg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/shop/09.jpg" alt="img">
                                     <div class="content">
                                         <h3>
                                             <a href="shop-grid.html">Face Sunscreen</a>
@@ -229,7 +229,7 @@
                         <div class="swiper-slide">
                             <div class="shop-category-item">
                                 <div class="shop-category-image">
-                                    <img src="assets/img/shop/10.jpg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/shop/10.jpg" alt="img">
                                     <div class="content">
                                         <h3>
                                             <a href="shop-grid.html">Face Sunscreen</a>
@@ -243,7 +243,7 @@
                         <div class="swiper-slide">
                             <div class="shop-category-item">
                                 <div class="shop-category-image">
-                                    <img src="assets/img/shop/11.jpg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/shop/11.jpg" alt="img">
                                     <div class="content">
                                         <h3>
                                             <a href="shop-grid.html">Masks</a>
@@ -274,7 +274,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                         <div class="product-box-item style-2">
                             <div class="product-image">
-                                <img src="assets/img/product/13.png" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/product/13.png" alt="img">
                             </div>
                             <div class="product-content">
                                 <h3>
@@ -291,7 +291,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".s">
                         <div class="product-box-item">
                             <div class="product-image">
-                                <img src="assets/img/product/14.png" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/product/14.png" alt="img">
                             </div>
                             <div class="product-content">
                                 <h3>
@@ -308,7 +308,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
                         <div class="product-box-item mb-0">
                             <div class="product-image">
-                                <img src="assets/img/product/15.png" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/product/15.png" alt="img">
                             </div>
                             <div class="product-content">
                                 <h3>
@@ -346,7 +346,7 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                             <div class="product-collection-item">
                                 <div class="product-image">
-                                    <img src="assets/img/product/16.jpg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/product/16.jpg" alt="img">
                                     <div class="product-btn">
                                         <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
                                     </div>
@@ -363,7 +363,7 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s">
                             <div class="product-collection-item">
                                 <div class="product-image">
-                                    <img src="assets/img/product/17.jpg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/product/17.jpg" alt="img">
                                     <div class="badge">26%</div>
                                     <div class="product-btn">
                                         <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
@@ -385,7 +385,7 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s">
                             <div class="product-collection-item">
                                 <div class="product-image">
-                                    <img src="assets/img/product/18.jpg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/product/18.jpg" alt="img">
                                     <div class="product-btn">
                                         <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
                                     </div>
@@ -402,7 +402,7 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
                             <div class="product-collection-item">
                                 <div class="product-image">
-                                    <img src="assets/img/product/19.jpg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/product/19.jpg" alt="img">
                                     <div class="badge">35%</div>
                                     <div class="product-btn">
                                         <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
@@ -424,7 +424,7 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                             <div class="product-collection-item">
                                 <div class="product-image">
-                                    <img src="assets/img/product/20.jpg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/product/20.jpg" alt="img">
                                     <div class="badge">14%</div>
                                     <div class="product-btn">
                                         <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
@@ -446,7 +446,7 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s">
                             <div class="product-collection-item">
                                 <div class="product-image">
-                                    <img src="assets/img/product/21.jpg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/product/21.jpg" alt="img">
                                     <div class="product-btn">
                                         <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
                                     </div>
@@ -465,7 +465,7 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s">
                             <div class="product-collection-item">
                                 <div class="product-image">
-                                    <img src="assets/img/product/22.jpg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/product/22.jpg" alt="img">
                                     <div class="badge">40%</div>
                                     <div class="product-btn">
                                         <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
@@ -487,7 +487,7 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
                             <div class="product-collection-item">
                                 <div class="product-image">
-                                    <img src="assets/img/product/23.jpg" alt="img">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/product/23.jpg" alt="img">
                                     <div class="product-btn">
                                         <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
                                     </div>
@@ -610,7 +610,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/24.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/24.jpg" alt="img">
                                         <div class="product-btn">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
                                         </div>
@@ -631,7 +631,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/25.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/25.jpg" alt="img">
                                         <div class="badge">26%</div>
                                         <div class="product-btn">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
@@ -649,7 +649,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/26.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/26.jpg" alt="img">
                                         <div class="product-btn active">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
                                         </div>
@@ -670,7 +670,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/27.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/27.jpg" alt="img">
                                         <div class="badge">35%</div>
                                         <div class="product-btn">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
@@ -692,7 +692,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/24.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/24.jpg" alt="img">
                                         <div class="product-btn">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
                                         </div>
@@ -713,7 +713,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/25.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/25.jpg" alt="img">
                                         <div class="badge">26%</div>
                                         <div class="product-btn">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
@@ -731,7 +731,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/26.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/26.jpg" alt="img">
                                         <div class="product-btn active">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
                                         </div>
@@ -752,7 +752,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/27.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/27.jpg" alt="img">
                                         <div class="badge">35%</div>
                                         <div class="product-btn">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
@@ -774,7 +774,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/24.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/24.jpg" alt="img">
                                         <div class="product-btn">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
                                         </div>
@@ -795,7 +795,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/25.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/25.jpg" alt="img">
                                         <div class="badge">26%</div>
                                         <div class="product-btn">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
@@ -813,7 +813,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/26.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/26.jpg" alt="img">
                                         <div class="product-btn active">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
                                         </div>
@@ -834,7 +834,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/27.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/27.jpg" alt="img">
                                         <div class="badge">35%</div>
                                         <div class="product-btn">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
@@ -856,7 +856,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/24.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/24.jpg" alt="img">
                                         <div class="product-btn">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
                                         </div>
@@ -877,7 +877,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/25.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/25.jpg" alt="img">
                                         <div class="badge">26%</div>
                                         <div class="product-btn">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
@@ -895,7 +895,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/26.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/26.jpg" alt="img">
                                         <div class="product-btn active">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
                                         </div>
@@ -916,7 +916,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="product-collection-item">
                                     <div class="product-image">
-                                        <img src="assets/img/product/27.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/product/27.jpg" alt="img">
                                         <div class="badge">35%</div>
                                         <div class="product-btn">
                                             <a href="shop-cart.html" class="theme-btn-2">Add To Cart</a>
@@ -944,13 +944,13 @@
                     <div class="row g-2">
                         <div class="col-lg-5 wow fadeInUp" data-wow-delay=".3s">
                             <div class="shop-collection-image">
-                                <img src="assets/img/shop/12.jpg" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/shop/12.jpg" alt="img">
                                 <div class="banner-product">
                                     <div class="product-details">
                                         <h4 class="title"><a href="product-details.html">Night Face</a></h4>
                                         <div class="price">$15.22 - $15.22</div>
                                         <div class="rating-image">
-                                            <img src="assets/img/cart/cream.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/cart/cream.jpg" alt="img">
                                         </div>
                                     </div>
                                     <div class="plus-icon ripple">
@@ -962,7 +962,7 @@
                                         <h4 class="title"><a href="product-details.html">Night Face</a></h4>
                                         <div class="price">$15.22 - $15.22</div>
                                         <div class="rating-image">
-                                            <img src="assets/img/cart/cream.jpg" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/cart/cream.jpg" alt="img">
                                         </div>
                                     </div>
                                     <div class="plus-icon ripple ">
@@ -985,7 +985,7 @@
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                             <div class="right-image">
-                                                <img src="assets/img/shop/13.jpg" alt="img">
+                                                <img src="{{config('constants.ASSETS_PATH') }}img/shop/13.jpg" alt="img">
                                             </div>
                                             <p class="wow fadeInUp" data-wow-delay=".3s">Night Face</p>
                                             <h4 class="wow fadeInUp" data-wow-delay=".5s">Retinol Value Set Duo</h4>
@@ -997,7 +997,7 @@
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="right-image">
-                                                <img src="assets/img/shop/13.jpg" alt="img">
+                                                <img src="{{config('constants.ASSETS_PATH') }}img/shop/13.jpg" alt="img">
                                             </div>
                                             <p class="wow fadeInUp" data-wow-delay=".3s">Night Face</p>
                                             <h4 class="wow fadeInUp" data-wow-delay=".5s">Retinol Value Set Duo</h4>
@@ -1052,14 +1052,14 @@
                                     <div class="client-info-item">
                                         <div class="client-info">
                                             <div class="client-image">
-                                                <img src="assets/img/testimonial/client-1.png" alt="img">
+                                                <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/client-1.png" alt="img">
                                             </div>
                                             <div class="text">
                                                 <h6>Jake Weary / <span>Product Designer</span></h6>
                                             </div>
                                         </div>
                                         <div class="shape-image">
-                                            <img src="assets/img/testimonial/shape.png" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/shape.png" alt="img">
                                         </div>
                                     </div>
                                 </div>
@@ -1080,14 +1080,14 @@
                                     <div class="client-info-item">
                                         <div class="client-info">
                                             <div class="client-image">
-                                                <img src="assets/img/testimonial/client-2.png" alt="img">
+                                                <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/client-2.png" alt="img">
                                             </div>
                                             <div class="text">
                                                 <h6>Penny Tool / <span>Product Designer</span></h6>
                                             </div>
                                         </div>
                                         <div class="shape-image">
-                                            <img src="assets/img/testimonial/shape.png" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/shape.png" alt="img">
                                         </div>
                                     </div>
                                 </div>
@@ -1108,14 +1108,14 @@
                                     <div class="client-info-item">
                                         <div class="client-info">
                                             <div class="client-image">
-                                                <img src="assets/img/testimonial/client-1.png" alt="img">
+                                                <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/client-1.png" alt="img">
                                             </div>
                                             <div class="text">
                                                 <h6>Jake Weary / <span>Product Designer</span></h6>
                                             </div>
                                         </div>
                                         <div class="shape-image">
-                                            <img src="assets/img/testimonial/shape.png" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/shape.png" alt="img">
                                         </div>
                                     </div>
                                 </div>
@@ -1135,7 +1135,7 @@
                 <div class="feature-wrapper style-2">
                     <div class="feature-item style-2 wow fadeInUp" data-wow-delay=".2s">
                         <div class="icon">
-                            <img src="assets/img/icon/05.svg" alt="img">
+                            <img src="{{config('constants.ASSETS_PATH') }}img/icon/05.svg" alt="img">
                         </div>
                         <div class="content">
                             <h6>
@@ -1146,7 +1146,7 @@
                     </div>
                     <div class="feature-item wow fadeInUp" data-wow-delay=".4s">
                         <div class="icon">
-                            <img src="assets/img/icon/06.svg" alt="img">
+                            <img src="{{config('constants.ASSETS_PATH') }}img/icon/06.svg" alt="img">
                         </div>
                         <div class="content">
                             <h6>
@@ -1157,7 +1157,7 @@
                     </div>
                     <div class="feature-item wow fadeInUp" data-wow-delay=".6s">
                         <div class="icon">
-                            <img src="assets/img/icon/07.svg" alt="img">
+                            <img src="{{config('constants.ASSETS_PATH') }}img/icon/07.svg" alt="img">
                         </div>
                         <div class="content">
                             <h6>
@@ -1168,7 +1168,7 @@
                     </div>
                     <div class="feature-item wow fadeInUp" data-wow-delay=".8s">
                         <div class="icon">
-                            <img src="assets/img/icon/08.svg" alt="img">
+                            <img src="{{config('constants.ASSETS_PATH') }}img/icon/08.svg" alt="img">
                         </div>
                         <div class="content">
                             <h6>
@@ -1199,7 +1199,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                         <div class="news-card-items style-2">
                             <div class="news-image">
-                                <img src="assets/img/news/04.jpg" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/news/04.jpg" alt="img">
                                 <h6 class="side-box">14 July, 2025</h6>
                             </div>
                             <div class="news-content">
@@ -1217,7 +1217,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
                         <div class="news-card-items style-2">
                             <div class="news-image">
-                                <img src="assets/img/news/05.jpg" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/news/05.jpg" alt="img">
                                 <h6 class="side-box">14 July, 2025</h6>
                             </div>
                             <div class="news-content">
@@ -1235,7 +1235,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
                         <div class="news-card-items style-2">
                             <div class="news-image">
-                                <img src="assets/img/news/06.jpg" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/news/06.jpg" alt="img">
                                 <h6 class="side-box">14 July, 2025</h6>
                             </div>
                             <div class="news-content">
@@ -1262,7 +1262,7 @@
                     <div class="swiper-slide">
                         <div class="instagram-banner-items mt-0">
                             <div class="banner-image">
-                                <img src="assets/img/instagram/07.jpg" alt="insta-img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/instagram/07.jpg" alt="insta-img">
                                 <a href="https://instagram.com/" class="icon">
                                     <i class="fa-brands fa-instagram"></i>
                                 </a>
@@ -1272,7 +1272,7 @@
                     <div class="swiper-slide">
                         <div class="instagram-banner-items mt-0">
                             <div class="banner-image">
-                                <img src="assets/img/instagram/08.jpg" alt="insta-img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/instagram/08.jpg" alt="insta-img">
                                 <a href="https://instagram.com/" class="icon">
                                     <i class="fa-brands fa-instagram"></i>
                                 </a>
@@ -1282,7 +1282,7 @@
                     <div class="swiper-slide">
                         <div class="instagram-banner-items mt-0">
                             <div class="banner-image">
-                                <img src="assets/img/instagram/09.jpg" alt="insta-img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/instagram/09.jpg" alt="insta-img">
                                 <a href="https://instagram.com/" class="icon">
                                     <i class="fa-brands fa-instagram"></i>
                                 </a>
@@ -1292,7 +1292,7 @@
                     <div class="swiper-slide">
                         <div class="instagram-banner-items mt-0">
                             <div class="banner-image">
-                                <img src="assets/img/instagram/10.jpg" alt="insta-img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/instagram/10.jpg" alt="insta-img">
                                 <a href="https://instagram.com/" class="icon">
                                     <i class="fa-brands fa-instagram"></i>
                                 </a>
@@ -1302,7 +1302,7 @@
                     <div class="swiper-slide">
                         <div class="instagram-banner-items mt-0">
                             <div class="banner-image">
-                                <img src="assets/img/instagram/11.jpg" alt="insta-img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/instagram/11.jpg" alt="insta-img">
                                 <a href="https://instagram.com/" class="icon">
                                     <i class="fa-brands fa-instagram"></i>
                                 </a>
@@ -1312,7 +1312,7 @@
                     <div class="swiper-slide">
                         <div class="instagram-banner-items mt-0">
                             <div class="banner-image">
-                                <img src="assets/img/instagram/12.jpg" alt="insta-img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/instagram/12.jpg" alt="insta-img">
                                 <a href="https://instagram.com/" class="icon">
                                     <i class="fa-brands fa-instagram"></i>
                                 </a>
@@ -1333,7 +1333,7 @@
                             <div class="single-footer-widget">
                                 <div class="widget-head">
                                     <a href="index-2.html" class="footer-logo">
-                                        <img src="assets/img/logo/logo4.png" alt="logo-img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/logo/logo4.png" alt="logo-img">
                                     </a>
                                 </div>
                                 <div class="footer-content">
@@ -1462,16 +1462,16 @@
                         </p>
                         <div class="bottom-list wow fadeInUp" data-wow-delay=".5s">
                             <div class="app-image">
-                                <img src="assets/img/footer/01.png" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/footer/01.png" alt="img">
                             </div>
                             <div class="app-image">
-                                <img src="assets/img/footer/02.png" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/footer/02.png" alt="img">
                             </div>
                             <div class="app-image">
-                                <img src="assets/img/footer/03.png" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/footer/03.png" alt="img">
                             </div>
                             <div class="app-image">
-                                <img src="assets/img/footer/04.png" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/footer/04.png" alt="img">
                             </div>
                         </div>
                     </div>
@@ -1496,7 +1496,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-5 col-md-12">
                                     <div class="offer-modal-img d-none d-lg-block">
-                                        <img src="assets/img/cart/common-modal.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/cart/common-modal.jpg" alt="img">
                                     </div>
                                 </div>
                                 <div class="col-lg-7 col-md-12">

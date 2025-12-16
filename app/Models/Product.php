@@ -25,6 +25,7 @@ class Product extends Model
         'width',
         'handle',
         'base',
+        'feature_product',
     ];
 
     // Define relationships

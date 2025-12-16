@@ -4,6 +4,7 @@
 @include('includes.head')
 @include('includes.header')
 
+
 <!-- Modal Version 2 -->
 <div class="modal modal-common-wrap fade" id="exampleModal2" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -18,7 +19,7 @@
                             <div class="shop-details-image">
                                 <div class="tab-content">
                                     <div class="shop-thumb">
-                                        <img src="assets/img/shop/popup.jpg" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/shop/popup.jpg" alt="img">
                                     </div>
                                 </div>
                             </div>
@@ -82,118 +83,31 @@
         </div>
     </div>
 </div>
+    <section class="contact-us-section bg-custm contact-padding fix position-relative">
+    <!-- Particles background -->
+    <div id="particles-js" class="particles"></div>
 
-<!-- product-details-Section Start -->
-<section class="product-details-section section-padding fix">
+            <div class="container-fluid">
+                <div class="conatct-main-wrapper">
+                    <div class="content p-5">
+                        <h2> Products - ( {{$subcategory->name}} )</h2>
+                      
+                    </div>
+                    </div>
+
+                    </div>
+     </section>
+     <section class="product-details-section section-padding pt-5 fix">
     <div class="container">
         <div class="product-details-wrapper">
-            <div class="top-content">
-                <h2>{{$subcategory->name}}</h2>
-                <ul class="list">
-                    <li>Home</li>
-                    <li>{{$subcategory->name}}</li>
-                </ul>
-            </div>
-            <div class="product-details-sideber">
-                <div class="product-details-wrap">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a href="#Course" data-bs-toggle="tab" class="nav-link active">
-                                <i class="fa-regular fa-grid-2"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#Curriculum" data-bs-toggle="tab" class="nav-link">
-                                <i class="fas fa-bars"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <p>Showing 1–14 of 26 results</p>
-                </div>
-                <div class="shop-right">
-                    <div class="form-clt">
-                        <div class="nice-select" tabindex="0">
-                            <span class="current">
-                                Default sorting
-                            </span>
-                            <ul class="list">
-                                <li data-value="1" class="option selected focus">
-                                    Default sorting
-                                </li>
-                                <li data-value="1" class="option">
-                                    Sort by popularity
-                                </li>
-                                <li data-value="1" class="option">
-                                    Sort by average rating
-                                </li>
-                                <li data-value="1" class="option">
-                                    Sort by latest
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    {{-- <div id="openButton2">
-                        <div class="filter-button">
-                            <h6><a href="#"><span><img src="assets/img/filter.png" alt="img"></span>Filter</a></h6>
-                        </div>
-                    </div> --}}
-                </div>
+
+            <div id="productWrapper">
+                @include('includes.product-list', [
+                    'products' => $products,
+                    'subcategory' => $subcategory
+                ])
             </div>
 
-            <div class="tab-content">
-                <div id="Course" class="tab-pane fade show active">
-                    <div class="row">
-                        @foreach($subcategory->products as $product)  <!-- Loop through products in this subcategory -->
-                            <div class="col-xl-3 col-lg-6 col-md-6">
-                                <div class="product-details-item ">
-                                    <div class="shop-image">
-                                        <img src="{{ asset('storage/' . $product->main_image) }}" alt="{{$product->title}}">
-                                        {{-- <ul class="shop-icon d-grid justify-content-center align-items-center">
-                                            <li>
-                                                <a href="{{ route('productDetails', $product->id) }}"><i class="fa-regular fa-cart-shopping"></i></a>
-                                            </li>
-                                            <li>
-                                                <button data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                                    <i class="fa-regular fa-eye"></i>
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html"><i class="far fa-heart"></i></a>
-                                            </li>
-                                        </ul> --}}
-                                    </div>
-                                    <div class="content">
-                                        <p>{{ $product->store_name }}</p>
-                                        <h4>
-                                            <a href="{{ route('productDetails', $product->id) }}">{{ $product->name }}</a> 
-                                        </h4>
-                                        <div class="star">
-                                            @for($i = 0; $i < 5; $i++)
-                                                <i class="fa-solid fa-star"></i>
-                                            @endfor
-                                        </div>
-                                        <h6>{{ $product->after_discount_price }}  <del>${{ $product->price }}</del> <span class="text-danger">-{{ $product->discount }}%</span></h6>
-                                         <p class="text-danger p-5">  <a href="{{url('/checkout')}}" class="theme-btn">
-                                                    <span> Buy now</span>
-                                                </a></p> 
-                                    </div>
-                                    
-                                </div>
-                                
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-
-            <div class="page-nav-wrap">
-                <ul>
-                    <li class="active"><a class="page-numbers" href="#">1</a></li>
-                    <li><a class="page-numbers" href="#">2</a></li>
-                    <li><a class="page-numbers" href="#">3</a></li>
-                    <li><a class="page-numbers" href="#"><i class="fa-solid fa-arrow-right-long"></i></a></li>
-                </ul>
-            </div>
         </div>
     </div>
 </section>

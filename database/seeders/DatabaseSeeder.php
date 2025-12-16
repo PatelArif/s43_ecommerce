@@ -8,9 +8,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            CategorySeeder::class,
-             SubcategorySeeder::class,
-                ProductSeeder::class,
+            // CategorySeeder::class,
+            //  SubcategorySeeder::class,
+            //     ProductSeeder::class,
+                  EcoBagFullSeeder::class,
             // other seeders like SubcategorySeeder, ProductSeeder
         ]);
     }

@@ -11,7 +11,7 @@
                                     <div class="shop-details-image">
                                     <div class="tab-content">
                                         <div class="shop-thumb">
-                                            <img src="assets/img/product/jute.png" alt="img">
+                                            <img src="{{config('constants.ASSETS_PATH') }}img/product/jute.png" alt="img">
                                         </div>
                                         </div>
                                     </div>

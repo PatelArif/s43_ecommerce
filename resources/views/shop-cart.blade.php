@@ -1,153 +1,255 @@
 @include('includes.head')
 @include('includes.header')
-        <!-- cart section start -->
-     <div class="cart-section section-padding">
-            <div class="container">
-                <div class="cart-list-area">
-                    <div class="top-content">
-                        <h2>Shopping Cart</h2>
-                        <ul class="list">
-                            <li>
-                                <a href="index-2.html">Home</a>
-                            </li>
-                            <li>
-                                Shopping Cart
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table common-table">
-                            <thead data-aos="fade-down">
-                                <tr>
-                                    <th class="text-center">Product</th>
-                                    <th class="text-center">Price</th>
-                                    <th class="text-center">Quantity</th>
-                                    <th class="text-center">Subtotal</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="align-items-center py-3">
-                                    <td>
-                                        <div class="cart-item-thumb d-flex align-items-center gap-4">
-                                            <i class="fas fa-times"></i>
-                                            <img class="w-100" src="assets/img/cart/03.jpg" alt="product">
-                                            <span class="head text-nowrap">A Prayer for Meany</span>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="price-usd">
-                                            $12.40 USD
-                                        </span>
-                                    </td>
-                                    <td class="price-quantity text-center">
-                                        <div
-                                        class="quantity d-inline-flex align-items-center justify-content-center gap-1 py-2 px-4 border n50-border_20 text-sm">
-                                        <button class="quantityDecrement"><i class="fal fa-minus"></i></button>
-                                        <input type="text" value="1" class="quantityValue">
-                                        <button class="quantityIncrement"><i class="fal fa-plus"></i></button>
-                                    </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="price-usd">
-                                            $12.40 USD
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="align-items-center py-3">
-                                    <td>
-                                        <div class="cart-item-thumb d-flex align-items-center gap-4">
-                                            <i class="fas fa-times"></i>
-                                            <img class="w-100" src="assets/img/cart/04.jpg" alt="product">
-                                            <span class="head text-nowrap">Don Quixote</span>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="price-usd">
-                                            $25.50 USD
-                                        </span>
-                                    </td>
-                                    <td class="price-quantity text-center">
-                                        <div
-                                            class="quantity d-inline-flex align-items-center justify-content-center gap-1 py-2 px-4 border n50-border_20 text-sm">
-                                            <button class="quantityDecrement"><i class="fal fa-minus"></i></button>
-                                            <input type="text" value="1" class="quantityValue">
-                                            <button class="quantityIncrement"><i class="fal fa-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="price-usd">
-                                            $25.50 USD
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="align-items-center py-3">
-                                    <td>
-                                        <div class="cart-item-thumb d-flex align-items-center gap-4">
-                                            <i class="fas fa-times"></i>
-                                            <img class="w-100" src="assets/img/cart/05.jpg" alt="product">
-                                            <span class="head text-nowrap">Don Quixote</span>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="price-usd">
-                                            $44.50 USD
-                                        </span>
-                                    </td>
-                                    <td class="price-quantity text-center">
-                                        <div
-                                            class="quantity d-inline-flex align-items-center justify-content-center gap-1 py-2 px-4 border n50-border_20 text-sm">
-                                            <button class="quantityDecrement"><i class="fal fa-minus"></i></button>
-                                            <input type="text" value="1" class="quantityValue">
-                                            <button class="quantityIncrement"><i class="fal fa-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="price-usd">
-                                            $44.50 USD
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="align-items-center py-3">
-                                    <td>
-                                        <div class="cart-item-thumb d-flex align-items-center gap-4">
-                                            <i class="fas fa-times"></i>
-                                            <img class="w-100" src="assets/img/cart/06.jpg" alt="product">
-                                            <span class="head text-nowrap">Don Quixote</span>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="price-usd">
-                                            $39.50 USD
-                                        </span>
-                                    </td>
-                                    <td class="price-quantity text-center">
-                                        <div
-                                            class="quantity d-inline-flex align-items-center justify-content-center gap-1 py-2 px-4 border n50-border_20 text-sm">
-                                            <button class="quantityDecrement"><i class="fal fa-minus"></i></button>
-                                            <input type="text" value="1" class="quantityValue">
-                                            <button class="quantityIncrement"><i class="fal fa-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="price-usd">
-                                            $39.50 USD
-                                        </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="coupon-items d-flex flex-md-nowrap flex-wrap justify-content-between align-items-center gap-4 pt-4">
-                        <form action="#" class="d-flex flex-sm-nowrap flex-wrap align-items-center gap-3">
-                            <input type="text"
-                                placeholder="Enter coupon code">
-                            <button type="submit" class="theme-btn alt-color radius-xs">Apply</button>
-                        </form>
-                        <button type="button" class="theme-btn alt-color radius-xs">Update Cart</button>
-                    </div>
-                </div>
+
+<style>
+    .swal2-input {
+        color: #000 !important;
+    }
+
+    .quantityValue {
+        width: 40px;
+        text-align: center;
+    }
+</style>
+
+<section class="contact-us-section bg-custm contact-padding fix position-relative">
+    <div id="particles-js" class="particles"></div>
+    <div class="container-fluid">
+        <div class="conatct-main-wrapper">
+            <div class="content p-5">
+                <h2>Shopping Cart</h2>
             </div>
         </div>
+    </div>
+</section>
+
+<div class="cart-section section-padding pt-4">
+    <div class="container">
+        <div class="cart-list-area">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover align-middle" id="data-table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Sr No.</th>
+                            <th class="text-center">Product Image</th>
+                            <th class="text-center">Product Name</th>
+                            <th class="text-center">Price</th>
+                            <th class="text-center">Quantity</th>
+                            <th class="text-center">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (isset($cart) && count($cart) > 0)
+                            @php
+                                $srNo = 1;
+                                $donation = session('donation', 0);
+                                $grandTotalWithDonation = $grandTotal + $donation;
+                            @endphp
+
+                            @foreach ($cart as $item)
+                                <tr id="cart-row-{{ $item['product_id'] }}">
+                                    <td class="text-center">{{ $srNo++ }}</td>
+                                    <td>
+                                        <div class="cart-item-thumb d-flex align-items-center gap-2">
+                                          
+                                               <button
+    type="button"
+    class="btn btn-link p-0 text-danger remove-item"
+    data-id="{{ $item['product_id'] }}"
+    title="Remove">
+    <i class="fas fa-times"></i>
+</button>
+
+                                           
+                                            <img class="w-100" src="{{ asset(config('constants.IMAGE_PATH')  . $item['image']) }}"
+                                                alt="{{ $item['name'] }}" style="max-width:150px;">
+                                        </div>
+                                    </td>
+                                    <td style="white-space: normal; word-wrap: break-word; max-width:200px;">
+                                        <p class="head">{{ $item['name'] }}</p>
+                                    </td>
+                                    <td class="text-center">₹{{ number_format($item['price'], 2) }}</td>
+                                    <td class="text-center">
+                                        <div
+                                            class="quantity d-inline-flex align-items-center gap-1 py-2 px-4 border n50-border_20 text-sm">
+                                            <button type="button" class="shop_btn-action"
+                                                data-id="{{ $item['product_id'] }}" data-action="decrement">
+                                                <i class="fal fa-minus"></i>
+                                            </button>
+                                            <input type="text" class="quantityValue" value="{{ $item['quantity'] }}"
+                                                readonly>
+                                            <button type="button" class="shop_btn-action"
+                                                data-id="{{ $item['product_id'] }}" data-action="increment">
+                                                <i class="fal fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">₹{{ number_format($item['subtotal'], 2) }}</td>
+                                </tr>
+                            @endforeach
+                            @if (!empty($donation) && $donation > 0)
+                                <tr>
+                                    <td colspan="5" class="text-end fw-bold">Donation:</td>
+                                    <td class="text-center">
+                                        ₹<span id="cartDonation">{{ number_format($donation, 2) }}</span>
+                                    </td>
+                                </tr>
+                            @endif
+
+                            <tr>
+                                <td colspan="5" class="text-end fw-bold">Grand Total:</td>
+                                <td class="text-center fw-bold">₹<span
+                                        id="grandTotal">{{ $grandTotalWithDonation }}</span></td>
+                            </tr>
+                        @else
+                            <tr>
+                                <td colspan="6" class="text-center">Your cart is empty.</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+
+            @if (isset($cart) && count($cart) > 0)
+                <div class="coupon-items flex-wrap pt-4" style="text-align: right;">
+                    {{-- <button class="theme-btn alt-color radius-xs" id="addDonation">Add Donation</button> --}}
+                    <a href="#" class="theme-btn alt-color radius-xs checkoutBtn">Proceed to Checkout</a>
+                </div>
+            @else
+                <div class="coupon-items flex-wrap pt-4" style="text-align: right;">
+                    <a href="{{ url('/') }}" class="theme-btn alt-color radius-xs">Continue Shopping</a>
+                </div>
+            @endif
+
+        </div>
+    </div>
+</div>
+
+@include('includes.footer')
+
+<script>
+    $(document).on('click', '.shop_btn-action', function() {
+
+        let id = $(this).data('id');
+        let action = $(this).data('action');
+        let row = $("#cart-row-" + id);
+
+        $.ajax({
+            url: "/cart/update/" + id,
+            type: "POST",
+            data: {
+                action: action,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(res) {
+                if (res.success) {
+
+                    // Update quantity
+                    row.find(".quantityValue").val(res.quantity);
+
+                    // Update row subtotal
+                    row.find("td:nth-child(6)").html("₹" + res.subtotal);
+
+                    // Update grand total
+                    $("#grandTotal").html(res.grand_total);
+                }
+            }
+        });
+
+    });
 
 
-                  @include('includes.footer')
+    /** ✅ Add Donation **/
+    $(document).on('click', '#addDonation', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Enter your donation amount',
+            input: 'number',
+            inputValue: 10,
+            inputAttributes: {
+                min: 10,
+                step: 10
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Add Donation',
+            preConfirm: (donation) => {
+                if (donation < 10 || donation % 10 !== 0) {
+                    Swal.showValidationMessage("Donation must be at least ₹10 and multiples of 10");
+                }
+                return donation;
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post("{{ route('cart.donation') }}", {
+                    donation: result.value,
+                    _token: '{{ csrf_token() }}'
+                }, function(response) {
+                    location.reload();
+                });
+            }
+        });
+    });
+$(document).on('click', '.remove-item', function () {
+    let id = $(this).data('id');
+
+    $.ajax({
+        url: "/cart/remove/" + id,
+        type: "DELETE",
+        data: {
+            _token: $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function (res) {
+            if (res.success) {
+
+                $("#cart-row-" + id).fadeOut(300, function () {
+                    $(this).remove();
+                });
+
+                $("#grandTotal").html(res.grand_total);
+
+                if (res.donation > 0) {
+                    $("#cartDonation").html(res.donation);
+                }
+
+                if (res.total_cartItem === 0) {
+                    location.reload();
+                }
+            }
+        }
+    });
+});
+
+
+    /** ✅ Checkout with optional donation **/
+    $(document).on('click', '.checkoutBtn', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Support Nature?',
+            text: "Add a small donation (Min ₹10, multiples of 10)",
+            icon: 'question',
+            input: 'number',
+            inputValue: {{ session('donation', 10) }},
+            inputAttributes: {
+                min: 10,
+                step: 10
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Add Donation',
+            cancelButtonText: 'No, Continue',
+            preConfirm: (donation) => {
+                if (donation < 10 || donation % 10 !== 0) {
+                    Swal.showValidationMessage("Donation must be at least ₹10 and multiples of 10");
+                }
+                return donation;
+            }
+        }).then((result) => {
+            let donation = result.isConfirmed ? result.value : 0;
+            $.post("{{ route('cart.donation') }}", {
+                donation: donation,
+                _token: '{{ csrf_token() }}'
+            }, function(response) {
+                window.location.href = "{{ route('checkout') }}";
+            });
+        });
+    });
+</script>

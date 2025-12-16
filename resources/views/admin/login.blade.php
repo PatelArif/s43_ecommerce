@@ -1,85 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login/Signup Form</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/js/script.js') }}">
+    <title>Step For Environment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
 
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        .fade-in {
+            animation: fadeIn 1.2s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .cardShadow {
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <div class="form-box login">
-            <form id="adminLoginForm" >
-                <h1>Admin Login</h1>
-                <div class="input-box">
-                    <input type="email" placeholder="User Email" name="email" required>
-                    <i class='bx bxs-user'></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" placeholder="Password" name="password" required>
-                    <i class='bx bxs-lock-alt' ></i>
-                </div>
-                <div class="forgot-link">
-                    <a href="#">Forgot Password?</a>
-                </div>
-                <button type="submit" class="btn">Login</button>
-                {{-- <p>or login with social platforms</p>
-                <div class="social-icons">
-                    <a href="#"><i class='bx bxl-google' ></i></a>
-                    <a href="#"><i class='bx bxl-facebook' ></i></a>
-                    <a href="#"><i class='bx bxl-github' ></i></a>
-                    <a href="#"><i class='bx bxl-linkedin' ></i></a>
-                </div> --}}
-            </form>
+
+<body class="min-h-screen flex items-center justify-center bg-green-50 relative overflow-hidden">
+
+    <!-- Particles Background -->
+    <div id="particles-js" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></div>
+
+    <!-- Login Card -->
+    <div class="bg-white rounded-xl  p-5 max-w-lg w-full fade-in cardShadow">
+        <div class="flex flex-col items-center mb-6">
+            <div class="bg-green- w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                <img src="../{{config('constants.ASSETS_PATH')}}img/logo/logo4.png" alt="step4environment" class="w-250 h-250">
+            </div>
+            <h1 class="text-2xl font-bold text-green-700">Step4Environment</h1>
+            <p class="text-gray-500 text-sm">Admin Dashboard for Sustainable Commerce</p>
         </div>
 
-        <div class="form-box register">
-            <form action="#">
-                <h1>Registration</h1>
-                <div class="input-box">
-                    <input type="text" placeholder="Username" required>
-                    <i class='bx bxs-user'></i>
-                </div>
-                <div class="input-box">
-                    <input type="email" placeholder="Email" required>
-                    <i class='bx bxs-envelope' ></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" placeholder="Password" required>
-                    <i class='bx bxs-lock-alt' ></i>
-                </div>
-                <button type="submit" class="btn">Register</button>
-                {{-- <p>or register with social platforms</p>
-                <div class="social-icons">
-                    <a href="#"><i class='bx bxl-google' ></i></a>
-                    <a href="#"><i class='bx bxl-facebook' ></i></a>
-                    <a href="#"><i class='bx bxl-github' ></i></a>
-                    <a href="#"><i class='bx bxl-linkedin' ></i></a>
-                </div> --}}
-            </form>
-            <div id="responseMessage" style="margin-top: 10px;"></div>
+        <div class="text-center mb-6">
+            <h2 class="font-semibold text-lg text-gray-700">Welcome Back</h2>
+            <p class="text-gray-400 text-sm">Sign in to manage your eco-friendly store</p>
         </div>
 
-        <div class="toggle-box">
-            <div class="toggle-panel toggle-left">
-              <img src="{{ asset('assets/img/logo/logo4.png') }}" alt="logo-img"class="responsive-img">
-                {{-- <h1>Hello, Welcome!</h1> --}}
-                {{-- <p>Don't have an account?</p> --}}
-                {{-- <button class="btn register-btn">Register</button> --}}
+        <form id="adminLoginForm" class="space-y-4">
+            @csrf
+            <input type="hidden" name="role" value="admin">
+            <input type="email" name="email" placeholder="Email Address"
+                class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-400">
+            <div class="relative">
+                <input id="password" type="password" name="password" placeholder="Enter your password"
+                    class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-400">
+                <span id="togglePassword" class="absolute right-3 top-3 text-gray-400 cursor-pointer">👁️</span>
             </div>
 
-            <div class="toggle-panel toggle-right">
-                <h1>Welcome Back!</h1>
-                <p>Already have an account?</p>
-                <button class="btn login-btn">Login</button>
+            <div class="flex justify-between items-center text-sm text-gray-500">
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" class="w-4 h-4">
+                    Remember me
+                </label>
+                <a href="#" class="text-green-500 hover:underline">Forgot password?</a>
             </div>
-        </div>
+
+            <button type="submit"
+                class="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition">Sign In to
+                Dashboard</button>
+        </form>
+
+        <p class="text-center text-gray-600 text-sm mt-6">Secure Admin Access</p>
+        <p class="text-center text-gray-600 text-sm mt-1">Protected by end-to-end encryption and sustainable security
+            practices</p>
+
+        <p class="text-center text-gray-600 text-sm mt-6">&copy; 2025 Step4Environment Admin. All rights reserved.</p>
+        <p class="text-center text-gray-600 text-sm">Powered by Step4Environment</p>
     </div>
-<script src="{{ asset('../assets/js/jquery-3.6.0.min.js') }}"></script>
-<script src="{{ asset('../assets/js/script.js') }}"></script>
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', () => {
+            // Toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+
+            // Optionally, change the icon
+            togglePassword.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+    </script>
+
+    <!-- Particles JS -->
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 50,
+                    "density": {
+                        "enable": true,
+                        "value_area": 1000
+                    }
+                },
+                "color": {
+                    "value": "#166337"
+                },
+                "shape": {
+                    "type": "image", // use image for leaves
+                    "image": {
+                        "src": "{{config('constants.ASSETS_PATH') }}img/6959474.png", // leaf image
+                        "width": 150,
+                        "height": 150
+                    }
+                },
+                "opacity": {
+                    "value": 0.9
+                },
+                "size": {
+                    "value": 25
+                },
+                "line_linked": {
+                    "enable": false,
+                    "distance": 150,
+                    "color": "#166337",
+                    "opacity": 0.9,
+                    "width": 5
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "out_mode": "bounce"
+                }
+            },
+            "interactivity": {
+                "detect_on": "window", // was "canvas"
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    }
+                },
+                "modes": {
+                    "repulse": {
+                        "distance": 200
+                    }, // make it more noticeable
+                    "push": {
+                        "particles_nb": 4
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        @if (session('logout_success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Logged out',
+                text: "{{ session('logout_success') }}",
+                timer: 3000,
+                showConfirmButton: true,
+                confirmButtonColor: '#28a745'
+            });
+        @endif
+        $("#adminLoginForm").on("submit", function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "/admin/login",
+                type: "POST",
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+                },
+
+                success: function(data) {
+                    if (data.status) {
+                        Swal.fire("Success!", data.message, "success").then(() => {
+                            window.location.href = data.redirect;
+                        });
+                    } else {
+                        Swal.fire("Login Failed", data.message, "error");
+                    }
+                },
+                error: function(xhr) {
+                    let msg = "Something went wrong.";
+                    if (xhr.responseJSON?.errors) {
+                        msg = Object.values(xhr.responseJSON.errors).flat().join("\n");
+                    } else if (xhr.responseJSON?.message) {
+                        msg = xhr.responseJSON.message;
+                    }
+                    Swal.fire("Error", msg, "error");
+                },
+            });
+        });
+    </script>
 </body>
+
 </html>

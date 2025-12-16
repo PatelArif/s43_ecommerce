@@ -7,12 +7,16 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Category;
+
 
 class RegisterController extends Controller
 {
     public function register(Request $request)
 {
-    return view('sign-up');
+        $categories = Category::with('subcategories')->get(); 
+
+    return view('sign-up', compact('categories'));
 }
 public function user_register(Request $request)
 {

@@ -1,8 +1,22 @@
-@include('includes.head')
-@include('includes.header')
+@extends("app")
+@section('content')
+<style>.header-1 {background:transparent;}.sticky {position: fixed !important;background: linear-gradient(90deg, #145A32, #26aa5f);}</style>
+      <section class="contact-us-section bg-custm contact-padding fix position-relative">
+    <!-- Particles background -->
+    <div id="particles-js" class="particles"></div>
 
+            <div class="container-fluid">
+                <div class="conatct-main-wrapper">
+                    <div class="content p-5">
+                        <h2>About Step4Environment</h2>
+                      
+                    </div>
+                    </div>
+
+                    </div>
+                </section>
          <!-- About-Section Start -->
-         <section class="about-section section-padding fix">
+         <section class="about-section section-padding pt-5 fix">
             <div class="container">
                 <div class="about-wrapper-2">
                     <div class="row g-4 align-items-center">
@@ -37,7 +51,7 @@
                         </div>
                         <div class="col-xl-4 col-lg-6 col-md-6">
                             <div class="about-image">
-                                <img src="assets/img/logo/logo4.png" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/logo/logo4.png" alt="img">
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-6 col-md-6">
@@ -61,7 +75,7 @@
                                 </p>
                             <div class="info-text position-relative">
                                 <h6>founder</h6>
-                                <img src="assets/img/about/signature.png" alt="signature" class="position-absolute bottom-0 start-0">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/about/signature.png" alt="signature" class="position-absolute bottom-0 start-0">
                             </div>
 
                             </div>
@@ -89,9 +103,9 @@
                     <div class="row g-4">
                         <div class="col-xl-6">
                             <div class="about-image">
-                                <img src="assets/img/about/01.jpg" alt="img" class="wow fadeInUp" data-wow-delay=".3s">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/about/01.jpg" alt="img" class="wow fadeInUp" data-wow-delay=".3s">
                                 <div class="about-image-2">
-                                    <img src="assets/img/about/02.jpg" alt="img" class="wow fadeInUp" data-wow-delay=".5s">
+                                    <img src="{{config('constants.ASSETS_PATH') }}img/about/02.jpg" alt="img" class="wow fadeInUp" data-wow-delay=".5s">
                                 </div>
                             </div>
                         </div>
@@ -121,18 +135,18 @@
          </section> --}}
 
           <!-- Testimonial-Section Start -->
-         <section class="testimonial-section fix">
+         {{-- <section class="testimonial-section fix">
             <div class="testimonial-wrapper">
                 <div class="row g-0">
                     <div class="col-xl-6">
                         <div class="testimonial-image">
-                            <img src="assets/img/testimonial/01.jpg" alt="img">
+                            <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/01.jpg" alt="img">
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="testimonial-content">
                             <div class="icon">
-                                <img src="assets/img/icon/quate.svg" alt="img">
+                                <img src="{{config('constants.ASSETS_PATH') }}img/icon/quate.svg" alt="img">
                             </div>
                             <h3>What Customers Say</h3>
                             <p>Showing our latest arrival on this summer</p>
@@ -156,13 +170,13 @@
                                             </div>
                                             <div class="client-image">
                                                 <div class="image">
-                                                    <img src="assets/img/testimonial/client-4.png" alt="img">
+                                                    <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/client-4.png" alt="img">
                                                 </div>
                                                 <div class="image">
-                                                    <img src="assets/img/testimonial/client-5.png" alt="img">
+                                                    <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/client-5.png" alt="img">
                                                 </div>
                                                 <div class="image">
-                                                    <img src="assets/img/testimonial/client-6.png" alt="img">
+                                                    <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/client-6.png" alt="img">
                                                 </div>
                                             </div>
                                         </div>
@@ -185,13 +199,13 @@
                                             </div>
                                             <div class="client-image">
                                                 <div class="image">
-                                                    <img src="assets/img/testimonial/client-4.png" alt="img">
+                                                    <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/client-4.png" alt="img">
                                                 </div>
                                                 <div class="image">
-                                                    <img src="assets/img/testimonial/client-5.png" alt="img">
+                                                    <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/client-5.png" alt="img">
                                                 </div>
                                                 <div class="image">
-                                                    <img src="assets/img/testimonial/client-6.png" alt="img">
+                                                    <img src="{{config('constants.ASSETS_PATH') }}img/testimonial/client-6.png" alt="img">
                                                 </div>
                                             </div>
                                         </div>
@@ -210,8 +224,8 @@
                     </div>
                 </div>
             </div>
-         </section>
+         </section> --}}
 
         <!-- footer-section Start -->
       
-@include('includes.footer')
+@endsection

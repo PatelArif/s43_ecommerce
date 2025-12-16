@@ -1,45 +1,53 @@
 @include('includes.head')
 @include('includes.header')
-
+<style>
+    .account-wrapper .account-box p::after {
+    background: #084e14;
+    top: 31px;
+}
+    .account-wrapper .account-box p::before {
+    background: #084e14;
+    top: 31px;
+}
+</style>
+<section class="contact-us-section bg-custm contact-padding fix position-relative">
+    <div id="particles-js" class="particles"></div>
+    <div class="container-fluid">
+        <div class="conatct-main-wrapper">
+            <div class="content p-5">
+                <h2>Create Your Account</h2>
+                <h3 class="text-white text-center ">Join us today and get started instantly</p>
+            </div>
+        </div>
+    </div>
+</section>
          <!-- Shop-categories-Section Start -->
         <section class="sign-up-section section-padding fix">
             <div class="container">
                 <div class="account-wrapper">
                     <div class="shape-1 float-bob-x">
-                        <img src="assets/img/shape-1.png" alt="img">
+                        <img src="{{config('constants.ASSETS_PATH') }}img/shape-1.png" alt="img">
                     </div>
                     <div class="shape-2 float-bob-y">
-                        <img src="assets/img/shape-2.png" alt="img">
+                        <img src="{{config('constants.ASSETS_PATH') }}img/shape-2.png" alt="img">
                     </div>
                     <div class="shape-3 float-bob-y">
-                        <img src="assets/img/dot.png" alt="img">
+                        <img src="{{config('constants.ASSETS_PATH') }}img/dot.png" alt="img">
                     </div>
                     <div class="shape-4 float-bob-x">
-                        <img src="assets/img/shape-3.png" alt="img">
+                        <img src="{{config('constants.ASSETS_PATH') }}img/shape-3.png" alt="img">
                     </div>
                     <div class="shape-5 float-bob-y">
-                        <img src="assets/img/man-shape.png" alt="img">
+                        <img src="{{config('constants.ASSETS_PATH') }}img/man-shape.png" alt="img">
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-lg-6">
-                            <div class="content mb-3">
-                                <h2>My account</h2>
-                                <ul class="list">
-                                    <li>
-                                        <a href="{{url('/')}}">Home</a>
-                                    </li>
-                                    <li>
-                                        Sign in
-                                    </li>
-                                </ul>
-                            </div>
-                            
                             <div class="account-box">
                                 <h3>Looks like you're new here!</h3>
                                
                                 {{-- <div class="account-item">
                                     <div class="google-image">
-                                        <img src="assets/img/google.png" alt="img">
+                                        <img src="{{config('constants.ASSETS_PATH') }}img/google.png" alt="img">
                                         <h6>Sign in with google</h6>
                                     </div>
                                     <div class="facebook">
@@ -49,7 +57,7 @@
                                         <i class="fa-brands fa-apple"></i>
                                     </div>
                                 </div> --}}
-                                <p>Create a free Account</p>
+                                <p>Sign up below to create your free account</p>
 
                             <div class="contact-form-item">
                                  <form id="contact-form2" method="POST" action="{{ url('signup') }}">
