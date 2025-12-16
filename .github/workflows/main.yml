@@ -47,6 +47,10 @@ jobs:
                ".github/*" \
                "storage/*" \
                ".env"
+      - name: Debug Paths
+        run: |
+          echo "BRANCH=${{ env.BRANCH }}"
+          echo "MAIN_PATH=${{ env.MAIN_PATH }}"
 
       # -------------------------
       # UPLOAD TO HOSTINGER
@@ -59,7 +63,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "deploy.zip"
-          target: ${{ env.MAIN_PATH }}
+          # target: ${{ env.MAIN_PATH }}
+          target: /home/${{ secrets.SSH_USER }}/tmp_deploy
 
       # -------------------------
       # DEPLOY ON SERVER
@@ -77,6 +82,8 @@ jobs:
           script: |
             echo "Branch: $BRANCH"
             echo "Deploy Path: $MAIN_PATH"
+            mkdir -p "$MAIN_PATH"
+            mv /home/${{ secrets.SSH_USER }}/tmp_deploy/deploy.zip "$MAIN_PATH"
 
             cd "$MAIN_PATH" || exit 1
 
