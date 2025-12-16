@@ -16,11 +16,11 @@ jobs:
             echo "BRANCH=$BRANCH"
 
             if [ "$BRANCH" = "demo" ]; then
-              echo MAIN_PATH=$DEPLOY_PATH 
+              MAIN_PATH=$DEPLOY_PATH 
             elif [ "$BRANCH" = "main" ]; then
-              echo MAIN_PATH=$DEPLOY_PATH_PRODUCTION
+              MAIN_PATH=$DEPLOY_PATH_PRODUCTION
             else
-              echo MAIN_PATH=TEST
+              MAIN_PATH=TEST
             fi
             echo "MAIN_PATH=$MAIN_PATH"
             
