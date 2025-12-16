@@ -16,13 +16,15 @@ jobs:
             echo "BRANCH=$BRANCH"
 
             if [ "$BRANCH" = "demo" ]; then
-              MAIN_PATH=$DEPLOY_PATH 
+              MAIN_PATH="$DEPLOY_PATH"
             elif [ "$BRANCH" = "main" ]; then
-              MAIN_PATH=$DEPLOY_PATH_PRODUCTION
+              MAIN_PATH="$DEPLOY_PATH_PRODUCTION"
             else
-              MAIN_PATH=TEST
+              MAIN_PATH="TEST"
             fi
-            echo "MAIN_PATH=$MAIN_PATH"
+
+            echo "MAIN_PATH=$MAIN_PATH" >> $GITHUB_ENV
+
             
         - name: Checkout code
           uses: actions/checkout@v4
@@ -65,12 +67,19 @@ jobs:
             port: ${{ secrets.SSH_PORT }}
             key: ${{ secrets.SSH_PRIVATE_KEY }}
             script: |
+              echo "$MAIN_PATH"
               cd "$MAIN_PATH"
-
-              # Create Storage Backup
-              rm -rf ../demo_storage_old
-              cp -r storage ../demo_storage_old
               
+              if [ "$BRANCH" = "demo" ]; then
+                # Create Storage Backup
+                rm -rf ../demo_storage_old
+                cp -r storage ../demo_storage_old
+              elif [ "$BRANCH" = "main" ]; then
+                # Create Storage Backup
+                rm -rf ./prod_storage_old
+                cp -r storage ./prod_storage_old
+              fi
+
               # Extract without overriding uploads (storage) or environment file
               unzip -o deploy.zip -x ".env"
               rm deploy.zip
@@ -81,19 +90,32 @@ jobs:
               # Correct permissions for Laravel
               chmod -R 775 storage bootstrap/cache
 
-              # Move Storage Backup
-              cp -r ../demo_storage_old storage
+              if [ "$BRANCH" = "demo" ]; then
+                # Move Storage Backup
+                cp -r ./demo_storage_old storage
+              elif [ "$BRANCH" = "main" ]; then
+                # Move Storage Backup
+                cp -r ./prod_storage_old storage
+              fi
 
-              # Ensure storage symlink exists
-              # php artisan storage:link || true
-              ln -s /home/u781200572/domains/stepforenvironment.com/public_html/demo/storage/app/public /home/u781200572/domains/stepforenvironment.com/public_html/demo/public/storage
+
+              if [ "$BRANCH" = "demo" ]; then
+                # Ensure storage symlink exists
+                # php artisan storage:link || true
+                ln -s /home/u781200572/domains/stepforenvironment.com/public_html/demo/storage/app/public /home/u781200572/domains/stepforenvironment.com/public_html/demo/public/storage
+              elif [ "$BRANCH" = "main" ]; then
+                # Ensure storage symlink exists
+                # php artisan storage:link || true
+                ln -s /home/u781200572/domains/stepforenvironment.com/public_html/storage/app/public /home/u781200572/domains/stepforenvironment.com/public_html/public/storage
+              fi
 
               # Rename env file
               cp .env.example-dev .env
 
               # rename Constant file
               rm config/constants.php
-              cp config/constants-dev.php  config/constants.php              
+              cp config/constants-dev.php  config/constants.php
+                                      
 
               # Laravel optimizations
               php artisan config:cache
