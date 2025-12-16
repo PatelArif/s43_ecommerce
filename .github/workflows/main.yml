@@ -1,114 +1,110 @@
 name: Deploy Laravel to Hostinger
 
-on: 
-  workflow_dispatch: # ← Enables manual "Run Workflow" button
-  # push:
-  #   branches: ["main"]
+on:
+  workflow_dispatch:
 
 jobs:
   deploy:
-      runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Set deploy path based on branch
-          run: |
-            BRANCH="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
-            echo "BRANCH=$BRANCH"
+    steps:
+      # -------------------------
+      # SET BRANCH & DEPLOY PATH
+      # -------------------------
+      - name: Set deploy path based on branch
+        run: |
+          BRANCH="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
 
-            if [ "$BRANCH" = "demo" ]; then
-              MAIN_PATH="$DEPLOY_PATH"
-            elif [ "$BRANCH" = "main" ]; then
-              MAIN_PATH="$DEPLOY_PATH_PRODUCTION"
-            else
-              MAIN_PATH="TEST"
+          if [ "$BRANCH" = "demo" ]; then
+            echo "MAIN_PATH=$DEPLOY_PATH" >> $GITHUB_ENV
+          elif [ "$BRANCH" = "main" ]; then
+            echo "MAIN_PATH=$DEPLOY_PATH_PRODUCTION" >> $GITHUB_ENV
+          else
+            echo "MAIN_PATH=TEST" >> $GITHUB_ENV
+          fi
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: mbstring, intl, bcmath, openssl, mysqli, pdo_mysql
+          tools: composer
+
+      - name: Install Composer Dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      # -------------------------
+      # BUILD DEPLOY PACKAGE
+      # -------------------------
+      - name: Prepare Deployment Package
+        run: |
+          zip -r deploy.zip . \
+            -x ".git/*" \
+               ".github/*" \
+               "storage/*" \
+               ".env"
+
+      # -------------------------
+      # UPLOAD TO HOSTINGER
+      # -------------------------
+      - name: Copy Files to Hostinger
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "deploy.zip"
+          target: ${{ env.MAIN_PATH }}
+
+      # -------------------------
+      # DEPLOY ON SERVER
+      # -------------------------
+      - name: Run Deployment Commands on Hostinger
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          MAIN_PATH: ${{ env.MAIN_PATH }}
+          BRANCH: ${{ env.BRANCH }}
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            echo "Branch: $BRANCH"
+            echo "Deploy Path: $MAIN_PATH"
+
+            cd "$MAIN_PATH" || exit 1
+
+            unzip -o deploy.zip
+            rm deploy.zip
+
+            # ENV SAFE GUARD
+            if [ ! -f .env ]; then
+              cp .env.example-dev .env
             fi
 
-            echo "MAIN_PATH=$MAIN_PATH" >> $GITHUB_ENV
+            cp config/constants-dev.php config/constants.php
 
-            
-        - name: Checkout code
-          uses: actions/checkout@v4
+            chmod -R 775 storage bootstrap/cache
 
-        - name: Setup PHP
-          uses: shivammathur/setup-php@v2
-          with:
-            php-version: "8.2"
-            extensions: mbstring, intl, bcmath, openssl, mysqli, pdo_mysql
-            tools: composer
+            # Storage symlink
+            if [ "$BRANCH" = "demo" ]; then
+              ln -sfn \
+                /home/u781200572/domains/stepforenvironment.com/public_html/demo/storage/app/public \
+                public/storage
+            else
+              ln -sfn \
+                /home/u781200572/domains/stepforenvironment.com/public_html/storage/app/public \
+                public/storage
+            fi
 
-        - name: Install Composer Dependencies
-          run: composer install --no-dev --optimize-autoloader
+            php artisan key:generate --force || true
+            php artisan migrate --force
 
-        - name: Prepare Deployment Package
-          run: |
-            rm -rf .git
-            # zip -r deploy.zip . -x "vendor/*" ".git/*"
-            zip -r deploy.zip . -x ".git/*" ".github/*" ".storage/*"
-            # zip -r deploy.zip . -x ".git/*" ".github/*"
-
-            
-
-        - name: Copy Files to Hostinger
-          uses: appleboy/scp-action@v0.1.7
-          with:
-            host: ${{ secrets.SSH_HOST }}
-            username: ${{ secrets.SSH_USER }}
-            port: ${{ secrets.SSH_PORT }}
-            key: ${{ secrets.SSH_PRIVATE_KEY }}
-            source: "deploy.zip"
-            target: ${{ env.MAIN_PATH }}
-
-
-        - name: Run Deployment Commands on Hostinger
-          uses: appleboy/ssh-action@v1.0.3
-          env:
-            MAIN_PATH: ${{ env.MAIN_PATH }}
-            BRANCH: ${{ github.ref_name }}
-          with:
-            host: ${{ secrets.SSH_HOST }}
-            username: ${{ secrets.SSH_USER }}
-            port: ${{ secrets.SSH_PORT }}
-            key: ${{ secrets.SSH_PRIVATE_KEY }}
-            script: |
-              echo "Branch: $BRANCH"
-              echo "Deploy Path: $MAIN_PATH"
-
-              cd "$MAIN_PATH" || exit 1
-
-              if [ "$BRANCH" = "demo" ]; then
-                rm -rf ../demo_storage_old
-                cp -r storage ../demo_storage_old
-              elif [ "$BRANCH" = "main" ]; then
-                rm -rf ./prod_storage_old
-                cp -r storage ./prod_storage_old
-              fi
-
-              unzip -o deploy.zip -x ".env"
-              rm deploy.zip
-
-              chmod -R 775 storage bootstrap/cache
-
-              if [ "$BRANCH" = "demo" ]; then
-                cp -r ../demo_storage_old storage
-              elif [ "$BRANCH" = "main" ]; then
-                cp -r ./prod_storage_old storage
-              fi
-
-              if [ "$BRANCH" = "demo" ]; then
-                ln -sfn /home/u781200572/domains/stepforenvironment.com/public_html/demo/storage/app/public \
-                      /home/u781200572/domains/stepforenvironment.com/public_html/demo/public/storage
-              elif [ "$BRANCH" = "main" ]; then
-                ln -sfn /home/u781200572/domains/stepforenvironment.com/public_html/storage/app/public \
-                      /home/u781200572/domains/stepforenvironment.com/public_html/public/storage
-              fi
-
-              cp .env.example-dev .env
-              cp config/constants-dev.php config/constants.php
-
-              php artisan config:clear
-              php artisan cache:clear
-              php artisan view:clear
-
-              php artisan config:cache
-              php artisan route:cache
-              php artisan view:cache
+            php artisan optimize:clear
+            php artisan optimize
