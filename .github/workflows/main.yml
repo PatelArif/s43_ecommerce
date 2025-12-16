@@ -10,17 +10,18 @@ jobs:
       runs-on: ubuntu-latest
 
       steps:
-        - name: Resolve deploy path
+        - name: Set deploy path based on branch
           run: |
             BRANCH="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+            echo "BRANCH=$BRANCH"
 
-            declare -A MAP=(
-              [demo]="$DEPLOY_PATH"
-              [main]="$DEPLOY_PATH_PRODUCTION"
-            )
-            echo "Branch: $BRANCH"
-            echo "PATH=${MAP[$BRANCH]}" >> $GITHUB_ENV
-            echo "Path: ${MAP[$BRANCH]}"
+            if [ "$BRANCH" = "demo" ]; then
+              echo "PATH=$DEPLOY_PATH" >> $GITHUB_ENV
+            elif [ "$BRANCH" = "main" ]; then
+              echo "PATH=$DEPLOY_PATH_PRODUCTION" >> $GITHUB_ENV
+            else
+              echo "PATH=" >> $GITHUB_ENV
+            fi
             
         - name: Checkout code
           uses: actions/checkout@v4
