@@ -22,6 +22,7 @@ jobs:
             else
               echo "PATH=" >> $GITHUB_ENV
             fi
+            echo "PATH=$PATH"
             
         - name: Checkout code
           uses: actions/checkout@v4
