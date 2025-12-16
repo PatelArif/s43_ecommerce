@@ -16,13 +16,13 @@ jobs:
             echo "BRANCH=$BRANCH"
 
             if [ "$BRANCH" = "demo" ]; then
-              echo "PATH=$DEPLOY_PATH" >> $GITHUB_ENV
+              echo MAIN_PATH=$DEPLOY_PATH 
             elif [ "$BRANCH" = "main" ]; then
-              echo "PATH=$DEPLOY_PATH_PRODUCTION" >> $GITHUB_ENV
+              echo MAIN_PATH=$DEPLOY_PATH_PRODUCTION
             else
-              echo "PATH=" >> $GITHUB_ENV
+              echo MAIN_PATH=TEST
             fi
-            echo "PATH=$PATH"
+            echo "MAIN_PATH=$MAIN_PATH"
             
         - name: Checkout code
           uses: actions/checkout@v4
@@ -54,7 +54,7 @@ jobs:
             port: ${{ secrets.SSH_PORT }}
             key: ${{ secrets.SSH_PRIVATE_KEY }}
             source: "deploy.zip"
-            target: ${{ secrets.DEPLOY_PATH }}
+            target: "$MAIN_PATH"
 
 
         - name: Run Deployment Commands on Hostinger
@@ -65,7 +65,7 @@ jobs:
             port: ${{ secrets.SSH_PORT }}
             key: ${{ secrets.SSH_PRIVATE_KEY }}
             script: |
-              cd ${{ secrets.DEPLOY_PATH }}
+              cd "$MAIN_PATH"
 
               # Create Storage Backup
               rm -rf ../demo_storage_old
