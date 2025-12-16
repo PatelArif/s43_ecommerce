@@ -10,10 +10,17 @@ jobs:
       runs-on: ubuntu-latest
 
       steps:
-        - name: Get branch
+        - name: Resolve deploy path
           run: |
             BRANCH="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+
+            declare -A MAP=(
+              [demo]="$DEPLOY_PATH"
+              [main]="$DEPLOY_PATH_PRODUCTION"
+            )
             echo "Branch: $BRANCH"
+            echo "PATH=${MAP[$BRANCH]}" >> $GITHUB_ENV
+            
         - name: Checkout code
           uses: actions/checkout@v4
 
