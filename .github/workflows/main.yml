@@ -20,7 +20,7 @@ jobs:
             )
             echo "Branch: $BRANCH"
             echo "PATH=${MAP[$BRANCH]}" >> $GITHUB_ENV
-            echo "Path: $PATH"
+            echo "Path: ${MAP[$BRANCH]}"
             
         - name: Checkout code
           uses: actions/checkout@v4
