@@ -10,6 +10,10 @@ jobs:
       runs-on: ubuntu-latest
 
       steps:
+        - name: Get branch
+          run: |
+            BRANCH="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+            echo "Branch: $BRANCH"
         - name: Checkout code
           uses: actions/checkout@v4
 
