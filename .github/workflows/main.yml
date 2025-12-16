@@ -9,24 +9,14 @@ jobs:
 
     steps:
       # -------------------------
-      # SET BRANCH & DEPLOY PATH
+      # CHECKOUT
       # -------------------------
-      - name: Set deploy path based on branch
-        run: |
-          BRANCH="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
-          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
-
-          if [ "$BRANCH" = "demo" ]; then
-            echo "MAIN_PATH=$DEPLOY_PATH" >> $GITHUB_ENV
-          elif [ "$BRANCH" = "main" ]; then
-            echo "MAIN_PATH=$DEPLOY_PATH_PRODUCTION" >> $GITHUB_ENV
-          else
-            echo "MAIN_PATH=TEST" >> $GITHUB_ENV
-          fi
-
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # -------------------------
+      # SETUP PHP
+      # -------------------------
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -47,15 +37,11 @@ jobs:
                ".github/*" \
                "storage/*" \
                ".env"
-      - name: Debug Paths
-        run: |
-          echo "BRANCH=${{ env.BRANCH }}"
-          echo "MAIN_PATH=${{ env.MAIN_PATH }}"
 
       # -------------------------
-      # UPLOAD TO HOSTINGER
+      # UPLOAD TO SERVER
       # -------------------------
-      - name: Copy Files to Hostinger
+      - name: Upload package to server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -63,55 +49,74 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "deploy.zip"
-          # target: ${{ env.MAIN_PATH }}
           target: /home/${{ secrets.SSH_USER }}/tmp_deploy
 
-      # -------------------------
-      # DEPLOY ON SERVER
-      # -------------------------
-      - name: Run Deployment Commands on Hostinger
+      # =========================================================
+      # 🚀 DEMO DEPLOYMENT
+      # =========================================================
+      - name: Deploy DEMO
+        if: github.ref_name == 'demo'
         uses: appleboy/ssh-action@v1.0.3
-        env:
-          MAIN_PATH: ${{ env.MAIN_PATH }}
-          BRANCH: ${{ env.BRANCH }}
-          USERNAME: ${{ secrets.SSH_USER }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-          # 🔴 THIS IS THE IMPORTANT LINE
-          envs: BRANCH,MAIN_PATH,USERNAME
-
           script: |
-            echo "Branch: $BRANCH"
-            echo "Deploy Path: $MAIN_PATH"
+            DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+            USER="${{ secrets.SSH_USER }}"
 
-            mkdir -p "$MAIN_PATH"
-            mv /home/$USERNAME/tmp_deploy/deploy.zip "$MAIN_PATH"
+            mkdir -p "$DEPLOY_PATH"
+            mv /home/$USER/tmp_deploy/deploy.zip "$DEPLOY_PATH"
+            cd "$DEPLOY_PATH" || exit 1
 
-            cd "$MAIN_PATH" || exit 1
+            unzip -o deploy.zip && rm deploy.zip
 
-            unzip -o deploy.zip
-            rm deploy.zip
-
-            if [ ! -f .env ]; then
-              cp .env.example-dev .env
-            fi
-
+            [ ! -f .env ] && cp .env.example-dev .env
             cp config/constants-dev.php config/constants.php
 
             chmod -R 775 storage bootstrap/cache
 
-            if [ "$BRANCH" = "demo" ]; then
-              ln -sfn /home/$USERNAME/domains/stepforenvironment.com/public_html/demo/storage/app/public public/storage
-            else
-              ln -sfn /home/$USERNAME/domains/stepforenvironment.com/public_html/storage/app/public public/storage
-            fi
+            ln -sfn \
+              /home/$USER/domains/stepforenvironment.com/public_html/demo/storage/app/public \
+              public/storage
 
             php artisan key:generate --force || true
             php artisan migrate --force
+            php artisan optimize:clear
+            php artisan optimize
 
+      # =========================================================
+      # 🚀 PRODUCTION DEPLOYMENT
+      # =========================================================
+      - name: Deploy PRODUCTION
+        if: github.ref_name == 'main'
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            DEPLOY_PATH="${{ secrets.DEPLOY_PATH_PRODUCTION }}"
+            USER="${{ secrets.SSH_USER }}"
+
+            mkdir -p "$DEPLOY_PATH"
+            mv /home/$USER/tmp_deploy/deploy.zip "$DEPLOY_PATH"
+            cd "$DEPLOY_PATH" || exit 1
+
+            unzip -o deploy.zip && rm deploy.zip
+
+            [ ! -f .env ] && cp .env.example .env
+            cp config/constants-prod.php config/constants.php
+
+            chmod -R 775 storage bootstrap/cache
+
+            ln -sfn \
+              /home/$USER/domains/stepforenvironment.com/public_html/storage/app/public \
+              public/storage
+
+            php artisan key:generate --force || true
+            php artisan migrate --force
             php artisan optimize:clear
             php artisan optimize
