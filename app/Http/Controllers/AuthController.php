@@ -81,6 +81,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'email'    => 'required|email',
+            'role'     => 'required|string',
             'password' => 'required|string',
         ]);
 
@@ -95,8 +96,14 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         $remember    = $request->has('remember');
+        // if (Auth::attempt($credentials, $remember)) {
+        if (Auth::guard('web')->attempt([
+            'email'    => $request->email,
+            'password' => $request->password,
+            'role'     => $request->role,
+        ])
+        ) {
 
-        if (Auth::attempt($credentials, $remember)) {
             RateLimiter::clear($this->throttleKey($request)); // reset attempts
 
             return response()->json([
@@ -230,13 +237,11 @@ class AuthController extends Controller
 
     public function logout()
     {
-        // \Log::info('Logging out user: ' . Auth::user()->email);
-
-        Auth::logout();
-        session()->invalidate();
+        Auth::guard('web')->logout();
         session()->regenerateToken();
 
-        return redirect('/login')->with('logout_success', 'You have been logged out successfully!');
+        return redirect('/login')
+            ->with('logout_success', 'You have been logged out successfully!');
     }
 
     public function signUp()

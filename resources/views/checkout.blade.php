@@ -193,7 +193,9 @@
                     <div class="payment-summary" id="paymentSummary" style="display:none;">
                         <div id="paymentScanner" style="display:none;">
                             <p><b>Scan QR Code:</b></p>
-                            <img src="{{ asset('assets/img/payment/StepForEnvironment.png') }}" width="100%">
+                            <p>Banking Name : SMITA SUBHASH MORE</p>
+                            <p>UPI ID : moresmita67-3@oksbi</p>
+                            <img src="{{ asset(config('constants.ASSETS_PATH').'img/payment/StepForEnvironment1.png') }}" width="100%">
                         </div>
                         <div id="paymentBank" style="display:none;">
                             <p><b>Bank Name :</b> Bank Of India</p>

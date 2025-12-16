@@ -18,12 +18,32 @@ class ProductDetailController extends Controller
         return view("product-details", compact("categories"));
     }
 
-    public function allproducts($id, $sub_id)
-    {
-        $categories = Category::with("subcategories")->get();
-        $subcategory = Subcategory::findOrFail($sub_id);
-        return view("allproducts", compact("subcategory", "categories"));
+public function allproducts(Request $request, $id, $sub_id)
+{
+    // Sidebar / menu
+    $categories = Category::with('subcategories')->get();
+
+    // Current subcategory
+    $subcategory = Subcategory::findOrFail($sub_id);
+
+    // ✅ PAGINATED PRODUCTS
+    $products = Product::where('subcategory_id', $subcategory->id)
+        ->paginate(1);
+
+    // ✅ AJAX REQUEST → RETURN PARTIAL ONLY
+    if ($request->ajax()) {
+        return view('includes.product-list', compact('products', 'subcategory'))->render();
     }
+
+    // Normal page load
+    return view('allproducts', compact(
+        'categories',
+        'subcategory',
+        'products'
+    ));
+}
+
+    
     public function shopPage($id)
     {
         // Fetch a single product by ID
@@ -48,7 +68,7 @@ class ProductDetailController extends Controller
     // admin products
     public function index(Request $request)
     {
-        $query = Product::with("category", "subcategory");
+        $query = Product::with("category", "subcategory")->orderBy('id', 'DESC');
 
         if ($request->filled("category_id")) {
             $query->where("category_id", $request->category_id);

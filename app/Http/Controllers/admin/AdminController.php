@@ -3,18 +3,20 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Slider;
 use App\Models\Subcategory;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
@@ -31,16 +33,35 @@ class AdminController extends Controller
     {
         return view('admin.login');
     }
+
     public function dashboard()
     {
-
+        // Website
         $categoryCount    = Category::count();
         $subCategoryCount = SubCategory::count();
         $productCount     = Product::count();
         $userCount        = User::count();
         $slider           = Slider::count();
 
-        return view('admin.index', compact('categoryCount', 'subCategoryCount', 'productCount', 'slider', 'userCount'));
+        // Orders
+        $totalOrders      = Order::count();
+        $pendingOrders    = Order::where('status', 'pending')->count();
+        $approvedOrders   = Order::where('status', 'approved')->count();
+        $dispatchedOrders = Order::where('status', 'dispatched')->count();
+        $deliveredOrders  = Order::where('status', 'delivered')->count();
+
+        // Revenue
+        $todayRevenue = Order::whereDate('created_at', Carbon::today())
+            ->where('status', 'delivered')
+            ->sum('total');
+
+        $totalRevenue = Order::where('status', 'delivered')->sum('total');
+
+        return view('admin.index', compact(
+            'categoryCount', 'subCategoryCount', 'productCount', 'slider', 'userCount',
+            'totalOrders', 'pendingOrders', 'approvedOrders', 'dispatchedOrders', 'deliveredOrders',
+            'todayRevenue', 'totalRevenue'
+        ));
     }
 
     public function layoutSidenavLight()
@@ -80,6 +101,8 @@ class AdminController extends Controller
         $request->validate([
             'email'    => 'required|email',
             'password' => 'required|string',
+            // 'role' => 'required|string',
+
         ]);
         $role = $request->input('role');
         if ($role !== 'admin') {
@@ -98,13 +121,20 @@ class AdminController extends Controller
         }
         $credentials = $request->only('email', 'password', 'role');
         // $credentials = $request->only('email', 'password');
-        $remember    = $request->has('remember');
+        $remember = $request->has('remember');
 
-        if (Auth::attempt($credentials)) {
+        // if (Auth::attempt($credentials)) {
+        if (Auth::guard('admin')->attempt([
+            'email'    => $request->email,
+            'password' => $request->password,
+            'role'     => $request->role,
+        ])
+        ) {
             RateLimiter::clear($this->throttleKey($request)); // reset attempts
 
             return response()->json([
                 'status'   => true,
+                'role'     => $request->role,
                 'message'  => 'Login successful',
                 'redirect' => '/admin/dashboard',
             ]);
@@ -120,13 +150,17 @@ class AdminController extends Controller
     }
     public function logout()
     {
-        Log::info('Logging out user: ' . Auth::user()->email);
-        Auth::logout();
-        session()->invalidate();
+        Log::info('Logging out admin: ' . Auth::guard('admin')->user()->email);
+
+        Auth::guard('admin')->logout();
+
+        // DO NOT invalidate entire session
         session()->regenerateToken();
 
-        return redirect('/admin/')->with('logout_success', 'You have been logged out successfully!');
+        return redirect('/admin/')
+            ->with('logout_success', 'You have been logged out successfully!');
     }
+
     public function store(Request $request)
     {
 

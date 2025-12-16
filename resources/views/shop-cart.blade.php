@@ -47,20 +47,21 @@
                             @endphp
 
                             @foreach ($cart as $item)
-                                <tr id="cart-row-{{ $item['id'] }}">
+                                <tr id="cart-row-{{ $item['product_id'] }}">
                                     <td class="text-center">{{ $srNo++ }}</td>
                                     <td>
                                         <div class="cart-item-thumb d-flex align-items-center gap-2">
-                                            <form action="{{ route('cart.remove', $item['product_id']) }}"
-                                                method="POST" class="remove-cart-form">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-link p-0 text-danger"
-                                                    title="Remove">
-                                                    <i class="fas fa-times"></i>
-                                                </button>
-                                            </form>
-                                            <img class="w-100" src="{{ asset('storage/' . $item['image']) }}"
+                                          
+                                               <button
+    type="button"
+    class="btn btn-link p-0 text-danger remove-item"
+    data-id="{{ $item['product_id'] }}"
+    title="Remove">
+    <i class="fas fa-times"></i>
+</button>
+
+                                           
+                                            <img class="w-100" src="{{ asset(config('constants.IMAGE_PATH')  . $item['image']) }}"
                                                 alt="{{ $item['name'] }}" style="max-width:150px;">
                                         </div>
                                     </td>
@@ -71,13 +72,13 @@
                                     <td class="text-center">
                                         <div
                                             class="quantity d-inline-flex align-items-center gap-1 py-2 px-4 border n50-border_20 text-sm">
-                                            <button type="button" class="btn-action"
+                                            <button type="button" class="shop_btn-action"
                                                 data-id="{{ $item['product_id'] }}" data-action="decrement">
                                                 <i class="fal fa-minus"></i>
                                             </button>
                                             <input type="text" class="quantityValue" value="{{ $item['quantity'] }}"
                                                 readonly>
-                                            <button type="button" class="btn-action"
+                                            <button type="button" class="shop_btn-action"
                                                 data-id="{{ $item['product_id'] }}" data-action="increment">
                                                 <i class="fal fa-plus"></i>
                                             </button>
@@ -127,7 +128,7 @@
 @include('includes.footer')
 
 <script>
-    $(document).on('click', '.btn-action', function() {
+    $(document).on('click', '.shop_btn-action', function() {
 
         let id = $(this).data('id');
         let action = $(this).data('action');
@@ -188,6 +189,36 @@
             }
         });
     });
+$(document).on('click', '.remove-item', function () {
+    let id = $(this).data('id');
+
+    $.ajax({
+        url: "/cart/remove/" + id,
+        type: "DELETE",
+        data: {
+            _token: $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function (res) {
+            if (res.success) {
+
+                $("#cart-row-" + id).fadeOut(300, function () {
+                    $(this).remove();
+                });
+
+                $("#grandTotal").html(res.grand_total);
+
+                if (res.donation > 0) {
+                    $("#cartDonation").html(res.donation);
+                }
+
+                if (res.total_cartItem === 0) {
+                    location.reload();
+                }
+            }
+        }
+    });
+});
+
 
     /** ✅ Checkout with optional donation **/
     $(document).on('click', '.checkoutBtn', function(e) {

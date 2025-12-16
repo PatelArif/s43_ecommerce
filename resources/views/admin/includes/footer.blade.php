@@ -15,16 +15,16 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> --}}
-                 <script src="{{ asset('assets/admin/js/scripts.js') }}"></script>
+                 <script src="{{ asset(config('constants.ASSETS_PATH') . 'assets/admin/js/scripts.js') }}"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-                 <script src="{{ asset('assets/admin/assets/demo/chart-area-demo.js') }}"></script>
-                 <script src="{{ asset('assets/admin/assets/js/schart-bar-demo.js') }}"></script>
+                 <script src="{{ asset(config('constants.ASSETS_PATH') . 'assets/admin/assets/demo/chart-area-demo.js') }}"></script>
+                 <script src="{{ asset(config('constants.ASSETS_PATH') . 'assets/admin/assets/js/schart-bar-demo.js') }}"></script>
 
 
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     
-                 <script src="{{ asset('assets/admin/js/datatables-simple-demo.js') }}"></script>
+                 <script src="{{ asset(config('constants.ASSETS_PATH') . 'assets/admin/js/datatables-simple-demo.js') }}"></script>
                  <!-- jQuery (required for DataTables) -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
@@ -34,6 +34,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- Initialize DataTable -->
 <script>
@@ -55,7 +56,7 @@ if (sidebarToggle) {
 $(document).ready(function(){
 
     const sliderModal = new bootstrap.Modal($('#sliderModal')[0]);
-    const assetBaseUrl = "{{ asset('storage') }}";
+    const assetBaseUrl = "{{ config('constants.IMAGE_PATH') }}";
 
     // Open Add Modal
     $('#addSliderBtn').click(function(){
@@ -86,7 +87,7 @@ $(document).ready(function(){
             $('#sliderModalLabel').text('Edit Slider');
 
             let imageHtml = slider.image 
-                ? `<img src="${assetBaseUrl}/${slider.image}" width="120" class="img-fluid rounded">` 
+                ? `<img src="/${assetBaseUrl}${slider.image}" width="120" class="img-fluid rounded">` 
                 : '<span class="text-muted">No Image</span>';
             $('#existingImage').html(imageHtml);
 
@@ -116,7 +117,10 @@ $(document).ready(function(){
 
     const form = this;
     const formData = new FormData(form);
-
+    const imageInput = document.getElementById('sliderImage');
+        if (imageInput.files.length === 0) {
+            formData.delete('image'); 
+        }
     const sliderId = $('#sliderId').val();
     const method = $('#formMethod').val();
     const url = sliderId 
@@ -249,32 +253,25 @@ $(document).ready(function(){
 
     // Update row
     function updateSliderRow(slider) {
-        const row = $(`#sliderRow${slider.id}`);
-        const categoryName = slider.category.name ?? 'Uncategorized';
-        const subTitle = slider.sub_title ?? '-';
-        const title = slider.title ?? '-';
+    const row = $('#sliderRow' + slider.id);
 
-        const imageHtml = slider.image
-            ? `<img src="${assetBaseUrl}/${slider.image}" width="120" class="img-fluid rounded">`
-            : '<span class="text-muted">No Image</span>';
+    row.find('td:nth-child(2)').text(slider.category?.name ?? '-');
+    row.find('td:nth-child(3)').text(slider.title);
+    row.find('td:nth-child(5)').text(slider.sub_title ?? '-');
 
-        if (!row.length) {
-            addSliderRow(slider);
-            return;
-        }
+    const imageCell = row.find('td:nth-child(4)');
 
-        row.html(`
-            <td class="text-center">${row.index() + 1}</td>
-            <td class="text-center">${escapeHtml(categoryName)}</td>
-            <td class="text-center">${escapeHtml(title)}</td>
-            <td class="text-center">${imageHtml}</td>
-            <td class="text-center">${escapeHtml(subTitle)}</td>
-            <td class="text-center">
-                <button class="btn btn-warning btn-sm editBtn" data-id="${slider.id}"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-danger btn-sm deleteBtn" data-id="${slider.id}"><i class="fas fa-trash"></i></button>
-            </td>
+    if (slider.image) {
+        const imageUrl = `{{ asset(config('constants.IMAGE_PATH')) }}${slider.image}?v=${Date.now()}`;
+
+        imageCell.html(`
+            <img src="${imageUrl}" width="120" class="img-fluid rounded">
         `);
+    } else {
+        imageCell.html(`<span class="text-muted">No Image</span>`);
     }
+}
+
 
     // Show/hide "No sliders" message
     function toggleNoSliderMessage(){

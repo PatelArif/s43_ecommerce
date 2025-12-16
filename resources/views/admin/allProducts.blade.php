@@ -58,7 +58,7 @@
                                 <td>{{ $product->subcategory->name ?? '—' }}</td>
                                 <td>
                                     @if($product->main_image)
-                                        <img src="{{ asset('/storage/'. $product->main_image) }}" alt="Image" width="80">
+                                        <img src="{{ asset(config('constants.IMAGE_PATH'). $product->main_image) }}" alt="Image" width="80">
                                     @else
                                         <span class="text-muted">No Image</span>
                                     @endif

@@ -1,205 +1,92 @@
 <!-- Header Section Start -->
 <header id="header-sticky" class="header-1 header-2">
-   <div class="container">
-      <div class="mega-menu-wrapper">
-         <div class="header-main">
-            <div class="logo" style="width:70px">
-               <a href="{{ url('/') }}" class="header-logo"style="width:70px">
-               <img src="{{ asset('assets/img/logo/logo4.png') }}" alt="logo-img"style="width:70px">
-               </a>
-               <a href="{{ url('/') }}" class="header-logo-2 d-none">
-               <img src="{{ asset('assets/img/logo/logo4.png') }}" alt="logo-img"style="width:70px">
-               </a>
-            </div>
-            <div class="mean__menu-wrapper">
-               <div class="main-menu">
-                  <nav id="mobile-menu" style="display: block;">
-                     <ul>
-                        {{-- 
-                        <li class="has-dropdown active menu-thumb">
-                           <a href="{{ url('/') }}">
-                           Home
-                           <i class="fa-solid fa-chevron-down"></i>
-                           </a>
-                           <ul class="submenu has-homemenu">
-                              <li>
-                                 <div class="homemenu-items">
-                                    <div class="homemenu">
-                                       <div class="homemenu-thumb">
-                                          <img src="{{ asset('assets/img/header/home-1.jpg') }}" alt="img">
-                                          <div class="demo-button">
-                                             <a href="{{ url('/') }}" class="theme-btn">Demo Page</a>
-                                          </div>
-                                       </div>
-                                       <div class="homemenu-content text-center">
-                                          <h4 class="homemenu-title">Home 01</h4>
-                                       </div>
-                                    </div>
-                                    <div class="homemenu">
-                                       <div class="homemenu-thumb mb-15">
-                                          <img src="{{ asset('assets/img/header/home-2.jpg') }}" alt="img">
-                                          <div class="demo-button">
-                                             <a href="{{ url('/index-3') }}" class="theme-btn">Demo Page</a>
-                                          </div>
-                                       </div>
-                                       <div class="homemenu-content text-center">
-                                          <h4 class="homemenu-title">Home 02</h4>
-                                       </div>
-                                    </div>
-                                    <div class="homemenu">
-                                       <div class="homemenu-thumb mb-15">
-                                          <img src="{{ asset('assets/img/header/home-3.jpg') }}" alt="img">
-                                          <div class="demo-button">
-                                             <a href="{{ url('/index-4') }}" class="theme-btn">Demo Page</a>
-                                          </div>
-                                       </div>
-                                       <div class="homemenu-content text-center">
-                                          <h4 class="homemenu-title">Home 03</h4>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </li>
-                           </ul>
-                        </li>
-                        --}}
+    <div class="container">
+        <div class="mega-menu-wrapper">
+            <div class="header-main">
+                <div class="logo" style="width:70px">
+                    <a href="{{ url('/') }}" class="header-logo"style="width:70px">
+                        <img src="{{ asset(config('constants.ASSETS_PATH') . 'img/logo/logo4.png') }}"
+                            alt="logo-img"style="width:70px">
+                    </a>
+                    <a href="{{ url('/') }}" class="header-logo-2 d-none">
+                        <img src="{{ asset(config('constants.ASSETS_PATH') . 'img/logo/logo4.png') }}"
+                            alt="logo-img"style="width:70px">
+                    </a>
+                </div>
+                <div class="mean__menu-wrapper">
+                    <div class="main-menu">
+                        <nav id="mobile-menu" style="display: block;">
+                            <ul>
+                                <li>
+                                    <a href="{{ url('/') }}">Home</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/about') }}">About Us</a>
+                                </li>
+                                <li class="has-dropdown active d-xl-none">
+                                    <a href="{{ url('/') }}" class="border-none">Home</a>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="#">
+                                        Pages
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </a>
+
+                                    <ul class="submenu">
+
+                                        @guest('web')
+                                            <li><a href="{{ url('/login') }}">Login</a></li>
+                                            <li><a href="{{ url('/register') }}">Sign-Up</a></li>
+                                        @endguest
+
+                                        @auth('web')
+                                            <li><a href="{{ url('/my-account') }}">My Account</a></li>
+                                            <li><a href="{{ url('/my-orders') }}">Track Your Order</a></li>
+                                        @endauth
+
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="{{ url('#') }}">
+                                        Categories
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </a>
+                                    <ul class="submenu">
+                                        <li><a href="{{ url('/allCategories') }}">All Categories</a></li>
+                                        <li><a href="{{ url('/shop-cart') }}">Shop Cart</a></li>
+                                        <li><a href="{{ url('/checkout') }}">Checkout</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/contact') }}">Contact Us</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="header-right d-flex justify-content-end align-items-center">
+                    <ul class="header-icon">
                         <li>
-                           <a href="{{ url('/') }}">Home</a>
+                            <a href="{{ route('favorites.view') }}" id="favorites-link">
+                                <i class="fa-regular fa-heart"></i>
+                                <span id="favorites-count" class="number">{{ count($globalFavorites) }}</span>
+                            </a>
                         </li>
-                        <li>
-                           <a href="{{ url('/about') }}">About Us</a>
-                        </li>
-                        <li class="has-dropdown active d-xl-none">
-                           <a href="{{ url('/') }}" class="border-none">Home</a>
-                           {{-- 
-                           <ul class="submenu">
-                              <li><a href="{{ url('/') }}">Home 01</a></li>
-                              <li><a href="{{ url('/index-3') }}">Home 02</a></li>
-                              <li><a href="{{ url('/index-4') }}">Home 03</a></li>
-                           </ul>
-                           --}}
-                        </li>
-                        <li class="has-dropdown">
-                           <a href="{{ url('#') }}">
-                           Pages
-                           <i class="fa-solid fa-chevron-down"></i>
-                           </a>
-                           <ul class="submenu">
-                              {{-- 
-                              <li><a href="{{ url('/about') }}">About Us</a></li>
-                              --}}
-                              <li><a href="{{ url('/my-orders') }}">Track Your Order</a></li>
-                              <li><a href="{{ url('/login') }}">Login</a></li>
-                              <li><a href="{{ url('/register') }}">Sign-Up</a></li>
-                              {{-- 
-                              <li><a href="{{ url('/forget-password') }}">Forget Password</a></li>
-                              --}}
-                              <li><a href="{{ url('/my-account') }}">My Account</a></li>
-                              {{-- 
-                              <li><a href="{{ url('/404') }}">404</a></li>
-                              --}}
-                           </ul>
-                        </li>
-                        <li>
-                           <a href="{{ url('#') }}">
-                           Categories 
-                           <i class="fa-solid fa-chevron-down"></i>
-                           </a>
-                           <ul class="submenu">
-                              <li><a href="{{ url('/allCategories') }}">All Categories</a></li>
-                              {{-- 
-                              @foreach($categories as $category)
-                              <li class="submenu-category">
-                                 <a href="{{ url('/allCategories/' . $category->id) }}">{{ $category->name }}</a>  <!-- Link to category page -->
-                                 @if($category->subcategories->count() > 0)
-                                 <ul class="submenu">
-                                    @foreach($category->subcategories as $subcategory)
-                                    <li><a href="{{ url('/allCategories/' . $category->id.'/'. $subcategory->id) }}">{{ $subcategory->name }}</a></li>
-                                    <!-- Link to subcategory page -->
-                                    @endforeach
-                                 </ul>
-                                 @endif
-                              </li>
-                              @endforeach --}}
-                              <li><a href="{{ url('/shop-cart') }}">Shop Cart</a></li>
-                              <li><a href="{{ url('/checkout') }}">Checkout</a></li>
-                           </ul>
-                        </li>
-                        {{-- 
-                        <li>
-                           <a href="{{ url('#') }}">
-                           Blog
-                           <i class="fa-solid fa-chevron-down"></i>
-                           </a>
-                           <ul class="submenu">
-                              <li><a href="{{ url('/news-grid') }}">Blog Grid</a></li>
-                              <li><a href="{{ url('/news-list') }}">Blog List</a></li>
-                              <li><a href="{{ url('/news-details') }}">Blog Details</a></li>
-                           </ul>
-                        </li>
-                        --}}
-                        <li>
-                           <a href="{{ url('/contact') }}">Contact Us</a>
-                        </li>
-                     </ul>
-                  </nav>
-               </div>
-            </div>
-            <div class="header-right d-flex justify-content-end align-items-center">
-               {{-- <a href="#0" class="search-trigger search-icon"><i class="fa-regular fa-magnifying-glass"></i></a> --}}
-               <ul class="header-icon">
-                  <li>
-                     <a href="{{ route('favorites.view') }}" id="favorites-link">
-                     <i class="fa-regular fa-heart"></i>
-                     <span id="favorites-count" class="number">{{ count($globalFavorites) }}</span>
-                     </a>
-                  </li>
-               </ul>
-               <div class="menu-cart style-3 position-relative">
-                  <a href="{{ route('cart') }}" class="cart-link position-relative">
-                  <i class="fa-sharp fa-regular fa-bag-shopping"></i>
-                  <span id="cart-count-badge" class="cart-count-badge">{{ count($globalCart) }}</span>
-                  </a>
-                  <!-- Dropdown cart -->
-                  {{-- <div class="cart-box">
-                     <ul id="cart-items-list" style="max-height: 250px; overflow-y: auto;">
-                        @if($globalCart && count($globalCart) > 0)
-                        @foreach($globalCart as $id => $item)
-                        <li id="cart-item-{{ $id }}">
-                           <img src="{{ $item['image'] }}" alt="{{ $item['name'] }}" width="50">
-                           <div class="cart-product">
-                              <a href="#">{{ $item['name'] }}</a>
-                              <span>₹{{ $item['price'] }} x {{ $item['quantity'] }}</span>
-                           </div>
-                        </li>
-                        @endforeach
-                        @else
-                        <li id="cart-empty">
-                           <p>Your cart is emptyaaa</p>
-                        </li>
-                        @endif
-                     </ul>
-                     <div id="cart-total-section">
-                        @if($globalCart && count($globalCart) > 0)
-                        <div class="shopping-items">
-                           <span>Total :</span>
-                           <span id="cart-total-amount">
-                           ₹{{ collect($globalCart)->sum(fn($item) => $item['price'] * $item['quantity']) }}
-                           </span>        
+                    </ul>
+                    <div class="menu-cart style-3 position-relative">
+                        <a href="{{ route('cart') }}" class="cart-link position-relative">
+                            <i class="fa-sharp fa-regular fa-bag-shopping"></i>
+                            <span id="cart-count-badge" class="cart-count-badge">{{ count($globalCart) }}</span>
+                        </a>
+                    </div>
+                    <div class="header__hamburger d-xl-none my-auto">
+                        <div class="sidebar__toggle">
+                            <i class="fas fa-bars"></i>
                         </div>
-                        <div class="cart-button mb-4">
-                           <a href="/shop-cart" class="theme-btn">View Cart</a>
-                        </div>
-                        @endif
-                     </div>
-                  </div> --}}
-               </div>
-               <div class="header__hamburger d-xl-none my-auto">
-                  <div class="sidebar__toggle">
-                     <i class="fas fa-bars"></i>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
+        </div>
+    </div>
 </header>

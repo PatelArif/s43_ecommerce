@@ -36,8 +36,8 @@ class AppServiceProvider extends ServiceProvider
                             'quantity' => $item->quantity,
                             'price'    => $price,
                             'image'    => $product->main_image
-                                ? asset('storage/' . $product->main_image)
-                                : asset('assets/img/product/9.png'),
+                                ? asset(config('constants.IMAGE_PATH')  . $product->main_image)
+                                : asset(config('constants.ASSETS_PATH') .'img/product/9.png'),
                         ],
                     ];
                 })->toArray();

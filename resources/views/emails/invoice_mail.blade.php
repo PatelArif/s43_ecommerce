@@ -9,7 +9,7 @@
         {{-- Header --}}
         <tr>
             <td style="background: linear-gradient(90deg,#145A32,#26aa5f); color: #fff; padding: 20px; text-align: center;">
-                <img src="https://dev-testing.stepforenvironment.com/assets/img/logo/logo4.png" alt="Step For Environment" style="height:60px; margin-bottom:10px;">
+                <img src="https://dev-testing.stepforenvironment.com/{{config('constants.ASSETS_PATH')}}img/logo/logo4.png" alt="Step For Environment" style="height:60px; margin-bottom:10px;">
                 <h2 style="margin:0; color:#fff;">Step For Environment</h2>
                 <small style="color:#eafbe7;">Eco-friendly • Sustainable • Reusable</small>
             </td>
@@ -29,7 +29,7 @@
 
                 {{-- Optional Download Button --}}
                 <p style="margin-top:30px; text-align:center;">
-                    <a href="{{ url('storage/'.$order->invoice_path) }}" target="_blank" 
+                    <a href="{{ url(config('constants.IMAGE_PATH') .$order->invoice_path) }}" target="_blank" 
                        style="background:#26aa5f; color:#fff; padding:12px 20px; border-radius:6px; text-decoration:none; font-weight:bold;">
                         Download Invoice
                     </a>

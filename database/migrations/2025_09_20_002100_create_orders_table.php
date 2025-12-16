@@ -20,7 +20,12 @@ public function up(): void
         $table->decimal('total', 10, 2);
         $table->enum('payment_method', ['scanner', 'bank_transfer']);
         $table->string('payment_slip')->nullable(); // upload proof
-        $table->enum('status', ['pending', 'approved'])->default('pending');
+        $table->enum('status', [ 'pending',
+  'approved',
+  'ready',
+  'dispatched',
+  'delivered',
+  'rejected'])->default('pending');
         $table->timestamps();
 
         $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

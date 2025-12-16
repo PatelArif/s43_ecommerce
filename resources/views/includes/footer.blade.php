@@ -192,8 +192,119 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).on('click', '.pagination a', function (e) {
+    e.preventDefault();
+
+    let url = $(this).attr('href');
+    let wrapper = $('#productWrapper');
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        beforeSend: function () {
+            wrapper.css('opacity', '0.5');
+        },
+        success: function (html) {
+            wrapper.html(html);
+            wrapper.css('opacity', '1');
+
+            $('html, body').animate({
+                scrollTop: wrapper.offset().top - 120
+            }, 400);
+        }
+    });
+});
+$(document).on('click', '.pagination a', function (e) {
+    e.preventDefault();
+
+    let url = $(this).attr('href');
+
+    // Detect which wrapper exists
+    let wrapper = $('#categoryWrapper').length
+        ? $('#categoryWrapper')
+        : $('#homeCategoryWrapper');
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        beforeSend: function () {
+            wrapper.css('opacity', '0.5');
+        },
+        success: function (data) {
+            wrapper.html(data);
+            wrapper.css('opacity', '1');
+
+            // 🔥 SAFE SCROLL
+            if (wrapper.length) {
+                $('html, body').animate({
+                    scrollTop: wrapper.offset().top - 100
+                }, 400);
+            }
+
+            // 🔁 Re-init swiper if exists
+            if (typeof initSwiper === "function") {
+                initSwiper();
+            }
+        }
+    });
+});
+</script>
 
 <script>
+    $(document).on('click', '.pagination a', function (e) {
+    e.preventDefault();
+
+    let url = $(this).attr('href');
+    let wrapper = $('#subcategoryWrapper');
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        beforeSend: function () {
+            wrapper.css('opacity', '0.5');
+        },
+        success: function (response) {
+            wrapper.html(response);
+            wrapper.css('opacity', '1');
+
+            if (wrapper.length) {
+                $('html, body').animate({
+                    scrollTop: wrapper.offset().top - 120
+                }, 400);
+            }
+        },
+        error: function () {
+            alert('Failed to load subcategories');
+        }
+    });
+});
+$(document).on('click', '.pagination a', function (e) {
+    e.preventDefault();
+
+    let url = $(this).attr('href');
+    let wrapper = $(this).closest('section').find('[id$="Wrapper"]');
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        beforeSend: function () {
+            wrapper.css('opacity', '0.5');
+        },
+        success: function (data) {
+            wrapper.html(data);
+            wrapper.css('opacity', '1');
+
+            $('html, body').animate({
+                scrollTop: wrapper.offset().top - 120
+            }, 400);
+        }
+    });
+});
+</script>
+
+<script>
+    
     $(document).ready(function() {
         $('#ordersTable').DataTable({
             "paging": true,
@@ -263,13 +374,21 @@
     }));
 </script>
 <script>
-    const lenis = new Lenis({
-        duration: 1.5, // ⬆️ make higher (1.8–2.2 = very floaty)
-        easing: (t) => Math.sin((t * Math.PI) / 2), // sine ease-out, super smooth
-        smoothWheel: true,
-        smoothTouch: true,
-        wheelMultiplier: 1.5, // adjust scroll sensitivity
-    })
+const lenis = new Lenis({
+    duration: 1.0,
+    easing: (t) => Math.sin((t * Math.PI) / 2),
+    smoothWheel: true,
+    smoothTouch: false, // 👈 recommended for mobile
+    wheelMultiplier: 1,
+});
+
+// RAF loop
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
 
     // Debug scroll events (optional)
     lenis.on('scroll', ({
