@@ -116,7 +116,8 @@ jobs:
               /home/$USER/domains/stepforenvironment.com/public_html/storage/app/public \
               public/storage
 
-            php artisan key:generate --force || true
-            php artisan migrate --force
-            php artisan optimize:clear
-            php artisan optimize
+            php artisan key:generate --force
+            php artisan config:clear
+            php artisan route:clear
+            php artisan view:clear
+            php artisan cache:clear
