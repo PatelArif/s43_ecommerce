@@ -117,7 +117,10 @@ $(document).ready(function(){
 
     const form = this;
     const formData = new FormData(form);
-
+    const imageInput = document.getElementById('sliderImage');
+        if (imageInput.files.length === 0) {
+            formData.delete('image'); 
+        }
     const sliderId = $('#sliderId').val();
     const method = $('#formMethod').val();
     const url = sliderId 
@@ -250,32 +253,25 @@ $(document).ready(function(){
 
     // Update row
     function updateSliderRow(slider) {
-        const row = $(`#sliderRow${slider.id}`);
-        const categoryName = slider.category.name ?? 'Uncategorized';
-        const subTitle = slider.sub_title ?? '-';
-        const title = slider.title ?? '-';
+    const row = $('#sliderRow' + slider.id);
 
-        const imageHtml = slider.image
-            ? `<img src="${assetBaseUrl}/${slider.image}" width="120" class="img-fluid rounded">`
-            : '<span class="text-muted">No Image</span>';
+    row.find('td:nth-child(2)').text(slider.category?.name ?? '-');
+    row.find('td:nth-child(3)').text(slider.title);
+    row.find('td:nth-child(5)').text(slider.sub_title ?? '-');
 
-        if (!row.length) {
-            addSliderRow(slider);
-            return;
-        }
+    const imageCell = row.find('td:nth-child(4)');
 
-        row.html(`
-            <td class="text-center">${row.index() + 1}</td>
-            <td class="text-center">${escapeHtml(categoryName)}</td>
-            <td class="text-center">${escapeHtml(title)}</td>
-            <td class="text-center">${imageHtml}</td>
-            <td class="text-center">${escapeHtml(subTitle)}</td>
-            <td class="text-center">
-                <button class="btn btn-warning btn-sm editBtn" data-id="${slider.id}"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-danger btn-sm deleteBtn" data-id="${slider.id}"><i class="fas fa-trash"></i></button>
-            </td>
+    if (slider.image) {
+        const imageUrl = `{{ asset(config('constants.IMAGE_PATH')) }}${slider.image}?v=${Date.now()}`;
+
+        imageCell.html(`
+            <img src="${imageUrl}" width="120" class="img-fluid rounded">
         `);
+    } else {
+        imageCell.html(`<span class="text-muted">No Image</span>`);
     }
+}
+
 
     // Show/hide "No sliders" message
     function toggleNoSliderMessage(){

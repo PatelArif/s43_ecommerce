@@ -22,7 +22,7 @@ public function store(Request $request)
     $validated = $request->validate([
         'title'       => 'required|string|max:255',
         'sub_title'   => 'nullable|string|max:255',
-        'image'       => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
+        'image' => 'sometimes|nullable|image|mimes:jpg,jpeg,png,webp|max:9120',
         'button_text' => 'nullable|string|max:100',
         'description' => 'nullable|string',
         'category_id' => 'nullable|exists:categories,id',
@@ -74,9 +74,9 @@ public function show(Slider $slider)
     return response()->json($slider->load('category'));
 }
 
+
 public function update(Request $request, Slider $slider)
 {
-    // ✅ Validate the request
     $validated = $request->validate([
         'title'       => 'required|string|max:255',
         'sub_title'   => 'nullable|string|max:255',
@@ -87,45 +87,33 @@ public function update(Request $request, Slider $slider)
         'sort_order'  => 'nullable|integer',
     ]);
 
-    // Handle image upload
+    // 🔹 Image upload
     if ($request->hasFile('image')) {
-        if ($slider->image && file_exists(public_path('storage/' . $slider->image))) {
-            unlink(public_path('storage/' . $slider->image));
+
+        // Delete old image
+        if ($slider->image && Storage::disk('public')->exists($slider->image)) {
+            Storage::disk('public')->delete($slider->image);
         }
 
         $image = $request->file('image');
-        $destinationPath = public_path('storage/slider');
-
-        if (!file_exists($destinationPath)) {
-            mkdir($destinationPath, 0755, true);
-        }
-
-        $filename = time() . '_' . pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME) . '.webp';
+        $filename = uniqid() . '.webp';
+        $path = 'slider/' . $filename;
 
         $img = Image::make($image->getRealPath())->encode('webp', 60);
 
         if ($img->width() > 1200) {
-            $img->resize(1200, null, fn($constraint) => $constraint->aspectRatio());
+            $img->resize(1200, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
         }
 
-        $img->save($destinationPath . '/' . $filename);
+        Storage::disk('public')->put($path, (string) $img);
 
-        $validated['image'] = 'slider/' . $filename; // ✅ save to validated array
+        $validated['image'] = $path;
     }
 
-    // Manually update slider fields
-    $slider->title       = $validated['title'];
-    $slider->sub_title   = $validated['sub_title'] ?? null;
-    $slider->button_text = $validated['button_text'] ?? null;
-    $slider->description = $validated['description'] ?? null;
-    $slider->category_id = $validated['category_id'] ?? null;
-    if (isset($validated['image'])) {
-        $slider->image = $validated['image'];
-    }
-    if (isset($validated['sort_order'])) {
-        $slider->sort_order = $validated['sort_order'];
-    }
-
+    // 🔹 Update model
+    $slider->fill($validated);
     $slider->save();
 
     return response()->json($slider->load('category'));
