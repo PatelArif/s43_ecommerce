@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!--<< Header Area >>-->
-    
 <head>
-    <!-- ========== Meta Tags ========== -->
+
+    <!-- ================= BASIC META ================= -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Gramentheme">
-    <meta name="description" content="S4E Ecommerce">
-   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="keywords" content="S4E, Step For Environment, Ecommerce, Shop, Online Shop, Online Store, Store, eCommerce Store">
-     
+    <!-- ================= SEO META ================= -->
+    <title>@yield('meta_title', 'S4E | Step For Environment')</title>
 
-    <!-- ======== Page title ============ -->
-    @stack('title')
+    <meta name="description" content="@yield('meta_description', 'S4E Ecommerce – Step For Environment online eco-friendly store')">
+    <meta name="keywords" content="@yield('meta_keywords', 'S4E, Step For Environment, Ecommerce, Online Store')">
+    <meta name="author" content="Step For Environment">
+    <meta name="robots" content="index, follow">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset(config('constants.ASSETS_PATH').'img/logo/logo4.png') }}">
+    <link rel="canonical" href="{{ url()->current() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- ================= OPEN GRAPH ================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Step For Environment">
+    <meta property="og:title" content="@yield('meta_title', 'S4E | Step For Environment')">
+    <meta property="og:description" content="@yield('meta_description', 'S4E Ecommerce – Step For Environment online eco-friendly store')">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="@yield('meta_image', asset(config('constants.ASSETS_PATH').'img/logo/logo4.png'))">
+
+    <!-- ================= TWITTER ================= -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('meta_title', 'S4E | Step For Environment')">
+    <meta name="twitter:description" content="@yield('meta_description', 'S4E Ecommerce – Step For Environment online eco-friendly store')">
+    <meta name="twitter:image" content="@yield('meta_image', asset(config('constants.ASSETS_PATH').'img/logo/logo4.png'))">
+
+    <!-- ================= FAVICON ================= -->
+    <link rel="icon" href="{{ asset(config('constants.ASSETS_PATH').'img/logo/logo4.png') }}">
+
+    <!-- ================= CSS ================= -->
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset(config('constants.ASSETS_PATH').'css/bootstrap.min.css') }}">
@@ -31,10 +48,25 @@
     <link rel="stylesheet" href="{{ asset(config('constants.ASSETS_PATH').'css/color.css') }}">
     <link rel="stylesheet" href="{{ asset(config('constants.ASSETS_PATH').'css/style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- ================= JSON-LD (FIXED) ================= -->
+    @verbatim
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Step For Environment",
+      "url": "{{APP_URL}}",
+      "logo": "{{LOGO_URL}}",
+      "sameAs": [
+        "https://www.facebook.com/",
+        "https://www.instagram.com/",
+        "https://www.linkedin.com/"
+      ]
+    }
+    </script>
+    @endverbatim
 
+    <!-- ================= JS ================= -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 </head>
