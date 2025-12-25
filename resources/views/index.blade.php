@@ -86,12 +86,12 @@
 <section class="py-5 pb-5  bg-light position-relative about1">
     <div class="container position-relative pb-5" style="z-index:1;">
 
-        <div class="section-title text-center">
+        <div class="section-title text-center custm_css">
             <h2>Shop by Category</h2>
         </div>
 
-        <div class="text-center mb-5">
-            <h4>
+        <div class="text-center mb-5  ">
+            <h4 class="custm_cssh4">
                Discover our carefully curated eco-friendly products organized by category. Each product is selected for
                     its sustainability and quality.
             </h4>
@@ -244,7 +244,7 @@
             </div>
         </section> --}}
     <!-- Product-store-section Start -->
-    <section class="product-store-section section-padding fix">
+    <section class="product-store-section section-padding fix no_pad">
         <div class="container">
             <div class="section-title text-center">
                 <h2 class="wow fadeInUp" data-wow-delay=".3s">

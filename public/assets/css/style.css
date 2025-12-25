@@ -8292,7 +8292,7 @@ input.main-search-input::placeholder {
 
 @media (max-width: 767px) {
     .section-title {
-        margin-bottom: 0;
+        margin-bottom: 20px;
     }
 }
 
@@ -12858,4 +12858,46 @@ transform: scale(1.05);
      border-color: #ddd;
      background-color: #f8f9fa;
      pointer-events: none;
+ }
+ @media (max-width: 1200px) {
+     .hero-overlay h1 {
+         font-size: 48px;
+     }
+ }
+
+ @media (max-width: 992px) {
+     .hero-overlay h1 {
+         font-size: 40px;
+     }
+ }
+
+ @media (max-width: 768px) {
+    .about2,.about1::before {
+    display: none;
+    }
+    .no_pad{
+        padding-top:0px;
+    }
+    .custm_cssh4 {
+        line-height:20px!important;
+        font-size:15px;
+    }
+     .hero-overlay h1 {
+         font-size: 32px;
+     }
+     .hero-overlay {
+        padding: 0px 10px;
+        /* inline-size: 10px;; */
+            line-height: 29px;
+     }
+         .hero-overlay p {
+        margin:0px auto; 
+        }
+        
+ }
+
+ @media (max-width: 480px) {
+     .hero-overlay h1 {
+         font-size: 22px;
+     }
  }

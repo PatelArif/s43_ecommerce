@@ -198,10 +198,11 @@
                             <img src="{{ asset(config('constants.ASSETS_PATH').'img/payment/StepForEnvironment1.png') }}" width="100%">
                         </div>
                         <div id="paymentBank" style="display:none;">
-                            <p><b>Bank Name :</b> Bank Of India</p>
-                            <p><b>Account No:</b> 14578458965</p>
-                            <p><b>IFSC Code:</b> BOIB056892</p>
-                            <p><b>Branch Name:</b> Ghatkopar (West), Mumbai-4160117</p>
+                            <p><b>Account Holder Name :</b> SMITA SUBHASH MORE</p>
+                            <p><b>Bank Name :</b> Indian Overseas Bank</p>
+                            <p><b>Account No:</b> 039701000026092</p>
+                            <p><b>IFSC Code:</b> IOBA0000397</p>
+                            <p><b>Branch Name:</b>Mumbai</p>
                         </div>
                     </div>
                 </div>
